@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { usePlayers } from "./hooks/usePlayers";
 
 export default function Home() {
+  const { players, isLoading, error } = usePlayers();
+
   return (
     <main className="flex min-h-screen flex-col items-center overscroll-none bg-gradient-to-t from-black to-black/40 to-90%">
       <div className="mb-12 mt-64 text-center">
