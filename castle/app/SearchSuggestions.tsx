@@ -1,5 +1,5 @@
-import useLoadData from "./hooks/useLoadData";
-import { getPlayers } from "./lib/api";
+import { useLoadData } from "./hooks/useLoadData";
+import { getAllTitledPlayers } from "./lib/api";
 import { Error } from "./components/Error";
 
 type Props = {
@@ -7,15 +7,17 @@ type Props = {
 };
 
 export function SearchSuggestions({ query }: Props) {
-  const { data, error } = useLoadData(getPlayers);
+  const { data, error } = useLoadData(getAllTitledPlayers);
 
   if (error) {
     return <Error error={error} />;
   }
 
-  const players = data?.players
-    .filter((n) => n.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
-    .slice(0, 5);
+  const players = data
+    ?.filter((player) =>
+      player.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
+    )
+    .slice(0, 3);
 
   return (
     <div
@@ -27,12 +29,17 @@ export function SearchSuggestions({ query }: Props) {
         <section className="flex w-full flex-col">
           <h1 className="mb-2 pl-6 text-xs">Titled Players</h1>
           <ul className="space-y-2 text-sm">
-            {players?.map((n) => (
+            {players?.map((player) => (
               <li
                 className="px-1 py-2 hover:cursor-pointer hover:bg-gray-200"
-                key={n}
+                key={player.name}
               >
-                <span className="pl-6">{n}</span>
+                <span className="pl-6">
+                  <span className="rounded-sm bg-[#7C2929] p-1 font-mono text-white">
+                    {player.title}
+                  </span>
+                </span>
+                &nbsp;{player.name}
               </li>
             ))}
           </ul>
