@@ -18,14 +18,14 @@ export function SearchInput() {
   return (
     <div className="w-full max-w-[800px] px-6">
       <form
-        className="z-1 relative flex h-10 w-full items-center justify-center rounded-full bg-white px-6 text-black shadow-sm shadow-gray-400 sm:h-14"
+        className="relative z-10 flex h-10 w-full items-center justify-center rounded-full bg-white px-6 text-black shadow-sm shadow-gray-400 sm:h-14"
         onSubmit={handleSearch}
       >
         <div className="flex w-fit items-center justify-center">
           <img
             src="/icons/search.svg"
             alt="search icon"
-            className="h-4 w-4 sm:h-6 sm:w-6"
+            className="z-10 h-4 w-4 sm:h-6 sm:w-6"
           />
         </div>
         <input
