@@ -1,8 +1,8 @@
 import { SearchInput } from "./SearchInput";
 
-export default async function Home() {
+export default function Home() {
   return (
-    <main className="bg-hero flex min-h-screen flex-col items-center overscroll-none bg-cover bg-no-repeat">
+    <main className="flex min-h-screen flex-col items-center overscroll-none bg-hero bg-cover bg-no-repeat">
       <div className="mb-12 mt-64 text-center">
         <h1 className="text-4xl font-semibold uppercase tracking-wide drop-shadow-lg">
           CASTLE
