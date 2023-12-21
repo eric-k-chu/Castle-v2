@@ -4,21 +4,34 @@ import Image from "next/image";
 import { getPlayerProfile } from "@/_chess_api/_player_data";
 import { useSearchParams } from "next/navigation";
 
-export default function SearchPage() {
+export default async function SearchPage() {
   const search = useSearchParams();
-  // const { data, error } = await getPlayerProfile(search.get("q"));
+  const { data, error } = await getPlayerProfile(search.get("q"));
 
-  // if (error) throw error;
+  if (error) throw error;
 
-  // if (!data) {
-  //   return (
-  //     <div>
-  //       <h1>Player does not exist.</h1>
-  //     </div>
-  //   );
-  // }
+  if (!data) {
+    return (
+      <div>
+        <h1>Player does not exist.</h1>
+      </div>
+    );
+  }
 
-  const num = 123456;
+  const {
+    username,
+    name,
+    avatar,
+    verified,
+    title,
+    url,
+    twitch_url,
+    followers,
+    league,
+    joined,
+    last_online,
+    location,
+  } = data;
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-hero bg-cover bg-top bg-no-repeat pt-24">
@@ -27,26 +40,28 @@ export default function SearchPage() {
           <div className="flex items-center">
             <div className="relative flex items-center justify-center">
               <Image
-                src="/images/hero.png"
+                src={String(avatar)}
                 alt="avatar"
                 width="0"
                 height="0"
-                className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-green-500 bg-black object-cover sm:h-24 sm:w-24"
+                className={`flex h-20 w-20 items-center justify-center rounded-full border-2 bg-black object-cover sm:h-24 sm:w-24 ${
+                  verified ? "border-green-500" : "border-black"
+                }`}
               />
               <h3 className="absolute bottom-0 rounded-sm bg-green-400/90 px-1 text-sm font-medium uppercase text-black empty:hidden">
-                {true && "Verified"}
+                {verified && "Verified"}
               </h3>
             </div>
             <div className="ml-8 flex flex-col gap-y-4">
               <h1 className="flex items-center text-2xl font-semibold sm:text-4xl">
-                {"Hikaru"}
+                {username}
                 <span className="ml-4 rounded-md bg-[#7C2929] px-2 py-0.5 font-mono text-lg text-white empty:hidden">
-                  GM
+                  {title}
                 </span>
               </h1>
               <div className="flex items-center gap-x-2 text-sm text-gray-300 empty:hidden sm:text-lg">
-                <h2 className="empty:hidden">{"Hikaru Nakamura"}</h2>
-                <h2 className="empty:hidden">{"Florida"}</h2>
+                <h2 className="empty:hidden">{name}</h2>
+                <h2 className="empty:hidden">{location}</h2>
               </div>
             </div>
           </div>
@@ -54,7 +69,7 @@ export default function SearchPage() {
             <a
               className="flex h-10 w-36 items-center rounded-sm border-2 border-gray-600 bg-black p-2 px-4 text-xl hover:border-blue-600 hover:bg-blue-600 md:h-12 md:w-48"
               target="_blank"
-              href={"#"}
+              href={String(url)}
             >
               <Image
                 src="/icons/chess-com.svg"
@@ -73,9 +88,11 @@ export default function SearchPage() {
               />
             </a>
             <a
-              className="flex h-10 w-36 items-center rounded-sm border-2 border-gray-600 bg-black p-2 px-4 text-xl hover:border-blue-600 hover:bg-blue-600 md:h-12 md:w-48"
+              className={`h-10 w-36 items-center rounded-sm border-2 border-gray-600 bg-black p-2 px-4 text-xl hover:border-blue-600 hover:bg-blue-600 md:h-12 md:w-48 ${
+                twitch_url ? "flex" : "hidden"
+              }`}
               target="_blank"
-              href={"#"}
+              href={String(twitch_url)}
             >
               <Image
                 src="/icons/twitch.svg"
@@ -95,22 +112,46 @@ export default function SearchPage() {
             </a>
           </div>
         </div>
-        <div className="mt-10 grid w-full grid-cols-3 gap-4 text-xs md:text-sm">
-          <div className="flex items-center justify-center gap-x-2 rounded-md bg-gray-900 px-4 py-3">
+        <div className="mt-0 grid w-full grid-cols-4 gap-4 border-b-2 border-b-gray-600 py-10 text-xs md:mt-10 md:text-sm">
+          <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
             <Image
               src="/icons/followers.svg"
               alt="followers icon"
               width="0"
               height="0"
-              className="w-4"
+              className="h-auto w-5"
             />
-            {num.toLocaleString()}
+            {followers.toLocaleString()}
           </div>
-          <div className="flex items-center justify-center gap-x-2 rounded-md bg-gray-900 px-4 py-3">
-            {"Legend"}
+          <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
+            <Image
+              src="/icons/legend.svg"
+              alt="Legend icon"
+              width="0"
+              height="0"
+              className="h-auto w-7"
+            />
+            <span className="uppercase">{league}</span>
           </div>
-          <div className="flex items-center justify-center gap-x-2 rounded-md bg-gray-900 px-4 py-3">
-            {"Basic"}
+          <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
+            <Image
+              src="/icons/pawn.svg"
+              alt="pawn icon"
+              width="0"
+              height="0"
+              className="h-auto w-4"
+            />
+            {joined}
+          </div>
+          <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
+            <Image
+              src="/icons/status.svg"
+              alt="status icon"
+              width="0"
+              height="0"
+              className="h-auto w-5"
+            />
+            {last_online}
           </div>
         </div>
       </div>
