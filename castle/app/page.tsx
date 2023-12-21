@@ -1,13 +1,12 @@
-import { notFound } from "next/navigation";
 import { getCountries } from "./_utils/get-countries";
 import { getTitledPlayers } from "./_chess_api/_player_data";
 import { SearchInput } from "./_components";
 
 export default async function Home() {
-  const players = await getTitledPlayers();
+  const { data, error } = await getTitledPlayers();
   const countries = getCountries();
 
-  if (!players) {
+  if (error || !data) {
     throw new Error("Error in fetching data from Chess.com");
   }
 
@@ -21,7 +20,7 @@ export default async function Home() {
           A player search engine. Powered by Chess.com API
         </p>
       </div>
-      <SearchInput countries={countries} players={players} />
+      <SearchInput countries={countries} players={data} />
     </main>
   );
 }
