@@ -1,21 +1,15 @@
-import { useLoadData } from "./hooks/useLoadData";
-import { getAllTitledPlayers, filterCountries, filterPlayers } from "./lib/api";
-import { Error } from "./components/Error";
-import { Country } from "./lib/types";
+import { filterPlayers } from "../_utils/filter-players";
+import { filterCountries } from "../_utils/filter-countries";
+import { TitledPlayers, Country } from "../_lib/types";
 
 type Props = {
   query: string;
+  playerList: TitledPlayers[];
   countryList: Country[];
 };
 
-export function SearchSuggestions({ query, countryList }: Props) {
-  const { data, error } = useLoadData(getAllTitledPlayers);
-
-  if (error) {
-    return <Error error={error} />;
-  }
-
-  const players = filterPlayers(data, query);
+export function SearchSuggestions({ query, playerList, countryList }: Props) {
+  const players = filterPlayers(playerList, query);
   const countries = filterCountries(countryList, query);
 
   const isPlayers = players && players.length > 0;

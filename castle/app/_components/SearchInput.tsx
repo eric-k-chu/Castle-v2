@@ -3,13 +3,14 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { SearchSuggestions } from "./SearchSuggestions";
-import { Country } from "./lib/types";
+import { TitledPlayers, Country } from "../_lib/types";
 
 type Props = {
+  players: TitledPlayers[];
   countries: Country[];
 };
 
-export function SearchInput({ countries }: Props) {
+export function SearchInput({ players, countries }: Props) {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
@@ -38,7 +39,11 @@ export function SearchInput({ countries }: Props) {
           className="z-10 h-full w-full bg-transparent px-4 text-base focus:outline-none sm:text-lg"
           placeholder="Search for a player"
         />
-        <SearchSuggestions query={query} countryList={countries} />
+        <SearchSuggestions
+          query={query}
+          countryList={countries}
+          playerList={players}
+        />
       </form>
     </div>
   );
