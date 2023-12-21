@@ -1,6 +1,9 @@
 import { SearchInput } from "./SearchInput";
+import { generateCountries } from "./lib/api";
 
 export default function Home() {
+  const countries = generateCountries();
+
   return (
     <main className="flex min-h-screen flex-col items-center overscroll-none bg-hero bg-cover bg-top bg-no-repeat">
       <div className="mb-12 mt-64 text-center">
@@ -11,7 +14,7 @@ export default function Home() {
           A player search engine. Powered by Chess.com API
         </p>
       </div>
-      <SearchInput />
+      <SearchInput countries={countries} />
     </main>
   );
 }

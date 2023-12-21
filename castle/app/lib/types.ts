@@ -18,3 +18,9 @@ export type TitledPlayers = {
   title: Title;
   name: string;
 };
+
+export type Country = {
+  code: string;
+  name: string;
+  src: string;
+};

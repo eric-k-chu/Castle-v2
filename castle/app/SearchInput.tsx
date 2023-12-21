@@ -1,11 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { SearchSuggestions } from "./SearchSuggestions";
+import { Country } from "./lib/types";
 
-export function SearchInput() {
+type Props = {
+  countries: Country[];
+};
+
+export function SearchInput({ countries }: Props) {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
@@ -34,7 +38,7 @@ export function SearchInput() {
           className="z-10 h-full w-full bg-transparent px-4 text-base focus:outline-none sm:text-lg"
           placeholder="Search for a player"
         />
-        <SearchSuggestions query={query} />
+        <SearchSuggestions query={query} countryList={countries} />
       </form>
     </div>
   );

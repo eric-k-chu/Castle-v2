@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "country-codes-list": "^1.6.11",
+    "country-flag-icons": "^1.5.9",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"
