@@ -1,20 +1,17 @@
 import { filterPlayers } from "../_utils/filter-players";
-import { filterCountries } from "../_utils/filter-countries";
-import { TitledPlayers, Country } from "../_lib/types";
+import { TitledPlayers } from "../_lib/types";
+import { useRouter } from "next/navigation";
 
 type Props = {
   query: string;
   playerList: TitledPlayers[];
-  countryList: Country[];
 };
 
-export function SearchSuggestions({ query, playerList, countryList }: Props) {
-  const players = filterPlayers(playerList, query);
-  const countries = filterCountries(countryList, query);
+export function SearchSuggestions({ query, playerList }: Props) {
+  const router = useRouter();
+  const players = filterPlayers(playerList, query, 5);
 
-  const isPlayers = players && players.length > 0;
-  const isCountries = countries.length > 0;
-  const isOpen = query.length > 0 && (isPlayers || isCountries);
+  const isOpen = query.length > 0 && players && players.length > 0;
 
   return (
     <div
@@ -23,15 +20,14 @@ export function SearchSuggestions({ query, playerList, countryList }: Props) {
       }`}
     >
       <div className="flex h-full w-full flex-col items-center gap-y-4 border-t border-t-gray-300 py-6">
-        <section
-          className={`flex w-full flex-col ${isPlayers ? "block" : "hidden"}`}
-        >
+        <section className="flex w-full flex-col">
           <h1 className="mb-2 pl-6 text-xs">Titled Players</h1>
           <ul className="space-y-2 text-sm">
             {players?.map((player) => (
               <li
                 className="px-1 py-2 hover:cursor-pointer hover:bg-gray-200"
                 key={player.name}
+                onClick={() => router.push(`/search?q=${[player.name]}`)}
               >
                 <span className="pl-6">
                   <span className="rounded-sm bg-[#7C2929] px-1 py-0.5 font-mono text-white">
@@ -39,28 +35,6 @@ export function SearchSuggestions({ query, playerList, countryList }: Props) {
                   </span>
                 </span>
                 &nbsp;{player.name}
-              </li>
-            ))}
-          </ul>
-        </section>
-        <section
-          className={`flex w-full flex-col ${isCountries ? "block" : "hidden"}`}
-        >
-          <h1 className="mb-2 pl-6 text-xs">Countries</h1>
-          <ul className="space-y-2 text-sm">
-            {countries.map((n) => (
-              <li
-                key={n.code}
-                className="flex items-center p-1 hover:cursor-pointer hover:bg-gray-200"
-              >
-                <span className="pl-6">
-                  <img
-                    src={n.src}
-                    alt={n.code}
-                    className="w-5 rounded-sm border border-gray-400 sm:w-6"
-                  />
-                </span>
-                &nbsp;{n.code}
               </li>
             ))}
           </ul>

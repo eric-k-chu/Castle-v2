@@ -3,14 +3,14 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { SearchSuggestions } from "./SearchSuggestions";
-import { TitledPlayers, Country } from "../_lib/types";
+import { TitledPlayers } from "../_lib/types";
+import Image from "next/image";
 
 type Props = {
   players: TitledPlayers[];
-  countries: Country[];
 };
 
-export function SearchInput({ players, countries }: Props) {
+export function SearchInput({ players }: Props) {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
@@ -27,10 +27,12 @@ export function SearchInput({ players, countries }: Props) {
         onSubmit={handleSearch}
       >
         <div className="flex w-fit items-center justify-center">
-          <img
+          <Image
             src="/icons/search.svg"
             alt="search icon"
             className="z-10 h-4 w-4 sm:h-6 sm:w-6"
+            width={16}
+            height={16}
           />
         </div>
         <input
@@ -39,11 +41,7 @@ export function SearchInput({ players, countries }: Props) {
           className="z-10 h-full w-full bg-transparent px-4 text-base focus:outline-none sm:text-lg"
           placeholder="Search for a player"
         />
-        <SearchSuggestions
-          query={query}
-          countryList={countries}
-          playerList={players}
-        />
+        <SearchSuggestions query={query} playerList={players} />
       </form>
     </div>
   );
