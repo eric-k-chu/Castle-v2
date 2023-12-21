@@ -1,22 +1,24 @@
-import { ClientError } from "@/_lib/client-error";
-import { TITLES } from "@/_lib/constants";
-import { TitledPlayers, Players, ChessAPIData, APIError } from "@/_lib/types";
+import { CHESS_API_TITLED, TITLES } from "@/_lib/constants";
+import { TitledPlayers, Players, ChessAPIData } from "@/_lib/types";
+import { getError } from "@/_utils";
 
 export async function getTitledPlayers(): Promise<
   ChessAPIData<TitledPlayers[]>
 > {
-  let error: APIError = null;
-  const titledPlayers = await Promise.all(
-    TITLES.map(async (title) => {
-      const res = await fetch(`https://api.chess.com/pub/titled/${title}`, {
-        cache: "force-cache",
-      });
-      error = res.ok ? null : new ClientError(res.status, "Fetch Error.");
+  try {
+    const titledPlayers = await Promise.all(
+      TITLES.map(async (title) => {
+        const res = await fetch(`${CHESS_API_TITLED}${title}`, {
+          cache: "force-cache",
+        });
+        if (!res.ok) throw new Error(`Fetch Error: ${res.status}`);
 
-      const { players } = (await res.json()) as Players;
-      return players.map((name) => ({ title, name }));
-    }),
-  );
-
-  return { data: titledPlayers.flat(), error };
+        const { players } = (await res.json()) as Players;
+        return players.map((name) => ({ title, name }));
+      }),
+    );
+    return { data: titledPlayers.flat(), error: undefined };
+  } catch (error) {
+    return { data: undefined, error: getError(error) };
+  }
 }

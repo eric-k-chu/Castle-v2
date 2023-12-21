@@ -1,5 +1,3 @@
-import { ClientError } from "./client-error";
-
 export type Players = {
   players: string[];
 };
@@ -27,26 +25,30 @@ export type Country = {
   src: string;
 };
 
-export type APIError = ClientError | null;
-
 export type ChessAPIData<T> = {
-  data: T;
-  error: APIError;
+  data: T | undefined;
+  error: Error | undefined;
 };
 
-export type Club = {
-  "@id": string;
-  name: string;
-  club_id: number;
-  country: string;
-  average_daily_rating: number;
-  members_count: number;
-  created: number;
-  last_activity: number;
-  admin: string[];
-  visibility: "public" | "private";
-  join_request: string;
-  icon: string;
-  description: string;
-  url: string;
+export type Club = {};
+
+export type Player = {
+  "@id": URL;
+  url: URL;
+  username: string;
+  player_id: number;
+  title?: string;
+  status: string;
+  name?: string;
+  avatar?: URL;
+  location?: string;
+  country: URL;
+  joined: EpochTimeStamp;
+  last_online: EpochTimeStamp;
+  followers: number;
+  is_streamer: boolean;
+  twitch_url?: URL;
+  fide?: number;
+  league?: string;
+  verified: boolean;
 };

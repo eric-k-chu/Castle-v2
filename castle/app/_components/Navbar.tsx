@@ -19,9 +19,9 @@ export function Navbar() {
       <Image
         src="/icons/logo.svg"
         alt="logo icon"
-        width={32}
-        height={32}
-        className="mr-6 h-8 w-8 hover:cursor-pointer"
+        width="0"
+        height="0"
+        className="mr-6 h-auto w-8 hover:cursor-pointer"
         onClick={() => router.push("/")}
       />
       <div
@@ -31,19 +31,19 @@ export function Navbar() {
       >
         <Link
           href=""
-          className="font-semibold uppercase tracking-wider hover:text-gray-300"
+          className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
         >
           Countries
         </Link>
         <Link
           href=""
-          className="font-semibold uppercase tracking-wider hover:text-gray-300"
+          className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
         >
           Leaderboards
         </Link>
         <Link
           href=""
-          className="font-semibold uppercase tracking-wider hover:text-gray-300"
+          className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
         >
           Daily Puzzle
         </Link>
@@ -52,9 +52,9 @@ export function Navbar() {
         <Image
           src="/icons/bookmark.svg"
           alt="bookmark icon"
-          width={24}
-          height={24}
-          className="hidden h-6 w-6 fill-black hover:cursor-pointer sm:block"
+          width="0"
+          height="0"
+          className="hidden h-auto w-6 fill-black hover:cursor-pointer sm:block"
           onClick={() => alert("WIP Bookmark section")}
         />
       </div>

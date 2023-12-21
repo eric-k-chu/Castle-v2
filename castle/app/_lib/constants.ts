@@ -60,3 +60,6 @@ export const USER_ASSIGNED_COUNTRIES = [
     src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_the_United_Nations.svg",
   },
 ];
+
+export const CHESS_API_PROFILE = "https://api.chess.com/pub/player/";
+export const CHESS_API_TITLED = "https://api.chess.com/pub/titled/";

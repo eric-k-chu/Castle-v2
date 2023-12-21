@@ -19,7 +19,7 @@ export function SearchSuggestions({ query, playerList }: Props) {
         isOpen ? "block" : "hidden"
       }`}
     >
-      <div className="flex h-full w-full flex-col items-center gap-y-4 border-t border-t-gray-300 py-6">
+      <div className="relative flex h-full w-full flex-col items-center gap-y-4 border-t border-t-gray-300 py-6">
         <section className="flex w-full flex-col">
           <h1 className="mb-2 pl-6 text-xs">Titled Players</h1>
           <ul className="space-y-2 text-sm">
@@ -39,6 +39,9 @@ export function SearchSuggestions({ query, playerList }: Props) {
             ))}
           </ul>
         </section>
+        <h1 className="absolute bottom-2 right-4 select-none text-xs italic text-gray-500">
+          Suggestions
+        </h1>
       </div>
     </div>
   );

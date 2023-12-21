@@ -26,13 +26,13 @@ export function SearchInput({ players }: Props) {
         className="relative z-10 flex h-10 w-full items-center justify-center rounded-full bg-white px-6 text-black shadow-sm shadow-gray-400 sm:h-14"
         onSubmit={handleSearch}
       >
-        <div className="flex w-fit items-center justify-center">
+        <div className="z-10 flex w-fit items-center justify-center border-r border-gray-500 pr-4 sm:pr-5">
           <Image
             src="/icons/search.svg"
             alt="search icon"
-            className="z-10 h-4 w-4 sm:h-6 sm:w-6"
-            width={16}
-            height={16}
+            className="z-10 h-auto w-4 sm:w-6"
+            width="0"
+            height="0"
           />
         </div>
         <input
