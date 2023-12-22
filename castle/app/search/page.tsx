@@ -3,17 +3,35 @@
 import Image from "next/image";
 import { getPlayerProfile } from "@/_chess_api/_player_data";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Player } from "@/_lib/types";
+import { getDate } from "@/_utils";
 
-export default async function SearchPage() {
+export default function SearchPage() {
   const search = useSearchParams();
-  const { data, error } = await getPlayerProfile(search.get("q"));
+  const [player, setPlayer] = useState<Player>();
 
-  if (error) throw error;
+  useEffect(() => {
+    async function getPlayer() {
+      const { data, error } = await getPlayerProfile(search.get("q"));
+      if (error) throw error;
+      setPlayer(data);
+    }
+    getPlayer();
+  }, []);
 
-  if (!data) {
+  if (!player) {
     return (
-      <div>
-        <h1>Player does not exist.</h1>
+      <div className="flex min-h-screen w-full flex-col items-center justify-center bg-hero bg-cover bg-top bg-no-repeat pt-24">
+        <img
+          src="/images/question.png"
+          alt="question icon"
+          className="h-auto w-24"
+        />
+        <h1 className="drop-shadow-glow mt-4 text-xl sm:text-4xl">
+          No search results for&nbsp;&quot;
+          <span className="text-red-700">{search.get("q")}</span>&quot;
+        </h1>
       </div>
     );
   }
@@ -31,7 +49,7 @@ export default async function SearchPage() {
     joined,
     last_online,
     location,
-  } = data;
+  } = player;
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-hero bg-cover bg-top bg-no-repeat pt-24">
@@ -39,12 +57,10 @@ export default async function SearchPage() {
         <div className="flex flex-col items-center md:flex-row">
           <div className="flex items-center">
             <div className="relative flex items-center justify-center">
-              <Image
+              <img
                 src={String(avatar)}
                 alt="avatar"
-                width="0"
-                height="0"
-                className={`flex h-20 w-20 items-center justify-center rounded-full border-2 bg-black object-cover sm:h-24 sm:w-24 ${
+                className={`h-20 w-20 rounded-full border-2 bg-black sm:h-24 sm:w-24 ${
                   verified ? "border-green-500" : "border-black"
                 }`}
               />
@@ -125,13 +141,17 @@ export default async function SearchPage() {
           </div>
           <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
             <Image
-              src="/icons/legend.svg"
-              alt="Legend icon"
+              src={`/icons/${
+                league ? league.toLocaleLowerCase() : "no-league"
+              }.svg`}
+              alt={`${league ? league : "no league"} icon`}
               width="0"
               height="0"
               className="h-auto w-7"
             />
-            <span className="uppercase">{league}</span>
+            <span className="uppercase">
+              {league ? league : "No division found"}
+            </span>
           </div>
           <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
             <Image
@@ -141,7 +161,7 @@ export default async function SearchPage() {
               height="0"
               className="h-auto w-4"
             />
-            {joined}
+            {getDate(joined)}
           </div>
           <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
             <Image
@@ -151,7 +171,7 @@ export default async function SearchPage() {
               height="0"
               className="h-auto w-5"
             />
-            {last_online}
+            {getDate(last_online)}
           </div>
         </div>
       </div>
