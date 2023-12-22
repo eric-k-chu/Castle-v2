@@ -1,17 +1,24 @@
-import { SearchInput } from "./SearchInput";
+import { getTitledPlayers } from "./_chess_api/_player_data";
+import { SearchInput } from "./_components";
 
-export default function Home() {
+export default async function Home() {
+  const { data, error } = await getTitledPlayers();
+
+  if (error || !data) {
+    throw error;
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center overscroll-none bg-gradient-to-t from-black to-black/40 to-90%">
-      <div className="mb-12 mt-64 text-center">
-        <h1 className="text-4xl font-semibold uppercase tracking-wide drop-shadow-lg">
-          CASTLE
+    <main className="flex min-h-screen flex-col items-center bg-hero bg-cover bg-top bg-no-repeat">
+      <div className="mb-10 mt-64 text-center">
+        <h1 className="drop-shadow-glow text-2xl font-semibold uppercase sm:text-4xl">
+          Castle
         </h1>
-        <p className="mt-4 text-lg font-medium text-gray-200 drop-shadow-lg">
+        <p className="drop-shadow-glow mt-4 text-base font-medium text-gray-200 sm:text-xl">
           A player search engine. Powered by Chess.com API
         </p>
       </div>
-      <SearchInput />
+      <SearchInput players={data} />
     </main>
   );
 }
