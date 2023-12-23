@@ -1,7 +1,3 @@
-export type Players = {
-  players: string[];
-};
-
 export type Title =
   | "GM"
   | "WGM"
@@ -14,119 +10,148 @@ export type Title =
   | "CM"
   | "WCM";
 
-export type TitledPlayers = {
+export interface Players {
+  players: string[];
+}
+
+export interface TitledPlayers {
   title: Title;
   name: string;
-};
+}
 
-export type Country = {
+export interface Country {
   code: string;
   name: string;
   src: string;
-};
+}
 
-export type ChessApiData<T> = {
+export interface ChessApiData<T> {
   data: T | undefined;
   isLoading: boolean | undefined;
   error: unknown;
-};
+}
 
-export type Club = {};
+export interface Club {}
 
-export type Player = {
-  "@id": URL;
-  url: URL;
+export interface Player {
+  "@id": string;
+  url: string;
   username: string;
   player_id: number;
   title?: string;
   status: string;
   name?: string;
-  avatar?: URL;
+  avatar?: string;
   location?: string;
-  country: URL;
+  country: string;
   joined: EpochTimeStamp;
   last_online: EpochTimeStamp;
   followers: number;
   is_streamer: boolean;
-  twitch_url?: URL;
+  twitch_string?: string;
   fide?: number;
   league?: string;
   verified: boolean;
-};
+}
 
-type StatData = {
+interface StatData {
   rating: number;
   date: EpochTimeStamp;
-};
+}
 
-type GameStat = {
-  last?: StatData & {
-    rd: number;
-  };
-  best?: StatData & {
-    game: URL;
-  };
-  record?: {
-    win: number;
-    loss: number;
-    draw: number;
-    time_per_move: number;
-    timeout_percent: number;
-  };
-  tournament?: {
-    count: number;
-    withdraw: number;
-    points: number;
-    highest_finish: number;
-  };
-};
+interface Last extends StatData {
+  rd: number;
+}
 
-type PuzzleStat = {
+interface Best extends StatData {
+  game: string;
+}
+
+interface Record {
+  win: number;
+  loss: number;
+  draw: number;
+  time_per_move: number;
+  timeout_percent: number;
+}
+
+interface Tournament {
+  count: number;
+  withdraw: number;
+  points: number;
+  highest_finish: number;
+}
+
+interface GameStat {
+  last?: Last;
+  best?: Best;
+  record?: Record;
+  tournament?: Tournament;
+}
+
+interface TacticsStat {
   highest: StatData;
   lowest: StatData;
-};
+}
 
-export type Stats = {
+interface PuzzleBest {
+  total_attemps: number;
+  score: number;
+}
+
+interface PuzzleStat {
+  best: PuzzleBest;
+}
+
+export interface Stats {
   chess_daily?: GameStat;
   chess960_daily?: GameStat;
   chess_rapid?: GameStat;
   chess_bullet?: GameStat;
   chess_blitz?: GameStat;
-  tactics?: PuzzleStat;
-  lessons?: PuzzleStat;
-  puzzle_rush?: {
-    best: {
-      total_attempts: number;
-      score: number;
-    };
-  };
+  tactics?: TacticsStat;
+  lessons?: TacticsStat;
+  puzzle_rush?: PuzzleStat;
   fide?: number;
-};
+}
 
-export type Archives = {
-  archives: URL[];
-};
+export interface Archives {
+  archives: string[];
+}
 
-type FinishedMatchData = {
-  url: URL;
-  "@id": URL;
+type Status =
+  | "winner"
+  | "eliminated"
+  | "withdraw"
+  | "removed"
+  | "invited"
+  | "registered";
+
+interface MatchData {
+  url: string;
+  "@id": string;
+}
+
+interface FinishedMatchData extends MatchData {
   wins: number;
   losses: number;
   draws: number;
   points_awarded: number;
   placement: number;
-  status: "winner" | "eliminated" | "withdraw" | "removed";
+  status: Exclude<Status, "invited" | "registered">;
   total_players: number;
-};
+}
 
-type InProgMatchData = Pick<FinishedMatchData, "url" | "@id" | "status">;
+interface InProgMatchData extends MatchData {
+  status: Exclude<Status, "invited" | "registered">;
+}
 
-type RegisteredMatchData = Pick<FinishedMatchData, "url" | "@id"> & {
-  status: "invited" | "registered";
-};
+interface RegisteredMatchData extends MatchData {
+  status: Extract<Status, "invited" | "registered">;
+}
 
-export type Tournaments = {
+export interface Tournaments {
   finished: FinishedMatchData[];
   in_progress: InProgMatchData[];
   registered: RegisteredMatchData[];
-};
+}
