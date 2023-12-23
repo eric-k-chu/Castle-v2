@@ -60,6 +60,7 @@ export interface Player {
   fide?: number;
   league?: string;
   verified: boolean;
+  twitch_url: string;
 }
 
 interface StatData {
