@@ -25,9 +25,10 @@ export type Country = {
   src: string;
 };
 
-export type ChessAPIData<T> = {
+export type ChessApiData<T> = {
   data: T | undefined;
-  error: Error | undefined;
+  isLoading: boolean | undefined;
+  error: unknown;
 };
 
 export type Club = {};
@@ -51,4 +52,20 @@ export type Player = {
   fide?: number;
   league?: string;
   verified: boolean;
+};
+
+type StatData = {
+  rating: number;
+  date: EpochTimeStamp;
+};
+
+export type Stats = {
+  tactics?: {
+    highest: StatData;
+    lowest: StatData;
+  };
+  lessons?: {
+    highest: StatData;
+    lowest: StatData;
+  };
 };

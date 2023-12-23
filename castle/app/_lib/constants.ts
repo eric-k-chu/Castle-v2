@@ -61,5 +61,4 @@ export const USER_ASSIGNED_COUNTRIES = [
   },
 ];
 
-export const CHESS_API_PROFILE = "https://api.chess.com/pub/player/";
-export const CHESS_API_TITLED = "https://api.chess.com/pub/titled/";
+export const CHESS_API_PREFIX = "https://api.chess.com/pub/";

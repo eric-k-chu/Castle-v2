@@ -1,2 +1,2 @@
-export * from "./get-titled-players";
 export * from "./get-player-profile";
+export * from "./get-player-data";

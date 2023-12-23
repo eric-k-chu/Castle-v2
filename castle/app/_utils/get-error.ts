@@ -1,5 +1,12 @@
-export function getError(error: unknown): Error {
-  return error instanceof Error
-    ? error
-    : new Error("An unknown error has occured.");
+export function getError(responseCode: number): string {
+  switch (responseCode) {
+    case 404:
+      return "The data requested does not exist.";
+    case 410:
+      return "The data requested is unavailable at this URL.";
+    case 429:
+      return "Too many requests.";
+    default:
+      return "An unknown error has occured.";
+  }
 }
