@@ -28,11 +28,7 @@ export default function SearchPage() {
   const { data, isLoading, error } = useChessApi(getPlayerInfo, search);
 
   if (isLoading) {
-    return (
-      <div className="flex min-h-screen w-full flex-col items-center justify-center bg-hero bg-cover bg-top bg-no-repeat pt-24">
-        <Loading />
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error || !data) {

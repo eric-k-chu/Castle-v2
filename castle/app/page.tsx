@@ -1,21 +1,40 @@
+import { Suspense } from "react";
 import { getPlayerData } from "./chessapi/player";
-import { SearchInput } from "./components";
+import { ErrorMsg, Loading, SearchInput } from "./components";
 import { TITLES } from "./lib/constants";
 import { Players, TitledPlayers } from "./lib/types";
 
-async function getPlayerSuggestions(): Promise<TitledPlayers[]> {
-  const res = await Promise.all(
-    TITLES.map((n) =>
-      getPlayerData<Players>(`titled/${n}`).then((data) =>
-        data.players.map((name) => ({ title: n, name }) as TitledPlayers),
+async function getPlayerSuggestions() {
+  try {
+    const res = await Promise.all(
+      TITLES.map((n) =>
+        getPlayerData<Players>(`titled/${n}`).then((data) =>
+          data.players.map((name) => ({ title: n, name }) as TitledPlayers),
+        ),
       ),
-    ),
-  );
-  return res.flat();
+    );
+    return { players: res.flat(), error: undefined };
+  } catch (err) {
+    return { players: undefined, error: err };
+  }
 }
 
 export default async function Home() {
-  const players = await getPlayerSuggestions();
+  const { players, error } = await getPlayerSuggestions();
+
+  if (error || !players) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-hero bg-cover bg-top bg-no-repeat">
+        <ErrorMsg
+          error={
+            error instanceof Error
+              ? error.message
+              : "An unexpected error has occured"
+          }
+        />
+      </div>
+    );
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-hero bg-cover bg-top bg-no-repeat">
