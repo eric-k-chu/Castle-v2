@@ -1,6 +1,5 @@
-import { Suspense } from "react";
 import { getPlayerData } from "./chessapi/player";
-import { ErrorMsg, Loading, SearchInput } from "./components";
+import { ErrorMsg, SearchInput } from "./components";
 import { TITLES } from "./lib/constants";
 import { Players, TitledPlayers } from "./lib/types";
 
