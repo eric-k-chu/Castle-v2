@@ -4,3 +4,4 @@ export * from "./SearchSuggestions";
 export * from "./Loading";
 export * from "./Navbar";
 export * from "./ErrorMsg";
+export * from "./Player";
