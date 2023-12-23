@@ -1,4 +1,6 @@
-export const USER_ASSIGNED_COUNTRIES = [
+import { Country } from "../types";
+
+export const USER_ASSIGNED_COUNTRIES: Country[] = [
   {
     code: "XA",
     name: "Canary Islands",
