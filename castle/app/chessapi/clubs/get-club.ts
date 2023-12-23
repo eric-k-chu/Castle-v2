@@ -1,4 +1,4 @@
-import { Club } from "@/_lib/types";
+import { Club } from "@/lib/types";
 
 // export async function getClub(urlId: string): Promise<ChessAPIData<Club>> {
 //   const id = urlId.trim().toLocaleLowerCase().split(" ").join("-");

@@ -1,4 +1,4 @@
-import { Country } from "@/_lib/types";
+import { Country } from "@/lib/types";
 
 export function filterCountries(
   countries: Country[],

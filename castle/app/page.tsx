@@ -1,7 +1,7 @@
-import { getPlayerData } from "./_chess_api/_player_data";
-import { SearchInput } from "./_components";
-import { TITLES } from "./_lib/constants";
-import { Players, TitledPlayers } from "./_lib/types";
+import { getPlayerData } from "./chessapi/player";
+import { SearchInput } from "./components";
+import { TITLES } from "./lib/constants";
+import { Players, TitledPlayers } from "./lib/types";
 
 async function getPlayerSuggestions(): Promise<TitledPlayers[]> {
   const res = await Promise.all(

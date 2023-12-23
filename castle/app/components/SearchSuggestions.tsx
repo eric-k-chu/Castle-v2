@@ -1,5 +1,5 @@
-import { filterPlayers } from "../_utils/filter-players";
-import { TitledPlayers } from "../_lib/types";
+import { filterPlayers } from "../utils/filter-players";
+import { TitledPlayers } from "../lib/types";
 import { useRouter } from "next/navigation";
 
 type Props = {

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChessApiData } from "@/_lib/types";
+import { ChessApiData } from "@/lib/types";
 import { useEffect, useState } from "react";
 
 export function useChessApi<T>(
@@ -24,7 +24,7 @@ export function useChessApi<T>(
       }
     }
     if (isLoading === undefined) getDataFromApi();
-  }, [isLoading]);
+  }, [isLoading, func, args]);
 
   return { data, isLoading, error };
 }

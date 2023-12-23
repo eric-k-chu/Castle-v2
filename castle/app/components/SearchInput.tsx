@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { SearchSuggestions } from "./SearchSuggestions";
-import { TitledPlayers } from "../_lib/types";
+import { TitledPlayers } from "../lib/types";
 import Image from "next/image";
 
 type Props = {
