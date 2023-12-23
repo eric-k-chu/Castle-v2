@@ -10,6 +10,14 @@ export type Title =
   | "CM"
   | "WCM";
 
+type Status =
+  | "winner"
+  | "eliminated"
+  | "withdraw"
+  | "removed"
+  | "invited"
+  | "registered";
+
 export interface Players {
   players: string[];
 }
@@ -118,14 +126,6 @@ export interface Stats {
 export interface Archives {
   archives: string[];
 }
-
-type Status =
-  | "winner"
-  | "eliminated"
-  | "withdraw"
-  | "removed"
-  | "invited"
-  | "registered";
 
 interface MatchData {
   url: string;
