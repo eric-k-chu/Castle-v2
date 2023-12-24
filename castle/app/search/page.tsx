@@ -1,56 +1,25 @@
 "use client";
 
-import { ErrorMsg, Loading, PlayerDisplay } from "@/components";
+import { ErrorDisplay, Loading, PlayerDisplay } from "@/components";
 import { useSearchParams } from "next/navigation";
-import { useChessApi } from "@/hooks/useChessApi";
-import { getPlayerData } from "@/chessapi/player";
-import { Archives, Player, Stats, Tournaments } from "@/lib/types";
+import { useFetcher } from "@/hooks/useFetcher";
 
-async function getPlayerInfo(username: string) {
-  const apiCalls = [
-    getPlayerData<Player>(`player/${username}`),
-    getPlayerData<Stats>(`player/${username}/stats`),
-    getPlayerData<Archives>(`player/${username}/games/archives`),
-    getPlayerData<Tournaments>(`player/${username}/tournaments`),
-  ];
-
-  const [player, stats, archives, tournaments] = await Promise.all(apiCalls);
-  return { player, stats, archives, tournaments } as {
-    player: Player;
-    stats: Stats;
-    archives: Archives;
-    tournaments: Tournaments;
-  };
-}
+import { getPlayer } from "@/utils/fetcher";
 
 export default function SearchPage() {
   const search = useSearchParams().get("q");
-  const { data, isLoading, error } = useChessApi(getPlayerInfo, search);
+  const { data, isLoading, error } = useFetcher(getPlayer, search);
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  if (isLoading) return <Loading />;
 
-  if (error || !data) {
-    return (
-      <div className="flex min-h-screen w-full flex-col items-center justify-center bg-hero bg-cover bg-top bg-no-repeat pt-24">
-        <ErrorMsg
-          error={
-            error instanceof Error
-              ? error.message
-              : "An unknown error has occured."
-          }
-        />
-      </div>
-    );
-  }
+  if (error) return <ErrorDisplay error={error as Error} />;
 
-  const { player, stats, archives, tournaments } = data;
+  if (!data) return <Loading />;
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-hero-2 bg-cover bg-top bg-no-repeat pt-24">
       <div className="mx-auto w-full max-w-7xl px-4">
-        <PlayerDisplay player={player} />
+        <PlayerDisplay player={data?.player} />
       </div>
     </div>
   );

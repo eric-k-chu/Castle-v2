@@ -1,39 +1,17 @@
-import { getPlayerData } from "./chessapi/player";
-import { ErrorMsg, SearchInput } from "./components";
-import { TITLES } from "./lib/constants";
-import { Players, TitledPlayers } from "./lib/types";
+"use client";
 
-async function getPlayerSuggestions() {
-  try {
-    const res = await Promise.all(
-      TITLES.map((n) =>
-        getPlayerData<Players>(`titled/${n}`).then((data) =>
-          data.players.map((name) => ({ title: n, name }) as TitledPlayers),
-        ),
-      ),
-    );
-    return { players: res.flat(), error: undefined };
-  } catch (err) {
-    return { players: undefined, error: err };
-  }
-}
+import { ErrorDisplay, Loading, SearchInput } from "./components";
+import { useFetcher } from "./hooks/useFetcher";
+import { getPlayerSuggestions } from "./utils/fetcher";
 
-export default async function Home() {
-  const { players, error } = await getPlayerSuggestions();
+export default function Home() {
+  const { data, isLoading, error } = useFetcher(getPlayerSuggestions);
 
-  if (error || !players) {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-hero bg-cover bg-top bg-no-repeat">
-        <ErrorMsg
-          error={
-            error instanceof Error
-              ? error.message
-              : "An unexpected error has occured"
-          }
-        />
-      </div>
-    );
-  }
+  if (isLoading) return <Loading />;
+
+  if (error) return <ErrorDisplay error={error as Error} />;
+
+  if (!data) return <Loading />;
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-hero bg-cover bg-top bg-no-repeat">
@@ -45,7 +23,7 @@ export default async function Home() {
           A player search engine. Powered by Chess.com API
         </p>
       </div>
-      <SearchInput players={players} />
+      <SearchInput players={data} />
     </main>
   );
 }

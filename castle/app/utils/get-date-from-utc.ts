@@ -1,4 +1,4 @@
-export function getDate(utcSeconds: number): string {
+export function getDateFromUtc(utcSeconds: number): string {
   const date = new Date(utcSeconds * 1000);
   const months = [
     "Jan",

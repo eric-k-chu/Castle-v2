@@ -2,7 +2,7 @@
 
 import { Player } from "@/lib/types";
 import Image from "next/image";
-import { getDate } from "@/utils";
+import { getDateFromUtc } from "@/utils";
 
 type Props = {
   player: Player;
@@ -121,7 +121,7 @@ export function PlayerDisplay({ player }: Props) {
             height="0"
             className="h-auto w-4"
           />
-          {getDate(player.joined)}
+          {getDateFromUtc(player.joined)}
         </div>
         <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
           <Image
@@ -131,7 +131,7 @@ export function PlayerDisplay({ player }: Props) {
             height="0"
             className="h-auto w-5"
           />
-          {getDate(player.last_online)}
+          {getDateFromUtc(player.last_online)}
         </div>
       </div>
     </>
