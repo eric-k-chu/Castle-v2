@@ -8,7 +8,7 @@ type Props = {
   player: Player;
 };
 
-export function PlayerDisplay({ player }: Props) {
+export function PlayerProfileDisplay({ player }: Props) {
   return (
     <>
       <div className="flex flex-col items-center md:flex-row">
@@ -36,14 +36,21 @@ export function PlayerDisplay({ player }: Props) {
               </span>
             </h1>
             <div className="flex items-center gap-x-2 text-sm text-gray-300 empty:hidden sm:text-lg">
-              <h2 className="empty:hidden">{player?.name}</h2>
+              <h2 className="empty:hidden">{player?.name}</h2>&#124;
+              <Image
+                src="/icons/location.svg"
+                alt="location icon"
+                width="0"
+                height="0"
+                className="h-5 w-5"
+              />
               <h2 className="empty:hidden">{player?.location}</h2>
             </div>
           </div>
         </div>
         <div className="mt-6 flex items-end gap-2 sm:flex-row md:ml-auto md:flex-col lg:flex-row">
           <a
-            className="flex h-10 w-36 items-center rounded-sm border-2 border-gray-600 bg-black p-2 px-4 text-xl hover:border-blue-600 hover:bg-blue-600 md:h-12 md:w-48"
+            className="flex h-10 w-36 items-center rounded-md border-2 border-gray-600 bg-black p-2 px-4 text-xl hover:border-blue-600 hover:bg-blue-600 md:h-12 md:w-48"
             target="_blank"
             href={String(player.url)}
           >
@@ -64,7 +71,7 @@ export function PlayerDisplay({ player }: Props) {
             />
           </a>
           <a
-            className={`h-10 w-36 items-center rounded-sm border-2 border-gray-600 bg-black p-2 px-4 text-xl hover:border-blue-600 hover:bg-blue-600 md:h-12 md:w-48 ${
+            className={`h-10 w-36 items-center rounded-md border-2 border-gray-600 bg-black p-2 px-4 text-xl hover:border-blue-600 hover:bg-blue-600 md:h-12 md:w-48 ${
               player?.twitch_url ? "flex" : "hidden"
             }`}
             target="_blank"
@@ -88,8 +95,8 @@ export function PlayerDisplay({ player }: Props) {
           </a>
         </div>
       </div>
-      <div className="mt-0 grid w-full grid-cols-4 gap-4 border-b-2 border-b-gray-600 py-10 text-xs md:mt-10 md:text-sm">
-        <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
+      <div className="mt-0 grid w-full grid-cols-2 gap-4 border-b-2 border-b-gray-600 py-10 sm:grid-cols-4 md:mt-6">
+        <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-black px-4 py-3 text-xs">
           <Image
             src="/icons/followers.svg"
             alt="followers icon"
@@ -99,7 +106,7 @@ export function PlayerDisplay({ player }: Props) {
           />
           {player.followers.toLocaleString()}
         </div>
-        <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
+        <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-black px-4 py-3 text-xs">
           <Image
             src={`/icons/${
               player?.league ? player.league.toLocaleLowerCase() : "no-league"
@@ -113,7 +120,7 @@ export function PlayerDisplay({ player }: Props) {
             {player?.league ? player.league : "No division found"}
           </span>
         </div>
-        <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
+        <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-black px-4 py-3 text-xs">
           <Image
             src="/icons/pawn.svg"
             alt="pawn icon"
@@ -123,7 +130,7 @@ export function PlayerDisplay({ player }: Props) {
           />
           {getDateFromUtc(player.joined)}
         </div>
-        <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-gray-900 px-4 py-3">
+        <div className="flex items-center justify-center gap-x-2 rounded-md border border-gray-600 bg-black px-4 py-3 text-xs">
           <Image
             src="/icons/status.svg"
             alt="status icon"

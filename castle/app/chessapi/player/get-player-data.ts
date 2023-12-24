@@ -23,7 +23,7 @@ function createUrl(username: string, endpoint: Endpoint) {
       url += `/${username}/clubs`;
       break;
     case "archives":
-      url += `/${username}/game/archives`;
+      url += `/${username}/games/archives`;
       break;
     case "tournaments":
       url += `/${username}/tournaments`;
