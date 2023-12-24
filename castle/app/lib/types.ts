@@ -18,6 +18,13 @@ type Status =
   | "invited"
   | "registered";
 
+export type Endpoint =
+  | "stats"
+  | "clubs"
+  | "profile"
+  | "tournaments"
+  | "archives";
+
 export interface Players {
   players: string[];
 }
@@ -33,7 +40,7 @@ export interface Country {
   src: string;
 }
 
-export interface ChessApiData<T> {
+export interface Fetcher<T> {
   data: T | undefined;
   isLoading: boolean | undefined;
   error: unknown;
@@ -60,6 +67,7 @@ export interface Player {
   fide?: number;
   league?: string;
   verified: boolean;
+  twitch_url: string;
 }
 
 interface StatData {
@@ -154,4 +162,11 @@ export interface Tournaments {
   finished: FinishedMatchData[];
   in_progress: InProgMatchData[];
   registered: RegisteredMatchData[];
+}
+
+export interface PlayerInfo {
+  player: Player;
+  stats: Stats;
+  archives: Archives;
+  tournaments: Tournaments;
 }

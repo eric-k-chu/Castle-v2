@@ -1,12 +1,12 @@
 "use client";
 
-import { ChessApiData } from "@/lib/types";
+import { Fetcher } from "@/lib/types";
 import { useEffect, useState } from "react";
 
-export function useChessApi<T>(
-  func: (...args: any[]) => Promise<T>,
-  ...args: any[]
-): ChessApiData<T> {
+export function useFetcher<T>(
+  func: (arg?: any) => Promise<T>,
+  arg?: any,
+): Fetcher<T> {
   const [data, setData] = useState<T>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<unknown>();
@@ -15,7 +15,7 @@ export function useChessApi<T>(
     async function getDataFromApi() {
       setIsLoading(true);
       try {
-        const res = await func(...args);
+        const res = await func(arg);
         setData(res);
       } catch (err) {
         setError(err);
@@ -24,7 +24,7 @@ export function useChessApi<T>(
       }
     }
     if (isLoading === undefined) getDataFromApi();
-  }, [isLoading, func, args]);
+  }, [isLoading, func, arg]);
 
   return { data, isLoading, error };
 }
