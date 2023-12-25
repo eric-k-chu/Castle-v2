@@ -1,4 +1,4 @@
-import { SearchInput } from "./components";
+import { ErrorDisplay, SearchInput } from "./components";
 import { getPlayerSuggestions } from "./utils/fetcher";
 
 export default async function Home() {
@@ -18,5 +18,7 @@ export default async function Home() {
         <SearchInput players={players} />
       </main>
     );
-  } catch (err) {}
+  } catch (err) {
+    return <ErrorDisplay error={err} />;
+  }
 }

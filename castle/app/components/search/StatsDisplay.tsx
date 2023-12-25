@@ -1,14 +1,4 @@
 import { Stats } from "@/lib/types";
-import { Doughnut, Bar } from "react-chartjs-2";
-import {
-  Chart,
-  ArcElement,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-} from "chart.js";
-
-Chart.register(ArcElement, CategoryScale, LinearScale, BarElement);
 
 type Props = {
   data: Stats;
@@ -94,29 +84,13 @@ type GameStatProps = {
 
 function GameStatDisplay({ name, wld }: GameStatProps) {
   return (
-    <div className="flex items-center gap-x-2">
-      <h2>{name}</h2>
-
-      <Bar
-        data={{
-          labels: ["Wins", "Losses", "Draws"],
-          datasets: [
-            {
-              label: name,
-              data: [wld.wins, wld.losses, wld.draws],
-              backgroundColor: [
-                "rgba(129, 182, 76, 0.9)",
-                "rgba(186, 12, 47, 0.9)",
-                "rgba(179, 172, 168, 0.9)",
-              ],
-            },
-          ],
-        }}
-        options={{
-          responsive: true,
-          maintainAspectRatio: true,
-        }}
-      />
+    <div className="flex w-full items-center justify-around gap-x-2 rounded-md border border-gray-600 bg-black/50 p-4">
+      <h2 className="text-base font-semibold">{name}</h2>
+      <div className="ml-auto flex items-center">
+        <span className="text-green-600">{wld.wins}</span>
+        <span className="text-red-600">{wld.losses}</span>
+        <span className="text-gray-400">{wld.draws}</span>
+      </div>
     </div>
   );
 }

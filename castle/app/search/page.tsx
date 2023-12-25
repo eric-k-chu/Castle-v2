@@ -12,7 +12,7 @@ export default function SearchPage() {
 
   if (isLoading) return <Loading />;
 
-  if (error) return <ErrorDisplay error={error as Error} />;
+  if (error) return <ErrorDisplay error={error} />;
 
   if (!data) return <Loading />;
 
