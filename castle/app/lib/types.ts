@@ -25,6 +25,11 @@ export type Endpoint =
   | "tournaments"
   | "archives";
 
+export type Tab = Extract<
+  Endpoint,
+  "stats" | "clubs" | "archives" | "tournaments"
+>;
+
 export interface Players {
   players: string[];
 }
@@ -99,9 +104,9 @@ interface Tournament {
 }
 
 interface GameStat {
-  last?: Last;
-  best?: Best;
-  record?: Record;
+  last: Last;
+  best: Best;
+  record: Record;
   tournament?: Tournament;
 }
 
@@ -164,9 +169,15 @@ export interface Tournaments {
   registered: RegisteredMatchData[];
 }
 
-export interface PlayerInfo {
-  player: Player;
-  stats: Stats;
-  archives: Archives;
-  tournaments: Tournaments;
+interface ClubInfo {
+  "@id": string;
+  name: string;
+  last_activity: EpochTimeStamp;
+  icon: string;
+  url: string;
+  joined: EpochTimeStamp;
+}
+
+export interface Clubs {
+  clubs: ClubInfo[];
 }

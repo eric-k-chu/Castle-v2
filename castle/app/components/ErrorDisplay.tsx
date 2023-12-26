@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 type Props = {
-  error: Error;
+  error: unknown;
 };
 
 export function ErrorDisplay({ error }: Props) {
@@ -16,7 +16,7 @@ export function ErrorDisplay({ error }: Props) {
         className="h-auto w-20 sm:w-24"
       />
       <h1 className="text-4xl font-semibold drop-shadow-glow">
-        {error.message ?? "Something went wrong!"}
+        {error instanceof Error ? error.message : "Something went wrong!"}
       </h1>
     </div>
   );

@@ -9,7 +9,7 @@ type Props = {
 
 export function SearchSuggestions({ query, playerList }: Props) {
   const router = useRouter();
-  const players = filterPlayers(playerList, query, 5);
+  const players = query.length > 0 ? filterPlayers(playerList, query, 5) : [];
 
   const isOpen = query.length > 0 && players && players.length > 0;
 

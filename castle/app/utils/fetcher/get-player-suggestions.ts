@@ -3,6 +3,7 @@ import { TITLES } from "@/lib/constants";
 import { TitledPlayers } from "@/lib/types";
 
 export async function getPlayerSuggestions() {
+  /*
   const res = await Promise.all(
     TITLES.map((n) =>
       getTitledPlayers(n).then((data) =>
@@ -10,5 +11,12 @@ export async function getPlayerSuggestions() {
       ),
     ),
   );
+  */
+  const res: TitledPlayers[][] = [];
+  for (const title of TITLES) {
+    const data = await getTitledPlayers(title);
+    const arr = data.players.map((name) => ({ title, name }));
+    res.push(arr);
+  }
   return res.flat();
 }

@@ -1,11 +1,23 @@
 import { getPlayerData } from "@/chessapi/player";
-import { PlayerInfo, Player, Archives, Tournaments, Stats } from "@/lib/types";
+import { Clubs, Player, Archives, Tournaments, Stats } from "@/lib/types";
 
-export async function getPlayer(username: string | null): Promise<PlayerInfo> {
-  const player = await getPlayerData<Player>(username, "profile");
-  const stats = await getPlayerData<Stats>(username, "stats");
-  const archives = await getPlayerData<Archives>(username, "archives");
-  const tournaments = await getPlayerData<Tournaments>(username, "tournaments");
+export async function getPlayer(username: string | null): Promise<Player> {
+  return await getPlayerData<Player>(username, "profile");
+}
 
-  return { player, stats, archives, tournaments };
+export async function getPlayerStats(username: string | null): Promise<Stats> {
+  return await getPlayerData<Stats>(username, "stats");
+}
+export async function getPlayerClubs(username: string | null): Promise<Clubs> {
+  return await getPlayerData<Clubs>(username, "clubs");
+}
+export async function getPlayerArchives(
+  username: string | null,
+): Promise<Archives> {
+  return await getPlayerData<Archives>(username, "archives");
+}
+export async function getPlayerTournaments(
+  username: string | null,
+): Promise<Tournaments> {
+  return await getPlayerData<Tournaments>(username, "tournaments");
 }
