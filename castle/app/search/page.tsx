@@ -20,7 +20,7 @@ export default function SearchPage() {
     <div className="flex min-h-screen w-full flex-col bg-hero-2 bg-cover bg-top bg-no-repeat pt-24">
       <div className="mx-auto w-full max-w-7xl px-4">
         <PlayerProfileDisplay player={data} />
-        <PlayerDataDisplay isLoading={isLoading} username={search} />
+        <PlayerDataDisplay username={search} />
       </div>
     </div>
   );

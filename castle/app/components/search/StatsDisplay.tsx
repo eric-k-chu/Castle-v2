@@ -1,10 +1,46 @@
-import { Stats } from "@/lib/types";
+import { useFetcher } from "@/hooks/useFetcher";
+import { getPlayerStats } from "@/utils/fetcher";
+import { LoadingCircle } from "../general";
+import { ErrorDisplay } from "..";
+import {
+  BarChart,
+  Bar,
+  Rectangle,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 type Props = {
-  data: Stats;
+  username: string | null;
 };
 
-export function StatsDisplay({ data }: Props) {
+export function StatsDisplay({ username }: Props) {
+  const { data, isLoading, error } = useFetcher(getPlayerStats, username);
+
+  if (isLoading) {
+    return (
+      <div className="flex w-full justify-center py-48">
+        <LoadingCircle />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <ErrorDisplay error={error} />;
+  }
+
+  if (!data) {
+    return (
+      <div className="flex w-full justify-center py-48">
+        <LoadingCircle />
+      </div>
+    );
+  }
+
   const {
     chess_daily,
     chess960_daily,
@@ -83,13 +119,39 @@ type GameStatProps = {
 };
 
 function GameStatDisplay({ name, wld }: GameStatProps) {
+  const data = [
+    {
+      name: "Wins",
+      count: wld.wins,
+    },
+    {
+      name: "Losses",
+      count: wld.losses,
+    },
+    {
+      name: "Draws",
+      count: wld.draws,
+    },
+  ];
+
   return (
-    <div className="flex w-full items-center justify-around gap-x-2 rounded-md border border-gray-600 bg-black/50 p-4">
-      <h2 className="text-base font-semibold">{name}</h2>
-      <div className="ml-auto flex items-center">
-        <span className="text-green-600">{wld.wins}</span>
-        <span className="text-red-600">{wld.losses}</span>
-        <span className="text-gray-400">{wld.draws}</span>
+    <div className="flex w-full items-center justify-around gap-x-2 rounded-md border border-gray-600 bg-black p-4">
+      <h2 className="flex w-1/4 justify-center text-base font-semibold">
+        {name}
+      </h2>
+      <div className="ml-auto flex w-3/4 justify-center">
+        <BarChart width={500} height={500} data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar
+            dataKey="count"
+            fill="#82ca9d"
+            activeBar={<Rectangle fill="gold" stroke="purple" />}
+          />
+        </BarChart>
       </div>
     </div>
   );

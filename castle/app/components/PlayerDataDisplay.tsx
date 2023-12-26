@@ -3,18 +3,14 @@
 import { TABS } from "@/lib/constants/tabs";
 import { Tab } from "@/lib/types";
 import { useState } from "react";
-import { Loading } from ".";
-import { DataDisplay } from "./search";
+import { StatsDisplay } from "./search";
 
 type Props = {
-  isLoading: boolean | undefined;
   username: string | null;
 };
 
-export function PlayerDataDisplay({ isLoading, username }: Props) {
+export function PlayerDataDisplay({ username }: Props) {
   const [selected, setSelected] = useState<Tab>("stats");
-
-  if (isLoading) return <Loading />;
 
   return (
     <>
@@ -31,7 +27,7 @@ export function PlayerDataDisplay({ isLoading, username }: Props) {
           </li>
         ))}
       </ul>
-      <DataDisplay tab={selected} username={username} />
+      {selected === "stats" && <StatsDisplay username={username} />}
     </>
   );
 }
