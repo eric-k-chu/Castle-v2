@@ -1,4 +1,4 @@
-import { TitledPlayers } from "@/lib/types";
+import { TitledPlayers } from "@/_lib/types";
 
 export function filterPlayers(
   players: TitledPlayers[] | undefined,

@@ -1,10 +1,10 @@
 "use client";
 
-import { ErrorDisplay, Loading, PlayerDataDisplay } from "@/components";
+import { ErrorDisplay, Loading, PlayerDataDisplay } from "@/_components";
 import { useSearchParams } from "next/navigation";
-import { useFetcher } from "@/hooks/useFetcher";
-import { getPlayer } from "@/utils/fetcher";
-import { PlayerProfileDisplay } from "@/components/search";
+import { useFetcher } from "@/_hooks/useFetcher";
+import { getPlayer } from "@/_utils/fetcher";
+import { PlayerProfileDisplay } from "@/_components/PlayerProfileDisplay";
 
 export default function SearchPage() {
   const search = useSearchParams().get("q");

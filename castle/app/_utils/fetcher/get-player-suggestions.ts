@@ -1,6 +1,6 @@
-import { getTitledPlayers } from "@/chessapi/player";
-import { TITLES } from "@/lib/constants";
-import { TitledPlayers } from "@/lib/types";
+import { getTitledPlayers } from "@/_chessapi/player";
+import { TITLES } from "@/_lib/constants";
+import { TitledPlayers } from "@/_lib/types";
 
 export async function getPlayerSuggestions() {
   /*

@@ -1,6 +1,6 @@
 "use client";
 
-import { Fetcher } from "@/lib/types";
+import { Fetcher } from "@/_lib/types";
 import { useEffect, useState } from "react";
 
 export function useFetcher<T>(

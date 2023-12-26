@@ -1,8 +1,8 @@
 "use client";
 
-import { Player } from "@/lib/types";
+import { Player } from "@/_lib/types";
 import Image from "next/image";
-import { getDateFromUtc } from "@/utils";
+import { getDateFromUtc } from "@/_utils";
 
 type Props = {
   player: Player;

@@ -1,5 +1,5 @@
-import { getPlayerData } from "@/chessapi/player";
-import { Clubs, Player, Archives, Tournaments, Stats } from "@/lib/types";
+import { getPlayerData } from "@/_chessapi/player";
+import { Clubs, Player, Archives, Tournaments, Stats } from "@/_lib/types";
 
 export async function getPlayer(username: string | null): Promise<Player> {
   return await getPlayerData<Player>(username, "profile");

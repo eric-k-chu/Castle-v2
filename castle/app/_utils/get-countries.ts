@@ -1,5 +1,5 @@
-import { USER_ASSIGNED_COUNTRIES } from "@/lib/constants";
-import { Country } from "@/lib/types";
+import { USER_ASSIGNED_COUNTRIES } from "@/_lib/constants";
+import { Country } from "@/_lib/types";
 import { customList, CountryProperty } from "country-codes-list";
 import { hasFlag } from "country-flag-icons";
 

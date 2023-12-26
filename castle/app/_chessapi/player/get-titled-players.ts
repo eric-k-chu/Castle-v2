@@ -1,6 +1,6 @@
-import { CHESS_API_URL } from "@/lib/constants";
-import { Players, Title } from "@/lib/types";
-import { ChessApiError } from "@/utils/exceptions";
+import { CHESS_API_URL } from "@/_lib/constants";
+import { Title, Players } from "@/_lib/types";
+import { ChessApiError } from "@/_utils/exceptions";
 
 export async function getTitledPlayers(title: Title): Promise<Players> {
   const url = createUrl(title);

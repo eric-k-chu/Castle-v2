@@ -1,5 +1,5 @@
-import { ErrorDisplay, SearchInput } from "./components";
-import { getPlayerSuggestions } from "./utils/fetcher";
+import { ErrorDisplay, SearchInput } from "@/_components";
+import { getPlayerSuggestions } from "@/_utils/fetcher";
 
 export default async function Home() {
   try {

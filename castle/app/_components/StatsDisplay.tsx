@@ -1,17 +1,15 @@
-import { useFetcher } from "@/hooks/useFetcher";
-import { getPlayerStats } from "@/utils/fetcher";
-import { LoadingCircle } from "../general";
-import { ErrorDisplay } from "..";
+import { useFetcher } from "@/_hooks/useFetcher";
+import { getPlayerStats } from "@/_utils/fetcher";
+import { LoadingCircle, ErrorDisplay } from ".";
 import {
-  BarChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
   Rectangle,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
 } from "recharts";
 
 type Props = {

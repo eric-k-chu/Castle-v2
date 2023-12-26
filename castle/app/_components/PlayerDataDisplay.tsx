@@ -1,9 +1,9 @@
 "use client";
 
-import { TABS } from "@/lib/constants/tabs";
-import { Tab } from "@/lib/types";
+import { TABS } from "@/_lib/constants/tabs";
+import { Tab } from "@/_lib/types";
 import { useState } from "react";
-import { StatsDisplay } from "./search";
+import { StatsDisplay } from "./StatsDisplay";
 
 type Props = {
   username: string | null;
