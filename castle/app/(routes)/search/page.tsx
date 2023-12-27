@@ -17,7 +17,7 @@ export default function SearchPage() {
   if (!data) return <Loading />;
 
   return (
-    <div className="flex min-h-screen w-full flex-col pt-24">
+    <div className="flex w-full flex-col pt-24">
       <div className="mx-auto w-full max-w-7xl px-4">
         <PlayerProfileDisplay player={data} />
         <PlayerDataDisplay username={search} />

@@ -2,14 +2,17 @@ import { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
-  backgroundType: "hero" | "hero-2";
 };
 
-export function PageLayout({ children, backgroundType }: Props) {
-  const bg = backgroundType === "hero" ? "bg-hero" : "bg-hero-2";
+export function PageLayout({ children }: Props) {
   return (
     <div
-      className={`flex min-h-screen flex-col items-center bg-cover bg-top bg-no-repeat ${bg}`}
+      className="flex min-h-screen flex-col items-center bg-no-repeat"
+      style={{
+        backgroundPosition: "top",
+        backgroundImage:
+          "linear-gradient(to top, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0.5) 70%), url('/images/hero.png')",
+      }}
     >
       {children}
     </div>

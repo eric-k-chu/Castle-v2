@@ -47,7 +47,18 @@ export function StatsDisplay({ username }: Props) {
 
   return (
     <div className="flex w-full flex-col gap-4">
-      <h1>test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
+      <h1 className="text-4xl font-semibold">test</h1>
     </div>
   );
 }

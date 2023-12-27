@@ -7,7 +7,7 @@ export default function HomeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <PageLayout backgroundType="hero">
+    <PageLayout>
       <Suspense fallback={<Loading />}>{children}</Suspense>
     </PageLayout>
   );
