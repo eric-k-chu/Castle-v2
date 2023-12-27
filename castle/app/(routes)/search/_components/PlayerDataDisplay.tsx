@@ -4,6 +4,7 @@ import { TABS } from "@/_lib/constants/tabs";
 import { Tab } from "@/_lib/types";
 import { useState } from "react";
 import { StatsDisplay } from "./StatsDisplay";
+import { Show } from "@/_components";
 
 type Props = {
   username: string | null;
@@ -27,7 +28,9 @@ export function PlayerDataDisplay({ username }: Props) {
           </li>
         ))}
       </ul>
-      {selected === "stats" && <StatsDisplay username={username} />}
+      <Show when={selected === "stats"}>
+        <StatsDisplay username={username} />
+      </Show>
     </>
   );
 }
