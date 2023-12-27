@@ -6,7 +6,7 @@ type Props = {
 
 export function ErrorDisplay({ error }: Props) {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center bg-hero-2 bg-cover bg-top bg-no-repeat pt-24">
+    <div className="flex min-h-screen w-full flex-col items-center justify-center gap-4">
       <Image
         src="/images/question.png"
         alt="question mark"
