@@ -1,5 +1,8 @@
+"use client";
+
 import { ErrorDisplay, LoadingCircle } from "@/_components";
 import { useFetcher } from "@/_hooks/useFetcher";
+import { extractData } from "@/_utils";
 import { getPlayerStats } from "@/_utils/fetcher";
 import {
   Bar,
@@ -10,6 +13,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  ResponsiveContainer,
+  Label,
 } from "recharts";
 
 type Props = {
@@ -37,76 +42,53 @@ export function StatsDisplay({ username }: Props) {
 
   if (!stats) return null;
 
-  const {
-    chess_daily,
-    chess960_daily,
-    chess_rapid,
-    chess_bullet,
-    chess_blitz,
-  } = stats;
+  const data = extractData(stats);
+
+  if (data.length < 1) {
+    return (
+      <div className="flex w-full justify-center rounded-md border border-gray-600 bg-black py-[10rem]">
+        <h2 className="font-2xl text-base text-gray-600">
+          No game data found.
+        </h2>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex w-full flex-col gap-4">
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-      <h1 className="text-4xl font-semibold">test</h1>
-    </div>
-  );
-}
-
-type GameStatProps = {
-  name: string;
-  wld: {
-    wins: number;
-    losses: number;
-    draws: number;
-  };
-};
-
-function GameStatDisplay({ name, wld }: GameStatProps) {
-  const data = [
-    {
-      name: "Wins",
-      count: wld.wins,
-    },
-    {
-      name: "Losses",
-      count: wld.losses,
-    },
-    {
-      name: "Draws",
-      count: wld.draws,
-    },
-  ];
-
-  return (
-    <div className="flex w-full items-center justify-around gap-x-2 rounded-md border border-gray-600 bg-black p-4">
-      <h2 className="flex w-1/4 justify-center text-base font-semibold">
-        {name}
-      </h2>
-      <div className="ml-auto flex hidden w-3/4 justify-center">
-        <BarChart width={500} height={500} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+    <div className="flex w-full flex-col items-center gap-4 rounded-md border border-gray-600 bg-black p-2 px-4">
+      <ResponsiveContainer width="100%" height={400}>
+        <BarChart
+          data={data}
+          barSize={20}
+          margin={{ top: 5, right: 5, bottom: 40, left: 15 }}
+        >
+          <CartesianGrid />
+          <XAxis dataKey="type" fill="#A9A9A9">
+            <Label value="Game Modes" position="bottom" />
+          </XAxis>
+          <YAxis fill="#A9A9A9" />
           <Tooltip />
-          <Legend />
+          <Legend verticalAlign="top" height={40} />
           <Bar
-            dataKey="count"
-            fill="#82ca9d"
-            activeBar={<Rectangle fill="gold" stroke="purple" />}
+            dataKey="wins"
+            name="Wins"
+            fill="#81b64c"
+            activeBar={<Rectangle fill="green" stroke="green" />}
+          />
+          <Bar
+            dataKey="losses"
+            name="Losses"
+            fill="#fa412d"
+            activeBar={<Rectangle fill="red" stroke="red" />}
+          />
+          <Bar
+            dataKey="draws"
+            name="Draws"
+            fill="#808080"
+            activeBar={<Rectangle fill="gray" stroke="gray" />}
           />
         </BarChart>
-      </div>
+      </ResponsiveContainer>
     </div>
   );
 }

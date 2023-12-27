@@ -29,22 +29,25 @@ export function PlayerProfileDisplay({ player }: Props) {
             </h3>
           </div>
           <div className="ml-8 flex flex-col gap-y-4">
-            <h1 className="flex items-center text-2xl font-semibold sm:text-4xl">
+            <h1 className="flex items-center text-2xl font-semibold drop-shadow-glow sm:text-4xl">
               {player.username}
               <span className="ml-4 rounded-md bg-[#7C2929] px-2 py-0.5 font-mono text-lg text-white empty:hidden">
                 {player?.title}
               </span>
             </h1>
             <div className="flex items-center gap-x-2 text-sm text-gray-300 empty:hidden sm:text-lg">
-              <h2 className="empty:hidden">{player?.name}</h2>&#124;
+              <h2 className="drop-shadow-glow empty:hidden">{player?.name}</h2>
+              &#124;
               <Image
                 src="/icons/location.svg"
                 alt="location icon"
                 width="0"
                 height="0"
-                className="h-5 w-5"
+                className="h-5 w-5 drop-shadow-glow"
               />
-              <h2 className="empty:hidden">{player?.location}</h2>
+              <h2 className="drop-shadow-glow empty:hidden">
+                {player?.location}
+              </h2>
             </div>
           </div>
         </div>

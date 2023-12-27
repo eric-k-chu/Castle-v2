@@ -31,6 +31,15 @@ export function PlayerDataDisplay({ username }: Props) {
       <Show when={selected === "stats"}>
         <StatsDisplay username={username} />
       </Show>
+      <Show when={selected === "clubs"}>
+        <div>CLUBS</div>
+      </Show>
+      <Show when={selected === "tournaments"}>
+        <div>TOURNAMENTS</div>
+      </Show>
+      <Show when={selected === "archives"}>
+        <div>ARCHIVES</div>
+      </Show>
     </>
   );
 }
