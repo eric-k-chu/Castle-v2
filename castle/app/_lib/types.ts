@@ -13,7 +13,7 @@ export type Title =
 type Status =
   | "winner"
   | "eliminated"
-  | "withdraw"
+  | "withdrew"
   | "removed"
   | "invited"
   | "registered";
