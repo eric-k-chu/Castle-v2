@@ -11,6 +11,8 @@ export default async function SearchPage({
   const stats = await getPlayerStats(username);
   const clubs = await getPlayerClubs(username);
 
+  //TODO: convert clubs, stats, archives, and tournaments to sub pages
+
   return (
     <div className="flex w-full flex-col pt-24">
       <div className="mx-auto w-full max-w-7xl px-4">
