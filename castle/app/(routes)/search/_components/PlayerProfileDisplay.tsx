@@ -1,5 +1,3 @@
-"use client";
-
 import { Player } from "@/_lib/types";
 import Image from "next/image";
 import { getDateFromUtc } from "@/_utils";
