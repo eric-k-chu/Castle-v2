@@ -116,7 +116,7 @@ interface TacticsStat {
 }
 
 interface PuzzleBest {
-  total_attemps: number;
+  total_attempts: number;
   score: number;
 }
 

@@ -1,6 +1,6 @@
 import { Stats } from "@/_lib/types";
 
-export function extractData(
+export function extractStats(
   stats: Stats,
 ): { type: string; wins: number; losses: number; draws: number }[] {
   const data = [];
