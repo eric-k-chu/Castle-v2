@@ -6,6 +6,6 @@ type Props = {
   error: Error & { digest?: string };
 };
 
-export function ErrorPage({ error }: Props) {
+export default function ErrorPage({ error }: Props) {
   return <ErrorDisplay error={error} />;
 }
