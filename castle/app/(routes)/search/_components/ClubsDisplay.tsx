@@ -1,36 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { ErrorDisplay, LoadingCircle } from "@/_components";
-import { useFetcher } from "@/_hooks/useFetcher";
 import { getDateFromUtc } from "@/_utils";
-import { getPlayerClubs } from "@/_utils/fetcher";
+import { Clubs } from "@/_lib/types";
 
 type Props = {
-  username: string | null;
+  clubs: Clubs;
 };
 
-export function ClubsDisplay({ username }: Props) {
-  const {
-    data: clubs,
-    isLoading,
-    error,
-  } = useFetcher(getPlayerClubs, username);
-
-  if (isLoading) {
-    return (
-      <div className="flex w-full justify-center py-48">
-        <LoadingCircle />
-      </div>
-    );
-  }
-
-  if (error) {
-    return <ErrorDisplay error={error} />;
-  }
-
-  if (!clubs) return null;
-
+export function ClubsDisplay({ clubs }: Props) {
   return (
     <div className="flex w-full flex-col items-center">
       <table className="w-full text-xs sm:text-sm">

@@ -1,17 +1,19 @@
 "use client";
 
-import { TABS } from "@/_lib/constants/tabs";
-import { Tab } from "@/_lib/types";
+import { TABS } from "@/_lib/constants";
+import { Clubs, Stats, Tab } from "@/_lib/types";
 import { useState } from "react";
-import { StatsDisplay } from "./StatsDisplay";
 import { Show } from "@/_components";
-import { ClubsDisplay } from ".";
+import { ClubsDisplay, StatsDisplay } from ".";
 
 type Props = {
-  username: string | null;
+  data: {
+    stats: Stats;
+    clubs: Clubs;
+  };
 };
 
-export function PlayerDataDisplay({ username }: Props) {
+export function PlayerDataDisplay({ data }: Props) {
   const [selected, setSelected] = useState<Tab>("stats");
 
   return (
@@ -30,10 +32,10 @@ export function PlayerDataDisplay({ username }: Props) {
         ))}
       </ul>
       <Show when={selected === "stats"}>
-        <StatsDisplay username={username} />
+        <StatsDisplay stats={data.stats} />
       </Show>
       <Show when={selected === "clubs"}>
-        <ClubsDisplay username={username} />
+        <ClubsDisplay clubs={data.clubs} />
       </Show>
       <Show when={selected === "tournaments"}>
         <div>TOURNAMENTS</div>

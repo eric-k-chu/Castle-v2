@@ -1,26 +1,23 @@
-"use client";
-
-import { ErrorDisplay, Loading } from "@/_components";
-import { useSearchParams } from "next/navigation";
-import { useFetcher } from "@/_hooks/useFetcher";
-import { getPlayer } from "@/_utils/fetcher";
+import { getPlayer, getPlayerClubs, getPlayerStats } from "@/_utils/fetcher";
 import { PlayerProfileDisplay, PlayerDataDisplay } from "./_components";
 
-export default function SearchPage() {
-  const search = useSearchParams().get("q");
-  const { data, isLoading, error } = useFetcher(getPlayer, search);
+export default async function SearchPage({
+  searchParams,
+}: {
+  searchParams: { q?: string };
+}) {
+  const username = searchParams.q ?? "";
+  const player = await getPlayer(username);
+  const stats = await getPlayerStats(username);
+  const clubs = await getPlayerClubs(username);
 
-  if (isLoading) return <Loading />;
-
-  if (error) return <ErrorDisplay error={error} />;
-
-  if (!data) return <Loading />;
+  //TODO: convert clubs, stats, archives, and tournaments to sub pages
 
   return (
     <div className="flex w-full flex-col pt-24">
       <div className="mx-auto w-full max-w-7xl px-4">
-        <PlayerProfileDisplay player={data} />
-        <PlayerDataDisplay username={search} />
+        <PlayerProfileDisplay player={player} />
+        <PlayerDataDisplay data={{ stats, clubs }} />
       </div>
     </div>
   );

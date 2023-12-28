@@ -1,9 +1,8 @@
 "use client";
 
-import { ErrorDisplay, LoadingCircle, Show } from "@/_components";
-import { useFetcher } from "@/_hooks/useFetcher";
+import { Show } from "@/_components";
+import { Stats } from "@/_lib/types";
 import { extractStats } from "@/_utils";
-import { getPlayerStats } from "@/_utils/fetcher";
 import {
   Bar,
   BarChart,
@@ -18,30 +17,10 @@ import {
 } from "recharts";
 
 type Props = {
-  username: string | null;
+  stats: Stats;
 };
 
-export function StatsDisplay({ username }: Props) {
-  const {
-    data: stats,
-    isLoading,
-    error,
-  } = useFetcher(getPlayerStats, username);
-
-  if (isLoading) {
-    return (
-      <div className="flex w-full justify-center py-48">
-        <LoadingCircle />
-      </div>
-    );
-  }
-
-  if (error) {
-    return <ErrorDisplay error={error} />;
-  }
-
-  if (!stats) return null;
-
+export function StatsDisplay({ stats }: Props) {
   const gameStats = extractStats(stats);
 
   const { puzzle_rush, lessons, tactics, fide } = stats;
