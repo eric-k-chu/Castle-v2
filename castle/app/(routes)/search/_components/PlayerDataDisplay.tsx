@@ -5,6 +5,7 @@ import { Tab } from "@/_lib/types";
 import { useState } from "react";
 import { StatsDisplay } from "./StatsDisplay";
 import { Show } from "@/_components";
+import { ClubsDisplay } from ".";
 
 type Props = {
   username: string | null;
@@ -32,7 +33,7 @@ export function PlayerDataDisplay({ username }: Props) {
         <StatsDisplay username={username} />
       </Show>
       <Show when={selected === "clubs"}>
-        <div>CLUBS</div>
+        <ClubsDisplay username={username} />
       </Show>
       <Show when={selected === "tournaments"}>
         <div>TOURNAMENTS</div>
