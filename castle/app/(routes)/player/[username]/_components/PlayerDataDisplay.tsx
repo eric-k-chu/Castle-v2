@@ -18,11 +18,13 @@ export function PlayerDataDisplay({ data }: Props) {
 
   return (
     <>
-      <ul className="mt-4 flex items-center gap-2 overflow-x-auto pb-4">
+      <ul className="flex items-center overflow-x-auto">
         {TABS.map((tab) => (
           <li
-            className={`select-none rounded-md border border-gray-600 px-4 py-2 text-xs hover:cursor-pointer hover:bg-gray-600 sm:text-sm ${
-              selected === tab ? "bg-gray-600" : "bg-black"
+            className={`select-none border-b px-4 py-2 text-xs capitalize hover:cursor-pointer hover:bg-gray-700 sm:text-sm ${
+              selected === tab
+                ? "border-b-white text-white"
+                : "border-transparent text-gray-500"
             }`}
             onClick={() => setSelected(tab)}
             key={tab}

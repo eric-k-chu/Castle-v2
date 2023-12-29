@@ -27,7 +27,7 @@ export function SearchSuggestions({ query, playerList }: Props) {
               <li
                 className="px-1 py-2 hover:cursor-pointer hover:bg-gray-200"
                 key={player.name}
-                onClick={() => router.push(`/search?q=${[player.name]}`)}
+                onClick={() => router.push(`/player/${[player.name]}`)}
               >
                 <span className="pl-6">
                   <span className="rounded-sm bg-[#7C2929] px-1 py-0.5 font-mono text-white">

@@ -68,7 +68,6 @@ export interface Player {
   last_online: EpochTimeStamp;
   followers: number;
   is_streamer: boolean;
-  twitch_string?: string;
   fide?: number;
   league?: string;
   verified: boolean;
