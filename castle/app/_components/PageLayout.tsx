@@ -8,7 +8,7 @@ type Props = {
 export function PageLayout({ children, transparent }: Props) {
   return (
     <div
-      className={`flex min-h-screen flex-col items-center ${
+      className={`flex flex-col items-center ${
         transparent ? "bg-transparent" : "bg-zinc-900"
       }`}
     >

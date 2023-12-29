@@ -18,13 +18,13 @@ export function PlayerDataDisplay({ data }: Props) {
 
   return (
     <>
-      <ul className="flex items-center overflow-x-auto">
+      <ul className="flex w-full items-center justify-around overflow-x-auto border-b border-b-gray-600">
         {TABS.map((tab) => (
           <li
-            className={`select-none border-b px-4 py-2 text-xs capitalize hover:cursor-pointer hover:bg-gray-700 sm:text-sm ${
+            className={`w-full select-none px-4 py-2 text-center text-xs capitalize hover:cursor-pointer hover:bg-gray-700 sm:text-sm ${
               selected === tab
-                ? "border-b-white text-white"
-                : "border-transparent text-gray-500"
+                ? "text-white underline underline-offset-[12px]"
+                : "text-gray-500"
             }`}
             onClick={() => setSelected(tab)}
             key={tab}

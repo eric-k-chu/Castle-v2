@@ -10,7 +10,7 @@ type Props = {
 export function PlayerProfileDisplay({ player }: Props) {
   return (
     <>
-      <div className="flex flex-col items-center md:flex-row">
+      <div className="flex items-center px-4">
         <div className="flex items-center">
           <div className="relative flex items-center justify-center">
             <Image
@@ -73,7 +73,7 @@ export function PlayerProfileDisplay({ player }: Props) {
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-x-2">
+      <div className="flex items-center gap-x-2 px-4">
         <div className="flex items-center gap-x-2 px-4 text-xs">
           <Image
             src="/icons/pawn.svg"
@@ -95,7 +95,7 @@ export function PlayerProfileDisplay({ player }: Props) {
           {getDateFromUtc(player.last_online)}
         </div>
       </div>
-      <div className="flex items-center gap-x-2">
+      <div className="flex items-center gap-x-2 px-4">
         <div className="flex items-center gap-x-2 px-4 text-xs">
           <Image
             src="/icons/followers.svg"

@@ -27,7 +27,10 @@ export function ClubsDisplay({ clubs }: Props) {
           {clubs.clubs
             .sort((a, b) => b.joined - a.joined)
             .map((n) => (
-              <tr key={n["@id"]} className="border border-gray-600 bg-black">
+              <tr
+                key={n["@id"]}
+                className="hover:cursor-pointer hover:bg-zinc-950"
+              >
                 <td className="p-4">
                   <img
                     src={n.icon}
