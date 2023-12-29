@@ -180,3 +180,52 @@ interface ClubInfo {
 export interface Clubs {
   clubs: ClubInfo[];
 }
+
+export type GameResultCode =
+  | "win"
+  | "checkmated"
+  | "agreed"
+  | "repetition"
+  | "timeout"
+  | "resigned"
+  | "stalemate"
+  | "lose"
+  | "insufficient"
+  | "50move"
+  | "abandoned"
+  | "kingofthehill"
+  | "threecheck"
+  | "timevsinsufficient"
+  | "bughousepartnerlose";
+
+interface PieceData {
+  username: string;
+  rating: number;
+  result: GameResultCode;
+  "@id": string;
+}
+
+interface AccuracyData {
+  white: number;
+  black: number;
+}
+
+interface Game {
+  white: PieceData;
+  black: PieceData;
+  accuracies?: AccuracyData;
+  url: string;
+  fen: string;
+  pgn: string;
+  start_time?: EpochTimeStamp;
+  end_Time: EpochTimeStamp;
+  time_control: string;
+  rules: string;
+  eco?: string;
+  tournament?: string;
+  match?: string;
+}
+
+export interface MonthlyArchive {
+  games: Game[];
+}

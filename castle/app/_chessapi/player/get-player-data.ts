@@ -13,6 +13,12 @@ export async function getPlayerData<T>(
   return await res.json();
 }
 
+export async function getPlayerMonthlyArchive(url: string) {
+  const res = await fetch(url);
+  if (!res.ok) throw new ChessApiError(res.status, url);
+  return await res.json();
+}
+
 function createUrl(username: string, endpoint: Endpoint) {
   let url = CHESS_API_URL + "player";
   switch (endpoint) {
