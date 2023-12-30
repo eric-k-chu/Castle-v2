@@ -12,9 +12,10 @@ type Props = {
     clubs: Clubs;
     archives: MonthlyArchive;
   };
+  username: string;
 };
 
-export function PlayerDataDisplay({ data }: Props) {
+export function PlayerDataDisplay({ data, username }: Props) {
   const [selected, setSelected] = useState<Tab>("stats");
 
   return (
@@ -41,7 +42,7 @@ export function PlayerDataDisplay({ data }: Props) {
         <ClubsDisplay clubs={data.clubs} />
       </Show>
       <Show when={selected === "archives"}>
-        <ArchivesDisplay archive={data.archives} />
+        <ArchivesDisplay archive={data.archives} username={username} />
       </Show>
       <Show when={selected === "tournaments"}>
         <div>TOURNAMENTS</div>

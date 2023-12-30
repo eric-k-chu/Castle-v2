@@ -198,7 +198,7 @@ export type GameResultCode =
   | "timevsinsufficient"
   | "bughousepartnerlose";
 
-interface PieceData {
+export interface PieceData {
   username: string;
   rating: number;
   result: GameResultCode;
@@ -218,12 +218,16 @@ interface Game {
   fen: string;
   pgn: string;
   start_time?: EpochTimeStamp;
-  end_Time: EpochTimeStamp;
+  end_time: EpochTimeStamp;
   time_control: string;
   rules: string;
   eco?: string;
   tournament?: string;
   match?: string;
+  rated?: boolean;
+  tcn: string;
+  uuid: string;
+  time_class: string;
 }
 
 export interface MonthlyArchive {

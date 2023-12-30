@@ -14,7 +14,7 @@ export async function getPlayerData<T>(
 }
 
 export async function getPlayerMonthlyArchive(url: string) {
-  const res = await fetch(url);
+  const res = await fetch(url, { cache: "no-cache" });
   if (!res.ok) throw new ChessApiError(res.status, url);
   return await res.json();
 }
