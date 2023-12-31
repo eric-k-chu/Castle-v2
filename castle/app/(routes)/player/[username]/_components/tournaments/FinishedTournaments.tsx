@@ -12,7 +12,7 @@ type Props = {
 
 export function FinishedTournaments({ tournaments }: Props) {
   const finished = useMemo(
-    () => getPages(tournaments.reverse()),
+    () => getPages(tournaments.toReversed()),
     [tournaments],
   );
   const [page, setPage] = useState(0);

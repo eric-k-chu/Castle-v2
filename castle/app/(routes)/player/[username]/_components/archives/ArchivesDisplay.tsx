@@ -13,7 +13,7 @@ type Props = {
 
 export function ArchivesDisplay({ archive, username }: Props) {
   const [currentPage, setCurrentPage] = useState(0);
-  const games = getPages(archive.games.reverse());
+  const games = getPages(archive.games.toReversed());
 
   return (
     <div className="w-full p-4">

@@ -11,7 +11,10 @@ type Props = {
 };
 
 export function InProgressTournaments({ tournaments }: Props) {
-  const inProgress = useMemo(() => getPages(tournaments), [tournaments]);
+  const inProgress = useMemo(
+    () => getPages(tournaments.toReversed()),
+    [tournaments],
+  );
   const [page, setPage] = useState(0);
 
   return (

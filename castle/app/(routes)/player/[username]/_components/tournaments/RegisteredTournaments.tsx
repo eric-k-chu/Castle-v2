@@ -11,7 +11,10 @@ type Props = {
 };
 
 export function RegisteredTournaments({ tournaments }: Props) {
-  const registered = useMemo(() => getPages(tournaments), [tournaments]);
+  const registered = useMemo(
+    () => getPages(tournaments.toReversed()),
+    [tournaments],
+  );
   const [page, setPage] = useState(0);
 
   return (
