@@ -72,7 +72,7 @@ export function PlayerProfileDisplay({ player }: Props) {
             <div className="mt-2 flex items-center gap-x-4">
               <h2 className="text-sm">{player?.name}</h2>
               <Show when={player.location !== undefined}>
-                <div className="flex items-center text-xs">
+                <div className="flex items-center text-sm">
                   <Image
                     src="/icons/location.svg"
                     alt="location icon"
