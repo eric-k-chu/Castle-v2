@@ -1,4 +1,4 @@
-import { getDateFromUtc, getGameResultColor } from "@/_utils";
+import { getDateFromUtc, getGameResultColor, getPages } from "@/_utils";
 
 describe("getGameResultColor", () => {
   it("win", () => {
@@ -68,5 +68,24 @@ describe("getDateFromUtc", () => {
   });
   it("December", () => {
     expect(getDateFromUtc(1702712277)).toEqual("Dec 15, 2023");
+  });
+});
+
+describe("getPages", () => {
+  it("default chunks", () => {
+    expect(
+      getPages([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]),
+    ).toEqual([
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      [11, 12, 13, 14, 15, 16],
+    ]);
+  });
+
+  it("array size is less than chunk size", () => {
+    expect(getPages([1, 2, 3, 4, 5])).toEqual([[1, 2, 3, 4, 5]]);
+  });
+
+  it("empty array", () => {
+    expect(getPages([])).toEqual([]);
   });
 });
