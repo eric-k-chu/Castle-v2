@@ -13,7 +13,7 @@ export function Navbar() {
       className={`flex w-full items-center border-b px-6 py-4 ${
         path === "/home"
           ? "absolute border-b-transparent bg-transparent"
-          : "fixed z-10 border-b-gray-900 bg-black/80"
+          : "fixed z-10 border-b-gray-900 bg-zinc-950/50"
       }`}
     >
       <Image
