@@ -6,3 +6,4 @@ export * from "./extract-stats";
 export * from "./get-pages";
 export * from "./get-game-result-color";
 export * from "./get-days-elapsed";
+export * from "./get-tournament-name";

@@ -1,16 +1,22 @@
 "use client";
 
 import { TABS } from "@/_lib/constants";
-import { Clubs, MonthlyArchive, Stats, Tab } from "@/_lib/types";
+import { Clubs, MonthlyArchive, Stats, Tab, Tournaments } from "@/_lib/types";
 import { useState } from "react";
 import { Show } from "@/_components";
-import { ArchivesDisplay, ClubsDisplay, StatsDisplay } from ".";
+import {
+  ArchivesDisplay,
+  ClubsDisplay,
+  StatsDisplay,
+  TournamentsDisplay,
+} from ".";
 
 type Props = {
   data: {
     stats: Stats;
     clubs: Clubs;
     archives: MonthlyArchive;
+    tournaments: Tournaments;
   };
   username: string;
 };
@@ -45,7 +51,7 @@ export function PlayerDataDisplay({ data, username }: Props) {
         <ArchivesDisplay archive={data.archives} username={username} />
       </Show>
       <Show when={selected === "tournaments"}>
-        <div>TOURNAMENTS</div>
+        <TournamentsDisplay tournaments={data.tournaments} />
       </Show>
     </>
   );

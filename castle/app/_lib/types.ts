@@ -144,7 +144,7 @@ interface MatchData {
   "@id": string;
 }
 
-interface FinishedMatchData extends MatchData {
+export interface FinishedMatchData extends MatchData {
   wins: number;
   losses: number;
   draws: number;
@@ -154,11 +154,11 @@ interface FinishedMatchData extends MatchData {
   total_players: number;
 }
 
-interface InProgMatchData extends MatchData {
+export interface InProgMatchData extends MatchData {
   status: Exclude<Status, "invited" | "registered">;
 }
 
-interface RegisteredMatchData extends MatchData {
+export interface RegisteredMatchData extends MatchData {
   status: Extract<Status, "invited" | "registered">;
 }
 
@@ -167,6 +167,8 @@ export interface Tournaments {
   in_progress: InProgMatchData[];
   registered: RegisteredMatchData[];
 }
+
+export type TournamentState = "finished" | "in_progress" | "registered";
 
 interface ClubInfo {
   "@id": string;

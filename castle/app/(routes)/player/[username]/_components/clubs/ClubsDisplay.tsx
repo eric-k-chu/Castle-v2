@@ -32,11 +32,14 @@ export function ClubsDisplay({ clubs }: Props) {
                 className="hover:cursor-pointer hover:bg-zinc-950"
               >
                 <td className="p-4">
-                  <img
-                    src={n.icon}
-                    alt={`${n.name} club icon`}
-                    className="h-6 min-h-[1.5rem] w-6 min-w-[1.5rem] rounded-full"
-                  />
+                  {
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={n.icon}
+                      alt={`${n.name} club icon`}
+                      className="h-6 min-h-[1.5rem] w-6 min-w-[1.5rem] rounded-full"
+                    />
+                  }
                 </td>
                 <td className="py-4">{n.name}</td>
                 <td className="hidden px-6 py-4 sm:table-cell">

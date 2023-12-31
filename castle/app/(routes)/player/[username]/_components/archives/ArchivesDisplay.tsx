@@ -4,6 +4,7 @@ import { MonthlyArchive } from "@/_lib/types";
 import { getDaysElapsed, getGameResultColor, getPages } from "@/_utils";
 import Image from "next/image";
 import { useState } from "react";
+import { Pagination } from "..";
 
 type Props = {
   archive: MonthlyArchive;
@@ -81,55 +82,11 @@ export function ArchivesDisplay({ archive, username }: Props) {
           </div>
         </div>
       ))}
-      <nav className="ml-auto mr-2 mt-8 flex w-12 flex-col items-center gap-y-1">
-        <p className="text-xs">
-          <span className="font-semibold">{currentPage + 1}</span>
-          <span className="px-2">of</span>
-          <span className="font-semibold">{games.length}</span>
-        </p>
-        <div className="flex h-8 items-center justify-center text-xs">
-          <button
-            className="flex h-8 items-center justify-center rounded-l-lg border border-e-0 border-gray-600 bg-transparent px-3 text-gray-300 hover:bg-gray-500"
-            onClick={() =>
-              setCurrentPage((currentPage - 1 + games.length) % games.length)
-            }
-          >
-            <svg
-              className="h-2.5 w-2.5 rtl:rotate-180"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 1 1 5l4 4"
-              />
-            </svg>
-          </button>
-          <button
-            className="flex h-8 items-center justify-center rounded-r-lg border border-gray-600 bg-transparent px-3 text-gray-300 hover:bg-gray-500"
-            onClick={() => setCurrentPage((currentPage + 1) % games.length)}
-          >
-            <svg
-              className="h-2.5 w-2.5 rtl:rotate-180"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m1 9 4-4-4-4"
-              />
-            </svg>
-          </button>
-        </div>
-      </nav>
+      <Pagination
+        arrLength={games.length}
+        activePage={currentPage}
+        setter={setCurrentPage}
+      />
     </div>
   );
 }

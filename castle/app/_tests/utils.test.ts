@@ -1,4 +1,9 @@
-import { getDateFromUtc, getGameResultColor, getPages } from "@/_utils";
+import {
+  getDateFromUtc,
+  getGameResultColor,
+  getPages,
+  getTournamentName,
+} from "@/_utils";
 
 describe("getGameResultColor", () => {
   it("win", () => {
@@ -87,5 +92,15 @@ describe("getPages", () => {
 
   it("empty array", () => {
     expect(getPages([])).toEqual([]);
+  });
+});
+
+describe("getTournamentName", () => {
+  it("Tournament Name", () => {
+    expect(
+      getTournamentName(
+        "https://www.chess.com/tournament/100-years-of-chemotherapy---remembrance-tournament",
+      ),
+    ).toEqual("100 years of chemotherapy remembrance tournament");
   });
 });
