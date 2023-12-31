@@ -1,9 +1,9 @@
 import { PageLayout } from "@/_components";
 
-export default function HomeLayout({
+export default function PlayerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <PageLayout>{children}</PageLayout>;
+  return <PageLayout radiant>{children}</PageLayout>;
 }

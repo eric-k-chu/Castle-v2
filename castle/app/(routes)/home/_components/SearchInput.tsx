@@ -21,9 +21,9 @@ export function SearchInput({ players }: Props) {
   }
 
   return (
-    <div className="w-full max-w-[800px] px-6">
+    <div className="mx-auto max-w-[800px] px-6">
       <form
-        className="relative z-10 flex h-10 w-full items-center justify-center rounded-full bg-white px-6 text-black shadow-sm shadow-gray-400 sm:h-14"
+        className="relative z-10 flex h-10 items-center justify-center rounded-full bg-white px-6 text-black shadow-sm shadow-gray-400 sm:h-14"
         onSubmit={handleSearch}
       >
         <div className="z-10 flex w-fit items-center justify-center border-r border-gray-500 pr-4 sm:pr-5">

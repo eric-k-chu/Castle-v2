@@ -1,3 +1,5 @@
+"use client";
+
 import { filterPlayers } from "@/_utils/filter-players";
 import { TitledPlayers } from "@/_lib/types";
 import { useRouter } from "next/navigation";
@@ -15,12 +17,12 @@ export function SearchSuggestions({ query, playerList }: Props) {
 
   return (
     <div
-      className={`absolute top-5 z-[9] flex w-full rounded-b-3xl bg-white pt-6 sm:top-8 ${
+      className={`absolute top-5 z-[9] w-full rounded-b-3xl bg-white pt-6 sm:top-8 ${
         isOpen ? "block" : "hidden"
       }`}
     >
-      <div className="relative flex h-full w-full flex-col items-center gap-y-4 border-t border-t-gray-300 py-6">
-        <section className="flex w-full flex-col">
+      <div className="relative w-full items-center space-y-4 border-t border-t-gray-300 py-6">
+        <section className="w-full">
           <h1 className="mb-2 pl-6 text-xs">Titled Players</h1>
           <ul className="space-y-2 text-sm">
             {players?.map((player) => (
@@ -39,7 +41,7 @@ export function SearchSuggestions({ query, playerList }: Props) {
             ))}
           </ul>
         </section>
-        <h1 className="absolute bottom-2 right-4 select-none text-xs italic text-gray-500">
+        <h1 className="absolute bottom-2 right-4 select-none text-xs italic text-gray-400">
           Suggestions
         </h1>
       </div>

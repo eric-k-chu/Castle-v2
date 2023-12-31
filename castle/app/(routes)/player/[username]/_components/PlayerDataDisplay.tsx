@@ -26,7 +26,7 @@ export function PlayerDataDisplay({ data, username }: Props) {
 
   return (
     <>
-      <ul className="flex w-full items-center justify-around overflow-x-auto border-b border-b-gray-600">
+      <ul className="flex w-full items-center justify-around overflow-x-auto">
         {TABS.map((tab) => (
           <li
             className={`w-full select-none px-4 py-2 text-center text-xs capitalize hover:cursor-pointer hover:bg-gray-700 sm:text-sm ${

@@ -5,5 +5,5 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <PageLayout transparent>{children}</PageLayout>;
+  return <PageLayout>{children}</PageLayout>;
 }

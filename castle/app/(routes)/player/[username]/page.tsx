@@ -12,7 +12,7 @@ export default async function SearchPage({
 
   return (
     <div className="flex w-full flex-col">
-      <div className="mx-auto w-full max-w-7xl space-y-8 border-x border-x-gray-600 pb-4 pt-20">
+      <div className="mx-auto w-full max-w-7xl space-y-8 pb-4 pt-20">
         <PlayerProfileDisplay player={player} />
         <PlayerDataDisplay
           data={{ stats, clubs, archives, tournaments }}

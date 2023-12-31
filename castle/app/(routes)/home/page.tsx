@@ -5,7 +5,7 @@ export default async function HomePage() {
   const players = await getPlayerSuggestions();
 
   return (
-    <main className="flex min-h-screen w-full flex-col items-center">
+    <div className="pb-[400px] pt-[40px]">
       <div className="mb-10 mt-64 text-center">
         <h1 className="text-2xl font-semibold uppercase drop-shadow-glow sm:text-4xl">
           Castle
@@ -15,6 +15,6 @@ export default async function HomePage() {
         </p>
       </div>
       <SearchInput players={players} />
-    </main>
+    </div>
   );
 }
