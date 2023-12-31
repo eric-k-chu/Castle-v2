@@ -21,42 +21,35 @@ export function Navbar() {
         alt="logo icon"
         width="0"
         height="0"
-        className="mr-6 h-auto w-8 hover:cursor-pointer"
-        onClick={() => router.push("/")}
+        className="mr-6 h-auto w-10 hover:cursor-pointer"
+        onClick={() => router.push("/home")}
       />
       <div
-        className={`hidden w-full items-center gap-x-8 border-l pl-6 sm:flex ${
-          path === "/" ? "border-l-gray-800" : "border-l-gray-900"
+        className={`ml-auto hidden space-x-8 border-l sm:block ${
+          path === "/home" ? "border-l-gray-800" : "border-l-gray-900"
         }`}
       >
         <Link
           href=""
           className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
+          aria-label="Countries"
         >
           Countries
         </Link>
         <Link
           href=""
           className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
+          aria-label="Leaderboards"
         >
           Leaderboards
         </Link>
         <Link
           href=""
           className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
+          aria-label="Daily Puzzle"
         >
           Daily Puzzle
         </Link>
-      </div>
-      <div className="ml-auto">
-        <Image
-          src="/icons/bookmark.svg"
-          alt="bookmark icon"
-          width="0"
-          height="0"
-          className="hidden h-auto w-6 fill-black hover:cursor-pointer sm:block"
-          onClick={() => alert("WIP Bookmark section")}
-        />
       </div>
     </nav>
   );
