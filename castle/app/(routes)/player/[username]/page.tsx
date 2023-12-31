@@ -12,7 +12,7 @@ export default async function SearchPage({ params }: Props) {
 
   return (
     <div className="pb-[400px] pt-20">
-      <div className="mx-auto w-full max-w-7xl space-y-8">
+      <div className="mx-auto w-full max-w-5xl space-y-8 px-4">
         <PlayerProfileDisplay player={player} />
         <PlayerDataDisplay
           data={{ stats, clubs, archives, tournaments }}

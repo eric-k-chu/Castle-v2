@@ -26,13 +26,11 @@ export function PlayerDataDisplay({ data, username }: Props) {
 
   return (
     <>
-      <ul className="flex w-full items-center justify-around overflow-x-auto">
+      <ul className="flex items-center justify-between gap-x-2 overflow-x-auto sm:gap-x-4">
         {TABS.map((tab) => (
           <li
-            className={`w-full select-none px-4 py-2 text-center text-xs capitalize hover:cursor-pointer hover:bg-gray-700 sm:text-sm ${
-              selected === tab
-                ? "text-white underline underline-offset-[12px]"
-                : "text-gray-500"
+            className={`w-full select-none rounded-md px-4 py-2 text-center text-xs capitalize transition-colors hover:cursor-pointer hover:bg-zinc-700 sm:text-sm ${
+              selected === tab ? "bg-zinc-600" : "bg-zinc-800"
             }`}
             onClick={() => setSelected(tab)}
             key={tab}

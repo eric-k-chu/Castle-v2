@@ -29,7 +29,7 @@ export function ClubsDisplay({ clubs }: Props) {
             .map((n) => (
               <tr
                 key={n["@id"]}
-                className="hover:cursor-pointer hover:bg-zinc-950"
+                className="odd:bg-zinc-800 even:bg-zinc-900 hover:cursor-pointer hover:bg-zinc-700"
               >
                 <td className="p-4">
                   {
