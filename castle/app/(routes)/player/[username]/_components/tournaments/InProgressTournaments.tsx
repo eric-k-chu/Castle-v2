@@ -17,18 +17,20 @@ export function InProgressTournaments({ tournaments }: Props) {
   return (
     <>
       <div className="mt-4 space-y-2">
-        <header className="grid grid-cols-2 p-4 text-xs">
-          <strong className="uppercase">name</strong>
+        <header className="grid grid-cols-4 p-4 text-xs">
+          <strong className="col-span-2 uppercase">name</strong>
+          <strong className="text-right uppercase">status</strong>
           <strong className="text-right uppercase">link</strong>
         </header>
         {inProgress[page].map((n) => (
           <div
             key={n["@id"]}
-            className="grid grid-cols-2 rounded-sm p-4 text-xs shadow-2xl odd:bg-zinc-900 even:bg-zinc-800"
+            className="grid grid-cols-4 rounded-sm p-4 text-xs shadow-2xl odd:bg-zinc-900 even:bg-zinc-800"
           >
-            <div className="truncate capitalize">
+            <div className="col-span-2 truncate capitalize">
               {getTournamentName(n["@id"])}
             </div>
+            <div className="text-right capitalize">{n.status}</div>
             <a target="_blank" href={n.url} className="flex justify-end">
               <Image
                 src="/icons/dots.svg"

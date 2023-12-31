@@ -20,17 +20,25 @@ export function FinishedTournaments({ tournaments }: Props) {
   return (
     <>
       <div className="mt-4 space-y-2">
-        <header className="grid grid-cols-2 p-4 text-xs">
-          <strong className="uppercase">name</strong>
+        <header className="grid grid-cols-5 p-4 text-xs">
+          <strong className="col-span-2 uppercase">name</strong>
+          <strong className="text-center uppercase">placement</strong>
+          <strong className="text-right uppercase">wld</strong>
           <strong className="text-right uppercase">link</strong>
         </header>
         {finished[page].map((n) => (
           <div
             key={n["@id"]}
-            className="grid grid-cols-2 rounded-sm p-4 text-xs shadow-2xl odd:bg-zinc-900 even:bg-zinc-800"
+            className="grid grid-cols-5 rounded-sm p-4 text-xs shadow-2xl odd:bg-zinc-900 even:bg-zinc-800"
           >
-            <div className="truncate capitalize">
+            <div className="col-span-2 truncate capitalize">
               {getTournamentName(n["@id"])}
+            </div>
+            <div className="text-center">{n.placement}</div>
+            <div className="space-x-2 text-right">
+              <span className="text-green-400">{n.wins}</span>
+              <span className="text-red-400">{n.losses}</span>
+              <span className="text-gray-400">{n.draws}</span>
             </div>
             <a target="_blank" href={n.url} className="flex justify-end">
               <Image
