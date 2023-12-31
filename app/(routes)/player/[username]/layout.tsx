@@ -5,5 +5,5 @@ export default function PlayerLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <PageLayout radiant>{children}</PageLayout>;
+  return <PageLayout radial>{children}</PageLayout>;
 }
