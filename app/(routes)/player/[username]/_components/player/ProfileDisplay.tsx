@@ -9,7 +9,7 @@ type Props = {
 
 export function ProfileDisplay({ player }: Props) {
   return (
-    <div className="flex gap-x-8">
+    <div className="my-4 flex gap-x-8">
       <div className="relative flex items-center justify-center">
         <Image
           src={

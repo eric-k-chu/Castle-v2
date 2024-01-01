@@ -14,7 +14,7 @@ export function StatsDisplay({ stats }: Props) {
   const { puzzle_rush, tactics } = stats;
 
   return (
-    <section className="rounded-sm bg-zinc-900 p-6">
+    <section className="my-4 rounded-sm bg-zinc-900 p-6">
       <div className="flex flex-1 flex-wrap items-center justify-around gap-8">
         {gameStats.map((n) => (
           <div className="group relative space-y-2" key={n.type}>

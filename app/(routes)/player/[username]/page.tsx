@@ -1,5 +1,5 @@
 import { getPlayerData } from "@/_utils/fetcher";
-import { ProfileDisplay, StatsDisplay } from "./_components";
+import { ClubsDisplay, ProfileDisplay, StatsDisplay } from "./_components";
 
 type Props = {
   params: { username: string };
@@ -12,9 +12,10 @@ export default async function SearchPage({ params }: Props) {
 
   return (
     <div className="pb-[400px] pt-20">
-      <div className="mx-auto w-full max-w-5xl space-y-8 px-4">
+      <div className="mx-auto w-full max-w-5xl px-4">
         <ProfileDisplay player={player} />
         <StatsDisplay stats={stats} />
+        <ClubsDisplay clubs={clubs} />
       </div>
     </div>
   );

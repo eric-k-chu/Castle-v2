@@ -3,12 +3,21 @@
 import Image from "next/image";
 import { getDateFromUtc } from "@/_utils";
 import { Clubs } from "@/_lib/types";
+import { Show } from "@/_components";
 
 type Props = {
   clubs: Clubs;
 };
 
 export function ClubsDisplay({ clubs }: Props) {
+  return (
+    <section className="my-4 rounded-sm bg-zinc-700 p-4">
+      <Show when={clubs.clubs.length > 1}>
+        <h1 className="text-center">No clubs joined.</h1>
+      </Show>
+    </section>
+  );
+
   if (clubs.clubs.length < 1) {
     return <h1 className="text-center">No clubs joined.</h1>;
   }
