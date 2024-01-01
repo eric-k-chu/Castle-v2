@@ -20,9 +20,7 @@ export function ClubsDisplay({ clubs }: Props) {
 
   return (
     <section className="my-8">
-      <header className="flex items-center justify-between">
-        <h1 className="rounded-t-sm bg-zinc-800 px-6 py-2">Clubs</h1>
-      </header>
+      <h1 className="py-2 text-lg font-semibold uppercase">Clubs</h1>
       <div className="rounded-sm bg-zinc-800 px-4 py-8">
         <Show when={clubs.clubs.length < 1}>
           <h1 className="text-center text-zinc-400">No clubs joined.</h1>
