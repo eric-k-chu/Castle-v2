@@ -11,7 +11,7 @@ type Props = {
 
 export function ClubsDisplay({ clubs }: Props) {
   return (
-    <section className="my-4 rounded-sm bg-zinc-700 p-4">
+    <section className="my-8 rounded-sm bg-zinc-700 p-4">
       <Show when={clubs.clubs.length > 1}>
         <h1 className="text-center">No clubs joined.</h1>
       </Show>
