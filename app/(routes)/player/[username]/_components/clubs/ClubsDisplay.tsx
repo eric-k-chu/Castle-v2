@@ -9,6 +9,10 @@ type Props = {
 };
 
 export function ClubsDisplay({ clubs }: Props) {
+  if (clubs.clubs.length < 1) {
+    return <h1 className="text-center">No clubs joined.</h1>;
+  }
+
   return (
     <div className="flex w-full flex-col items-center">
       <table className="w-full text-xs sm:text-sm">

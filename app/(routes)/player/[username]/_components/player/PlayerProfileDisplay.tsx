@@ -12,7 +12,10 @@ export function PlayerProfileDisplay({ player }: Props) {
     <div className="flex gap-x-8">
       <div className="relative flex items-center justify-center">
         <Image
-          src={String(player?.avatar)}
+          src={
+            player?.avatar ||
+            "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
+          }
           alt="avatar"
           width="0"
           height="0"

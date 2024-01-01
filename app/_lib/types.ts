@@ -120,7 +120,7 @@ interface PuzzleBest {
 }
 
 interface PuzzleStat {
-  best: PuzzleBest;
+  best?: PuzzleBest;
 }
 
 export interface Stats {
@@ -131,7 +131,7 @@ export interface Stats {
   chess_blitz?: GameStat;
   tactics?: TacticsStat;
   lessons?: TacticsStat;
-  puzzle_rush?: PuzzleStat;
+  puzzle_rush: PuzzleStat;
   fide?: number;
 }
 

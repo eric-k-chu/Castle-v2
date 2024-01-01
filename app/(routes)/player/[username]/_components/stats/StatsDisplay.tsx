@@ -63,9 +63,11 @@ export function StatsDisplay({ stats }: Props) {
         <Show when={puzzle_rush?.best !== undefined}>
           <div className="flex flex-col gap-y-2">
             <h1 className="font-semibold uppercase">Puzzle Rush</h1>
-            <h1 className="text-2xl">{puzzle_rush?.best.score}</h1>
+            <h1 className="text-2xl">
+              {puzzle_rush?.best?.score || "No attempts have been made"}
+            </h1>
             <h1 className="text-xs text-gray-400">
-              {puzzle_rush?.best.total_attempts}
+              {puzzle_rush?.best?.total_attempts || ""}
               <span className="pl-1">attempts</span>
             </h1>
           </div>

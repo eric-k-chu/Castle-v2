@@ -4,3 +4,4 @@ export * from "./Navbar";
 export * from "./ErrorDisplay";
 export * from "./Show";
 export * from "./PageLayout";
+export * from "./SectionLayout";

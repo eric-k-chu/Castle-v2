@@ -15,6 +15,10 @@ export function ArchivesDisplay({ archive, username }: Props) {
   const [currentPage, setCurrentPage] = useState(0);
   const games = getPages(archive.games.toReversed());
 
+  if (games[currentPage] === undefined) {
+    return <h1 className="text-center">No games have been played.</h1>;
+  }
+
   return (
     <div className="w-full p-4">
       <header className="grid grid-cols-4 gap-4 border-l-8 border-l-transparent p-4 text-xs sm:grid-cols-7">

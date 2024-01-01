@@ -17,6 +17,10 @@ export function FinishedTournaments({ tournaments }: Props) {
   );
   const [page, setPage] = useState(0);
 
+  if (finished[page] === undefined) {
+    return <h1 className="text-center">No matches have been played.</h1>;
+  }
+
   return (
     <>
       <div className="mt-4 space-y-2">
