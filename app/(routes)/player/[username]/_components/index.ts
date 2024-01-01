@@ -1,4 +1,4 @@
-export * from "./player/PlayerProfileDisplay";
+export * from "./player/ProfileDisplay";
 export * from "./stats/StatsDisplay";
 export * from "./clubs/ClubsDisplay";
 export * from "./archives/ArchivesDisplay";

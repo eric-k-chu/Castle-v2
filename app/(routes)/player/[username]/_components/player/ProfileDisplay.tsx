@@ -7,7 +7,7 @@ type Props = {
   player: Player;
 };
 
-export function PlayerProfileDisplay({ player }: Props) {
+export function ProfileDisplay({ player }: Props) {
   return (
     <div className="flex gap-x-8">
       <div className="relative flex items-center justify-center">
