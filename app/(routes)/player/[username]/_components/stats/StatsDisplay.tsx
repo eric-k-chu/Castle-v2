@@ -54,7 +54,8 @@ export function StatsDisplay({ stats }: Props) {
             <strong className="text-sm uppercase sm:text-base">Puzzles</strong>
             <h2 className="text-base sm:text-lg">{tactics?.highest.rating}</h2>
             <h3 className="text-xs text-zinc-400">
-              {tactics?.highest.date && getDateFromUtc(tactics.highest.date)}
+              {tactics?.highest.date &&
+                getDateFromUtc(tactics.highest.date).full}
             </h3>
           </div>
         </Show>

@@ -1,4 +1,7 @@
-export function getDateFromUtc(utcSeconds: number): string {
+export function getDateFromUtc(utcSeconds: number): {
+  full: string;
+  half: string;
+} {
   const date = new Date(utcSeconds * 1000);
   const months = [
     "Jan",
@@ -14,5 +17,8 @@ export function getDateFromUtc(utcSeconds: number): string {
     "Nov",
     "Dec",
   ];
-  return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+  return {
+    full: `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`,
+    half: `${months[date.getMonth()]} ${date.getFullYear()}`,
+  };
 }
