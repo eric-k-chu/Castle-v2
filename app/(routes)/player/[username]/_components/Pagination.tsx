@@ -6,7 +6,7 @@ type Props = {
 
 export function Pagination({ arrLength, activePage, setter }: Props) {
   return (
-    <nav className="ml-auto mr-2 mt-8 flex w-12 flex-col items-center gap-y-1">
+    <nav className="ml-auto mr-2 mt-4 flex w-12 flex-col items-center gap-y-1">
       <p className="text-xs">
         <span className="font-semibold">{activePage + 1}</span>
         <span className="px-2">of</span>
@@ -14,7 +14,7 @@ export function Pagination({ arrLength, activePage, setter }: Props) {
       </p>
       <div className="flex h-8 items-center justify-center text-xs">
         <button
-          className="flex h-8 items-center justify-center rounded-l-lg border border-e-0 border-gray-600 bg-transparent px-3 text-gray-300 hover:bg-gray-500"
+          className="flex h-8 items-center justify-center rounded-l-lg border border-e-0 border-zinc-600 bg-transparent px-3 text-gray-300 hover:bg-gray-500"
           onClick={() => setter((activePage - 1 + arrLength) % arrLength)}
         >
           <svg
@@ -33,7 +33,7 @@ export function Pagination({ arrLength, activePage, setter }: Props) {
           </svg>
         </button>
         <button
-          className="flex h-8 items-center justify-center rounded-r-lg border border-gray-600 bg-transparent px-3 text-gray-300 hover:bg-gray-500"
+          className="flex h-8 items-center justify-center rounded-r-lg border border-zinc-600 bg-transparent px-3 text-gray-300 hover:bg-gray-500"
           onClick={() => setter((activePage + 1) % arrLength)}
         >
           <svg
