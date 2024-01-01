@@ -11,81 +11,48 @@ type Props = {
 export function StatsDisplay({ stats }: Props) {
   const gameStats = extractStats(stats);
 
-  const { puzzle_rush, lessons, tactics, fide } = stats;
-
-  let gameStatDisplay: JSX.Element;
-
-  if (gameStats.length < 1) {
-    gameStatDisplay = <></>;
-  } else {
-    gameStatDisplay = (
-      <div className="flex flex-col items-start justify-around gap-6 rounded-md bg-zinc-900 py-12 pl-[35%] sm:flex-row sm:flex-wrap sm:items-center sm:px-4 sm:py-28">
-        {gameStats.map((n) => (
-          <div key={n.type} className="flex flex-col gap-y-2">
-            <h1 className="font-semibold uppercase">{n.type}</h1>
-            <h1 className="text-2xl">
-              {n.pct}
-              <span className="pl-1 text-xs">%</span>
-            </h1>
-            <div className="space-x-2 text-xs">
-              <span className="text-green-400">{n.wins}</span>
-              <span className="text-red-400">{n.losses}</span>
-              <span className="text-gray-400">{n.draws}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
+  const { puzzle_rush, tactics } = stats;
 
   return (
-    <>
-      {gameStatDisplay}
-      <div className="mt-2 flex flex-col items-start justify-around gap-6 rounded-md bg-zinc-900 py-12 pl-[35%] sm:flex-row sm:flex-wrap sm:items-center sm:px-4 sm:py-28">
-        <Show when={tactics !== undefined}>
-          <div className="flex flex-col gap-y-2">
-            <h1 className="font-semibold uppercase">Puzzles</h1>
-            <h1 className="text-2xl">{tactics?.highest.rating}</h1>
-            <h1 className="text-xs text-gray-400">
-              {tactics?.highest.date && getDateFromUtc(tactics.highest.date)}
-            </h1>
-          </div>
-        </Show>
-        <Show when={lessons !== undefined}>
-          <div className="flex flex-col gap-y-2">
-            <h1 className="font-semibold uppercase">Lessons</h1>
-            <h1 className="text-2xl">{lessons?.highest.rating}</h1>
-            <h1 className="text-xs text-gray-400">
-              {lessons?.highest.date && getDateFromUtc(lessons.highest.date)}
-            </h1>
-          </div>
-        </Show>
-        <Show when={puzzle_rush?.best !== undefined}>
-          <div className="flex flex-col gap-y-2">
-            <h1 className="font-semibold uppercase">Puzzle Rush</h1>
-            <h1 className="text-2xl">
-              {puzzle_rush?.best?.score || "No attempts have been made"}
-            </h1>
-            <h1 className="text-xs text-gray-400">
-              {puzzle_rush?.best?.total_attempts || ""}
-              <span className="pl-1">attempts</span>
-            </h1>
-          </div>
-        </Show>
-        <Show when={fide !== undefined}>
-          <div className="flex flex-col gap-y-2">
-            <h1 className="font-semibold">FIDE Rating</h1>
-            <h1 className="text-2xl">{fide}</h1>
-            <a
-              className="text-xs text-gray-400 hover:underline"
-              target="_blank"
-              href="https://www.chess.com/terms/fide-chess"
+    <section className="rounded-sm bg-zinc-900 p-6">
+      <div className="flex flex-1 flex-wrap items-center justify-around gap-8">
+        {gameStats.map((n) => (
+          <div className="space-y-2">
+            <strong className="text-sm uppercase sm:text-base">{n.type}</strong>
+            <h2
+              className={`text-basesm:text-lg ${
+                parseFloat(n.pct) >= 50 ? "text-green-400" : "text-red-400"
+              }`}
             >
-              What is Fide?
-            </a>
+              {n.pct}
+              <span className="pl-1 text-xs">%</span>
+            </h2>
+            <h3 className="text-xs text-zinc-400">
+              {n.wins + n.losses + n.draws} games
+            </h3>
+          </div>
+        ))}
+        <Show when={tactics !== undefined}>
+          <div className="space-y-2">
+            <strong className="text-sm uppercase sm:text-base">Puzzles</strong>
+            <h2 className="text-base sm:text-lg">{tactics?.highest.rating}</h2>
+            <h3 className="text-xs text-zinc-400">
+              {tactics?.highest.date && getDateFromUtc(tactics.highest.date)}
+            </h3>
+          </div>
+        </Show>
+        <Show when={puzzle_rush.best !== undefined}>
+          <div className="space-y-2">
+            <strong className="text-sm uppercase sm:text-base">
+              Puzzle Rush
+            </strong>
+            <h2 className="text-base sm:text-lg">{puzzle_rush.best?.score}</h2>
+            <h3 className="text-xs text-zinc-400">
+              {puzzle_rush.best?.total_attempts} attempts
+            </h3>
           </div>
         </Show>
       </div>
-    </>
+    </section>
   );
 }

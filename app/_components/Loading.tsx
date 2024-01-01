@@ -1,6 +1,6 @@
 export function Loading() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
+    <div className="mx-auto max-w-5xl py-[300px]">
       <LoadingCircle />
     </div>
   );
@@ -8,10 +8,10 @@ export function Loading() {
 
 export function LoadingCircle() {
   return (
-    <div role="status">
+    <div role="status" className="flex items-center justify-center">
       <svg
         aria-hidden="true"
-        className="h-12 w-12 animate-spin fill-blue-600 text-black"
+        className="h-12 w-12 animate-spin fill-blue-600 text-white"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

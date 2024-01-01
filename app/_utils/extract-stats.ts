@@ -16,36 +16,16 @@ export function extractStats(stats: Stats): {
 
   const {
     chess960_daily,
-    chess_blitz,
-    chess_bullet,
     chess_daily,
     chess_rapid,
+    chess_blitz,
+    chess_bullet,
   } = stats;
 
   if (chess960_daily) {
     const { win, loss, draw } = chess960_daily.record;
     data.push({
       type: "Daily 960",
-      wins: win,
-      losses: loss,
-      draws: draw,
-      pct: getPct(win, loss, draw),
-    });
-  }
-  if (chess_blitz) {
-    const { win, loss, draw } = chess_blitz.record;
-    data.push({
-      type: "Blitz",
-      wins: win,
-      losses: loss,
-      draws: draw,
-      pct: getPct(win, loss, draw),
-    });
-  }
-  if (chess_bullet) {
-    const { win, loss, draw } = chess_bullet.record;
-    data.push({
-      type: "Bullet",
       wins: win,
       losses: loss,
       draws: draw,
@@ -66,6 +46,28 @@ export function extractStats(stats: Stats): {
     const { win, loss, draw } = chess_rapid.record;
     data.push({
       type: "Rapid",
+      wins: win,
+      losses: loss,
+      draws: draw,
+      pct: getPct(win, loss, draw),
+    });
+  }
+
+  if (chess_blitz) {
+    const { win, loss, draw } = chess_blitz.record;
+    data.push({
+      type: "Blitz",
+      wins: win,
+      losses: loss,
+      draws: draw,
+      pct: getPct(win, loss, draw),
+    });
+  }
+
+  if (chess_bullet) {
+    const { win, loss, draw } = chess_bullet.record;
+    data.push({
+      type: "Bullet",
       wins: win,
       losses: loss,
       draws: draw,

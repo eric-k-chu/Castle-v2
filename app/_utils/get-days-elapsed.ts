@@ -2,6 +2,12 @@ export function getDaysElapsed(endTime: EpochTimeStamp): string {
   const time = new Date(endTime * 1000);
   const now = new Date();
 
+  const elapsedYears = now.getFullYear() - time.getFullYear();
+  if (elapsedYears > 0) return `${elapsedYears}y ago`;
+
+  const elapsedMonths = now.getMonth() - time.getMonth();
+  if (elapsedMonths > 0) return `${elapsedMonths}mo ago`;
+
   const elapsedDays = now.getDate() - time.getDate();
   if (elapsedDays > 0) return `${elapsedDays}d ago`;
 
