@@ -1,9 +1,5 @@
 import { getPlayerData } from "@/_utils/fetcher";
-import {
-  PlayerProfileDisplay,
-  PlayerDataDisplay,
-  StatsDisplay,
-} from "./_components";
+import { PlayerProfileDisplay, StatsDisplay } from "./_components";
 
 type Props = {
   params: { username: string };

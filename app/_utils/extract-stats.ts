@@ -15,12 +15,23 @@ export function extractStats(stats: Stats): {
   const data = [];
 
   const {
-    chess960_daily,
     chess_daily,
+    chess960_daily,
     chess_rapid,
     chess_blitz,
     chess_bullet,
   } = stats;
+
+  if (chess_daily) {
+    const { win, loss, draw } = chess_daily.record;
+    data.push({
+      type: "Daily",
+      wins: win,
+      losses: loss,
+      draws: draw,
+      pct: getPct(win, loss, draw),
+    });
+  }
 
   if (chess960_daily) {
     const { win, loss, draw } = chess960_daily.record;
@@ -32,16 +43,7 @@ export function extractStats(stats: Stats): {
       pct: getPct(win, loss, draw),
     });
   }
-  if (chess_daily) {
-    const { win, loss, draw } = chess_daily.record;
-    data.push({
-      type: "Daily Chess",
-      wins: win,
-      losses: loss,
-      draws: draw,
-      pct: getPct(win, loss, draw),
-    });
-  }
+
   if (chess_rapid) {
     const { win, loss, draw } = chess_rapid.record;
     data.push({
@@ -74,12 +76,6 @@ export function extractStats(stats: Stats): {
       pct: getPct(win, loss, draw),
     });
   }
-
-  data.sort((a, b) => {
-    const aTotal = a.wins + a.losses + a.draws;
-    const bTotal = b.wins + b.losses + b.draws;
-    return bTotal - aTotal;
-  });
 
   return data;
 }

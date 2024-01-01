@@ -25,11 +25,6 @@ export type Endpoint =
   | "tournaments"
   | "archives";
 
-export type Tab = Extract<
-  Endpoint,
-  "stats" | "clubs" | "archives" | "tournaments"
->;
-
 export interface Players {
   players: string[];
 }
