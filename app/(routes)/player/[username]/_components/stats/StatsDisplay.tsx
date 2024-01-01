@@ -20,7 +20,7 @@ export function StatsDisplay({ stats }: Props) {
           <div className="space-y-2" key={n.type}>
             <strong className="text-sm uppercase sm:text-base">{n.type}</strong>
             <h2
-              className={`text-basesm:text-lg ${
+              className={`text-base sm:text-lg ${
                 parseFloat(n.pct) >= 50 ? "text-green-400" : "text-red-400"
               }`}
             >
