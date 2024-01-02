@@ -17,14 +17,14 @@ export function InProgressTournaments({ tournaments }: Props) {
   );
   const [page, setPage] = useState(0);
 
-  if (inProgress[page] === undefined) {
+  if (inProgress.length < 1) {
     return <h1 className="text-center">No matches have been played.</h1>;
   }
 
   return (
     <>
-      <div className="mt-4 space-y-2">
-        <header className="grid grid-cols-4 p-4 text-xs">
+      <div className="space-y-2">
+        <header className="grid grid-cols-4 p-4 text-xs sm:text-sm">
           <strong className="col-span-2 uppercase">name</strong>
           <strong className="text-right uppercase">status</strong>
           <strong className="text-right uppercase">link</strong>
@@ -32,7 +32,7 @@ export function InProgressTournaments({ tournaments }: Props) {
         {inProgress[page].map((n) => (
           <div
             key={n["@id"]}
-            className="grid grid-cols-4 rounded-sm p-4 text-xs shadow-2xl odd:bg-zinc-900 even:bg-zinc-800"
+            className="grid grid-cols-4 rounded-sm p-4 text-xs odd:bg-zinc-800 even:bg-zinc-900 sm:text-sm"
           >
             <div className="col-span-2 truncate capitalize">
               {getTournamentName(n["@id"])}
