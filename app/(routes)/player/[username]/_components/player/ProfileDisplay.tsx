@@ -84,7 +84,7 @@ export function ProfileDisplay({ player }: Props) {
               height="0"
               className="h-auto w-4"
             />
-            {getDateFromUtc(player.joined).full}
+            {getDateFromUtc(player.joined).half}
           </div>
           <div className="flex flex-col items-center text-center text-xs sm:text-sm">
             <Image
@@ -94,7 +94,7 @@ export function ProfileDisplay({ player }: Props) {
               height="0"
               className="h-auto w-4"
             />
-            {getDateFromUtc(player.last_online).full}
+            {getDateFromUtc(player.last_online).half}
           </div>
           <div className="flex flex-col items-center text-center text-xs sm:text-sm">
             <Image
