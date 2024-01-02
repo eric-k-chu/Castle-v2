@@ -271,3 +271,16 @@ export interface Leaderboards {
   rush: LeaderboardPlayer[];
   battle: LeaderboardPlayer[];
 }
+
+interface Streamer {
+  username: string;
+  avatar?: string;
+  twitch_url: string;
+  url: string;
+  is_live: boolean;
+  is_community_streamer: boolean;
+}
+
+export interface Streamers {
+  streamers: Streamer[];
+}
