@@ -4,6 +4,7 @@ import {
   ClubsDisplay,
   ProfileDisplay,
   StatsDisplay,
+  TournamentsDisplay,
 } from "./_components";
 
 type Props = {
@@ -21,7 +22,8 @@ export default async function SearchPage({ params }: Props) {
         <ProfileDisplay player={player} />
         <StatsDisplay stats={stats} />
         {/* <ClubsDisplay clubs={clubs} /> */}
-        <ArchivesDisplay archive={archives} username={username} />
+        {/* <ArchivesDisplay archive={archives} username={username} /> */}
+        <TournamentsDisplay tournaments={tournaments} />
       </div>
     </div>
   );

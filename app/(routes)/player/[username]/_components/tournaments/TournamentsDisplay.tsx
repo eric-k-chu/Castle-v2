@@ -24,6 +24,15 @@ export function TournamentsDisplay({ tournaments }: Props) {
   const [selected, setSelected] = useState<TournamentState>("finished");
 
   return (
+    <section className="my-8">
+      <h1 className="py-2 text-lg font-semibold uppercase">Tournaments</h1>
+      <div className="rounded-sm bg-zinc-800 px-4 py-8">
+        <h1>test</h1>
+      </div>
+    </section>
+  );
+
+  return (
     <div className="w-full p-4">
       <div className="space-x-2">
         {TOURNAMENT_STATE.map((n) => (
