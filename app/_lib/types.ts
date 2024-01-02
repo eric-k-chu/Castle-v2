@@ -230,3 +230,44 @@ interface Game {
 export interface MonthlyArchive {
   games: Game[];
 }
+
+interface Trend {
+  direction: -1 | 0 | 1;
+  delta: number;
+}
+
+interface LeaderboardPlayer {
+  player_id: number;
+  "@id": string;
+  url: string;
+  username: string;
+  score: number;
+  rank: number;
+  country?: string;
+  title?: Title;
+  name?: string;
+  status: string;
+  avatar: string;
+  trend_score: Trend;
+  trend_rank: Trend;
+  flair_code?: string;
+  win_count: number;
+  loss_count: number;
+  draw_count: number;
+}
+
+export interface Leaderboards {
+  daily: LeaderboardPlayer[];
+  daily960: LeaderboardPlayer[];
+  live_rapid: LeaderboardPlayer[];
+  live_blitz: LeaderboardPlayer[];
+  live_bullet: LeaderboardPlayer[];
+  live_bughouse: LeaderboardPlayer[];
+  live_blitz960: LeaderboardPlayer[];
+  live_threecheck: LeaderboardPlayer[];
+  live_crazyhouse: LeaderboardPlayer[];
+  live_kingofthehill: LeaderboardPlayer[];
+  tactics: LeaderboardPlayer[];
+  rush: LeaderboardPlayer[];
+  battle: LeaderboardPlayer[];
+}
