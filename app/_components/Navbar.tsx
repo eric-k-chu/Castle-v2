@@ -32,9 +32,9 @@ export function Navbar() {
         <Link
           href=""
           className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
-          aria-label="Countries"
+          aria-label="Streamers"
         >
-          Countries
+          Streamers
         </Link>
         <Link
           href=""
