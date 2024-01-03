@@ -37,13 +37,13 @@ export function ProfileDisplay({ player }: Props) {
       <div className="space-y-2">
         <div className="flex items-center gap-x-2">
           <a
-            className="text-xl font-semibold sm:text-4xl"
+            className="text-xl font-semibold capitalize sm:text-4xl"
             role="heading"
             aria-level={1}
             href={player.url}
             target="_blank"
           >
-            {player.username[0].toLocaleUpperCase() + player.username.slice(1)}
+            {player.username}
           </a>
           <span className="rounded-md bg-[#7C2929] px-2 py-0.5 font-mono text-base text-white">
             {player?.title}

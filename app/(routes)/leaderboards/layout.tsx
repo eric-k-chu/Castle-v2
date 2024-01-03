@@ -5,5 +5,5 @@ export default function LeaderboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <PageLayout>{children}</PageLayout>;
+  return <main className="bg-zinc-950">{children}</main>;
 }

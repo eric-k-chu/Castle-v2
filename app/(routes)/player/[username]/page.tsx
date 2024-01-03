@@ -21,9 +21,9 @@ export default async function SearchPage({ params }: Props) {
       <div className="mx-auto w-full max-w-5xl px-4">
         <ProfileDisplay player={player} />
         <StatsDisplay stats={stats} />
-        {/* <ClubsDisplay clubs={clubs} />
+        <ClubsDisplay clubs={clubs} />
         <ArchivesDisplay archive={archives} username={username} />
-        <TournamentsDisplay tournaments={tournaments} /> */}
+        <TournamentsDisplay tournaments={tournaments} />
       </div>
     </div>
   );

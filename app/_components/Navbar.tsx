@@ -37,7 +37,7 @@ export function Navbar() {
           Streamers
         </Link>
         <Link
-          href=""
+          href="/leaderboards"
           className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
           aria-label="Leaderboards"
         >
