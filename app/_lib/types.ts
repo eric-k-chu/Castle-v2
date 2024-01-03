@@ -236,7 +236,7 @@ interface Trend {
   delta: number;
 }
 
-interface LeaderboardPlayer {
+export interface LeaderboardPlayer {
   player_id: number;
   "@id": string;
   url: string;
