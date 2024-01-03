@@ -31,13 +31,13 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
             {getLeaderboardtitle(n)}
           </Link>
           <div className="w-full px-4 md:w-2/3">
-            {leaderboards[n].slice(0, 5).map((n, i) => (
+            {leaderboards[n].slice(0, 5).map((n) => (
               <Link
                 key={n.player_id}
                 href={`/player/${n.username.toLocaleLowerCase()}`}
                 className="flex items-center gap-x-2 rounded-sm p-1 text-xs hover:bg-zinc-900 sm:text-sm"
               >
-                <span className={`${getColor(i)} w-4`}>#{i + 1}</span>
+                <span className={`${getColor(n.rank)} w-4`}>#{n.rank}</span>
                 <img
                   src={n.avatar}
                   alt={`${n.username} avatar`}

@@ -20,10 +20,10 @@ export function ProfileDisplay({ player }: Props) {
           width="0"
           height="0"
           unoptimized
-          className="h-28 min-h-[7rem] w-28 min-w-[7rem] rounded-sm border-4 border-zinc-900 bg-black sm:h-36 sm:min-h-[9rem] sm:w-36 sm:min-w-[9rem]"
+          className="h-28 min-h-[7rem] w-28 min-w-[7rem] rounded-sm border-2 border-amber-400 sm:h-36 sm:min-h-[9rem] sm:w-36 sm:min-w-[9rem]"
         />
         <Show when={player.league !== undefined}>
-          <div className="absolute bottom-[-10px] rounded-sm bg-zinc-900 px-4 py-1">
+          <div className="absolute bottom-[-10px] rounded-sm border border-amber-400 bg-zinc-900 px-4 py-1">
             <Image
               src={`/icons/${player?.league?.toLocaleLowerCase()}.svg`}
               alt={`${player?.league} icon`}
@@ -45,9 +45,11 @@ export function ProfileDisplay({ player }: Props) {
           >
             {player.username}
           </a>
-          <span className="rounded-md bg-[#7C2929] px-2 py-0.5 font-mono text-base text-white">
-            {player?.title}
-          </span>
+          <Show when={player.title !== undefined}>
+            <span className="rounded-md bg-[#7C2929] px-2 py-0.5 font-mono text-base text-white">
+              {player?.title}
+            </span>
+          </Show>
           <Show when={player.twitch_url !== undefined}>
             <a
               href={player.twitch_url}

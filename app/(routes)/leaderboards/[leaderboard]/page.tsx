@@ -4,7 +4,7 @@ import { Leaderboard } from "@/_lib/types";
 import { getLeaderboardtitle, isLeaderboardType } from "@/_utils";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { RankOneCard } from "../_components";
+import { RankOneCard, RankTwotoFiveCard } from "../_components";
 
 type Props = {
   params: { leaderboard: string };
@@ -24,6 +24,7 @@ export default async function Leaderboard({ params }: Props) {
         {getLeaderboardtitle(key)}
       </h1>
       <RankOneCard player={leaderboards[key][0]} />
+      <RankTwotoFiveCard players={leaderboards[key].slice(1, 5)} />
       <div className="mt-16">
         {leaderboards[key].slice(5).map((n) => (
           <div key={n.player_id}>

@@ -22,7 +22,7 @@ export function RankOneCard({ player }: Props) {
         }}
       />
       <h1 className="rounded-sm bg-amber-500/50 px-[.75rem] py-2 text-2xl text-amber-400 sm:text-4xl">
-        1
+        {player.rank}
       </h1>
       <img
         src={
