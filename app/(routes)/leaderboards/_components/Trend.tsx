@@ -17,7 +17,7 @@ export function Trend({
     <div className="flex items-center gap-x-1">
       <svg
         className={`h-auto ${size} ${
-          trend.direction === 1 ? "fill-green-400" : "fill-red-400"
+          trend.direction === 1 ? "fill-green-400" : "rotate-180 fill-red-400"
         }`}
         viewBox="0 0 15 15"
         xmlns="http://www.w3.org/2000/svg"
