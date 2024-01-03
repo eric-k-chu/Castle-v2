@@ -1,5 +1,3 @@
-import { PageLayout } from "@/_components";
-
 export default function LeaderboardLayout({
   children,
 }: {
