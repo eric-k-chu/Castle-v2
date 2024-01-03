@@ -19,7 +19,7 @@ export default async function Leaderboard({ params }: Props) {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 pb-[100px] pt-24">
+    <div className="mx-auto max-w-7xl px-4 pb-[100px] pt-24">
       <h1 className="text-2xl font-semibold capitalize sm:text-4xl">
         {getLeaderboardtitle(key)}
       </h1>

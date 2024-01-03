@@ -231,7 +231,7 @@ export interface MonthlyArchive {
   games: Game[];
 }
 
-interface Trend {
+export interface Trend {
   direction: -1 | 0 | 1;
   delta: number;
 }
@@ -248,8 +248,8 @@ export interface LeaderboardPlayer {
   name?: string;
   status: string;
   avatar?: string;
-  trend_score: Trend;
-  trend_rank: Trend;
+  trend_score?: Trend;
+  trend_rank?: Trend;
   flair_code?: string;
   win_count: number;
   loss_count: number;
