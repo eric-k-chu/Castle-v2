@@ -18,12 +18,15 @@ export function RankTwotoFiveCard({ players }: Props) {
   }
 
   return (
-    <div className="mt-4 grid grid-cols-4 gap-x-4">
+    <div className="mt-4 space-y-4 lg:grid lg:grid-cols-4 lg:gap-x-4 lg:space-y-0">
       {players.map((n) => (
-        <div className="space-y-2 rounded-sm bg-zinc-800 p-4" key={n.player_id}>
+        <div
+          className="flex items-center justify-between space-y-0 rounded-sm bg-zinc-800 p-4 lg:block lg:space-y-2"
+          key={n.player_id}
+        >
           <div className="flex items-center gap-x-2">
             <h1
-              className={`rounded-sm bg-opacity-50 px-2 py-1 text-sm sm:text-base ${getColor(
+              className={`rounded-sm bg-opacity-50 px-2 py-1 text-xs sm:text-sm ${getColor(
                 n.rank,
                 "text",
               )} ${getColor(n.rank, "bg")}`}

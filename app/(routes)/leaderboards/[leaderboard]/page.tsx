@@ -25,7 +25,7 @@ export default async function Leaderboard({ params }: Props) {
       </h1>
       <RankOneCard player={leaderboards[key][0]} />
       <RankTwotoFiveCard players={leaderboards[key].slice(1, 5)} />
-      <div className="mt-16">
+      <div className="mt-4">
         {leaderboards[key].slice(5).map((n) => (
           <div key={n.player_id}>
             <h1>{n.username}</h1>
