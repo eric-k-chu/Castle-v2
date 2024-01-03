@@ -12,13 +12,13 @@ export function Footer() {
             Castle
           </h2>
           <h3 className="text-base font-medium text-gray-400">
-            Powered by Chess.com's API
+            Powered by Chess.com&apos;s API
           </h3>
           <p className="text-sm font-medium leading-6 text-gray-500">
-            This website is a personal project using Chess.com API. Castle isn't
-            endorsed by Chess.com and doesn't reflect the views or opinions of
-            Chess.com or anyone officially involved in producing or managing
-            Chess.com.
+            This website is a personal project using Chess.com API. Castle
+            isn&apos;t endorsed by Chess.com and doesn&apos;t reflect the views
+            or opinions of Chess.com or anyone officially involved in producing
+            or managing Chess.com.
           </p>
         </div>
         <div className="w-full space-y-4 border-b-2 border-b-green-700 pb-4 md:max-w-[254px]">
