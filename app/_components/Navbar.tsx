@@ -30,7 +30,7 @@ export function Navbar() {
         }`}
       >
         <Link
-          href=""
+          href="/streamers"
           className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
           aria-label="Streamers"
         >
