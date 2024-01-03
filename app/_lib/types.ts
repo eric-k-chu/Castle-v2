@@ -247,7 +247,7 @@ interface LeaderboardPlayer {
   title?: Title;
   name?: string;
   status: string;
-  avatar: string;
+  avatar?: string;
   trend_score: Trend;
   trend_rank: Trend;
   flair_code?: string;
