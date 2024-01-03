@@ -1,7 +1,7 @@
 import { Show } from "@/_components";
 import { LEADERBOARDS } from "@/_lib/constants";
 import { Leaderboards, Leaderboard } from "@/_lib/types";
-import Image from "next/image";
+import { getLeaderboardtitle } from "@/_utils";
 import Link from "next/link";
 
 type Props = {
@@ -9,30 +9,6 @@ type Props = {
 };
 
 export function LeaderboardsDisplay({ leaderboards }: Props) {
-  function getTitle(n: Leaderboard): string {
-    switch (n) {
-      case "live_blitz":
-      case "live_bullet":
-      case "live_rapid":
-      case "live_crazyhouse":
-      case "live_bughouse":
-      case "live_blitz960":
-        return n.split("live_")[1];
-      case "live_threecheck":
-        return "3 Check";
-      case "live_kingofthehill":
-        return "King of the Hill";
-      case "rush":
-        return "Puzzle Rush";
-      case "battle":
-        return "Puzzle Battle";
-      case "tactics":
-        return "Puzzles";
-      default:
-        return n;
-    }
-  }
-
   function getColor(
     i: number,
   ): "text-amber-400" | "text-white" | "text-amber-600" {
@@ -49,10 +25,10 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
           className="flex flex-wrap items-center justify-center gap-8 rounded-sm bg-zinc-800 py-6 md:justify-start md:gap-0 md:py-8"
         >
           <Link
-            href=""
+            href={`/leaderboards/${n}`}
             className="w-full text-center font-semibold capitalize md:w-1/3"
           >
-            {getTitle(n)}
+            {getLeaderboardtitle(n)}
           </Link>
           <div className="w-full px-4 md:w-2/3">
             {leaderboards[n].slice(0, 5).map((n, i) => (
