@@ -30,7 +30,7 @@ export function ErrorDisplay({ error }: Props) {
           </span>
         </div>
         <Link
-          href="/home"
+          href="/"
           className="mx-auto flex w-fit items-center gap-x-4 rounded-full bg-blue-500 px-4 py-2 text-lg hover:bg-blue-400"
         >
           Return to Home

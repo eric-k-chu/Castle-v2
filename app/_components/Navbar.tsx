@@ -11,7 +11,7 @@ export function Navbar() {
   return (
     <nav
       className={`flex w-full items-center border-b px-6 py-4 ${
-        path === "/home"
+        path === "/"
           ? "absolute border-b-transparent bg-transparent"
           : "fixed z-10 border-b-gray-900 bg-zinc-950/50"
       }`}
@@ -22,11 +22,11 @@ export function Navbar() {
         width="0"
         height="0"
         className="mr-6 h-auto w-10 hover:cursor-pointer"
-        onClick={() => router.push("/home")}
+        onClick={() => router.push("/")}
       />
       <div
         className={`ml-auto hidden space-x-8 border-l sm:block ${
-          path === "/home" ? "border-l-gray-800" : "border-l-gray-900"
+          path === "/" ? "border-l-gray-800" : "border-l-gray-900"
         }`}
       >
         <Link

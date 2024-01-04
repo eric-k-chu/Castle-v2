@@ -12,8 +12,8 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
   function getColor(
     i: number,
   ): "text-amber-400" | "text-white" | "text-amber-600" {
-    if (i === 0) return "text-amber-400";
-    if (i === 2) return "text-amber-600";
+    if (i === 1) return "text-amber-400";
+    if (i === 3) return "text-amber-600";
     return "text-white";
   }
 
