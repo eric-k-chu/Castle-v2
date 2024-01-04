@@ -17,7 +17,7 @@ export default async function SearchPage({ params }: Props) {
     await getPlayerData(username);
 
   return (
-    <div className="pb-[100px] pt-20">
+    <div className="py-20">
       <div className="mx-auto w-full max-w-5xl px-4">
         <ProfileDisplay player={player} />
         <StatsDisplay stats={stats} />
