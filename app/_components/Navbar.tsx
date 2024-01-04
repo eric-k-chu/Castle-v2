@@ -21,34 +21,28 @@ export function Navbar() {
         alt="logo icon"
         width="0"
         height="0"
-        className="mr-6 h-auto w-10 hover:cursor-pointer"
+        className="mr-6 h-auto w-8 hover:cursor-pointer"
         onClick={() => router.push("/")}
       />
       <div
-        className={`ml-auto hidden space-x-8 border-l sm:block ${
+        className={`ml-auto space-x-8 border-l ${
           path === "/" ? "border-l-gray-800" : "border-l-gray-900"
         }`}
       >
-        <Link
-          href="/streamers"
-          className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
-          aria-label="Streamers"
-        >
-          Streamers
+        <Link href="/streamers" aria-label="Streamers">
+          <span className="hidden text-lg font-semibold uppercase hover:underline sm:inline">
+            Streamers
+          </span>
         </Link>
-        <Link
-          href="/leaderboards"
-          className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
-          aria-label="Leaderboards"
-        >
-          Leaderboards
+        <Link href="/leaderboards" aria-label="Leaderboards">
+          <span className="hidden text-lg font-semibold uppercase hover:underline sm:inline">
+            Leaderboards
+          </span>
         </Link>
-        <Link
-          href=""
-          className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
-          aria-label="Daily Puzzle"
-        >
-          Daily Puzzle
+        <Link href="" aria-label="Daily Puzzle">
+          <span className="hidden text-lg font-semibold uppercase hover:underline sm:inline">
+            Daily Puzzle
+          </span>
         </Link>
       </div>
     </nav>
