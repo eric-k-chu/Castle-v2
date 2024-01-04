@@ -19,6 +19,7 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
 
   return (
     <section className="mx-auto max-w-xl space-y-4">
+      <strong className="text-2xl sm:text-4xl">LEADERBOARDS</strong>
       {LEADERBOARDS.map((n) => (
         <div
           key={n}
@@ -26,7 +27,7 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
         >
           <Link
             href={`/leaderboards/${n}`}
-            className="w-full text-center font-semibold capitalize md:w-1/3"
+            className="w-full text-center font-semibold capitalize hover:underline md:w-1/3"
           >
             {getLeaderboardtitle(n)}
           </Link>
