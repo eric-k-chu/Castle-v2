@@ -6,12 +6,12 @@ export default async function HomePage() {
 
   return (
     <PageLayout>
-      <div className="pb-[390px] pt-[390px]">
+      <div className="pb-[420px] pt-[360px]">
         <div className="mb-4 text-center">
-          <h1 className="text-2xl font-semibold uppercase drop-shadow-glow sm:text-4xl">
+          <h1 className="text-2xl font-semibold uppercase sm:text-4xl">
             Castle
           </h1>
-          <p className="mt-4 text-base font-medium text-gray-200 drop-shadow-glow sm:text-xl">
+          <p className="mt-4 text-base font-medium text-gray-200 sm:text-xl">
             A player search engine. Powered by Chess.com API
           </p>
         </div>
