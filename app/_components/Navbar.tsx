@@ -1,56 +1,65 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useState, FormEvent } from "react";
+import { TitledPlayers } from "@/_lib/types";
+import { getPlayerSuggestions } from "@/_utils/fetcher";
+import { filterPlayers } from "@/_utils";
+import { SearchSuggestions } from "./home/SearchSuggestions";
+import { Logo } from ".";
 
 export function Navbar() {
   const path = usePathname();
   const router = useRouter();
+  const [suggestions, setSuggestions] = useState<TitledPlayers[]>();
+  const [query, setQuery] = useState("");
+
+  if (path === "/") return null;
+
+  async function getSuggestions() {
+    if (suggestions) return;
+    try {
+      const players = await getPlayerSuggestions();
+      setSuggestions(players);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  function handleSearch(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const encodedQuery = encodeURIComponent(query);
+    router.push(`/player/${encodedQuery}`);
+  }
 
   return (
-    <nav
-      className={`flex w-full items-center border-b px-6 py-4 ${
-        path === "/"
-          ? "absolute border-b-transparent bg-transparent"
-          : "fixed z-10 border-b-gray-900 bg-zinc-950/50"
-      }`}
-    >
-      <Image
-        src="/icons/logo.svg"
-        alt="logo icon"
-        width="0"
-        height="0"
-        className="mr-6 h-auto w-10 hover:cursor-pointer"
-        onClick={() => router.push("/")}
-      />
-      <div
-        className={`ml-auto hidden space-x-8 border-l sm:block ${
-          path === "/" ? "border-l-gray-800" : "border-l-gray-900"
-        }`}
-      >
-        <Link
-          href="/streamers"
-          className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
-          aria-label="Streamers"
-        >
-          Streamers
-        </Link>
-        <Link
-          href="/leaderboards"
-          className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
-          aria-label="Leaderboards"
-        >
-          Leaderboards
-        </Link>
-        <Link
-          href=""
-          className="text-lg font-semibold uppercase tracking-wider hover:text-gray-300"
-          aria-label="Daily Puzzle"
-        >
-          Daily Puzzle
-        </Link>
+    <div className="fixed z-20 flex w-full items-center justify-center bg-zinc-900/50 px-6 py-4">
+      <div className="mr-auto block sm:hidden">
+        <Logo className="h-auto w-6" />
       </div>
-    </nav>
+      <form
+        className="relative flex w-full max-w-xl items-center justify-center rounded-full bg-white px-4 py-2"
+        onSubmit={handleSearch}
+      >
+        <div className="z-20 flex w-fit items-center justify-center border-r border-gray-500 pr-2">
+          <Image
+            src="/icons/search.svg"
+            alt="search icon"
+            className="h-auto w-4"
+            width="0"
+            height="0"
+          />
+        </div>
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.currentTarget.value)}
+          placeholder="Search for a player"
+          className="z-20 w-full bg-transparent pl-2 text-sm text-black focus:outline-none"
+          onFocus={getSuggestions}
+        />
+        <SearchSuggestions query={query} playerList={suggestions} />
+      </form>
+    </div>
   );
 }
