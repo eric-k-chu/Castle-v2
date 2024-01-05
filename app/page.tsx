@@ -6,7 +6,7 @@ export default async function HomePage() {
 
   return (
     <PageLayout>
-      <div className="pt-[250px]">
+      <div className="pb-[390px] pt-[390px]">
         <div className="mb-4 text-center">
           <h1 className="text-2xl font-semibold uppercase drop-shadow-glow sm:text-4xl">
             Castle
