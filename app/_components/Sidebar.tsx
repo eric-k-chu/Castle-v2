@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Logo } from ".";
 
 type Link = "Leaderboards" | "Streamers" | "Daily Puzzles" | "Countries";
 
@@ -19,11 +20,11 @@ export function Sidebar() {
   }
 
   return (
-    <div className="group fixed z-50 h-full bg-zinc-900">
+    <div className="group fixed z-50 hidden h-full bg-zinc-900 sm:block">
       <div className="flex w-16 flex-col transition-all duration-150 ease-in-out group-hover:w-72">
         <Link className="mb-2 px-5" href="/">
           <div className="flex w-full items-center gap-x-6 border-b border-b-zinc-800 py-5 hover:cursor-pointer">
-            <Logo />
+            <Logo className="h-auto w-6" />
             <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-2xl font-semibold text-zinc-200 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
               Castle
             </h1>
@@ -50,32 +51,6 @@ function Label({ label }: { label: string }) {
     <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-base text-zinc-500 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
       {label}
     </h1>
-  );
-}
-
-function Logo() {
-  return (
-    <div>
-      <svg
-        className="h-auto w-6"
-        viewBox="0 0 92 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0.843311 100L1 32L14.8235 35.8835L14.6668 85.4369H77.3335L77.1767 35.8835L91.0002 32L91.157 100H0.843311Z"
-          className="fill-zinc-200"
-        />
-        <path
-          d="M25.7257 73.301V0L39.5492 3.8835V73.301H25.7257Z"
-          className="fill-zinc-200"
-        />
-        <path
-          d="M52.4512 73.301V23.301L66.2747 19.4175V73.301H52.4512Z"
-          className="fill-zinc-200"
-        />
-      </svg>
-    </div>
   );
 }
 

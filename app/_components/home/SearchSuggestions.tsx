@@ -2,26 +2,27 @@
 
 import { filterPlayers } from "@/_utils/filter-players";
 import { TitledPlayers } from "@/_lib/types";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
   query: string;
-  playerList: TitledPlayers[];
+  playerList: TitledPlayers[] | undefined;
 };
 
 export function SearchSuggestions({ query, playerList }: Props) {
   const router = useRouter();
+  const path = usePathname();
   const players = query.length > 0 ? filterPlayers(playerList, query, 5) : [];
 
   const isOpen = query.length > 0 && players && players.length > 0;
 
   return (
     <div
-      className={`absolute top-5 z-[9] w-full rounded-b-3xl bg-white pt-6 sm:top-8 ${
-        isOpen ? "block" : "hidden"
-      }`}
+      className={`absolute top-5 z-[9] w-full rounded-b-3xl bg-white pt-6 text-black ${
+        isOpen && playerList ? "block" : "hidden"
+      } ${path === "/" ? "sm:top-8" : ""}`}
     >
-      <div className="relative w-full items-center space-y-4 border-t border-t-gray-300 py-6">
+      <div className="relative w-full space-y-4 border-t border-t-gray-300 py-5">
         <section className="w-full">
           <h1 className="mb-2 pl-6 text-xs">Titled Players</h1>
           <ul className="space-y-2 text-sm">

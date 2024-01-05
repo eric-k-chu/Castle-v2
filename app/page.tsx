@@ -6,7 +6,7 @@ export default async function HomePage() {
 
   return (
     <PageLayout>
-      <div className="pb-[420px] pt-[360px]">
+      <div className="flex h-screen flex-col items-center justify-center">
         <div className="mb-4 text-center">
           <h1 className="text-2xl font-semibold uppercase sm:text-4xl">
             Castle
