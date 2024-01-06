@@ -1,6 +1,6 @@
 import { Show } from "@/_components";
 import { LEADERBOARDS } from "@/_lib/constants";
-import { Leaderboards, Leaderboard } from "@/_lib/types";
+import { Leaderboards } from "@/_lib/types";
 import { getLeaderboardtitle } from "@/_utils";
 import Link from "next/link";
 
@@ -18,8 +18,8 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
   }
 
   return (
-    <section className="mx-auto max-w-xl space-y-4">
-      <strong className="text-2xl sm:text-4xl">LEADERBOARDS</strong>
+    <section className="mx-auto max-w-sm space-y-4 sm:max-w-md md:max-w-lg lg:max-w-2xl">
+      <strong className="text-lg sm:text-2xl md:text-4xl">LEADERBOARDS</strong>
       {LEADERBOARDS.map((n) => (
         <div
           key={n}

@@ -16,8 +16,8 @@ export function SearchInput({ players }: Props) {
 
   function handleSearch(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const encodedQuery = encodeURIComponent(query);
-    router.push(`/player/${encodedQuery}`);
+    router.push(`/player/${query}`);
+    setQuery("");
   }
 
   return (
