@@ -299,3 +299,9 @@ interface Streamer {
 export interface Streamers {
   streamers: Streamer[];
 }
+
+export type Route =
+  | "leaderboards"
+  | "streamers"
+  | "daily-puzzles"
+  | "countries";

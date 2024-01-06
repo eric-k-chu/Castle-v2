@@ -5,17 +5,15 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, FormEvent } from "react";
 import { TitledPlayers } from "@/_lib/types";
 import { getPlayerSuggestions } from "@/_utils/fetcher";
-import { filterPlayers } from "@/_utils";
 import { SearchSuggestions } from "./home/SearchSuggestions";
 import { Logo } from ".";
+import { MobileSidebar } from "./MobileSidebar";
 
 export function Navbar() {
   const path = usePathname();
   const router = useRouter();
   const [suggestions, setSuggestions] = useState<TitledPlayers[]>();
   const [query, setQuery] = useState("");
-
-  if (path === "/") return null;
 
   async function getSuggestions() {
     if (suggestions) return;
@@ -35,11 +33,14 @@ export function Navbar() {
 
   return (
     <div className="fixed z-20 flex w-full items-center justify-center bg-zinc-900/50 px-6 py-4">
-      <div className="mr-auto block sm:hidden">
-        <Logo className="h-auto w-6" />
+      <div className="mr-auto flex items-center gap-x-4 sm:hidden">
+        <MobileSidebar />
+        <Logo className="h-auto w-5" />
       </div>
       <form
-        className="relative flex w-full max-w-xl items-center justify-center rounded-full bg-white px-4 py-2"
+        className={`relative w-full max-w-xl items-center justify-center rounded-full bg-white px-4 py-2 ${
+          path === "/" ? "hidden" : "flex"
+        }`}
         onSubmit={handleSearch}
       >
         <div className="z-20 flex w-fit items-center justify-center border-r border-gray-500 pr-2">
