@@ -6,8 +6,9 @@ import { useState, FormEvent } from "react";
 import { TitledPlayers } from "@/_lib/types";
 import { getPlayerSuggestions } from "@/_utils/fetcher";
 import { SearchSuggestions } from "./home/SearchSuggestions";
-import { Logo } from ".";
+import { Logo, Show } from ".";
 import { MobileSidebar } from "./MobileSidebar";
+import { filterPlayers } from "@/_utils";
 
 export function Navbar() {
   const path = usePathname();
@@ -35,9 +36,16 @@ export function Navbar() {
     <div className="fixed z-20 flex w-full items-center justify-center bg-zinc-900/50 px-6 py-4">
       <div className="mr-auto flex items-center gap-x-4 sm:hidden">
         <MobileSidebar />
-        <Logo className="h-auto w-5" />
+        <button onClick={() => router.push("/")}>
+          <Logo className="h-auto w-5" />
+        </button>
       </div>
-      <MobileSearch />
+      <MobileSearch
+        query={query}
+        setQuery={setQuery}
+        suggestions={suggestions}
+        getSuggestions={getSuggestions}
+      />
       <form
         className={`relative w-full items-center justify-center rounded-full bg-white px-4 py-2 sm:max-w-lg lg:max-w-xl xl:max-w-2xl ${
           path === "/" ? "hidden" : "hidden sm:flex"
@@ -66,12 +74,29 @@ export function Navbar() {
   );
 }
 
-function MobileSearch() {
+function MobileSearch({
+  query,
+  setQuery,
+  suggestions,
+  getSuggestions,
+}: {
+  query: string;
+  setQuery: (n: string) => void;
+  suggestions: TitledPlayers[] | undefined;
+  getSuggestions: () => void;
+}) {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
-  function handleClick(e: React.MouseEvent<HTMLDivElement>) {
-    console.log(e.currentTarget.id);
-    setIsOpen(e.currentTarget.id === "search-bg" ? false : true);
+  const showSuggestions = query.length > 0;
+
+  const filteredSuggestions =
+    suggestions && showSuggestions ? filterPlayers(suggestions, query) : [];
+
+  function handleSearch(name: string) {
+    router.push(`/player/${name}`);
+    setIsOpen(false);
+    setQuery("");
   }
 
   return (
@@ -86,14 +111,70 @@ function MobileSearch() {
         </svg>
       </button>
       <div
-        id="search-bg"
         className={`fixed left-0 top-0 z-50 h-screen w-full bg-zinc-800/20 backdrop-blur-sm transition-opacity duration-150 ease-in-out ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
-        onClick={handleClick}
       >
-        <div id="search-input" className="z-[60] w-full bg-red-400 text-4xl">
-          test
+        <div
+          className="z-[55] h-full w-full"
+          onClick={() => setIsOpen(false)}
+        />
+        <div className="absolute top-0 z-[60] flex w-full flex-col items-center gap-y-2 p-4">
+          <form className="relative flex w-full items-center rounded-full bg-white px-4 py-2 text-black">
+            <div className="z-[61] flex w-fit items-center justify-center border-r border-gray-500 pr-2">
+              <Image
+                src="/icons/search.svg"
+                alt="search icon"
+                className="h-auto w-4"
+                width="0"
+                height="0"
+              />
+            </div>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.currentTarget.value)}
+              className="z-[61] w-full bg-transparent pl-2 text-sm focus:outline-none"
+              placeholder="search for a player"
+              onFocus={getSuggestions}
+            />
+          </form>
+          <div
+            className={`w-full overflow-hidden rounded-lg bg-white pb-2 text-sm text-black ${
+              showSuggestions ? "block" : "hidden"
+            }`}
+          >
+            <Show
+              when={
+                filteredSuggestions !== undefined &&
+                filteredSuggestions.length >= 1
+              }
+            >
+              <h1 className="mb-2 select-none bg-gray-200 py-1 indent-4 text-xs font-medium">
+                Titled Players
+              </h1>
+              {filteredSuggestions?.map((n) => (
+                <button
+                  key={n.name}
+                  onClick={() => handleSearch(n.name)}
+                  className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-zinc-300"
+                >
+                  <span className="mr-1 rounded-sm bg-[#7C2929] px-1 py-0.5 font-mono text-white">
+                    {n.title}
+                  </span>
+                  {n.name}
+                </button>
+              ))}
+            </Show>
+            <h1 className="my-2 select-none bg-gray-200 py-1 indent-4 text-xs font-medium">
+              Player
+            </h1>
+            <button
+              className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-zinc-300"
+              onClick={() => handleSearch(query)}
+            >
+              {query}
+            </button>
+          </div>
         </div>
       </div>
     </div>
