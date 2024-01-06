@@ -1,9 +1,9 @@
-import { PageLayout } from "@/_components";
+import { ChessImgBackground } from "@/_components";
 
 export default function PlayerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <PageLayout radial>{children}</PageLayout>;
+  return <ChessImgBackground radial>{children}</ChessImgBackground>;
 }

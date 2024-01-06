@@ -1,12 +1,12 @@
 import { getPlayerSuggestions } from "@/_utils/fetcher";
-import { Logo, PageLayout } from "./_components";
+import { Logo, ChessImgBackground } from "./_components";
 import { Search } from "./_components/search";
 
 export default async function HomePage() {
   const suggestions = await getPlayerSuggestions();
 
   return (
-    <PageLayout>
+    <ChessImgBackground>
       <div className="flex h-screen flex-col items-center justify-center px-2">
         <div className="mb-12 flex w-full max-w-2xl items-center justify-center gap-x-4 sm:gap-x-8">
           <Logo className="h-16 w-auto sm:h-24" />
@@ -21,6 +21,6 @@ export default async function HomePage() {
         </div>
         <Search suggestions={suggestions} />
       </div>
-    </PageLayout>
+    </ChessImgBackground>
   );
 }
