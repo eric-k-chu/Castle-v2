@@ -16,6 +16,7 @@ export function Search({ suggestions }: Props) {
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    console.log(query);
     router.push(`/player/${query}`);
     setQuery("");
   }
