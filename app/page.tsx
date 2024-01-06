@@ -1,22 +1,26 @@
 import { getPlayerSuggestions } from "@/_utils/fetcher";
-import { PageLayout, SearchInput } from "./_components";
+import { Logo, ChessImgBackground } from "./_components";
+import { Search } from "./_components/search";
 
 export default async function HomePage() {
-  const players = await getPlayerSuggestions();
+  const suggestions = await getPlayerSuggestions();
 
   return (
-    <PageLayout>
-      <div className="flex h-screen flex-col items-center justify-center">
-        <div className="mb-4 text-center">
-          <h1 className="text-2xl font-semibold uppercase sm:text-4xl">
-            Castle
-          </h1>
-          <p className="mt-4 text-base font-medium text-gray-200 sm:text-xl">
-            A player search engine. Powered by Chess.com API
-          </p>
+    <ChessImgBackground>
+      <div className="flex h-screen flex-col items-center justify-center px-2">
+        <div className="mb-12 flex w-full max-w-2xl items-center justify-center gap-x-4 sm:gap-x-8">
+          <Logo className="h-16 w-auto sm:h-24" />
+          <div className="space-y-4">
+            <h1 className="text-2xl font-semibold uppercase sm:text-4xl">
+              Castle
+            </h1>
+            <p className="hidden text-xl font-medium capitalize text-gray-200 sm:block">
+              a chess.com search engine.
+            </p>
+          </div>
         </div>
-        <SearchInput players={players} />
+        <Search suggestions={suggestions} />
       </div>
-    </PageLayout>
+    </ChessImgBackground>
   );
 }
