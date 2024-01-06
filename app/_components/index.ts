@@ -8,3 +8,4 @@ export * from "./SectionLayout";
 export * from "./home/SearchInput";
 export * from "./Sidebar";
 export * from "./Logo";
+export * from "./Icons";

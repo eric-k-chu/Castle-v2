@@ -1,4 +1,4 @@
-import { Route } from "@/_lib/types";
+import { Route } from "@/_lib/routes";
 
 function Leaderboard() {
   return (
@@ -57,16 +57,32 @@ function Countries() {
 
 export function Icon({ type }: { type: Route }) {
   if (type === "leaderboards") {
-    return <Leaderboard></Leaderboard>;
+    return (
+      <div>
+        <Leaderboard></Leaderboard>
+      </div>
+    );
   }
 
   if (type === "streamers") {
-    return <Streamers></Streamers>;
+    return (
+      <div>
+        <Streamers></Streamers>
+      </div>
+    );
   }
 
   if (type === "countries") {
-    return <Countries></Countries>;
+    return (
+      <div>
+        <Countries></Countries>
+      </div>
+    );
   }
 
-  return <DailyPuzzles></DailyPuzzles>;
+  return (
+    <div>
+      <DailyPuzzles></DailyPuzzles>
+    </div>
+  );
 }

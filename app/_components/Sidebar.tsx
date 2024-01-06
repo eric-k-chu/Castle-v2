@@ -25,7 +25,7 @@ export function Sidebar() {
             >
               <Icon type={n} />
               <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-base text-zinc-500 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
-                {routes[n]}
+                {routes[n].name}
               </h1>
             </Link>
           </div>

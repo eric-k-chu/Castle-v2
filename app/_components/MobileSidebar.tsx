@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Logo } from ".";
-import { Icon } from "./Icons";
+import { Icon, Logo } from ".";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Route } from "@/_lib/types";
-import { getRoutes, routes } from "@/_lib/routes";
+import { getRoutes, routes, Route } from "@/_lib/routes";
 
 export function MobileSidebar() {
   const router = useRouter();
@@ -54,7 +52,7 @@ export function MobileSidebar() {
               onClick={() => goToRoute(n)}
             >
               <Icon type={n} />
-              <h1 className="text-zinc-500">{routes[n]}</h1>
+              <h1 className="text-zinc-500">{routes[n].name}</h1>
             </button>
           ))}
         </div>

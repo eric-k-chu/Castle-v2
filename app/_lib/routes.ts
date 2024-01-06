@@ -1,10 +1,26 @@
-import { Route } from "./types";
+interface RouteObject {
+  name: string;
+}
 
-export const routes: Readonly<Record<Route, string>> = {
-  leaderboards: "Leadeboards",
-  streamers: "Streamers",
-  "daily-puzzles": "Daily Puzzles",
-  countries: "Countries",
+export type Route =
+  | "leaderboards"
+  | "streamers"
+  | "daily-puzzles"
+  | "countries";
+
+export const routes: Readonly<Record<Route, RouteObject>> = {
+  leaderboards: {
+    name: "Leaderboards",
+  },
+  streamers: {
+    name: "Streamers",
+  },
+  "daily-puzzles": {
+    name: "Daily Puzzles",
+  },
+  countries: {
+    name: "Countries",
+  },
 };
 
 export function getRoutes(): Route[] {
