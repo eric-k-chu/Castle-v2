@@ -4,32 +4,33 @@ import {
   TwitchIcon,
   WorldIcon,
 } from "@/_components/icons";
+import { Route, RouteKeys } from "./constants";
 
 interface RouteObject {
-  path: string;
-  name: string;
+  path: Route;
+  name: RouteKeys;
   icon: JSX.Element;
 }
 
 export const routes: RouteObject[] = [
   {
-    path: "leaderboards",
-    name: "Leaderboards",
+    path: "/leaderboards",
+    name: "leaderboards",
     icon: <TrophyIcon />,
   },
   {
-    path: "streamers",
-    name: "Streamers",
+    path: "/streamers",
+    name: "streamers",
     icon: <TwitchIcon />,
   },
   {
-    path: "daily-puzzles",
-    name: "Daily Puzzles",
+    path: "/daily-puzzles",
+    name: "daily puzzles",
     icon: <DailyPuzzleIcon />,
   },
   {
-    path: "countries",
-    name: "Countries",
+    path: "/countries",
+    name: "countries",
     icon: <WorldIcon />,
   },
 ];
