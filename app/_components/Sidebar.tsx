@@ -23,7 +23,7 @@ export function Sidebar() {
               href={n.path}
             >
               <div>{n.icon}</div>
-              <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-base text-zinc-500 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
+              <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-base capitalize text-zinc-500 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
                 {n.name}
               </h1>
             </Link>

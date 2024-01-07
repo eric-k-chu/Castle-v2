@@ -1,5 +1,7 @@
+import { CHESS_API_BASE } from "@/_lib/constants";
+
 export function getTournamentName(url: string): string {
-  const urlPattern = "https://api.chess.com/pub/tournament/";
+  const urlPattern = `${CHESS_API_BASE}tournament/`;
   return url
     .split(urlPattern)[1]
     .split("-")

@@ -1,7 +1,6 @@
 import { Show } from "@/_components";
-import { LEADERBOARDS } from "@/_lib/constants";
+import { LEADERBOARDS, ROUTES } from "@/_lib/constants";
 import { Leaderboards } from "@/_lib/types";
-import { getLeaderboardtitle } from "@/_utils";
 import Link from "next/link";
 
 type Props = {
@@ -9,6 +8,10 @@ type Props = {
 };
 
 export function LeaderboardsDisplay({ leaderboards }: Props) {
+  const leaderboardModes = Object.keys(
+    leaderboards,
+  ) as (keyof typeof LEADERBOARDS)[];
+
   function getColor(
     i: number,
   ): "text-amber-400" | "text-white" | "text-amber-600" {
@@ -19,17 +22,19 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
 
   return (
     <section className="mx-auto max-w-sm space-y-4 sm:max-w-md md:max-w-lg lg:max-w-2xl">
-      <strong className="text-lg sm:text-2xl md:text-4xl">LEADERBOARDS</strong>
-      {LEADERBOARDS.map((n) => (
+      <strong className="text-lg uppercase sm:text-2xl md:text-4xl">
+        leaderboards
+      </strong>
+      {leaderboardModes.map((n) => (
         <div
           key={n}
           className="flex flex-wrap items-center justify-center gap-8 rounded-sm bg-zinc-800 py-6 md:justify-start md:gap-0 md:py-8"
         >
           <Link
-            href={`/leaderboards/${n}`}
-            className="w-full text-center font-semibold capitalize hover:underline md:w-1/3"
+            href={`${ROUTES.leaderboards}/${n}`}
+            className="w-full text-center font-semibold uppercase hover:underline md:w-1/3"
           >
-            {getLeaderboardtitle(n)}
+            {LEADERBOARDS[n]}
           </Link>
           <div className="w-full px-4 md:w-2/3">
             {leaderboards[n].slice(0, 5).map((n) => (

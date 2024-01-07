@@ -1,4 +1,4 @@
-import { CHESS_API_URL } from "@/_lib/constants";
+import { CHESS_API_BASE } from "@/_lib/constants";
 import { Endpoint } from "@/_lib/types";
 import { ChessApiError } from "@/_utils/exceptions";
 
@@ -20,7 +20,7 @@ export async function getPlayerMonthlyArchive(url: string) {
 }
 
 function createUrl(username: string, endpoint: Endpoint) {
-  let url = CHESS_API_URL + "player";
+  let url = CHESS_API_BASE + "player";
   switch (endpoint) {
     case "profile":
       url += `/${username}`;

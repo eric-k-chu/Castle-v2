@@ -5,7 +5,7 @@ import { Logo } from ".";
 import { useRouter } from "next/navigation";
 import { routes } from "@/_lib/routes";
 import { ExitIcon, MenuIcon } from "./icons";
-import { Route } from "@/_lib/constants";
+import { Route } from "@/_lib/types";
 
 export function MobileSidebar() {
   const router = useRouter();

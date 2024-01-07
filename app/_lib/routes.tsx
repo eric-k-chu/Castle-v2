@@ -4,11 +4,12 @@ import {
   TwitchIcon,
   WorldIcon,
 } from "@/_components/icons";
-import { Route, RouteKeys } from "./constants";
+import { Route } from "./types";
+import { ROUTES } from "./constants";
 
 interface RouteObject {
   path: Route;
-  name: RouteKeys;
+  name: keyof typeof ROUTES;
   icon: JSX.Element;
 }
 
