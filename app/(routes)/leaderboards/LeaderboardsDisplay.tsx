@@ -1,4 +1,5 @@
 import { Show } from "@/_components";
+import { TrophyIcon } from "@/_components/icons";
 import { LEADERBOARDS, ROUTES } from "@/_lib/constants";
 import { Leaderboards } from "@/_lib/types";
 import { getTextColorFromRank } from "@/_utils";
@@ -15,9 +16,12 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
 
   return (
     <section className="mx-auto max-w-sm space-y-4 sm:max-w-md md:max-w-lg lg:max-w-2xl">
-      <strong className="text-lg uppercase sm:text-2xl md:text-4xl">
-        leaderboards
-      </strong>
+      <div className="flex items-center gap-x-2 sm:gap-x-4">
+        <TrophyIcon className="inline h-auto w-4 fill-zinc-200 sm:w-5 md:w-7" />
+        <strong className="text-lg uppercase sm:text-2xl md:text-4xl">
+          leaderboards
+        </strong>
+      </div>
       {leaderboardModes.map((n) => (
         <div
           key={n}
