@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { Logo } from ".";
-import { getRoutes, routes } from "@/_lib/routes";
-import { Icon } from "./Icons";
+import { routes } from "@/_lib/routes";
 
 export function Sidebar() {
   return (
@@ -17,15 +16,15 @@ export function Sidebar() {
             </h1>
           </div>
         </Link>
-        {getRoutes().map((n) => (
-          <div className="w-full px-4 py-3" key={n}>
+        {routes.map((n) => (
+          <div className="w-full px-4 py-3" key={n.name}>
             <Link
               className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-zinc-800"
-              href={n}
+              href={n.path}
             >
-              <Icon type={n} />
+              <div>{n.icon}</div>
               <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-base text-zinc-500 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
-                {routes[n].name}
+                {n.name}
               </h1>
             </Link>
           </div>

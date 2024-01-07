@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Icon, Logo } from ".";
-import Image from "next/image";
+import { Logo } from ".";
 import { useRouter } from "next/navigation";
-import { getRoutes, routes, Route } from "@/_lib/routes";
+import { routes } from "@/_lib/routes";
+import { ExitIcon, MenuIcon } from "./icons";
 
 export function MobileSidebar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
-  function goToRoute(n: Route): void {
+  function goToRoute(n: string): void {
     router.push(n);
     setIsOpen(false);
   }
@@ -18,41 +18,29 @@ export function MobileSidebar() {
   return (
     <div className="block sm:hidden">
       <button className="block" onClick={() => setIsOpen(true)}>
-        <svg
-          className="h-4 w-4 fill-white"
-          viewBox="0 -5 32 32"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M30 18a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4h28Zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4h28Zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4h28Z" />
-        </svg>
+        <MenuIcon />
       </button>
 
       <div
-        className={`fixed bottom-0 left-0 z-30 h-screen w-72 rounded-r-lg bg-zinc-900 px-4 transition-transform duration-150 ease-in-out ${
+        className={`fixed bottom-0 left-0 h-screen w-72 rounded-r-lg bg-zinc-900 px-4 transition-transform duration-150 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-[288px]"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-b-zinc-800 py-6">
+        <div className="z-[999] flex items-center justify-between border-b border-b-zinc-800 py-6">
           <Logo className="h-auto w-5" />
           <button onClick={() => setIsOpen(false)}>
-            <Image
-              src="/icons/exit.svg"
-              alt="exit icon"
-              width={0}
-              height={0}
-              className="h-auto w-4 rotate-180"
-            />
+            <ExitIcon className="h-auto w-5 rotate-180" />
           </button>
         </div>
         <div className="mt-2">
-          {getRoutes().map((n) => (
+          {routes.map((n) => (
             <button
-              key={n}
+              key={n.name}
               className="flex items-center gap-x-6 py-4 hover:cursor-pointer"
-              onClick={() => goToRoute(n)}
+              onClick={() => goToRoute(n.path)}
             >
-              <Icon type={n} />
-              <h1 className="text-zinc-500">{routes[n].name}</h1>
+              <div>{n.icon}</div>
+              <h1 className="text-zinc-500">{n.name}</h1>
             </button>
           ))}
         </div>

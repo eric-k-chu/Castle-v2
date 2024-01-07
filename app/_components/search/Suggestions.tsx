@@ -28,6 +28,7 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
           <button
             key={n.name}
             onClick={() => onClick(n.name)}
+            type="button"
             className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-zinc-300 sm:text-sm"
           >
             <span className="mr-1 rounded-sm bg-[#7C2929] px-1 py-0.5 font-mono text-white">
@@ -43,6 +44,7 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
       <button
         className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-zinc-300 sm:text-sm"
         onClick={() => onClick(query)}
+        type="button"
       >
         {query}
       </button>
