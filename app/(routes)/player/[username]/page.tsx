@@ -18,7 +18,7 @@ export default async function SearchPage({ params }: Props) {
 
   return (
     <div className="py-20">
-      <div className="mx-auto w-full max-w-5xl px-4">
+      <div className="mx-auto w-full max-w-lg px-4 md:max-w-2xl lg:max-w-4xl">
         <ProfileDisplay player={player} />
         <StatsDisplay stats={stats} />
         <ClubsDisplay clubs={clubs} />

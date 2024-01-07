@@ -19,7 +19,7 @@ export function ArchivesDisplay({ archive, username }: Props) {
     return (
       <section className="my-8">
         <h1 className="py-2 text-lg font-semibold uppercase">Archives</h1>
-        <div className="rounded-sm bg-zinc-800 px-4 py-8">
+        <div className="rounded-sm bg-zinc-900 px-4 py-8">
           <h1 className="text-center text-zinc-400">
             No games have been played.
           </h1>
@@ -31,7 +31,7 @@ export function ArchivesDisplay({ archive, username }: Props) {
   return (
     <section className="my-8">
       <h1 className="py-2 text-lg font-semibold uppercase">Archives</h1>
-      <div className="rounded-sm bg-zinc-800 px-4 py-8">
+      <div className="rounded-sm bg-zinc-900 px-4 py-8">
         <header className="mb-8 grid grid-cols-10 px-4">
           <strong className="col-span-2 text-xs uppercase sm:col-span-1 sm:text-sm">
             time
@@ -52,7 +52,7 @@ export function ArchivesDisplay({ archive, username }: Props) {
         {games[page].map((n) => (
           <div
             key={n.uuid}
-            className={`my-1 grid grid-cols-10 border-l-8 p-4 text-xs shadow-md odd:bg-transparent even:rounded-sm even:bg-zinc-900 sm:text-sm ${getGameResultColor(
+            className={`my-1 grid grid-cols-10 border-l-8 p-4 text-xs odd:bg-transparent even:rounded-sm even:bg-zinc-800 sm:text-sm ${getGameResultColor(
               username,
               n.pgn,
             )}`}
