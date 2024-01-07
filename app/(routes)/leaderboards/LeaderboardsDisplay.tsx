@@ -1,6 +1,7 @@
 import { Show } from "@/_components";
 import { LEADERBOARDS, ROUTES } from "@/_lib/constants";
 import { Leaderboards } from "@/_lib/types";
+import { getTextColorFromRank } from "@/_utils";
 import Link from "next/link";
 
 type Props = {
@@ -11,14 +12,6 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
   const leaderboardModes = Object.keys(
     leaderboards,
   ) as (keyof typeof LEADERBOARDS)[];
-
-  function getColor(
-    i: number,
-  ): "text-amber-400" | "text-white" | "text-amber-600" {
-    if (i === 1) return "text-amber-400";
-    if (i === 3) return "text-amber-600";
-    return "text-white";
-  }
 
   return (
     <section className="mx-auto max-w-sm space-y-4 sm:max-w-md md:max-w-lg lg:max-w-2xl">
@@ -43,7 +36,9 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
                 href={`${ROUTES.player}${n.username.toLocaleLowerCase()}`}
                 className="flex items-center gap-x-2 rounded-sm p-1 text-xs hover:bg-zinc-900 sm:text-sm"
               >
-                <span className={`${getColor(n.rank)} w-4`}>#{n.rank}</span>
+                <span className={`${getTextColorFromRank(n.rank)} w-4`}>
+                  #{n.rank}
+                </span>
                 <img
                   src={n.avatar}
                   alt={`${n.username} avatar`}

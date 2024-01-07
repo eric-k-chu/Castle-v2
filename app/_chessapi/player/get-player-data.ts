@@ -1,6 +1,6 @@
 import { CHESS_API_BASE } from "@/_lib/constants";
 import { Endpoint } from "@/_lib/types";
-import { ChessApiError } from "@/_utils/exceptions";
+import { ChessApiError } from "@/_utils";
 
 export async function getPlayerData<T>(
   username: string | null,

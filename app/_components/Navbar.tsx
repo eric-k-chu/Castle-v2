@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { TitledPlayers } from "@/_lib/types";
-import { getPlayerSuggestions } from "@/_utils/fetcher";
+import { getPlayerSuggestions } from "@/_utils";
 import { Logo, Show } from ".";
 import { MobileSidebar } from "./MobileSidebar";
 import { MobileSearch } from "./search/MobileSearch";

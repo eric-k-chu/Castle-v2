@@ -1,4 +1,4 @@
-import { getPlayerData } from "@/_utils/fetcher";
+import { getAllPlayerData } from "@/_utils";
 import {
   ArchivesDisplay,
   ClubsDisplay,
@@ -14,7 +14,7 @@ type Props = {
 export default async function SearchPage({ params }: Props) {
   const username = params.username ?? "";
   const { player, stats, clubs, archives, tournaments } =
-    await getPlayerData(username);
+    await getAllPlayerData(username);
 
   return (
     <div className="py-20">

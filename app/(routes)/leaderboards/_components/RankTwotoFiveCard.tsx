@@ -3,21 +3,17 @@ import { LeaderboardPlayer } from "@/_lib/types";
 import Link from "next/link";
 import { Trend } from ".";
 import { ROUTES } from "@/_lib/constants";
+import {
+  getBgColorFromRank,
+  getBorderColorFromRank,
+  getTextColorFromRank,
+} from "@/_utils";
 
 type Props = {
   players: LeaderboardPlayer[];
 };
 
 export function RankTwotoFiveCard({ players }: Props) {
-  function getColor<T extends "border" | "text" | "bg">(
-    rank: number,
-    type: T,
-  ): `${T}-white` | `${T}-amber-600` | `${T}-zinc-400` {
-    if (rank === 2) return `${type}-white`;
-    if (rank === 3) return `${type}-amber-600`;
-    return `${type}-zinc-400`;
-  }
-
   return (
     <div className="mt-4 space-y-4 lg:grid lg:grid-cols-4 lg:gap-x-4 lg:space-y-0">
       {players.map((n) => (
@@ -27,10 +23,9 @@ export function RankTwotoFiveCard({ players }: Props) {
         >
           <div className="flex items-center gap-x-2">
             <h1
-              className={`rounded-sm bg-opacity-50 px-2 py-1 text-xs sm:text-sm ${getColor(
+              className={`rounded-sm bg-opacity-50 px-2 py-1 text-xs sm:text-sm ${getTextColorFromRank(
                 n.rank,
-                "text",
-              )} ${getColor(n.rank, "bg")}`}
+              )} ${getBgColorFromRank(n.rank)}`}
             >
               {n.rank}
             </h1>
@@ -40,9 +35,8 @@ export function RankTwotoFiveCard({ players }: Props) {
                 "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
               }
               alt={`${n.username} avatar`}
-              className={`h-6 w-6 rounded-sm border-2 sm:h-8 sm:w-8 ${getColor(
+              className={`h-6 w-6 rounded-sm border-2 sm:h-8 sm:w-8 ${getBorderColorFromRank(
                 n.rank,
-                "border",
               )}`}
             />
             <Show when={n.title !== undefined}>

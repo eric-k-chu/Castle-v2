@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { InProgMatchData } from "@/_lib/types";
 import { getPages, getTournamentName } from "@/_utils";
 import { useMemo, useState } from "react";
