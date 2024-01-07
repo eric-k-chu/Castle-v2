@@ -9,6 +9,12 @@ const nextConfig = {
         port: "",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "www.chess.com",
+        port: "",
+        pathname: "**",
+      },
     ],
   },
 };

@@ -1,6 +1,6 @@
-import { CHESS_API_URL } from "@/_lib/constants";
-import { Endpoint } from "@/_lib/types";
-import { ChessApiError } from "@/_utils/exceptions";
+import { CHESS_API_BASE } from "@/_lib/constants";
+import { Endpoint, Players, Title } from "@/_lib/types";
+import { ChessApiError } from "@/_utils";
 
 export async function getPlayerData<T>(
   username: string | null,
@@ -20,7 +20,7 @@ export async function getPlayerMonthlyArchive(url: string) {
 }
 
 function createUrl(username: string, endpoint: Endpoint) {
-  let url = CHESS_API_URL + "player";
+  let url = CHESS_API_BASE + "player";
   switch (endpoint) {
     case "profile":
       url += `/${username}`;
@@ -41,4 +41,11 @@ function createUrl(username: string, endpoint: Endpoint) {
       throw new Error("Faulty Endpoint");
   }
   return url;
+}
+
+export async function getTitledPlayers(title: Title): Promise<Players> {
+  const url = `${CHESS_API_BASE}titled/${title}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new ChessApiError(res.status, title);
+  return await res.json();
 }

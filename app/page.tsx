@@ -1,4 +1,4 @@
-import { getPlayerSuggestions } from "@/_utils/fetcher";
+import { getPlayerSuggestions } from "@/_utils";
 import { Logo, ChessImgBackground } from "./_components";
 import { Search } from "./_components/search";
 

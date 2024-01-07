@@ -1,14 +1,6 @@
-export type Title =
-  | "GM"
-  | "WGM"
-  | "IM"
-  | "WIM"
-  | "FM"
-  | "WFM"
-  | "NM"
-  | "WNM"
-  | "CM"
-  | "WCM";
+import { LEADERBOARDS, ROUTES, TITLES } from "./constants";
+
+export type Title = (typeof TITLES)[number];
 
 type Status =
   | "winner"
@@ -256,37 +248,6 @@ export interface LeaderboardPlayer {
   draw_count: number;
 }
 
-export interface Leaderboards {
-  daily: LeaderboardPlayer[];
-  daily960: LeaderboardPlayer[];
-  live_rapid: LeaderboardPlayer[];
-  live_blitz: LeaderboardPlayer[];
-  live_bullet: LeaderboardPlayer[];
-  live_bughouse: LeaderboardPlayer[];
-  live_blitz960: LeaderboardPlayer[];
-  live_threecheck: LeaderboardPlayer[];
-  live_crazyhouse: LeaderboardPlayer[];
-  live_kingofthehill: LeaderboardPlayer[];
-  tactics: LeaderboardPlayer[];
-  rush: LeaderboardPlayer[];
-  battle: LeaderboardPlayer[];
-}
-
-export type Leaderboard =
-  | "daily"
-  | "daily960"
-  | "live_rapid"
-  | "live_blitz"
-  | "live_bullet"
-  | "live_bughouse"
-  | "live_blitz960"
-  | "live_threecheck"
-  | "live_crazyhouse"
-  | "live_kingofthehill"
-  | "tactics"
-  | "rush"
-  | "battle";
-
 interface Streamer {
   username: string;
   avatar?: string;
@@ -299,3 +260,11 @@ interface Streamer {
 export interface Streamers {
   streamers: Streamer[];
 }
+
+export type Route = (typeof ROUTES)[keyof typeof ROUTES];
+
+type LeaderboardMap = {
+  [K in keyof typeof LEADERBOARDS]: LeaderboardPlayer[];
+};
+
+export interface Leaderboards extends LeaderboardMap {}

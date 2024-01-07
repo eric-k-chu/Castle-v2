@@ -5,12 +5,13 @@ import { Logo } from ".";
 import { useRouter } from "next/navigation";
 import { routes } from "@/_lib/routes";
 import { ExitIcon, MenuIcon } from "./icons";
+import { Route } from "@/_lib/types";
 
 export function MobileSidebar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
-  function goToRoute(n: string): void {
+  function goToRoute(n: Route): void {
     router.push(n);
     setIsOpen(false);
   }
@@ -40,7 +41,7 @@ export function MobileSidebar() {
               onClick={() => goToRoute(n.path)}
             >
               <div>{n.icon}</div>
-              <h1 className="text-zinc-500">{n.name}</h1>
+              <h1 className="capitalize text-zinc-500">{n.name}</h1>
             </button>
           ))}
         </div>

@@ -2,6 +2,7 @@ import { Show } from "@/_components";
 import { LeaderboardPlayer } from "@/_lib/types";
 import Link from "next/link";
 import { Trend } from ".";
+import { ROUTES } from "@/_lib/constants";
 
 type Props = {
   player: LeaderboardPlayer;
@@ -9,7 +10,7 @@ type Props = {
 
 export function RankOneCard({ player }: Props) {
   return (
-    <div className="relative mt-4 flex items-center gap-x-4 overflow-hidden rounded-sm bg-zinc-800 px-4 py-6">
+    <div className="relative mt-4 flex items-center gap-x-4 overflow-hidden rounded-sm bg-zinc-900 px-4 py-6">
       <img
         src={
           player?.avatar ??
@@ -44,14 +45,14 @@ export function RankOneCard({ player }: Props) {
           </Show>
           <Link
             className="text-lg hover:underline sm:text-4xl"
-            href={`/player/${player.username}`}
+            href={`${ROUTES.player}${player.username}`}
             role="heading"
             aria-level={1}
           >
             {player.username}
           </Link>
         </div>
-        <div className="flex w-fit items-center gap-x-2 rounded-sm bg-zinc-900 px-2 py-1">
+        <div className="flex w-fit items-center gap-x-2 rounded-sm bg-zinc-800 px-2 py-1">
           <Trend
             trend={player?.trend_score}
             size="w-5"

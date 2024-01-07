@@ -1,4 +1,44 @@
-import { Country } from "../types";
+import { Country } from "./types";
+
+export const CHESS_API_BASE = "https://api.chess.com/pub/";
+
+export const ROUTES = {
+  home: "/",
+  player: "/player/",
+  leaderboards: "/leaderboards/",
+  streamers: "/streamers/",
+  "daily puzzles": "/daily-puzzles/",
+  countries: "/countries/",
+} as const;
+
+export const TITLES = [
+  "GM",
+  "WGM",
+  "IM",
+  "WIM",
+  "FM",
+  "WFM",
+  "NM",
+  "WNM",
+  "CM",
+  "WCM",
+] as const;
+
+export const LEADERBOARDS = {
+  daily: "daily",
+  daily960: "daily 960",
+  live_rapid: "rapid",
+  live_blitz: "blitz",
+  live_bullet: "bullet",
+  live_bughouse: "bughouse",
+  live_blitz960: "blitz 960",
+  live_threecheck: "3 check",
+  live_crazyhouse: "crazyhouse",
+  live_kingofthehill: "king of the hill",
+  tactics: "puzzles",
+  rush: "puzzle rush",
+  battle: "puzzle battle",
+} as const;
 
 export const USER_ASSIGNED_COUNTRIES: Country[] = [
   {
