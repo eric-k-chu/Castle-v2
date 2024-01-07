@@ -5,6 +5,7 @@ import { InProgMatchData } from "@/_lib/types";
 import { getPages, getTournamentName } from "@/_utils";
 import { useMemo, useState } from "react";
 import { Pagination } from "..";
+import { DotsIcon } from "@/_components/icons";
 
 type Props = {
   tournaments: InProgMatchData[];
@@ -39,13 +40,7 @@ export function InProgressTournaments({ tournaments }: Props) {
             </div>
             <div className="text-right capitalize">{n.status}</div>
             <a target="_blank" href={n.url} className="flex justify-end">
-              <Image
-                src="/icons/dots.svg"
-                alt="link"
-                width={0}
-                height={0}
-                className="h-5 w-auto"
-              />
+              <DotsIcon className="h-auto w-5 fill-zinc-200" />
             </a>
           </div>
         ))}

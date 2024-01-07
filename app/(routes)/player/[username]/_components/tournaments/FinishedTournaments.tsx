@@ -5,6 +5,7 @@ import { FinishedMatchData } from "@/_lib/types";
 import { getPages, getTournamentName } from "@/_utils";
 import { useMemo, useState } from "react";
 import { Pagination } from "..";
+import { DotsIcon } from "@/_components/icons";
 
 type Props = {
   tournaments: FinishedMatchData[];
@@ -45,13 +46,7 @@ export function FinishedTournaments({ tournaments }: Props) {
               <span className="text-gray-400">{n.draws}</span>
             </div>
             <a target="_blank" href={n.url} className="flex justify-end">
-              <Image
-                src="/icons/dots.svg"
-                alt="link"
-                width={0}
-                height={0}
-                className="h-5 w-auto"
-              />
+              <DotsIcon className="h-auto w-5 fill-zinc-200" />
             </a>
           </div>
         ))}

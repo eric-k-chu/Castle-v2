@@ -2,6 +2,12 @@ import { Player } from "@/_lib/types";
 import Image from "next/image";
 import { getDateFromUtc } from "@/_utils";
 import { Show } from "@/_components";
+import {
+  PawnIcon,
+  PersonIcon,
+  StatusIcon,
+  TwitchIcon,
+} from "@/_components/icons";
 
 type Props = {
   player: Player;
@@ -37,7 +43,7 @@ export function ProfileDisplay({ player }: Props) {
       <div className="space-y-2">
         <div className="flex items-center gap-x-2">
           <a
-            className="text-xl font-semibold capitalize sm:text-4xl"
+            className="text-xl font-semibold capitalize hover:underline sm:text-4xl"
             role="heading"
             aria-level={1}
             href={player.url}
@@ -56,13 +62,7 @@ export function ProfileDisplay({ player }: Props) {
               target="_blank"
               className="rounded-md bg-zinc-900 px-2 py-1"
             >
-              <Image
-                src="/icons/twitch.svg"
-                alt="twitch url"
-                width={0}
-                height={0}
-                className="h-auto w-5"
-              />
+              <TwitchIcon className="h-auto w-5 fill-[#6441a4]" />
             </a>
           </Show>
         </div>
@@ -79,33 +79,15 @@ export function ProfileDisplay({ player }: Props) {
         </div>
         <div className="mt-6 flex items-center gap-x-2 sm:mt-8 sm:gap-x-6">
           <div className="flex flex-col items-center text-center text-xs sm:text-sm">
-            <Image
-              src="/icons/pawn.svg"
-              alt="pawn icon"
-              width="0"
-              height="0"
-              className="h-auto w-4"
-            />
+            <PawnIcon />
             {getDateFromUtc(player.joined).half}
           </div>
           <div className="flex flex-col items-center text-center text-xs sm:text-sm">
-            <Image
-              src="/icons/status.svg"
-              alt="status icon"
-              width="0"
-              height="0"
-              className="h-auto w-4"
-            />
+            <StatusIcon />
             {getDateFromUtc(player.last_online).half}
           </div>
           <div className="flex flex-col items-center text-center text-xs sm:text-sm">
-            <Image
-              src="/icons/followers.svg"
-              alt="followers icon"
-              width="0"
-              height="0"
-              className="h-auto w-4"
-            />
+            <PersonIcon />
             {player.followers.toLocaleString()}
           </div>
         </div>
