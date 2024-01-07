@@ -2,6 +2,7 @@ import { Show } from "@/_components";
 import { LeaderboardPlayer } from "@/_lib/types";
 import Link from "next/link";
 import { Trend } from ".";
+import { ROUTES } from "@/_lib/constants";
 
 type Props = {
   players: LeaderboardPlayer[];
@@ -21,7 +22,7 @@ export function RankTwotoFiveCard({ players }: Props) {
     <div className="mt-4 space-y-4 lg:grid lg:grid-cols-4 lg:gap-x-4 lg:space-y-0">
       {players.map((n) => (
         <div
-          className="flex items-center justify-between space-y-0 rounded-sm bg-zinc-800 p-4 lg:block lg:space-y-2"
+          className="flex items-center justify-between space-y-0 rounded-sm bg-zinc-900 p-4 lg:block lg:space-y-2"
           key={n.player_id}
         >
           <div className="flex items-center gap-x-2">
@@ -52,13 +53,13 @@ export function RankTwotoFiveCard({ players }: Props) {
               </h1>
             </Show>
             <Link
-              href={`/player/${n.username}`}
+              href={`${ROUTES.player}${n.username}`}
               className="space-x-2 truncate text-sm capitalize hover:underline"
             >
               <span>{n.username}</span>
             </Link>
           </div>
-          <div className="flex items-center justify-center gap-x-2 rounded-sm bg-zinc-900 px-2 py-1">
+          <div className="flex items-center justify-center gap-x-2 rounded-sm bg-zinc-800 px-2 py-1">
             <Trend trend={n?.trend_score} />
             <h1 className="text-center text-xs sm:text-sm">{n.score}</h1>
           </div>

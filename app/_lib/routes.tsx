@@ -15,22 +15,22 @@ interface RouteObject {
 
 export const routes: RouteObject[] = [
   {
-    path: "/leaderboards",
+    path: "/leaderboards/",
     name: "leaderboards",
     icon: <TrophyIcon />,
   },
   {
-    path: "/streamers",
+    path: "/streamers/",
     name: "streamers",
     icon: <TwitchIcon />,
   },
   {
-    path: "/daily-puzzles",
+    path: "/daily-puzzles/",
     name: "daily puzzles",
     icon: <DailyPuzzleIcon />,
   },
   {
-    path: "/countries",
+    path: "/countries/",
     name: "countries",
     icon: <WorldIcon />,
   },

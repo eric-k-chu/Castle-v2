@@ -3,9 +3,9 @@
 import { TitledPlayers } from "@/_lib/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Image from "next/image";
 import { Suggestions } from "./Suggestions";
 import { SearchIcon } from "../icons/index";
+import { ROUTES } from "@/_lib/constants";
 
 type Props = {
   suggestions: TitledPlayers[] | undefined;
@@ -18,13 +18,13 @@ export function MobileSearch({ suggestions }: Props) {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    router.push(`/player/${query}`);
+    router.push(`${ROUTES.player}${query}`);
     setIsOpen(false);
     setQuery("");
   }
 
   function handleSuggestionClick(username: string) {
-    router.push(`/player/${username}`);
+    router.push(`${ROUTES.player}${username}`);
     setIsOpen(false);
     setQuery("");
   }

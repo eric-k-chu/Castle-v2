@@ -2,10 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Image from "next/image";
 import { TitledPlayers } from "@/_lib/types";
 import { Suggestions } from "./Suggestions";
 import { SearchIcon } from "../icons";
+import { ROUTES } from "@/_lib/constants";
 
 type Props = {
   suggestions: TitledPlayers[] | undefined;
@@ -18,12 +18,12 @@ export function Search({ suggestions }: Props) {
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(query);
-    router.push(`/player/${query}`);
+    router.push(`${ROUTES.player}${query}`);
     setQuery("");
   }
 
   function handleSuggestionClick(username: string) {
-    router.push(`/player/${username}`);
+    router.push(`${ROUTES.player}${username}`);
     setQuery("");
   }
 
