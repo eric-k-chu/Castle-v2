@@ -1,11 +1,14 @@
 import {
   Archives,
   Clubs,
+  Leaderboards,
   MonthlyArchive,
   Player,
   Players,
   Stats,
+  Streamers,
   Title,
+  Tournaments,
 } from "@/_lib/types";
 import { ChessApiError } from "@/_utils";
 
@@ -52,6 +55,29 @@ export class ChessApi {
     const url = ChessApi.baseUrl + `player/${username}/clubs`;
     const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, username);
+    return await res.json();
+  }
+
+  public static async getPlayerTournaments(
+    username: string,
+  ): Promise<Tournaments> {
+    const url = ChessApi.baseUrl + `player/${username}/tournaments`;
+    const res = await fetch(url);
+    if (!res.ok) throw new ChessApiError(res.status, username);
+    return await res.json();
+  }
+
+  public static async getStreamers(): Promise<Streamers> {
+    const url = ChessApi.baseUrl + "streamers";
+    const res = await fetch(url);
+    if (!res.ok) throw new ChessApiError(res.status, "streamers");
+    return await res.json();
+  }
+
+  public static async getLeaderboards(): Promise<Leaderboards> {
+    const url = ChessApi.baseUrl + "leaderboards";
+    const res = await fetch(url);
+    if (!res.ok) throw new ChessApiError(res.status, "leaderboards");
     return await res.json();
   }
 }
