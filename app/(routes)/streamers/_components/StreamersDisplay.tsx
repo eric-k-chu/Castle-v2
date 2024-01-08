@@ -37,7 +37,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
       <div className="flex flex-wrap">
         {streamers[page].map((n) => (
           <div key={n.username} className="w-full p-1 sm:w-1/2 md:w-1/3">
-            <div className="relative gap-y-4 rounded-sm bg-zinc-900 p-4">
+            <div className="relative gap-y-4 rounded-sm bg-zinc-900 p-4 pb-1">
               <div className="flex w-full items-center gap-x-2">
                 <Image
                   src={
@@ -57,9 +57,15 @@ export function StreamersDisplay({ streamers: list }: Props) {
                   {n.username}
                 </Link>
               </div>
-              <button className="flex w-full items-center justify-center gap-x-2 py-16">
-                <TwitchIcon />
-                <h2>Twitch</h2>
+              <button className="w-full py-2">
+                <a
+                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-zinc-950 py-2 transition-colors duration-150 ease-in-out hover:bg-[#5C7B41]"
+                  target="_blank"
+                  href={n.twitch_url}
+                >
+                  <TwitchIcon className="h-6 w-auto fill-[#6441a5]" />
+                  <h2>Twitch</h2>
+                </a>
               </button>
             </div>
           </div>
