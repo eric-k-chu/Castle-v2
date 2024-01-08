@@ -3,7 +3,7 @@
 import { InProgMatchData } from "@/_lib/types";
 import { getPages, getTournamentName } from "@/_utils";
 import { useMemo, useState } from "react";
-import { Pagination } from "..";
+import { Pagination } from "@/_components";
 import { DotsIcon } from "@/_components/icons";
 
 type Props = {

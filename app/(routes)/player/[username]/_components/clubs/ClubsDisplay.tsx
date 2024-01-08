@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getDateFromUtc, getPages } from "@/_utils";
 import { Clubs } from "@/_lib/types";
 import { useMemo, useState } from "react";
-import { Pagination } from "..";
+import { Pagination } from "@/_components";
 
 type Props = {
   clubs: Clubs;
