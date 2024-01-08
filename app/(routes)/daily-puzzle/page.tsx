@@ -2,7 +2,7 @@ import { ChessApi } from "@/_chessapi/ChessApi";
 import { getDateFromUtc } from "@/_utils";
 import Image from "next/image";
 
-export default async function DailyPuzzles() {
+export default async function DailyPuzzle() {
   const dailyPuzzle = await ChessApi.getDailyPuzzle();
 
   return (

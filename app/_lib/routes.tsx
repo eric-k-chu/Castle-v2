@@ -30,6 +30,11 @@ export const routes: RouteObject[] = [
     icon: <DailyPuzzleIcon />,
   },
   {
+    path: "/daily-puzzle/random/",
+    name: "random puzzle",
+    icon: <DailyPuzzleIcon />,
+  },
+  {
     path: "/countries/",
     name: "countries",
     icon: <WorldIcon />,
