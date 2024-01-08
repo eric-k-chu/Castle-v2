@@ -3,7 +3,7 @@
 import { MonthlyArchive } from "@/_lib/types";
 import { getDaysElapsed, getGameResultColor, getPages } from "@/_utils";
 import { useState } from "react";
-import { Pagination } from "..";
+import { Pagination } from "@/_components";
 import { DotsIcon, SquareIcon } from "@/_components/icons";
 
 type Props = {
