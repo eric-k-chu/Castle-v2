@@ -38,8 +38,6 @@ export interface Fetcher<T> {
   error: unknown;
 }
 
-export interface Club {}
-
 export interface Player {
   "@id": string;
   url: string;
