@@ -6,3 +6,4 @@ export * from "./Show";
 export * from "./ChessImgBackground";
 export * from "./Sidebar";
 export * from "./Logo";
+export * from "./Pagination";
