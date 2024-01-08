@@ -7,6 +7,7 @@ import { Streamers } from "@/_lib/types";
 import { getPages } from "@/_utils";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import Image from "next/image";
 
 type Props = {
   streamers: Streamers;
@@ -36,25 +37,30 @@ export function StreamersDisplay({ streamers: list }: Props) {
       <div className="flex flex-wrap">
         {streamers[page].map((n) => (
           <div key={n.username} className="w-full p-1 sm:w-1/2 md:w-1/3">
-            <div className="relative flex flex-col items-center gap-y-4 bg-zinc-900 py-4 transition-colors duration-150 ease-in-out hover:bg-zinc-800">
-              <Show when={n.is_live === true}>
-                <div className="absolute right-3 top-3 h-2 w-2 animate-pulse rounded-full bg-green-500" />
-              </Show>
-              <Link
-                href={`${ROUTES.player}${n.username}`}
-                className="truncate text-sm font-semibold hover:underline sm:max-w-24 md:max-w-32 lg:max-w-48"
-              >
-                {n.username}
-              </Link>
-              <a target="_blank" href={n.twitch_url}>
-                <img
+            <div className="relative gap-y-4 rounded-sm bg-zinc-900 p-4">
+              <div className="flex w-full items-center gap-x-2">
+                <Image
                   src={
                     n?.avatar ??
                     "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
                   }
-                  className="max-w-[50px] rounded-md"
+                  alt={`${n.username} avatar`}
+                  width={0}
+                  height={0}
+                  unoptimized
+                  className="h-auto w-6 rounded-sm"
                 />
-              </a>
+                <Link
+                  href={`${ROUTES.player}${n.username}`}
+                  className="truncate text-sm font-semibold hover:underline sm:max-w-24 md:max-w-32 lg:max-w-48"
+                >
+                  {n.username}
+                </Link>
+              </div>
+              <button className="flex w-full items-center justify-center gap-x-2 py-16">
+                <TwitchIcon />
+                <h2>Twitch</h2>
+              </button>
             </div>
           </div>
         ))}
