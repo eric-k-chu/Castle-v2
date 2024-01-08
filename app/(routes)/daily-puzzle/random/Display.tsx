@@ -48,7 +48,7 @@ export function Display({ puzzle }: Props) {
           className={`h-fit w-fit rounded-lg px-5 py-2.5 text-xs font-medium  sm:text-sm ${
             onCooldown
               ? "pointer-events-none cursor-auto bg-[#5C7B41]"
-              : "cursor-pointer bg-[#769656] hover:bg-[#5C7B41] focus:outline-none focus:ring-4 focus:ring-green-300"
+              : "cursor-pointer bg-[#769656] hover:bg-[#5C7B41] focus:outline-none focus:ring-4 focus:ring-green-500"
           }`}
           onClick={getRandomPuzzle}
         >
