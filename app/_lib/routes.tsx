@@ -25,8 +25,8 @@ export const routes: RouteObject[] = [
     icon: <TwitchIcon />,
   },
   {
-    path: "/daily-puzzles/",
-    name: "daily puzzles",
+    path: "/daily-puzzle/",
+    name: "daily puzzle",
     icon: <DailyPuzzleIcon />,
   },
   {
