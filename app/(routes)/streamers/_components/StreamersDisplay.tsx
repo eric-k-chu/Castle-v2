@@ -38,6 +38,9 @@ export function StreamersDisplay({ streamers: list }: Props) {
         {streamers[page].map((n) => (
           <div key={n.username} className="w-full p-1 sm:w-1/2 md:w-1/3">
             <div className="relative gap-y-4 rounded-sm bg-zinc-900 p-4 pb-1">
+              <Show when={n.is_live === true}>
+                <div className="absolute right-2 top-2 h-2 w-2 animate-pulse rounded-full bg-red-600" />
+              </Show>
               <div className="flex w-full items-center gap-x-2">
                 <Image
                   src={
