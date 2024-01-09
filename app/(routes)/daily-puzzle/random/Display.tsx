@@ -21,6 +21,11 @@ export function Display({ puzzle }: Props) {
     setTimeout(() => setOnCooldown(false), 15000);
   }
 
+  useEffect(() => {
+    setOnCooldown(true);
+    setTimeout(() => setOnCooldown(false), 15000);
+  }, []);
+
   return (
     <section className="mx-auto flex max-w-md flex-col items-center space-y-4 sm:max-w-lg sm:flex-row sm:bg-zinc-900 md:max-w-2xl lg:max-w-4xl">
       <div className="w-full space-y-2 sm:w-1/2">
@@ -52,7 +57,7 @@ export function Display({ puzzle }: Props) {
           }`}
           onClick={getRandomPuzzle}
         >
-          Get Random
+          {onCooldown ? "On 15s Cooldown" : "Get Random"}
         </button>
       </div>
     </section>
