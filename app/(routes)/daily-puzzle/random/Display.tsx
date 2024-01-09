@@ -4,7 +4,7 @@ import { ChessApi } from "@/_chessapi/ChessApi";
 import { DailyPuzzle } from "@/_lib/chessapi-types";
 import { getDateFromUtc } from "@/_utils";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   puzzle: DailyPuzzle;
@@ -45,10 +45,10 @@ export function Display({ puzzle }: Props) {
           {getDateFromUtc(dailyPuzzle.publish_time).full}
         </h2>
         <button
-          className={`h-fit w-fit rounded-lg px-5 py-2.5 text-xs font-medium  sm:text-sm ${
+          className={`h-fit w-fit rounded-lg px-5 py-2.5 text-xs font-medium sm:text-sm ${
             onCooldown
-              ? "pointer-events-none cursor-auto bg-[#5C7B41]"
-              : "cursor-pointer bg-[#769656] hover:bg-[#5C7B41] focus:outline-none focus:ring-4 focus:ring-green-500"
+              ? "pointer-events-none cursor-auto bg-red-900 text-zinc-500"
+              : "cursor-pointer bg-[#769656] hover:bg-[#5C7B41]"
           }`}
           onClick={getRandomPuzzle}
         >
