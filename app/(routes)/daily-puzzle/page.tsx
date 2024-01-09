@@ -1,4 +1,4 @@
-import { ChessApi } from "@/_chessapi/ChessApi";
+import { ChessApi } from "@/_chessapi";
 import { getDateFromUtc } from "@/_utils";
 import Image from "next/image";
 

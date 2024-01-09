@@ -1,12 +1,12 @@
 "use client";
 
-import { TitledPlayers } from "@/_lib/types";
+import { TitledPlayer } from "@/_lib";
 import { filterPlayers } from "@/_utils";
 import { ChessTitle, Show } from "..";
 
 type Props = {
   query: string;
-  suggestions: TitledPlayers[] | undefined;
+  suggestions: TitledPlayer[] | undefined;
   onClick: (name: string) => void;
 };
 

@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Logo } from ".";
+import { Route, routes } from "@/_lib";
 import { usePathname, useRouter } from "next/navigation";
-import { routes } from "@/_lib/routes";
-import { ExitIcon, MenuIcon } from "./icons";
-import { Route } from "@/_lib/types";
+import { useState } from "react";
+import { ExitIcon, Logo, MenuIcon } from "./icons";
 
 export function MobileSidebar() {
   const path = usePathname();
@@ -29,7 +27,7 @@ export function MobileSidebar() {
         }`}
       >
         <div className="z-[999] flex items-center justify-between border-b border-b-zinc-800 py-6">
-          <Logo className="h-auto w-5" />
+          <Logo />
           <button onClick={() => setIsOpen(false)}>
             <ExitIcon className="h-auto w-5 rotate-180" />
           </button>

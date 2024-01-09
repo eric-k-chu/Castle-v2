@@ -1,7 +1,7 @@
 import { ChessTitle } from "@/_components";
 import { TrophyIcon } from "@/_components/icons";
-import { LEADERBOARDS, ROUTES } from "@/_lib/constants";
-import { Leaderboards } from "@/_lib/types";
+import { LEADERBOARDS, ROUTES } from "@/_lib";
+import { Leaderboards } from "@/_lib";
 import { getTextColorFromRank } from "@/_utils";
 import Image from "next/image";
 import Link from "next/link";

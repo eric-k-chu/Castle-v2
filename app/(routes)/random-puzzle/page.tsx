@@ -1,4 +1,4 @@
-import { ChessApi } from "@/_chessapi/ChessApi";
+import { ChessApi } from "@/_chessapi";
 import { Display } from "./Display";
 
 export default async function RandomDailyPuzzle() {

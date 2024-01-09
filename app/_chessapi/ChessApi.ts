@@ -1,29 +1,30 @@
-import { DailyPuzzle } from "@/_lib/chessapi-types";
 import {
   Archives,
   Clubs,
+  DailyPuzzle,
   Leaderboards,
   MonthlyArchive,
-  Player,
-  Players,
+  PlayerProfile,
+  TitledPlayers,
   Stats,
   Streamers,
   Title,
   Tournaments,
-} from "@/_lib/types";
-import { ChessApiError } from "@/_utils";
+} from "@/_lib";
 
 export class ChessApi {
   private static baseUrl = "https://api.chess.com/pub/";
 
-  public static async getPlayerProfile(username: string): Promise<Player> {
+  public static async getPlayerProfile(
+    username: string,
+  ): Promise<PlayerProfile> {
     const url = ChessApi.baseUrl + `player/${username}`;
     const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, username);
     return await res.json();
   }
 
-  public static async getTitledPlayers(title: Title): Promise<Players> {
+  public static async getTitledPlayers(title: Title): Promise<TitledPlayers> {
     const url = ChessApi.baseUrl + `titled/${title}`;
     const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, title);
@@ -94,5 +95,28 @@ export class ChessApi {
     const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, "puzzle");
     return await res.json();
+  }
+}
+
+class ChessApiError extends Error {
+  constructor(
+    public status: number,
+    public key: string,
+  ) {
+    let message = "";
+    switch (status) {
+      case 404:
+        message = `No search results for ${key}`;
+        break;
+      case 410:
+        message = `The current URL is unavailable.`;
+        break;
+      case 429:
+        message = `Too many requests have been made.`;
+        break;
+      default:
+        message = "An unknown error has occured.";
+    }
+    super(message);
   }
 }

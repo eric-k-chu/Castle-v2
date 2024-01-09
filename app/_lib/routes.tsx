@@ -35,7 +35,7 @@ export const routes: RouteObject[] = [
     selected: <DailyPuzzleIcon className="fill-primary-1 h-auto w-6" />,
   },
   {
-    path: "/daily-puzzle/random",
+    path: "/random-puzzle",
     name: "random puzzle",
     icon: <RandomDailyPuzzleIcon />,
     selected: <RandomDailyPuzzleIcon className="fill-primary-1 h-auto w-6" />,

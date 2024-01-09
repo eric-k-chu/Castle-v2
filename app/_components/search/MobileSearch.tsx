@@ -1,14 +1,13 @@
 "use client";
 
-import { TitledPlayers } from "@/_lib/types";
+import { ROUTES, TitledPlayer } from "@/_lib";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Suggestions } from "./Suggestions";
-import { SearchIcon } from "../icons/index";
-import { ROUTES } from "@/_lib/constants";
+import { Suggestions } from ".";
+import { SearchIcon } from "../icons";
 
 type Props = {
-  suggestions: TitledPlayers[] | undefined;
+  suggestions: TitledPlayer[] | undefined;
 };
 
 export function MobileSearch({ suggestions }: Props) {

@@ -6,7 +6,7 @@ import {
   RegisteredMatchData,
   TournamentState,
   Tournaments,
-} from "@/_lib/types";
+} from "@/_lib";
 import {
   FinishedTournaments,
   InProgressTournaments,

@@ -1,8 +1,8 @@
 import { ChessTitle } from "@/_components";
-import { LeaderboardPlayer } from "@/_lib/types";
+import { LeaderboardPlayer } from "@/_lib";
 import Link from "next/link";
 import { Trend } from ".";
-import { ROUTES } from "@/_lib/constants";
+import { ROUTES } from "@/_lib";
 import {
   getBgColorFromRank,
   getBorderColorFromRank,

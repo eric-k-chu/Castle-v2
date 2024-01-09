@@ -2,8 +2,8 @@
 
 import { Show } from "@/_components";
 import { TwitchIcon } from "@/_components/icons";
-import { ROUTES } from "@/_lib/constants";
-import { Streamers } from "@/_lib/types";
+import { ROUTES } from "@/_lib";
+import { Streamers } from "@/_lib";
 import { getPages } from "@/_utils";
 import Link from "next/link";
 import { useMemo, useState } from "react";

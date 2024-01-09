@@ -1,4 +1,4 @@
-import { Trend } from "@/_lib/types";
+import { Trend } from "@/_lib";
 
 type Props = {
   trend: Trend | undefined;

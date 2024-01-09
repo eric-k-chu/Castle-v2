@@ -1,7 +1,7 @@
 "use client";
 
-import { ChessApi } from "@/_chessapi/ChessApi";
-import { DailyPuzzle } from "@/_lib/chessapi-types";
+import { ChessApi } from "@/_chessapi";
+import { DailyPuzzle } from "@/_lib";
 import { getDateFromUtc } from "@/_utils";
 import { useEffect, useState } from "react";
 import Image from "next/image";

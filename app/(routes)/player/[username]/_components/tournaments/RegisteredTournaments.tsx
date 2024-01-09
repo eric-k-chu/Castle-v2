@@ -1,6 +1,6 @@
 "use client";
 
-import { RegisteredMatchData } from "@/_lib/types";
+import { RegisteredMatchData } from "@/_lib";
 import { getPages, getTournamentName } from "@/_utils";
 import { useMemo, useState } from "react";
 import { Pagination } from "@/_components";

@@ -1,14 +1,13 @@
 "use client";
 
+import { ROUTES, TitledPlayer } from "@/_lib";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { TitledPlayers } from "@/_lib/types";
-import { Suggestions } from "./Suggestions";
+import { Suggestions } from ".";
 import { SearchIcon } from "../icons";
-import { ROUTES } from "@/_lib/constants";
 
 type Props = {
-  suggestions: TitledPlayers[] | undefined;
+  suggestions: TitledPlayer[] | undefined;
 };
 
 export function Search({ suggestions }: Props) {

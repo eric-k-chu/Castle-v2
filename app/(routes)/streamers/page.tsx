@@ -1,4 +1,4 @@
-import { ChessApi } from "@/_chessapi/ChessApi";
+import { ChessApi } from "@/_chessapi";
 import { StreamersDisplay } from "./_components";
 
 export default async function Streamers() {

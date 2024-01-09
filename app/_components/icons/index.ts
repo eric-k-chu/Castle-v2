@@ -13,3 +13,4 @@ export * from "./DotsIcon";
 export * from "./LocationIcon";
 export * from "./SquareIcon";
 export * from "./RandomDailyPuzzleIcon";
+export * from "./Logo";

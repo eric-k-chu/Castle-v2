@@ -1,5 +1,5 @@
-import { CHESS_API_BASE, USER_ASSIGNED_COUNTRIES } from "@/_lib/constants";
-import { Stats, Country, TitledPlayers } from "@/_lib/types";
+import { CHESS_API_BASE, USER_ASSIGNED_COUNTRIES } from "@/_lib";
+import { Stats, Country, TitledPlayer } from "@/_lib";
 import { customList, CountryProperty } from "country-codes-list";
 import { hasFlag } from "country-flag-icons";
 
@@ -181,10 +181,10 @@ export function filterCountries(
 }
 
 export function filterPlayers(
-  players: TitledPlayers[] | undefined,
+  players: TitledPlayer[] | undefined,
   query: string,
   limit = 3,
-): TitledPlayers[] | undefined {
+): TitledPlayer[] | undefined {
   return players
     ?.filter((player) =>
       player.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()),

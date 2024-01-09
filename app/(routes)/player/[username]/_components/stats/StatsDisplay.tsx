@@ -1,7 +1,7 @@
 "use client";
 
 import { Show } from "@/_components";
-import { Stats } from "@/_lib/types";
+import { Stats } from "@/_lib";
 import { extractStats, getDateFromUtc } from "@/_utils";
 
 type Props = {

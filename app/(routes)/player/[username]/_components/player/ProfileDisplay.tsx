@@ -1,4 +1,4 @@
-import { Player } from "@/_lib/types";
+import { PlayerProfile } from "@/_lib";
 import Image from "next/image";
 import { getDateFromUtc } from "@/_utils";
 import { ChessTitle, Show } from "@/_components";
@@ -10,7 +10,7 @@ import {
 } from "@/_components/icons";
 
 type Props = {
-  player: Player;
+  player: PlayerProfile;
 };
 
 export function ProfileDisplay({ player }: Props) {

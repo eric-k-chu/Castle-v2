@@ -1,4 +1,4 @@
-import { Title } from "@/_lib/types";
+import { Title } from "@/_lib";
 import { Show } from ".";
 
 type Props = {

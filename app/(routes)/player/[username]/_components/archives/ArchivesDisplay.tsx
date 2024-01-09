@@ -1,6 +1,6 @@
 "use client";
 
-import { MonthlyArchive } from "@/_lib/types";
+import { MonthlyArchive } from "@/_lib";
 import { getDaysElapsed, getGameResultColor, getPages } from "@/_utils";
 import { useState } from "react";
 import { Pagination } from "@/_components";

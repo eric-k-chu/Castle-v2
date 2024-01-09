@@ -3,7 +3,7 @@ import { getLeaderboards } from "@/_chessapi/leaderboard";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { RankOneCard, RankTwotoFiveCard, Trend } from "../_components";
-import { LEADERBOARDS, ROUTES } from "@/_lib/constants";
+import { LEADERBOARDS, ROUTES } from "@/_lib";
 
 type Props = {
   params: { leaderboard: string };
