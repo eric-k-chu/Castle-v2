@@ -1,8 +1,10 @@
-import { Show } from "@/_components";
+/* eslint-disable @next/next/no-img-element */
+import { ChessTitle } from "@/_components";
 import { LeaderboardPlayer } from "@/_lib/types";
 import Link from "next/link";
 import { Trend } from ".";
 import { ROUTES } from "@/_lib/constants";
+import Image from "next/image";
 
 type Props = {
   player: LeaderboardPlayer;
@@ -26,23 +28,20 @@ export function RankOneCard({ player }: Props) {
       <h1 className="rounded-sm bg-amber-500/50 px-[.75rem] py-2 text-2xl text-amber-400 sm:text-4xl">
         {player.rank}
       </h1>
-      <img
+      <Image
         src={
           player?.avatar ??
           "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
         }
+        unoptimized
+        width={0}
+        height={0}
         alt={`${player.username} avatar`}
         className="h-16 w-16 rounded-sm border-2 border-amber-400 sm:h-24 sm:w-24"
       />
       <div className="space-y-2">
-        <div className="flex items-center gap-x-2">
-          <Show when={player.title !== undefined}>
-            <h1 className="text-lg sm:text-4xl">
-              <span className="rounded-sm bg-[#7C2929] px-1 py-0.5 font-mono">
-                {player.title}
-              </span>
-            </h1>
-          </Show>
+        <div className="flex items-center gap-x-2 text-lg sm:text-4xl">
+          <ChessTitle title={player.title} />
           <Link
             className="text-lg hover:underline sm:text-4xl"
             href={`${ROUTES.player}${player.username}`}

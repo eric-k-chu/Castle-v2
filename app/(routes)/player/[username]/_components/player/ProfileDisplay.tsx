@@ -1,7 +1,7 @@
 import { Player } from "@/_lib/types";
 import Image from "next/image";
 import { getDateFromUtc } from "@/_utils";
-import { Show } from "@/_components";
+import { ChessTitle, Show } from "@/_components";
 import {
   PawnIcon,
   PersonIcon,
@@ -51,11 +51,7 @@ export function ProfileDisplay({ player }: Props) {
           >
             {player.username}
           </a>
-          <Show when={player.title !== undefined}>
-            <span className="rounded-md bg-[#7C2929] px-2 py-0.5 font-mono text-base text-white">
-              {player?.title}
-            </span>
-          </Show>
+          <ChessTitle title={player.title} />
           <Show when={player.twitch_url !== undefined}>
             <a
               href={player.twitch_url}

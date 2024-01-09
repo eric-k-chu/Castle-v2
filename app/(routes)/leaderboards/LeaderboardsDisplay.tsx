@@ -1,8 +1,9 @@
-import { Show } from "@/_components";
+import { ChessTitle } from "@/_components";
 import { TrophyIcon } from "@/_components/icons";
 import { LEADERBOARDS, ROUTES } from "@/_lib/constants";
 import { Leaderboards } from "@/_lib/types";
 import { getTextColorFromRank } from "@/_utils";
+import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -43,17 +44,18 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
                 <span className={`${getTextColorFromRank(n.rank)} w-4`}>
                   #{n.rank}
                 </span>
-                <img
-                  src={n.avatar}
+                <Image
+                  src={
+                    n?.avatar ??
+                    "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
+                  }
+                  width={0}
+                  height={0}
                   alt={`${n.username} avatar`}
                   className="h-6 w-6 rounded-sm"
                 />
                 <div className="space-x-2 truncate capitalize">
-                  <Show when={n.title !== undefined}>
-                    <span className="rounded-sm bg-[#7C2929] px-1 py-0.5 font-mono">
-                      {n?.title}
-                    </span>
-                  </Show>
+                  <ChessTitle title={n.title} />
                   <span>{n.username}</span>
                 </div>
                 <span className="ml-auto">{n.score}</span>

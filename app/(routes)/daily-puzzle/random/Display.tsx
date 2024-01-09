@@ -65,7 +65,7 @@ export function Display({ puzzle }: Props) {
           className={`h-fit w-[111px] rounded-lg px-5 py-2.5 text-xs font-medium sm:w-[123px] sm:text-sm ${
             onCooldown
               ? "pointer-events-none cursor-auto bg-red-900 text-zinc-500"
-              : "cursor-pointer bg-[#769656] hover:bg-[#5C7B41]"
+              : "bg-primary-1 hover:bg-primary-2 cursor-pointer"
           }`}
           onClick={getRandomPuzzle}
         >

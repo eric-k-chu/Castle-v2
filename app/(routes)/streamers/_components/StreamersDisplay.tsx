@@ -62,11 +62,11 @@ export function StreamersDisplay({ streamers: list }: Props) {
               </div>
               <button className="w-full py-2">
                 <a
-                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-zinc-950 py-2 transition-colors duration-150 ease-in-out hover:bg-[#5C7B41]"
+                  className="hover:bg-primary-2 group flex w-full items-center justify-center gap-x-2 rounded-sm bg-zinc-950 py-2 transition-colors duration-150 ease-in-out"
                   target="_blank"
                   href={n.twitch_url}
                 >
-                  <TwitchIcon className="h-6 w-auto fill-[#6441a5]" />
+                  <TwitchIcon className="fill-twitch h-6 w-auto" />
                   <h2>Twitch</h2>
                 </a>
               </button>

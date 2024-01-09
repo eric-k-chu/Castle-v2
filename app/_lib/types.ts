@@ -43,7 +43,7 @@ export interface Player {
   url: string;
   username: string;
   player_id: number;
-  title?: string;
+  title?: Title;
   status: string;
   name?: string;
   avatar?: string;

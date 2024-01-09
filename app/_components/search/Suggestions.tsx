@@ -2,7 +2,7 @@
 
 import { TitledPlayers } from "@/_lib/types";
 import { filterPlayers } from "@/_utils";
-import { Show } from "..";
+import { ChessTitle, Show } from "..";
 
 type Props = {
   query: string;
@@ -31,9 +31,7 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
             type="button"
             className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-zinc-300 sm:text-sm"
           >
-            <span className="mr-1 rounded-sm bg-[#7C2929] px-1 py-0.5 font-mono text-white">
-              {n.title}
-            </span>
+            <ChessTitle title={n.title} />
             {n.name}
           </button>
         ))}
