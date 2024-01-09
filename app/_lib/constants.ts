@@ -7,7 +7,8 @@ export const ROUTES = {
   player: "/player/",
   leaderboards: "/leaderboards/",
   streamers: "/streamers/",
-  "daily puzzles": "/daily-puzzles/",
+  "daily puzzle": "/daily-puzzle/",
+  "random puzzle": "/daily-puzzle/random/",
   countries: "/countries/",
 } as const;
 

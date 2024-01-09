@@ -1,3 +1,4 @@
+import { DailyPuzzle } from "@/_lib/chessapi-types";
 import {
   Archives,
   Clubs,
@@ -78,6 +79,20 @@ export class ChessApi {
     const url = ChessApi.baseUrl + "leaderboards";
     const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, "leaderboards");
+    return await res.json();
+  }
+
+  public static async getDailyPuzzle(): Promise<DailyPuzzle> {
+    const url = ChessApi.baseUrl + "puzzle";
+    const res = await fetch(url);
+    if (!res.ok) throw new ChessApiError(res.status, "puzzle");
+    return await res.json();
+  }
+
+  public static async getRandomDailyPuzzle(): Promise<DailyPuzzle> {
+    const url = ChessApi.baseUrl + "puzzle/random";
+    const res = await fetch(url);
+    if (!res.ok) throw new ChessApiError(res.status, "puzzle");
     return await res.json();
   }
 }

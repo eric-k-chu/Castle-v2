@@ -1,5 +1,6 @@
 import {
   DailyPuzzleIcon,
+  RandomDailyPuzzleIcon,
   TrophyIcon,
   TwitchIcon,
   WorldIcon,
@@ -25,9 +26,14 @@ export const routes: RouteObject[] = [
     icon: <TwitchIcon />,
   },
   {
-    path: "/daily-puzzles/",
-    name: "daily puzzles",
+    path: "/daily-puzzle/",
+    name: "daily puzzle",
     icon: <DailyPuzzleIcon />,
+  },
+  {
+    path: "/daily-puzzle/random/",
+    name: "random puzzle",
+    icon: <RandomDailyPuzzleIcon />,
   },
   {
     path: "/countries/",

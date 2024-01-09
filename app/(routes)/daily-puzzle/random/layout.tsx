@@ -1,4 +1,4 @@
-export default function DailyPuzzlesLayout({
+export default function RandomDailyPuzzleLayout({
   children,
 }: {
   children: React.ReactNode;
