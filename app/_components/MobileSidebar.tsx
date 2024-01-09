@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { Logo } from ".";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { routes } from "@/_lib/routes";
 import { ExitIcon, MenuIcon } from "./icons";
 import { Route } from "@/_lib/types";
 
 export function MobileSidebar() {
+  const path = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,8 +41,14 @@ export function MobileSidebar() {
               className="flex items-center gap-x-6 py-4 hover:cursor-pointer"
               onClick={() => goToRoute(n.path)}
             >
-              <div>{n.icon}</div>
-              <h1 className="capitalize text-zinc-500">{n.name}</h1>
+              <div>{path.includes(n.path) ? n.selected : n.icon}</div>
+              <h1
+                className={`capitalize ${
+                  path.includes(n.path) ? n.selected : n.icon
+                }`}
+              >
+                {n.name}
+              </h1>
             </button>
           ))}
         </div>

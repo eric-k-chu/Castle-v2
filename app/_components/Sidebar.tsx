@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { Logo } from ".";
 import { routes } from "@/_lib/routes";
+import { usePathname } from "next/navigation";
 
 export function Sidebar() {
+  const path = usePathname();
+
   return (
     <div className="group fixed z-50 hidden h-full bg-zinc-900 sm:block">
       <div className="flex w-16 flex-col transition-all duration-150 ease-in-out group-hover:w-72">
@@ -22,8 +25,12 @@ export function Sidebar() {
               className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-zinc-800"
               href={n.path}
             >
-              <div>{n.icon}</div>
-              <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-base capitalize text-zinc-500 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
+              <div>{path.includes(n.path) ? n.selected : n.icon}</div>
+              <h1
+                className={`flex-1 select-none overflow-hidden whitespace-nowrap text-base capitalize opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100 ${
+                  path.includes(n.path) ? "text-primary-1" : "text-zinc-500"
+                }`}
+              >
                 {n.name}
               </h1>
             </Link>

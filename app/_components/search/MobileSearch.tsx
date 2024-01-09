@@ -18,13 +18,13 @@ export function MobileSearch({ suggestions }: Props) {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    router.push(`${ROUTES.player}${query}`);
+    router.push(`${ROUTES.player}/${query}`);
     setIsOpen(false);
     setQuery("");
   }
 
   function handleSuggestionClick(username: string) {
-    router.push(`${ROUTES.player}${username}`);
+    router.push(`${ROUTES.player}/${username}`);
     setIsOpen(false);
     setQuery("");
   }

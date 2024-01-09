@@ -54,7 +54,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
                   className="h-auto w-6 rounded-sm"
                 />
                 <Link
-                  href={`${ROUTES.player}${n.username}`}
+                  href={`${ROUTES.player}/${n.username}`}
                   className="truncate text-sm font-semibold hover:underline sm:max-w-24 md:max-w-32 lg:max-w-48"
                 >
                   {n.username}

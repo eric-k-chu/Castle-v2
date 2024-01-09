@@ -29,7 +29,7 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
           className="flex flex-wrap items-center justify-center gap-8 rounded-sm bg-zinc-900 py-6 md:justify-start md:gap-0 md:py-8"
         >
           <Link
-            href={`${ROUTES.leaderboards}${n}`}
+            href={`${ROUTES.leaderboards}/${n}`}
             className="w-full text-center font-semibold uppercase hover:underline md:w-1/3"
           >
             {LEADERBOARDS[n]}
@@ -38,7 +38,7 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
             {leaderboards[n].slice(0, 5).map((n) => (
               <Link
                 key={n.player_id}
-                href={`${ROUTES.player}${n.username.toLocaleLowerCase()}`}
+                href={`${ROUTES.player}/${n.username.toLocaleLowerCase()}`}
                 className="flex items-center gap-x-2 rounded-sm p-1 text-xs hover:bg-zinc-800 sm:text-sm"
               >
                 <span className={`${getTextColorFromRank(n.rank)} w-4`}>

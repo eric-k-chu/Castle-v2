@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { getLeaderboards } from "@/_chessapi/leaderboard";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -49,7 +50,7 @@ export default async function Leaderboard({ params }: Props) {
                 className="h-4 w-4 rounded-sm sm:h-6 sm:w-6"
               />
               <Link
-                href={`${ROUTES.player}${n.username}`}
+                href={`${ROUTES.player}/${n.username}`}
                 className="truncate hover:underline"
               >
                 {n.username}

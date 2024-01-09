@@ -44,7 +44,7 @@ export function RankOneCard({ player }: Props) {
           <ChessTitle title={player.title} />
           <Link
             className="text-lg hover:underline sm:text-4xl"
-            href={`${ROUTES.player}${player.username}`}
+            href={`${ROUTES.player}/${player.username}`}
             role="heading"
             aria-level={1}
           >

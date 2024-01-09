@@ -18,12 +18,12 @@ export function Search({ suggestions }: Props) {
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(query);
-    router.push(`${ROUTES.player}${query}`);
+    router.push(`${ROUTES.player}/${query}`);
     setQuery("");
   }
 
   function handleSuggestionClick(username: string) {
-    router.push(`${ROUTES.player}${username}`);
+    router.push(`${ROUTES.player}/${username}`);
     setQuery("");
   }
 

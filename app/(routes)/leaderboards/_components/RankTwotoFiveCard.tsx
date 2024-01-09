@@ -46,7 +46,7 @@ export function RankTwotoFiveCard({ players }: Props) {
             />
             <ChessTitle title={n.title} />
             <Link
-              href={`${ROUTES.player}${n.username}`}
+              href={`${ROUTES.player}/${n.username}`}
               className="space-x-2 truncate capitalize hover:underline"
             >
               <span>{n.username}</span>
