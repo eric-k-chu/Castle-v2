@@ -3,8 +3,8 @@
 import { ChessApi } from "@/_chessapi/ChessApi";
 import { DailyPuzzle } from "@/_lib/chessapi-types";
 import { getDateFromUtc } from "@/_utils";
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 type Props = {
   puzzle: DailyPuzzle;
@@ -12,19 +12,31 @@ type Props = {
 
 export function Display({ puzzle }: Props) {
   const [dailyPuzzle, setDailyPuzzle] = useState(puzzle);
-  const [onCooldown, setOnCooldown] = useState(false);
+  const [onCooldown, setOnCooldown] = useState(true);
+  const [seconds, setSeconds] = useState(15);
 
-  async function getRandomPuzzle() {
+  async function getRandomPuzzle(): Promise<void> {
     if (onCooldown) return;
     setDailyPuzzle(await ChessApi.getRandomDailyPuzzle());
     setOnCooldown(true);
-    setTimeout(() => setOnCooldown(false), 15000);
   }
 
   useEffect(() => {
-    setOnCooldown(true);
-    setTimeout(() => setOnCooldown(false), 15000);
-  }, []);
+    if (!onCooldown) return;
+
+    const id = setInterval(() => {
+      setSeconds((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, [onCooldown]);
+
+  useEffect(() => {
+    if (seconds <= 0) {
+      setOnCooldown(false);
+      setSeconds(15);
+    }
+  }, [seconds]);
 
   return (
     <section className="mx-auto flex max-w-md flex-col items-center space-y-4 sm:max-w-lg sm:flex-row sm:bg-zinc-900 md:max-w-2xl lg:max-w-4xl">
@@ -50,14 +62,14 @@ export function Display({ puzzle }: Props) {
           {getDateFromUtc(dailyPuzzle.publish_time).full}
         </h2>
         <button
-          className={`h-fit w-fit rounded-lg px-5 py-2.5 text-xs font-medium sm:text-sm ${
+          className={`h-fit w-[111px] rounded-lg px-5 py-2.5 text-xs font-medium sm:w-[123px] sm:text-sm ${
             onCooldown
               ? "pointer-events-none cursor-auto bg-red-900 text-zinc-500"
               : "cursor-pointer bg-[#769656] hover:bg-[#5C7B41]"
           }`}
           onClick={getRandomPuzzle}
         >
-          {onCooldown ? "On 15s Cooldown" : "Get Random"}
+          {onCooldown ? `${seconds}s` : "Get Random"}
         </button>
       </div>
     </section>
