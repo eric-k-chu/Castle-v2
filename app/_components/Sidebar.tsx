@@ -9,7 +9,7 @@ export function Sidebar() {
   const path = usePathname();
 
   return (
-    <div className="group fixed z-50 hidden h-full bg-zinc-900 sm:block">
+    <div className="group fixed z-50 hidden h-full bg-zinc-900 shadow-md sm:block">
       <div className="flex w-16 flex-col transition-all duration-150 ease-in-out group-hover:w-72">
         <Link className="mb-2 px-5" href="/">
           <div className="flex w-full items-center gap-x-6 border-b border-b-zinc-800 py-5 hover:cursor-pointer">
