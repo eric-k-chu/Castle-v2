@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import { getLeaderboards } from "@/_chessapi/leaderboard";
+import { ChessApi } from "@/_chessapi/";
+import { LEADERBOARDS, ROUTES } from "@/_lib";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { RankOneCard, RankTwotoFiveCard, Trend } from "../_components";
-import { LEADERBOARDS, ROUTES } from "@/_lib";
 
 type Props = {
   params: { leaderboard: string };
 };
 
 export default async function Leaderboard({ params }: Props) {
-  const leaderboards = await getLeaderboards();
+  const leaderboards = await ChessApi.getLeaderboards();
   const key = params.leaderboard as keyof typeof LEADERBOARDS;
   const keys = Object.keys(LEADERBOARDS) as (keyof typeof LEADERBOARDS)[];
 
