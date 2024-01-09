@@ -1,10 +1,9 @@
 "use client";
 
+import { DotsIcon, Pagination, SquareIcon } from "@/_components";
 import { MonthlyArchive } from "@/_lib";
 import { getDaysElapsed, getGameResultColor, getPages } from "@/_utils";
 import { useState } from "react";
-import { Pagination } from "@/_components";
-import { DotsIcon, SquareIcon } from "@/_components/icons";
 
 type Props = {
   archive: MonthlyArchive;

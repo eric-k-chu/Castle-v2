@@ -1,13 +1,14 @@
-import { PlayerProfile } from "@/_lib";
-import Image from "next/image";
-import { getDateFromUtc } from "@/_utils";
-import { ChessTitle, Show } from "@/_components";
 import {
+  ChessTitle,
   PawnIcon,
   PersonIcon,
+  Show,
   StatusIcon,
   TwitchIcon,
-} from "@/_components/icons";
+} from "@/_components";
+import { PlayerProfile } from "@/_lib";
+import { getDateFromUtc } from "@/_utils";
+import Image from "next/image";
 
 type Props = {
   player: PlayerProfile;
@@ -18,10 +19,7 @@ export function ProfileDisplay({ player }: Props) {
     <div className="my-8 flex gap-x-2">
       <div className="relative flex items-center justify-center">
         <Image
-          src={
-            player?.avatar ||
-            "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
-          }
+          src={player?.avatar || "/icons/default-avatar.svg"}
           alt="avatar"
           width="0"
           height="0"

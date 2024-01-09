@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import { getDateFromUtc, getPages } from "@/_utils";
-import { Clubs } from "@/_lib";
-import { useMemo, useState } from "react";
 import { Pagination } from "@/_components";
+import { Clubs } from "@/_lib";
+import { getDateFromUtc, getPages } from "@/_utils";
+import Image from "next/image";
+import { useMemo, useState } from "react";
 
 type Props = {
   clubs: Clubs;

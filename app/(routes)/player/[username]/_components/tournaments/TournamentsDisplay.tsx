@@ -1,5 +1,6 @@
 "use client";
 
+import { Show } from "@/_components";
 import {
   FinishedMatchData,
   InProgMatchData,
@@ -7,13 +8,12 @@ import {
   TournamentState,
   Tournaments,
 } from "@/_lib";
+import { useState } from "react";
 import {
   FinishedTournaments,
   InProgressTournaments,
   RegisteredTournaments,
 } from "..";
-import { Show } from "@/_components";
-import { useState } from "react";
 
 type Props = {
   tournaments: Tournaments;

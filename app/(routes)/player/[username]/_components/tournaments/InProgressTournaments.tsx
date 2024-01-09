@@ -1,10 +1,9 @@
 "use client";
 
+import { DotsIcon, Pagination } from "@/_components";
 import { InProgMatchData } from "@/_lib";
 import { getPages, getTournamentName } from "@/_utils";
 import { useMemo, useState } from "react";
-import { Pagination } from "@/_components";
-import { DotsIcon } from "@/_components/icons";
 
 type Props = {
   tournaments: InProgMatchData[];

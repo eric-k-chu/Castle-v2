@@ -45,10 +45,7 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
                   #{n.rank}
                 </span>
                 <Image
-                  src={
-                    n?.avatar ??
-                    "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
-                  }
+                  src={n?.avatar ?? "/icons/default-avatar.svg"}
                   width={0}
                   height={0}
                   alt={`${n.username} avatar`}

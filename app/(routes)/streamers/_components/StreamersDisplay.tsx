@@ -43,10 +43,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
               </Show>
               <div className="flex w-full items-center gap-x-2">
                 <Image
-                  src={
-                    n?.avatar ??
-                    "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
-                  }
+                  src={n?.avatar ?? "/icons/default-avatar.svg"}
                   alt={`${n.username} avatar`}
                   width={0}
                   height={0}

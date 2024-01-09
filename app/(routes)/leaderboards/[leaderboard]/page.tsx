@@ -42,10 +42,7 @@ export default async function Leaderboard({ params }: Props) {
             <span className="w-8 text-center sm:w-10">{n.rank}</span>
             <div className="flex items-center gap-x-2">
               <img
-                src={
-                  n?.avatar ??
-                  "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
-                }
+                src={n?.avatar ?? "/icons/default-avatar.svg"}
                 alt={`${n.username} avatar`}
                 className="h-4 w-4 rounded-sm sm:h-6 sm:w-6"
               />
