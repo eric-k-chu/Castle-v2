@@ -194,7 +194,6 @@ export function filterPlayers(
 
 export function getCountries(): Country[] {
   const countries: Country[] = [];
-  process.env.NODE_ENV === "development" && console.log("generating");
 
   const countryCodes = Object.values(
     customList(
@@ -215,7 +214,7 @@ export function getCountries(): Country[] {
   }
 
   countries.push(...USER_ASSIGNED_COUNTRIES);
-  return countries;
+  return countries.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function getPages<T>(arr: T[], chunkSize = 10): T[][] {
