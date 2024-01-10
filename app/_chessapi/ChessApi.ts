@@ -10,10 +10,25 @@ import {
   Streamers,
   Title,
   Tournaments,
+  CountryPlayers,
 } from "@/_lib";
 
 export class ChessApi {
   private static baseUrl = "https://api.chess.com/pub/";
+
+  public static async getData<T extends ChessApi>(
+    func: () => Promise<T>,
+  ): Promise<[data: T | null, error: string | null]> {
+    try {
+      const res = await func();
+      return [res, null];
+    } catch (err) {
+      return [
+        null,
+        err instanceof Error ? err.message : "Something has gone wrong!",
+      ];
+    }
+  }
 
   public static async getPlayerProfile(
     username: string,
@@ -94,6 +109,15 @@ export class ChessApi {
     const url = ChessApi.baseUrl + "puzzle/random";
     const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, "puzzle");
+    return await res.json();
+  }
+
+  public static async getPlayersByCountry(
+    code: string,
+  ): Promise<CountryPlayers> {
+    const url = ChessApi.baseUrl + `country/${code}/players`;
+    const res = await fetch(url, { cache: "no-cache" });
+    if (!res.ok) throw new ChessApiError(res.status, `"${code}"`);
     return await res.json();
   }
 }

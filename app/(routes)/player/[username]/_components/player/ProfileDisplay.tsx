@@ -24,7 +24,7 @@ export function ProfileDisplay({ player }: Props) {
           width="0"
           height="0"
           unoptimized
-          className="h-28 min-h-[7rem] w-28 min-w-[7rem] rounded-sm border-2 border-amber-400 sm:h-36 sm:min-h-[9rem] sm:w-36 sm:min-w-[9rem]"
+          className="h-28 min-h-[7rem] w-28 min-w-[7rem] rounded-sm border-2 border-amber-400 object-cover sm:h-36 sm:min-h-[9rem] sm:w-36 sm:min-w-[9rem]"
         />
         <Show when={player.league !== undefined}>
           <div className="absolute bottom-[-10px] rounded-sm border border-amber-400 bg-zinc-900 px-4 py-1">

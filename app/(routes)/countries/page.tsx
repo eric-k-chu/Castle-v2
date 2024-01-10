@@ -2,8 +2,9 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { SearchIcon, WorldIcon } from "@/_components";
-import { Country } from "@/_lib";
+import { Country, ROUTES } from "@/_lib";
 import { getCountries } from "@/_utils";
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
 export default function Countries() {
@@ -53,8 +54,12 @@ type Props = {
 };
 
 function Card({ country }: Props) {
+  const router = useRouter();
   return (
-    <div className="group rounded-lg border border-zinc-800 hover:cursor-pointer">
+    <div
+      className="group rounded-lg border border-zinc-800 hover:cursor-pointer"
+      onClick={() => router.push(`${ROUTES.countries}/${country.code}`)}
+    >
       <div className="relative h-[150px] max-h-[150px] min-h-[150px] w-full">
         <img
           className="h-full w-full rounded-t-lg object-cover object-center"

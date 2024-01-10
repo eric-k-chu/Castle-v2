@@ -255,3 +255,49 @@ interface Streamer {
 export interface Streamers {
   streamers: Streamer[];
 }
+
+// /country/{code}/players
+
+export interface CountryPlayers {
+  players: string[];
+  comment: string;
+}
+
+// /country/{code}/clubs
+
+export interface CountryClubs {
+  clubs: string[];
+}
+
+// /club/{club-name}
+
+export interface Club {
+  "@id": string;
+  name: string;
+  club_id: number;
+  country: string;
+  location: string;
+  average_daily_rating: number;
+  members_count: number;
+  created: EpochTimeStamp;
+  last_activity: EpochTimeStamp;
+  admin: string[];
+  visibility: "private" | "public";
+  join_request: string;
+  icon: string;
+  description: string;
+  url: string;
+}
+
+// /club/{club-name}/members
+
+interface ClubMember {
+  username: string;
+  joined: EpochTimeStamp;
+}
+
+export interface ClubMembers {
+  weekly: ClubMember[];
+  monthly: ClubMember[];
+  all_time: ClubMember[];
+}
