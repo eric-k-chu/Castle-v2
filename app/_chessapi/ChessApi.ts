@@ -1,16 +1,17 @@
 import {
   Archives,
   Clubs,
+  CountryClubs,
+  CountryPlayers,
   DailyPuzzle,
   Leaderboards,
   MonthlyArchive,
   PlayerProfile,
-  TitledPlayers,
   Stats,
   Streamers,
   Title,
+  TitledPlayers,
   Tournaments,
-  CountryPlayers,
 } from "@/_lib";
 
 export class ChessApi {
@@ -116,6 +117,13 @@ export class ChessApi {
     code: string,
   ): Promise<CountryPlayers> {
     const url = ChessApi.baseUrl + `country/${code}/players`;
+    const res = await fetch(url, { cache: "no-cache" });
+    if (!res.ok) throw new ChessApiError(res.status, `"${code}"`);
+    return await res.json();
+  }
+
+  public static async getClubsByCountry(code: string): Promise<CountryClubs> {
+    const url = ChessApi.baseUrl + `country/${code}/clubs`;
     const res = await fetch(url, { cache: "no-cache" });
     if (!res.ok) throw new ChessApiError(res.status, `"${code}"`);
     return await res.json();

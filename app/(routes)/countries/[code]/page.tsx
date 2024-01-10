@@ -1,29 +1,32 @@
-import { ChessApi } from "@/_chessapi";
+import { ErrorMessage } from "@/_components";
+import { getCountries } from "@/_utils";
+import Image from "next/image";
 
 type Props = {
   params: { code: string };
 };
 
 export default async function CountryPage({ params }: Props) {
-  const [country, err] = await ChessApi.getData(() =>
-    ChessApi.getPlayersByCountry(params.code.toUpperCase()),
-  );
+  const countryCode = params.code.toUpperCase();
+  const country = getCountries().find((n) => n.code === countryCode);
 
-  if (err !== null) {
-    return (
-      <div className="mx-auto w-full px-4 py-24 sm:max-w-lg min-[878px]:max-w-3xl lg:max-w-4xl">
-        <h1>{err}</h1>
-      </div>
-    );
+  if (!country) {
+    return <ErrorMessage message={`${countryCode} does not exist.`} />;
   }
 
-  if (!country) return null;
-
   return (
-    <div className="mx-auto w-full px-4 py-24 sm:max-w-lg min-[878px]:max-w-3xl lg:max-w-4xl">
-      {country.players.map((n) => (
-        <div key={n}>{n}</div>
-      ))}
-    </div>
+    <h1 className="flex items-center space-x-4 text-xl font-semibold uppercase sm:text-2xl md:text-4xl">
+      <span className="mr-1 font-light text-primary-1">
+        &#40;{country?.code}&#41;
+      </span>
+      {country?.name}
+      <Image
+        src={country?.src}
+        alt={`${countryCode} flag`}
+        width={0}
+        height={0}
+        className="inline h-auto w-8 rounded-sm border border-neutral-700 sm:w-10"
+      />
+    </h1>
   );
 }
