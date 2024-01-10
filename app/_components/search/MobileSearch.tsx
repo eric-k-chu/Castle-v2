@@ -34,7 +34,7 @@ export function MobileSearch({ suggestions }: Props) {
         <SearchIcon />
       </button>
       <div
-        className={`fixed left-0 top-0 z-50 h-screen w-full bg-zinc-800/20 backdrop-blur-sm transition-opacity duration-150 ease-in-out ${
+        className={`fixed left-0 top-0 z-50 h-screen w-full bg-neutral-900/20 backdrop-blur-sm transition-opacity duration-150 ease-in-out ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -44,11 +44,11 @@ export function MobileSearch({ suggestions }: Props) {
         />
         <div className="absolute top-0 z-[60] flex w-full flex-col items-center gap-y-2 p-4">
           <form
-            className="relative flex w-full items-center rounded-full bg-white px-4 py-2 text-black"
+            className="relative flex w-full max-w-2xl items-center rounded-full bg-white px-4 py-2 text-black"
             onSubmit={handleSubmit}
           >
-            <div className="z-[61] flex w-fit items-center justify-center border-r border-zinc-400 pr-2">
-              <SearchIcon className="h-auto w-4 fill-zinc-400" />
+            <div className="z-[61] flex w-fit items-center justify-center border-r border-neutral-400 pr-2">
+              <SearchIcon className="h-auto w-4 fill-neutral-400" />
             </div>
             <input
               value={query}

@@ -32,7 +32,7 @@ export function FinishedTournaments({ tournaments }: Props) {
         {finished[page].map((n) => (
           <div
             key={n["@id"]}
-            className="grid grid-cols-5 rounded-sm p-4 text-xs odd:bg-transparent even:bg-zinc-900 sm:text-sm"
+            className="grid grid-cols-5 rounded-sm p-4 text-xs odd:bg-transparent even:bg-neutral-800 sm:text-sm"
           >
             <div className="col-span-2 truncate capitalize">
               {getTournamentName(n["@id"])}
@@ -44,7 +44,7 @@ export function FinishedTournaments({ tournaments }: Props) {
               <span className="text-gray-400">{n.draws}</span>
             </div>
             <a target="_blank" href={n.url} className="flex justify-end">
-              <DotsIcon className="h-auto w-5 fill-zinc-200" />
+              <DotsIcon className="h-auto w-5 fill-neutral-200" />
             </a>
           </div>
         ))}

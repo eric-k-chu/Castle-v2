@@ -5,7 +5,7 @@ type Props = {
 export function PersonIcon({ className }: Props) {
   return (
     <svg
-      className={className || "h-auto w-4 stroke-zinc-200"}
+      className={className || "h-auto w-4 stroke-neutral-200"}
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
       strokeLinecap="round"

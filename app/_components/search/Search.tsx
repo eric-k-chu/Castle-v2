@@ -32,8 +32,8 @@ export function Search({ suggestions }: Props) {
       onSubmit={handleSearch}
     >
       <div className="flex w-full items-center rounded-full bg-white px-4 py-2 text-black">
-        <div className="flex w-fit items-center justify-center border-r border-zinc-400 pr-2">
-          <SearchIcon className="h-auto w-4 fill-zinc-400" />
+        <div className="flex w-fit items-center justify-center border-r border-neutral-400 pr-2">
+          <SearchIcon className="h-auto w-4 fill-neutral-400" />
         </div>
         <input
           value={query}

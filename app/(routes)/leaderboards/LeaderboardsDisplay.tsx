@@ -18,7 +18,7 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
   return (
     <section className="mx-auto max-w-sm space-y-4 sm:max-w-md md:max-w-lg lg:max-w-2xl">
       <div className="flex items-center gap-x-2 sm:gap-x-4">
-        <TrophyIcon className="inline h-auto w-4 fill-zinc-200 sm:w-5 md:w-7" />
+        <TrophyIcon className="inline h-auto w-4 fill-neutral-200 sm:w-5 md:w-7" />
         <strong className="text-lg uppercase sm:text-2xl md:text-4xl">
           leaderboards
         </strong>
@@ -26,7 +26,7 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
       {leaderboardModes.map((n) => (
         <div
           key={n}
-          className="flex flex-wrap items-center justify-center gap-8 rounded-sm bg-zinc-800 py-6 md:justify-start md:gap-0 md:py-8"
+          className="flex flex-wrap items-center justify-center gap-8 rounded-sm bg-neutral-900 py-6 md:justify-start md:gap-0 md:py-8"
         >
           <Link
             href={`${ROUTES.leaderboards}/${n}`}
@@ -39,7 +39,7 @@ export function LeaderboardsDisplay({ leaderboards }: Props) {
               <Link
                 key={n.player_id}
                 href={`${ROUTES.player}/${n.username.toLocaleLowerCase()}`}
-                className="flex items-center gap-x-2 rounded-sm p-1 text-xs hover:bg-zinc-700 sm:text-sm"
+                className="flex items-center gap-x-2 rounded-sm p-1 text-xs hover:bg-neutral-700 sm:text-sm"
               >
                 <span className={`${getTextColorFromRank(n.rank)} w-4`}>
                   #{n.rank}

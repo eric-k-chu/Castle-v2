@@ -6,7 +6,7 @@ export function RandomDailyPuzzleIcon({ className }: Props) {
     <svg
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
-      className={className || "h-auto w-6 fill-zinc-500"}
+      className={className || "h-auto w-6 fill-neutral-500"}
     >
       <rect x="10" y="17" width="80" height="75" rx="5" />
       <rect x="22" y="12" width="8" height="5" />

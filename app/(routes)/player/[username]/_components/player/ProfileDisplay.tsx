@@ -27,7 +27,7 @@ export function ProfileDisplay({ player }: Props) {
           className="h-28 min-h-[7rem] w-28 min-w-[7rem] rounded-sm border-2 border-amber-400 object-cover sm:h-36 sm:min-h-[9rem] sm:w-36 sm:min-w-[9rem]"
         />
         <Show when={player.league !== undefined}>
-          <div className="absolute bottom-[-10px] rounded-sm border border-amber-400 bg-zinc-800 px-4 py-1">
+          <div className="absolute bottom-[-10px] rounded-sm border border-amber-400 bg-neutral-900 px-4 py-1">
             <Image
               src={`/icons/${player?.league?.toLocaleLowerCase()}.svg`}
               alt={`${player?.league} icon`}
@@ -54,20 +54,22 @@ export function ProfileDisplay({ player }: Props) {
             <a
               href={player.twitch_url}
               target="_blank"
-              className="rounded-md bg-zinc-800 px-2 py-1"
+              className="rounded-md bg-neutral-900 px-2 py-1"
             >
               <TwitchIcon className="h-auto w-5 fill-[#6441a4]" />
             </a>
           </Show>
         </div>
         <div className="flex items-center gap-x-2 empty:hidden">
-          <h2 className="text-xs text-zinc-400 sm:text-sm">{player?.name}</h2>
+          <h2 className="text-xs text-neutral-400 sm:text-sm">
+            {player?.name}
+          </h2>
           <Show
             when={player.name !== undefined && player.location !== undefined}
           >
-            <span className="text-xs text-zinc-400 sm:text-sm">|</span>
+            <span className="text-xs text-neutral-400 sm:text-sm">|</span>
           </Show>
-          <h2 className="text-xs text-zinc-400 sm:text-sm">
+          <h2 className="text-xs text-neutral-400 sm:text-sm">
             {player?.location}
           </h2>
         </div>

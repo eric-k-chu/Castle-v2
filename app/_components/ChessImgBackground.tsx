@@ -11,11 +11,11 @@ export function ChessImgBackground({ children }: Props) {
       className="relative"
       style={{
         background:
-          "conic-gradient(from 90deg at 0.5px 0.5px,#18181b 90deg,#27272a 0) 0 0/50px 50px",
+          "conic-gradient(from 90deg at 0.5px 0.5px,#0a0a0a 90deg,#171717 0) 0 0/50px 50px",
       }}
     >
       {children}
-      <div className="flex h-72 items-end justify-center bg-gradient-to-t from-zinc-900 from-70% to-transparent pb-10">
+      <div className="flex h-72 items-end justify-center bg-gradient-to-t from-neutral-950 from-70% to-transparent pb-10">
         <a
           target="_blank"
           href="https://github.com/eric-k-chu"

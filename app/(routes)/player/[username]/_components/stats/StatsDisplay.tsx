@@ -14,7 +14,7 @@ export function StatsDisplay({ stats }: Props) {
   const { puzzle_rush, tactics } = stats;
 
   return (
-    <section className="my-8 rounded-sm bg-zinc-800 p-6">
+    <section className="my-8 rounded-sm bg-neutral-900 p-6">
       <div className="flex flex-1 flex-wrap items-center justify-around gap-8">
         {gameStats.map((n) => (
           <div className="group relative space-y-2" key={n.type}>
@@ -27,12 +27,12 @@ export function StatsDisplay({ stats }: Props) {
               {n.pct}
               <span className="pl-1 text-xs">%</span>
             </h2>
-            <h3 className="text-xs text-zinc-400">
+            <h3 className="text-xs text-neutral-400">
               {n.wins + n.losses + n.draws} games
             </h3>
             <div
               role="tooltip"
-              className="absolute bottom-0 left-10 z-10 hidden space-y-2 rounded-md bg-zinc-700 p-4 text-xs group-hover:block"
+              className="absolute bottom-0 left-10 z-10 hidden space-y-2 rounded-md bg-neutral-700 p-4 text-xs group-hover:block"
             >
               <div className="flex text-green-400">
                 <span className="pr-1">wins:</span>
@@ -42,7 +42,7 @@ export function StatsDisplay({ stats }: Props) {
                 <span className="pr-1">losses:</span>
                 <span>{n.losses}</span>
               </div>
-              <div className="flex text-zinc-400">
+              <div className="flex text-neutral-400">
                 <span className="pr-1">draws:</span>
                 <span>{n.draws}</span>
               </div>
@@ -53,7 +53,7 @@ export function StatsDisplay({ stats }: Props) {
           <div className="space-y-2">
             <strong className="text-sm uppercase sm:text-base">Puzzles</strong>
             <h2 className="text-base sm:text-lg">{tactics?.highest.rating}</h2>
-            <h3 className="text-xs text-zinc-400">
+            <h3 className="text-xs text-neutral-400">
               {tactics?.highest.date &&
                 getDateFromUtc(tactics.highest.date).full}
             </h3>
@@ -65,7 +65,7 @@ export function StatsDisplay({ stats }: Props) {
               Puzzle Rush
             </strong>
             <h2 className="text-base sm:text-lg">{puzzle_rush.best?.score}</h2>
-            <h3 className="text-xs text-zinc-400">
+            <h3 className="text-xs text-neutral-400">
               {puzzle_rush.best?.total_attempts} attempts
             </h3>
           </div>

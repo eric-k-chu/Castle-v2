@@ -9,21 +9,21 @@ export function getBorderColorFromRank(rank: number): string {
   if (rank === 1) return "border-amber-400";
   if (rank === 2) return "border-white";
   if (rank === 3) return "border-amber-600";
-  return "border-zinc-500";
+  return "border-neutral-500";
 }
 
 export function getBgColorFromRank(rank: number): string {
   if (rank === 1) return "bg-amber-400";
   if (rank === 2) return "bg-white";
   if (rank === 3) return "bg-amber-600";
-  return "bg-zinc-500";
+  return "bg-neutral-500";
 }
 
 export function getTextColorFromRank(rank: number): string {
   if (rank === 1) return "text-amber-400";
   if (rank === 2) return "text-white";
   if (rank === 3) return "text-amber-600";
-  return "text-zinc-500";
+  return "text-neutral-500";
 }
 
 export function getGameResultColor(

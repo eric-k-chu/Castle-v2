@@ -12,7 +12,7 @@ export function ErrorDisplay({ error }: Props) {
     <div className="mx-auto max-w-5xl py-[100px]">
       <div className="px-4 text-center">
         <div className="flex items-center justify-center">
-          <MissingFileIcon className="h-48 w-auto fill-zinc-200 sm:h-60" />
+          <MissingFileIcon className="h-48 w-auto fill-neutral-200 sm:h-60" />
         </div>
         <h1 className="text-semibold mt-8 text-2xl sm:text-4xl">
           Oops! Something went wrong!

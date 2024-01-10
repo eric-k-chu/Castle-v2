@@ -29,7 +29,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
   return (
     <section className="mx-auto max-w-sm space-y-4 sm:max-w-md md:max-w-lg lg:max-w-2xl">
       <div className="flex items-center gap-x-2 sm:gap-x-4">
-        <TwitchIcon className="inline h-auto w-5 fill-zinc-200 sm:w-6 md:w-8" />
+        <TwitchIcon className="inline h-auto w-5 fill-neutral-200 sm:w-6 md:w-8" />
         <strong className="text-lg uppercase sm:text-2xl md:text-4xl">
           streamers
         </strong>
@@ -37,7 +37,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
       <div className="flex flex-wrap">
         {streamers[page].map((n) => (
           <div key={n.username} className="w-full p-1 sm:w-1/2 md:w-1/3">
-            <div className="relative gap-y-4 rounded-sm bg-zinc-800 p-4 pb-1">
+            <div className="relative gap-y-4 rounded-sm bg-neutral-900 p-4 pb-1">
               <Show when={n.is_live === true}>
                 <div className="absolute right-2 top-2 h-2 w-2 animate-pulse rounded-full bg-red-600" />
               </Show>
@@ -59,7 +59,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
               </div>
               <button className="w-full py-2">
                 <a
-                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-zinc-800 py-2 transition-colors duration-150 ease-in-out hover:bg-primary-2"
+                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-neutral-900 py-2 transition-colors duration-150 ease-in-out hover:bg-primary-2"
                   target="_blank"
                   href={n.twitch_url}
                 >

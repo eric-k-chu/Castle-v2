@@ -16,7 +16,7 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
 
   return (
     <div
-      className={`w-full overflow-hidden rounded-lg bg-white pb-2 text-black ${
+      className={`w-full max-w-2xl overflow-hidden rounded-lg bg-white pb-2 text-black ${
         query.length > 0 ? "block" : "hidden"
       }`}
     >
@@ -29,7 +29,7 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
             key={n.name}
             onClick={() => onClick(n.name)}
             type="button"
-            className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-zinc-300 sm:text-sm"
+            className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-neutral-300 sm:text-sm"
           >
             <ChessTitle title={n.title} />
             {n.name}
@@ -40,7 +40,7 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
         Player
       </h1>
       <button
-        className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-zinc-300 sm:text-sm"
+        className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-neutral-300 sm:text-sm"
         onClick={() => onClick(query)}
         type="button"
       >

@@ -5,7 +5,7 @@ type Props = {
 export function WorldIcon({ className }: Props) {
   return (
     <svg
-      className={className || "h-auto w-6 fill-zinc-500"}
+      className={className || "h-auto w-6 fill-neutral-500"}
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
     >
