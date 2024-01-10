@@ -255,3 +255,12 @@ export function getDaysElapsed(endTime: EpochTimeStamp): string {
 
   return `${now.getSeconds() - time.getSeconds()}s ago`;
 }
+
+export function getClubName(url: string): string {
+  const urlPattern = `${CHESS_API_BASE}club/`;
+  return url
+    .split(urlPattern)[1]
+    .split("-")
+    .filter((n) => n.length > 0)
+    .join(" ");
+}

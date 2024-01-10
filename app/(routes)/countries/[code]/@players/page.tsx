@@ -1,5 +1,7 @@
 import { ChessApi } from "@/_chessapi";
 import { ErrorMessage } from "@/_components";
+import { List } from "../List";
+import { CHESS_API_BASE, ROUTES } from "@/_lib";
 
 type Props = {
   params: { code: string };
@@ -14,16 +16,7 @@ export default async function CountryPlayers({ params }: Props) {
     return <ErrorMessage message={err} />;
   }
 
-  return (
-    <ul className="mt-4 rounded-md bg-neutral-900 p-4">
-      {players?.players.map((n) => (
-        <li
-          key={n}
-          className="truncate p-2 odd:bg-neutral-800 even:bg-transparent"
-        >
-          {n}
-        </li>
-      ))}
-    </ul>
-  );
+  if (!players) return null;
+
+  return <List list={players.players} link={ROUTES.player} />;
 }
