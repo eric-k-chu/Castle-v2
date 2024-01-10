@@ -1,9 +1,18 @@
 import { ChessApi } from "@/_chessapi";
+import { ErrorMessage } from "@/_components";
 import { getDateFromUtc } from "@/_utils";
 import Image from "next/image";
 
 export default async function DailyPuzzle() {
-  const dailyPuzzle = await ChessApi.getDailyPuzzle();
+  const [dailyPuzzle, err] = await ChessApi.getData(() =>
+    ChessApi.getDailyPuzzle(),
+  );
+
+  if (err !== null) {
+    return <ErrorMessage message={err} />;
+  }
+
+  if (!dailyPuzzle) return null;
 
   return (
     <div className="mx-auto w-full px-4 py-40">

@@ -2,21 +2,29 @@
 import { ChessApi } from "@/_chessapi/";
 import { LEADERBOARDS, ROUTES } from "@/_lib";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { RankOneCard, RankTwotoFiveCard, Trend } from "../_components";
+import { ErrorMessage } from "@/_components";
 
 type Props = {
   params: { leaderboard: string };
 };
 
 export default async function Leaderboard({ params }: Props) {
-  const leaderboards = await ChessApi.getLeaderboards();
+  const [leaderboards, err] = await ChessApi.getData(() =>
+    ChessApi.getLeaderboards(),
+  );
   const key = params.leaderboard as keyof typeof LEADERBOARDS;
   const keys = Object.keys(LEADERBOARDS) as (keyof typeof LEADERBOARDS)[];
 
   if (!keys.includes(key)) {
-    notFound();
+    return <ErrorMessage message={"This game mode does not exist."} />;
   }
+
+  if (err !== null) {
+    return <ErrorMessage message={err} />;
+  }
+
+  if (!leaderboards) return null;
 
   const requestedLeaderboard = leaderboards[key];
   const requestedLeaderboardTitle = LEADERBOARDS[key];

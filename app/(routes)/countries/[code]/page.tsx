@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import { ChessApi } from "@/_chessapi";
 
 type Props = {
@@ -19,9 +17,13 @@ export default async function CountryPage({ params }: Props) {
     );
   }
 
+  if (!country) return null;
+
   return (
     <div className="mx-auto w-full px-4 py-24 sm:max-w-lg min-[878px]:max-w-3xl lg:max-w-4xl">
-      {country?.players.map((n) => <div key={n}>{n}</div>)}
+      {country.players.map((n) => (
+        <div key={n}>{n}</div>
+      ))}
     </div>
   );
 }

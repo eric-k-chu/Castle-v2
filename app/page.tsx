@@ -10,7 +10,7 @@ export default async function HomePage() {
     <ChessImgBackground>
       <div className="flex h-screen flex-col items-center justify-center px-2">
         <div className="mb-12 flex w-full max-w-2xl items-center justify-center gap-x-4 sm:gap-x-8">
-          <Logo className="fill-primary-1 h-16 w-auto sm:h-24" />
+          <Logo className="h-20 w-auto sm:h-32" />
           <div className="space-y-4">
             <h1 className="text-2xl font-semibold uppercase sm:text-4xl">
               Castle
