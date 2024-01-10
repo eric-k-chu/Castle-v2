@@ -33,6 +33,11 @@ export function StreamersDisplay({ streamers: list }: Props) {
         <strong className="text-lg uppercase sm:text-2xl md:text-4xl">
           streamers
         </strong>
+        <div className="ml-auto">
+          <h5 className="text-xs text-neutral-500 sm:text-sm">
+            {page + 1} of {streamers.length}
+          </h5>
+        </div>
       </div>
       <div className="flex flex-wrap">
         {streamers[page].map((n) => (
@@ -59,7 +64,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
               </div>
               <button className="w-full py-2">
                 <a
-                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-neutral-900 py-2 transition-colors duration-150 ease-in-out hover:bg-primary-2"
+                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-neutral-800 py-2 transition-colors duration-150 ease-in-out hover:bg-primary-2"
                   target="_blank"
                   href={n.twitch_url}
                 >
@@ -71,12 +76,48 @@ export function StreamersDisplay({ streamers: list }: Props) {
           </div>
         ))}
       </div>
-      <nav className="flex justify-between pt-10">
-        <button className="uppercase" onClick={handlePrev}>
+      <nav className="flex gap-x-12 pt-10">
+        <button
+          className="flex w-full items-center rounded-lg border border-zinc-700 px-4 py-8 text-left text-xs uppercase transition-colors duration-150 ease-in-out hover:border-zinc-400 sm:text-sm"
+          onClick={handlePrev}
+        >
+          <svg
+            className="me-2 h-3.5 w-3.5 rtl:rotate-180"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13 5H1m0 0 4 4M1 5l4-4"
+            />
+          </svg>
           Previous
         </button>
-        <button className="uppercase" onClick={handleNext}>
+        <button
+          className="flex w-full items-center justify-end rounded-lg border border-zinc-700 px-4 py-8 text-right text-xs uppercase transition-colors duration-150 ease-in-out hover:border-zinc-400 sm:text-sm"
+          onClick={handleNext}
+        >
           Next
+          <svg
+            className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
         </button>
       </nav>
     </section>

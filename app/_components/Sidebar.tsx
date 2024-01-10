@@ -20,7 +20,14 @@ export function Sidebar() {
           </div>
         </Link>
         {routes.map((n) => (
-          <div className="w-full px-4 py-3" key={n.name}>
+          <div
+            className={`box-border w-full border-l-4 py-3 pl-3 pr-4 ${
+              path.includes(n.path)
+                ? "border-l-neutral-200"
+                : "border-l-transparent"
+            }`}
+            key={n.name}
+          >
             <Link
               className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-neutral-800"
               href={n.path}
