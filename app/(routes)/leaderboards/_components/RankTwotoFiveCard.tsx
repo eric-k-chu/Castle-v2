@@ -20,7 +20,7 @@ export function RankTwotoFiveCard({ players }: Props) {
     <div className="mt-4 space-y-4 lg:grid lg:grid-cols-4 lg:gap-x-4 lg:space-y-0">
       {players.map((n) => (
         <div
-          className="flex items-center justify-between space-y-0 rounded-sm bg-zinc-900 p-4 lg:block lg:space-y-2"
+          className="flex items-center justify-between space-y-0 rounded-sm bg-zinc-800 p-4 lg:block lg:space-y-2"
           key={n.player_id}
         >
           <div className="flex items-center gap-x-2 text-xs sm:text-sm">

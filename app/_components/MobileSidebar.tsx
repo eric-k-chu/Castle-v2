@@ -22,11 +22,11 @@ export function MobileSidebar() {
       </button>
 
       <div
-        className={`fixed bottom-0 left-0 h-screen w-72 rounded-r-lg bg-zinc-900 px-4 transition-transform duration-150 ease-in-out ${
+        className={`fixed bottom-0 left-0 h-screen w-72 rounded-r-lg bg-zinc-800 px-4 transition-transform duration-150 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-[288px]"
         }`}
       >
-        <div className="z-[999] flex items-center justify-between border-b border-b-zinc-800 py-6">
+        <div className="z-[999] flex items-center justify-between border-b border-b-zinc-700 py-6">
           <Logo />
           <button onClick={() => setIsOpen(false)}>
             <ExitIcon className="h-auto w-5 rotate-180" />

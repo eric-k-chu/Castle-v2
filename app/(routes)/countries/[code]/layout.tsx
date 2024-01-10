@@ -3,5 +3,5 @@ export default function CountriesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main className="bg-zinc-950">{children}</main>;
+  return <main className="bg-zinc-800">{children}</main>;
 }

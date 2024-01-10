@@ -2,19 +2,15 @@ import { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
-  radial?: boolean;
 };
 
-export function ChessImgBackground({ children, radial }: Props) {
-  const gradient = !radial
-    ? "linear-gradient(to top, rgba(9, 9, 11, 1) 10%, rgba(9, 9, 11, 0.75) 90%), url('/images/hero.png')"
-    : "radial-gradient(600px at 50% -3%, rgba(9, 9, 11, 0.6) 0%, rgb(9, 9, 11) 100%, rgb(9, 9, 11) 100%), url('/images/hero.png')";
-
+export function ChessImgBackground({ children }: Props) {
   return (
     <main
+      className="bg-zinc-800"
       style={{
-        backgroundPosition: "top",
-        backgroundImage: gradient,
+        background:
+          "conic-gradient(from 90deg at 0.5px 0.5px,#18181b 90deg,#27272a 0) 0 0/50px 50px",
       }}
     >
       {children}

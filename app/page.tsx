@@ -1,10 +1,19 @@
 import { getPlayerSuggestions } from "@/_utils";
-import { ChessImgBackground } from "./_components";
+import { ChessImgBackground, ErrorMessage } from "./_components";
 import { Search } from "./_components/search";
 import { Logo } from "./_components/icons";
+import { ChessApi } from "./_chessapi";
 
 export default async function HomePage() {
-  const suggestions = await getPlayerSuggestions();
+  const [suggestions, err] = await ChessApi.getData(() =>
+    getPlayerSuggestions(),
+  );
+
+  if (err !== null) {
+    return <ErrorMessage message={err} />;
+  }
+
+  if (!suggestions) return null;
 
   return (
     <ChessImgBackground>

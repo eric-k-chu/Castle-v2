@@ -5,5 +5,5 @@ export default function PlayerLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <ChessImgBackground radial>{children}</ChessImgBackground>;
+  return <ChessImgBackground>{children}</ChessImgBackground>;
 }

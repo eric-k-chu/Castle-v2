@@ -31,7 +31,7 @@ export function RegisteredTournaments({ tournaments }: Props) {
         {registered[page].map((n) => (
           <div
             key={n["@id"]}
-            className="grid grid-cols-4 rounded-sm p-4 text-xs odd:bg-transparent even:bg-zinc-800 sm:text-sm"
+            className="grid grid-cols-4 rounded-sm p-4 text-xs odd:bg-transparent even:bg-zinc-900 sm:text-sm"
           >
             <div className="col-span-2 truncate capitalize">
               {getTournamentName(n["@id"])}

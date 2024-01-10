@@ -39,7 +39,7 @@ export function Display({ puzzle }: Props) {
   }, [seconds]);
 
   return (
-    <section className="mx-auto flex max-w-md flex-col items-center space-y-4 sm:max-w-lg sm:flex-row sm:bg-zinc-900 md:max-w-2xl lg:max-w-4xl">
+    <section className="mx-auto flex max-w-md flex-col items-center space-y-4 sm:max-w-lg sm:flex-row sm:bg-zinc-800 md:max-w-2xl lg:max-w-4xl">
       <div className="w-full space-y-2 sm:w-1/2">
         <Image
           src={dailyPuzzle.image}
@@ -65,7 +65,7 @@ export function Display({ puzzle }: Props) {
           className={`h-fit w-[111px] rounded-lg px-5 py-2.5 text-xs font-medium sm:w-[123px] sm:text-sm ${
             onCooldown
               ? "pointer-events-none cursor-auto bg-red-900 text-zinc-500"
-              : "bg-primary-1 hover:bg-primary-2 cursor-pointer"
+              : "cursor-pointer bg-primary-1 hover:bg-primary-2"
           }`}
           onClick={getRandomPuzzle}
         >

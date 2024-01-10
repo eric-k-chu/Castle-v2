@@ -66,11 +66,11 @@ function Card({ country }: Props) {
           src={country.src}
           alt={`${country.code} flag`}
         />
-        <div className="absolute bottom-0 flex h-full w-full items-center justify-center rounded-t-lg bg-zinc-900/60 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100 sm:text-sm md:text-base lg:text-lg">
+        <div className="absolute bottom-0 flex h-full w-full items-center justify-center rounded-t-lg bg-zinc-800/60 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100 sm:text-sm md:text-base lg:text-lg">
           <h5 className="font-semibold">{country.code}</h5>
         </div>
       </div>
-      <div className="rounded-b-lg bg-zinc-900 px-2 py-4">
+      <div className="rounded-b-lg bg-zinc-800 px-2 py-4">
         <h5 className="mb-2 space-x-2 truncate text-base sm:text-sm md:text-base lg:text-lg">
           {country.name}
         </h5>

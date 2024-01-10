@@ -37,7 +37,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
       <div className="flex flex-wrap">
         {streamers[page].map((n) => (
           <div key={n.username} className="w-full p-1 sm:w-1/2 md:w-1/3">
-            <div className="relative gap-y-4 rounded-sm bg-zinc-900 p-4 pb-1">
+            <div className="relative gap-y-4 rounded-sm bg-zinc-800 p-4 pb-1">
               <Show when={n.is_live === true}>
                 <div className="absolute right-2 top-2 h-2 w-2 animate-pulse rounded-full bg-red-600" />
               </Show>
@@ -59,11 +59,11 @@ export function StreamersDisplay({ streamers: list }: Props) {
               </div>
               <button className="w-full py-2">
                 <a
-                  className="hover:bg-primary-2 group flex w-full items-center justify-center gap-x-2 rounded-sm bg-zinc-950 py-2 transition-colors duration-150 ease-in-out"
+                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-zinc-800 py-2 transition-colors duration-150 ease-in-out hover:bg-primary-2"
                   target="_blank"
                   href={n.twitch_url}
                 >
-                  <TwitchIcon className="fill-twitch h-6 w-auto" />
+                  <TwitchIcon className="h-6 w-auto fill-twitch" />
                   <h2>Twitch</h2>
                 </a>
               </button>
