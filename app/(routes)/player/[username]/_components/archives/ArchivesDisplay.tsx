@@ -1,9 +1,11 @@
 "use client";
 
-import { DotsIcon, Pagination, SquareIcon } from "@/_components";
+import { DotsIcon, SquareIcon } from "@/_components";
+import { usePagination } from "@/_hooks";
 import { MonthlyArchive } from "@/_lib";
-import { getDaysElapsed, getGameResultColor, getPages } from "@/_utils";
-import { useState } from "react";
+import { getDaysElapsed, getGameResultColor } from "@/_utils";
+import { EmptyListHeader } from "../../EmptyListHeader";
+import { ListHeader } from "../../ListHeader";
 
 type Props = {
   archive: MonthlyArchive;
@@ -11,25 +13,25 @@ type Props = {
 };
 
 export function ArchivesDisplay({ archive, username }: Props) {
-  const [page, setPage] = useState(0);
-  const games = getPages(archive.games.toReversed());
+  const [list, page, _, switchPage] = usePagination(archive.games.toReversed());
 
-  if (games.length < 1) {
+  if (list.length < 1) {
     return (
-      <section className="my-8">
-        <h1 className="py-2 text-lg font-semibold uppercase">Archives</h1>
-        <div className="rounded-sm bg-neutral-900 px-4 py-8">
-          <h1 className="text-center text-neutral-400">
-            No games have been played.
-          </h1>
-        </div>
-      </section>
+      <EmptyListHeader
+        header="Latest Games"
+        message="No games have been played."
+      />
     );
   }
 
   return (
     <section className="my-8">
-      <h1 className="py-2 text-lg font-semibold uppercase">Archives</h1>
+      <ListHeader
+        header="Latest Games"
+        page={`${page + 1} of ${list.length}`}
+        prev={() => switchPage("prev")}
+        next={() => switchPage("next")}
+      />
       <div className="rounded-sm bg-neutral-900 px-4 py-8">
         <header className="mb-8 grid grid-cols-10 px-4">
           <strong className="col-span-2 text-xs uppercase sm:col-span-1 sm:text-sm">
@@ -48,7 +50,7 @@ export function ArchivesDisplay({ archive, username }: Props) {
             link
           </strong>
         </header>
-        {games[page].map((n) => (
+        {list[page].map((n) => (
           <div
             key={n.uuid}
             className={`my-1 grid grid-cols-10 border-l-8 p-4 text-xs odd:bg-transparent even:rounded-sm even:bg-neutral-800 sm:text-sm ${getGameResultColor(
@@ -83,11 +85,6 @@ export function ArchivesDisplay({ archive, username }: Props) {
             </a>
           </div>
         ))}
-        <Pagination
-          setter={setPage}
-          activePage={page}
-          arrLength={games.length}
-        />
       </div>
     </section>
   );

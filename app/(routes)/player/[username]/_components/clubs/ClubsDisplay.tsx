@@ -1,36 +1,33 @@
 "use client";
 
-import { Pagination } from "@/_components";
+import { usePagination } from "@/_hooks";
 import { Clubs } from "@/_lib";
-import { getDateFromUtc, getPages } from "@/_utils";
+import { getDateFromUtc } from "@/_utils";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { ListHeader } from "../../ListHeader";
+import { EmptyListHeader } from "../../EmptyListHeader";
 
 type Props = {
   clubs: Clubs;
 };
 
 export function ClubsDisplay({ clubs }: Props) {
-  const [page, setPage] = useState(0);
-  const pClubs = useMemo(
-    () => getPages(clubs.clubs.toSorted((a, b) => b.joined - a.joined)),
-    [clubs],
+  const [list, page, _, switchPage] = usePagination(
+    clubs.clubs.toSorted((a, b) => b.joined - a.joined),
   );
 
-  if (pClubs.length < 1) {
-    return (
-      <section className="my-8">
-        <h1 className="py-2 text-lg font-semibold uppercase">Clubs</h1>
-        <div className="rounded-sm bg-neutral-900 px-4 py-8">
-          <h1 className="text-center text-neutral-400">No clubs joined.</h1>
-        </div>
-      </section>
-    );
+  if (list.length < 1) {
+    return <EmptyListHeader header="Clubs" message="No clubs joined." />;
   }
 
   return (
     <section className="my-8">
-      <h1 className="py-2 text-lg font-semibold uppercase">Clubs</h1>
+      <ListHeader
+        header="Clubs"
+        page={`${page + 1} of ${list.length}`}
+        prev={() => switchPage("prev")}
+        next={() => switchPage("next")}
+      />
       <div className="rounded-sm bg-neutral-900 px-4 py-8">
         <header className="mb-8 grid grid-cols-10 px-4">
           <strong className="col-span-6 text-xs uppercase sm:text-sm">
@@ -43,7 +40,7 @@ export function ClubsDisplay({ clubs }: Props) {
             Active
           </strong>
         </header>
-        {pClubs[page].map((n) => (
+        {list[page].map((n) => (
           <div
             className="grid grid-cols-10 p-4 odd:bg-transparent even:rounded-sm even:bg-neutral-800"
             key={n["@id"]}
@@ -72,11 +69,6 @@ export function ClubsDisplay({ clubs }: Props) {
             </h1>
           </div>
         ))}
-        <Pagination
-          setter={setPage}
-          activePage={page}
-          arrLength={pClubs.length}
-        />
       </div>
     </section>
   );
