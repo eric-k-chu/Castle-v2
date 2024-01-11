@@ -35,7 +35,7 @@ export function RankTwotoFiveCard({ players }: Props) {
               unoptimized
               width={0}
               height={0}
-              className={`h-6 w-6 rounded-sm border-2 sm:h-8 sm:w-8 ${getBorderColorFromRank(
+              className={`size-6 rounded-sm border-2 sm:size-8 ${getBorderColorFromRank(
                 n.rank,
               )}`}
             />

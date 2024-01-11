@@ -49,7 +49,7 @@ export function Leaderboards({ leaderboards }: Props) {
                   width={0}
                   height={0}
                   alt={`${n.username} avatar`}
-                  className="h-6 w-6 rounded-sm"
+                  className="size-6 rounded-sm"
                 />
                 <div className="space-x-2 truncate capitalize">
                   <ChessTitle title={n.title} />

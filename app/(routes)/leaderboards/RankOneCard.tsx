@@ -31,7 +31,7 @@ export function RankOneCard({ player }: Props) {
         width={0}
         height={0}
         alt={`${player.username} avatar`}
-        className="h-16 w-16 rounded-sm border-2 border-amber-400 sm:h-24 sm:w-24"
+        className="size-16 rounded-sm border-2 border-amber-400 sm:size-24"
       />
       <div className="space-y-2">
         <div className="flex items-center gap-x-2 text-lg sm:text-4xl">

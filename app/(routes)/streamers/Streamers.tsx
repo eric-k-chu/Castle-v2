@@ -50,7 +50,7 @@ export function Streamers({ streamers }: Props) {
                   width={0}
                   height={0}
                   unoptimized
-                  className="h-auto w-6 rounded-sm"
+                  className="size-6 rounded-sm"
                 />
                 <Link
                   href={`${ROUTES.player}/${n.username}`}
