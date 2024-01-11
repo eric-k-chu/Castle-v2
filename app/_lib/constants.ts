@@ -1,7 +1,5 @@
 import { Country } from "./types";
 
-export const CHESS_API_BASE = "https://api.chess.com/pub/";
-
 export const ROUTES = {
   home: "/",
   player: "/player",

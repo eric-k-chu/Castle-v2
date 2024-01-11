@@ -1,6 +1,6 @@
-import { CHESS_API_BASE, USER_ASSIGNED_COUNTRIES } from "@/_lib";
-import { Stats, Country, TitledPlayer } from "@/_lib";
-import { customList, CountryProperty } from "country-codes-list";
+import { ChessApi } from "@/_chessapi";
+import { Country, Stats, TitledPlayer, USER_ASSIGNED_COUNTRIES } from "@/_lib";
+import { CountryProperty, customList } from "country-codes-list";
 import { hasFlag } from "country-flag-icons";
 
 // color styles need to be in their own functions
@@ -226,7 +226,7 @@ export function getPages<T>(arr: T[], chunkSize = 10): T[][] {
 }
 
 export function getTournamentName(url: string): string {
-  const urlPattern = `${CHESS_API_BASE}tournament/`;
+  const urlPattern = `${ChessApi.baseUrl}tournament/`;
   return url
     .split(urlPattern)[1]
     .split("-")
@@ -257,7 +257,7 @@ export function getDaysElapsed(endTime: EpochTimeStamp): string {
 }
 
 export function getClubName(url: string): string {
-  const urlPattern = `${CHESS_API_BASE}club/`;
+  const urlPattern = `${ChessApi.baseUrl}club/`;
   return url
     .split(urlPattern)[1]
     .split("-")

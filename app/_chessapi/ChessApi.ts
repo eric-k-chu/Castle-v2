@@ -15,7 +15,7 @@ import {
 } from "@/_lib";
 
 export class ChessApi {
-  private static baseUrl = "https://api.chess.com/pub/";
+  public static baseUrl = "https://api.chess.com/pub/";
 
   public static async getData<T extends ChessApi>(
     func: () => Promise<T>,
