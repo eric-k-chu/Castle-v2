@@ -1,13 +1,12 @@
 "use client";
 
+import { Route, routes } from "@/_lib";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { Logo } from ".";
-import { useRouter } from "next/navigation";
-import { routes } from "@/_lib/routes";
-import { ExitIcon, MenuIcon } from "./icons";
-import { Route } from "@/_lib/types";
+import { ExitIcon, Logo, MenuIcon } from "./icons";
 
 export function MobileSidebar() {
+  const path = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,12 +22,12 @@ export function MobileSidebar() {
       </button>
 
       <div
-        className={`fixed bottom-0 left-0 h-screen w-72 rounded-r-lg bg-zinc-900 px-4 transition-transform duration-150 ease-in-out ${
+        className={`fixed bottom-0 left-0 h-screen w-72 rounded-r-lg bg-neutral-900 px-4 transition-transform duration-150 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-[288px]"
         }`}
       >
-        <div className="z-[999] flex items-center justify-between border-b border-b-zinc-800 py-6">
-          <Logo className="h-auto w-5" />
+        <div className="z-[999] flex items-center justify-between border-b border-b-neutral-700 py-6">
+          <Logo />
           <button onClick={() => setIsOpen(false)}>
             <ExitIcon className="h-auto w-5 rotate-180" />
           </button>
@@ -40,8 +39,16 @@ export function MobileSidebar() {
               className="flex items-center gap-x-6 py-4 hover:cursor-pointer"
               onClick={() => goToRoute(n.path)}
             >
-              <div>{n.icon}</div>
-              <h1 className="capitalize text-zinc-500">{n.name}</h1>
+              <div>{path.includes(n.path) ? n.selected : n.icon}</div>
+              <h1
+                className={`capitalize ${
+                  path.includes(n.path)
+                    ? "text-neutral-200"
+                    : "text-neutral-500"
+                }`}
+              >
+                {n.name}
+              </h1>
             </button>
           ))}
         </div>

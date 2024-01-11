@@ -1,19 +1,19 @@
 "use client";
 
+import { Show } from "@/_components";
 import {
   FinishedMatchData,
   InProgMatchData,
   RegisteredMatchData,
   TournamentState,
   Tournaments,
-} from "@/_lib/types";
+} from "@/_lib";
+import { useState } from "react";
 import {
   FinishedTournaments,
   InProgressTournaments,
   RegisteredTournaments,
 } from "..";
-import { Show } from "@/_components";
-import { useState } from "react";
 
 type Props = {
   tournaments: Tournaments;
@@ -40,8 +40,8 @@ export function TournamentsDisplay({ tournaments }: Props) {
               onClick={() => setSelected(n as TournamentState)}
               className={`rounded-t-md px-4 py-2 hover:text-white ${
                 selected === n
-                  ? "bg-zinc-900 text-white"
-                  : "bg-zinc-950 text-zinc-500"
+                  ? "bg-neutral-900 text-white"
+                  : "bg-neutral-900 text-neutral-500"
               }`}
             >
               {convertToTitle(n as TournamentState)}
@@ -49,7 +49,7 @@ export function TournamentsDisplay({ tournaments }: Props) {
           ))}
         </div>
       </div>
-      <div className="rounded-sm bg-zinc-900 px-4 py-8">
+      <div className="rounded-sm bg-neutral-900 px-4 py-8">
         <Show when={selected === "finished"}>
           <FinishedTournaments
             tournaments={tournaments[selected] as FinishedMatchData[]}

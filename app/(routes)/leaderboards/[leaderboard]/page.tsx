@@ -1,21 +1,30 @@
-import { getLeaderboards } from "@/_chessapi/leaderboard";
+/* eslint-disable @next/next/no-img-element */
+import { ChessApi } from "@/_chessapi/";
+import { LEADERBOARDS, ROUTES } from "@/_lib";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { RankOneCard, RankTwotoFiveCard, Trend } from "../_components";
-import { LEADERBOARDS, ROUTES } from "@/_lib/constants";
+import { ErrorMessage } from "@/_components";
 
 type Props = {
   params: { leaderboard: string };
 };
 
 export default async function Leaderboard({ params }: Props) {
-  const leaderboards = await getLeaderboards();
+  const [leaderboards, err] = await ChessApi.getData(() =>
+    ChessApi.getLeaderboards(),
+  );
   const key = params.leaderboard as keyof typeof LEADERBOARDS;
   const keys = Object.keys(LEADERBOARDS) as (keyof typeof LEADERBOARDS)[];
 
   if (!keys.includes(key)) {
-    notFound();
+    return <ErrorMessage message={"This game mode does not exist."} />;
   }
+
+  if (err !== null) {
+    return <ErrorMessage message={err} />;
+  }
+
+  if (!leaderboards) return null;
 
   const requestedLeaderboard = leaderboards[key];
   const requestedLeaderboardTitle = LEADERBOARDS[key];
@@ -27,7 +36,7 @@ export default async function Leaderboard({ params }: Props) {
       </h1>
       <RankOneCard player={requestedLeaderboard[0]} />
       <RankTwotoFiveCard players={requestedLeaderboard.slice(1, 5)} />
-      <div className="mt-4 rounded-sm bg-zinc-900 p-4">
+      <div className="mt-4 rounded-sm bg-neutral-900 p-4">
         <header className="flex flex-none items-center gap-x-4 p-4 text-sm sm:gap-x-8 sm:text-base">
           <strong className="w-8 text-center capitalize sm:w-10">rank</strong>
           <strong className="capitalize">player</strong>
@@ -36,20 +45,17 @@ export default async function Leaderboard({ params }: Props) {
         {requestedLeaderboard.slice(5).map((n) => (
           <div
             key={n.player_id}
-            className="flex flex-none items-center gap-x-4 p-4 text-xs odd:bg-transparent even:rounded-sm even:bg-zinc-800 sm:gap-x-8 sm:text-sm"
+            className="flex flex-none items-center gap-x-4 p-4 text-xs odd:bg-transparent even:rounded-sm even:bg-neutral-800 sm:gap-x-8 sm:text-sm"
           >
             <span className="w-8 text-center sm:w-10">{n.rank}</span>
             <div className="flex items-center gap-x-2">
               <img
-                src={
-                  n?.avatar ??
-                  "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
-                }
+                src={n?.avatar ?? "/icons/default-avatar.svg"}
                 alt={`${n.username} avatar`}
                 className="h-4 w-4 rounded-sm sm:h-6 sm:w-6"
               />
               <Link
-                href={`${ROUTES.player}${n.username}`}
+                href={`${ROUTES.player}/${n.username}`}
                 className="truncate hover:underline"
               >
                 {n.username}

@@ -4,12 +4,12 @@ export const CHESS_API_BASE = "https://api.chess.com/pub/";
 
 export const ROUTES = {
   home: "/",
-  player: "/player/",
-  leaderboards: "/leaderboards/",
-  streamers: "/streamers/",
-  "daily puzzle": "/daily-puzzle/",
-  "random puzzle": "/daily-puzzle/random/",
-  countries: "/countries/",
+  player: "/player",
+  leaderboards: "/leaderboards",
+  streamers: "/streamers",
+  "daily puzzle": "/daily-puzzle",
+  "random puzzle": "/random-puzzle",
+  countries: "/countries",
 } as const;
 
 export const TITLES = [

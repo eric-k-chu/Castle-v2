@@ -1,12 +1,12 @@
 "use client";
 
-import { TitledPlayers } from "@/_lib/types";
+import { TitledPlayer } from "@/_lib";
 import { filterPlayers } from "@/_utils";
-import { Show } from "..";
+import { ChessTitle, Show } from "..";
 
 type Props = {
   query: string;
-  suggestions: TitledPlayers[] | undefined;
+  suggestions: TitledPlayer[] | undefined;
   onClick: (name: string) => void;
 };
 
@@ -16,7 +16,7 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
 
   return (
     <div
-      className={`w-full overflow-hidden rounded-lg bg-white pb-2 text-black ${
+      className={`w-full max-w-2xl overflow-hidden rounded-lg bg-white pb-2 text-black ${
         query.length > 0 ? "block" : "hidden"
       }`}
     >
@@ -29,11 +29,9 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
             key={n.name}
             onClick={() => onClick(n.name)}
             type="button"
-            className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-zinc-300 sm:text-sm"
+            className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-neutral-300 sm:text-sm"
           >
-            <span className="mr-1 rounded-sm bg-[#7C2929] px-1 py-0.5 font-mono text-white">
-              {n.title}
-            </span>
+            <ChessTitle title={n.title} />
             {n.name}
           </button>
         ))}
@@ -42,7 +40,7 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
         Player
       </h1>
       <button
-        className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-zinc-300 sm:text-sm"
+        className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-neutral-300 sm:text-sm"
         onClick={() => onClick(query)}
         type="button"
       >

@@ -1,7 +1,7 @@
 "use client";
 
-import { ChessApi } from "@/_chessapi/ChessApi";
-import { DailyPuzzle } from "@/_lib/chessapi-types";
+import { ChessApi } from "@/_chessapi";
+import { DailyPuzzle } from "@/_lib";
 import { getDateFromUtc } from "@/_utils";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -39,7 +39,7 @@ export function Display({ puzzle }: Props) {
   }, [seconds]);
 
   return (
-    <section className="mx-auto flex max-w-md flex-col items-center space-y-4 sm:max-w-lg sm:flex-row sm:bg-zinc-900 md:max-w-2xl lg:max-w-4xl">
+    <section className="mx-auto flex max-w-md flex-col items-center space-y-4 sm:max-w-lg sm:flex-row sm:bg-neutral-900 md:max-w-2xl lg:max-w-4xl">
       <div className="w-full space-y-2 sm:w-1/2">
         <Image
           src={dailyPuzzle.image}
@@ -58,14 +58,14 @@ export function Display({ puzzle }: Props) {
         >
           {dailyPuzzle.title}&#8599;
         </a>
-        <h2 className="py-1 text-sm text-zinc-400 sm:text-base md:text-lg">
+        <h2 className="py-1 text-sm text-neutral-400 sm:text-base md:text-lg">
           {getDateFromUtc(dailyPuzzle.publish_time).full}
         </h2>
         <button
           className={`h-fit w-[111px] rounded-lg px-5 py-2.5 text-xs font-medium sm:w-[123px] sm:text-sm ${
             onCooldown
-              ? "pointer-events-none cursor-auto bg-red-900 text-zinc-500"
-              : "cursor-pointer bg-[#769656] hover:bg-[#5C7B41]"
+              ? "pointer-events-none cursor-auto bg-red-900 text-neutral-500"
+              : "cursor-pointer bg-primary-1 hover:bg-primary-2"
           }`}
           onClick={getRandomPuzzle}
         >

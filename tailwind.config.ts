@@ -22,6 +22,12 @@ const config: Config = {
           "0 0px 65px rgba(255, 255,255, 0.2)",
         ],
       },
+      colors: {
+        "primary-1": "#769656",
+        "primary-2": "#5C7B41",
+        title: "#7C2929",
+        twitch: "#6441a5",
+      },
     },
   },
   plugins: [],

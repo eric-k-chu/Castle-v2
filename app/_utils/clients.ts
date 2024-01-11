@@ -1,5 +1,5 @@
-import { CHESS_API_BASE, USER_ASSIGNED_COUNTRIES } from "@/_lib/constants";
-import { Stats, Country, TitledPlayers } from "@/_lib/types";
+import { CHESS_API_BASE, USER_ASSIGNED_COUNTRIES } from "@/_lib";
+import { Stats, Country, TitledPlayer } from "@/_lib";
 import { customList, CountryProperty } from "country-codes-list";
 import { hasFlag } from "country-flag-icons";
 
@@ -9,21 +9,21 @@ export function getBorderColorFromRank(rank: number): string {
   if (rank === 1) return "border-amber-400";
   if (rank === 2) return "border-white";
   if (rank === 3) return "border-amber-600";
-  return "border-zinc-500";
+  return "border-neutral-500";
 }
 
 export function getBgColorFromRank(rank: number): string {
   if (rank === 1) return "bg-amber-400";
   if (rank === 2) return "bg-white";
   if (rank === 3) return "bg-amber-600";
-  return "bg-zinc-500";
+  return "bg-neutral-500";
 }
 
 export function getTextColorFromRank(rank: number): string {
   if (rank === 1) return "text-amber-400";
   if (rank === 2) return "text-white";
   if (rank === 3) return "text-amber-600";
-  return "text-zinc-500";
+  return "text-neutral-500";
 }
 
 export function getGameResultColor(
@@ -181,10 +181,10 @@ export function filterCountries(
 }
 
 export function filterPlayers(
-  players: TitledPlayers[] | undefined,
+  players: TitledPlayer[] | undefined,
   query: string,
   limit = 3,
-): TitledPlayers[] | undefined {
+): TitledPlayer[] | undefined {
   return players
     ?.filter((player) =>
       player.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
@@ -194,7 +194,6 @@ export function filterPlayers(
 
 export function getCountries(): Country[] {
   const countries: Country[] = [];
-  process.env.NODE_ENV === "development" && console.log("generating");
 
   const countryCodes = Object.values(
     customList(
@@ -215,7 +214,7 @@ export function getCountries(): Country[] {
   }
 
   countries.push(...USER_ASSIGNED_COUNTRIES);
-  return countries;
+  return countries.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function getPages<T>(arr: T[], chunkSize = 10): T[][] {
@@ -255,4 +254,13 @@ export function getDaysElapsed(endTime: EpochTimeStamp): string {
   if (elapsedMinutes > 0) return `${elapsedMinutes}m ago`;
 
   return `${now.getSeconds() - time.getSeconds()}s ago`;
+}
+
+export function getClubName(url: string): string {
+  const urlPattern = `${CHESS_API_BASE}club/`;
+  return url
+    .split(urlPattern)[1]
+    .split("-")
+    .filter((n) => n.length > 0)
+    .join(" ");
 }

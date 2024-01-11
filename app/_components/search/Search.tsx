@@ -1,14 +1,13 @@
 "use client";
 
+import { ROUTES, TitledPlayer } from "@/_lib";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { TitledPlayers } from "@/_lib/types";
-import { Suggestions } from "./Suggestions";
+import { Suggestions } from ".";
 import { SearchIcon } from "../icons";
-import { ROUTES } from "@/_lib/constants";
 
 type Props = {
-  suggestions: TitledPlayers[] | undefined;
+  suggestions: TitledPlayer[] | undefined;
 };
 
 export function Search({ suggestions }: Props) {
@@ -18,12 +17,12 @@ export function Search({ suggestions }: Props) {
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(query);
-    router.push(`${ROUTES.player}${query}`);
+    router.push(`${ROUTES.player}/${query}`);
     setQuery("");
   }
 
   function handleSuggestionClick(username: string) {
-    router.push(`${ROUTES.player}${username}`);
+    router.push(`${ROUTES.player}/${username}`);
     setQuery("");
   }
 
@@ -33,8 +32,8 @@ export function Search({ suggestions }: Props) {
       onSubmit={handleSearch}
     >
       <div className="flex w-full items-center rounded-full bg-white px-4 py-2 text-black">
-        <div className="flex w-fit items-center justify-center border-r border-zinc-400 pr-2">
-          <SearchIcon className="h-auto w-4 fill-zinc-400" />
+        <div className="flex w-fit items-center justify-center border-r border-neutral-400 pr-2">
+          <SearchIcon className="h-auto w-4 fill-neutral-400" />
         </div>
         <input
           value={query}

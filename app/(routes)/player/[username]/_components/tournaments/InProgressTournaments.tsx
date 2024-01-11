@@ -1,10 +1,9 @@
 "use client";
 
-import { InProgMatchData } from "@/_lib/types";
+import { DotsIcon, Pagination } from "@/_components";
+import { InProgMatchData } from "@/_lib";
 import { getPages, getTournamentName } from "@/_utils";
 import { useMemo, useState } from "react";
-import { Pagination } from "@/_components";
-import { DotsIcon } from "@/_components/icons";
 
 type Props = {
   tournaments: InProgMatchData[];
@@ -32,14 +31,14 @@ export function InProgressTournaments({ tournaments }: Props) {
         {inProgress[page].map((n) => (
           <div
             key={n["@id"]}
-            className="grid grid-cols-4 rounded-sm p-4 text-xs odd:bg-transparent even:bg-zinc-800 sm:text-sm"
+            className="grid grid-cols-4 rounded-sm p-4 text-xs odd:bg-transparent even:bg-neutral-800 sm:text-sm"
           >
             <div className="col-span-2 truncate capitalize">
               {getTournamentName(n["@id"])}
             </div>
             <div className="text-right capitalize">{n.status}</div>
             <a target="_blank" href={n.url} className="flex justify-end">
-              <DotsIcon className="h-auto w-5 fill-zinc-200" />
+              <DotsIcon className="h-auto w-5 fill-neutral-200" />
             </a>
           </div>
         ))}

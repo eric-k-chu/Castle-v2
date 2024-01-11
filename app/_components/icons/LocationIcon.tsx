@@ -7,7 +7,7 @@ export function LocationIcon({ className }: Props) {
     <svg
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
-      className={className || "h-auto w-4 fill-zinc-200"}
+      className={className || "h-auto w-4 fill-neutral-200"}
     >
       <path
         fillRule="evenodd"

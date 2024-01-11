@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import { getDateFromUtc, getPages } from "@/_utils";
-import { Clubs } from "@/_lib/types";
-import { useMemo, useState } from "react";
 import { Pagination } from "@/_components";
+import { Clubs } from "@/_lib";
+import { getDateFromUtc, getPages } from "@/_utils";
+import Image from "next/image";
+import { useMemo, useState } from "react";
 
 type Props = {
   clubs: Clubs;
@@ -21,8 +21,8 @@ export function ClubsDisplay({ clubs }: Props) {
     return (
       <section className="my-8">
         <h1 className="py-2 text-lg font-semibold uppercase">Clubs</h1>
-        <div className="rounded-sm bg-zinc-900 px-4 py-8">
-          <h1 className="text-center text-zinc-400">No clubs joined.</h1>
+        <div className="rounded-sm bg-neutral-900 px-4 py-8">
+          <h1 className="text-center text-neutral-400">No clubs joined.</h1>
         </div>
       </section>
     );
@@ -31,7 +31,7 @@ export function ClubsDisplay({ clubs }: Props) {
   return (
     <section className="my-8">
       <h1 className="py-2 text-lg font-semibold uppercase">Clubs</h1>
-      <div className="rounded-sm bg-zinc-900 px-4 py-8">
+      <div className="rounded-sm bg-neutral-900 px-4 py-8">
         <header className="mb-8 grid grid-cols-10 px-4">
           <strong className="col-span-6 text-xs uppercase sm:text-sm">
             Club
@@ -45,7 +45,7 @@ export function ClubsDisplay({ clubs }: Props) {
         </header>
         {pClubs[page].map((n) => (
           <div
-            className="grid grid-cols-10 p-4 odd:bg-transparent even:rounded-sm even:bg-zinc-800"
+            className="grid grid-cols-10 p-4 odd:bg-transparent even:rounded-sm even:bg-neutral-800"
             key={n["@id"]}
           >
             <div className="col-span-6 flex items-center space-x-2">

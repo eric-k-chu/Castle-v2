@@ -5,7 +5,7 @@ type Props = {
 export function PawnIcon({ className }: Props) {
   return (
     <svg
-      className={className || "h-auto w-4 fill-zinc-200"}
+      className={className || "h-auto w-4 fill-neutral-200"}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 297 297"
       xmlSpace="preserve"

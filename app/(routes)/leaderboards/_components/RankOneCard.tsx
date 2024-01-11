@@ -1,8 +1,10 @@
-import { Show } from "@/_components";
-import { LeaderboardPlayer } from "@/_lib/types";
+/* eslint-disable @next/next/no-img-element */
+import { ChessTitle } from "@/_components";
+import { LeaderboardPlayer } from "@/_lib";
 import Link from "next/link";
 import { Trend } from ".";
-import { ROUTES } from "@/_lib/constants";
+import { ROUTES } from "@/_lib";
+import Image from "next/image";
 
 type Props = {
   player: LeaderboardPlayer;
@@ -10,12 +12,9 @@ type Props = {
 
 export function RankOneCard({ player }: Props) {
   return (
-    <div className="relative mt-4 flex items-center gap-x-4 overflow-hidden rounded-sm bg-zinc-900 px-4 py-6">
+    <div className="relative mt-4 flex items-center gap-x-4 overflow-hidden rounded-sm bg-neutral-900 px-4 py-6">
       <img
-        src={
-          player?.avatar ??
-          "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
-        }
+        src={player?.avatar ?? "/icons/default-avatar.svg"}
         alt={`${player.username} avatar`}
         className="absolute right-0 object-cover"
         style={{
@@ -26,33 +25,27 @@ export function RankOneCard({ player }: Props) {
       <h1 className="rounded-sm bg-amber-500/50 px-[.75rem] py-2 text-2xl text-amber-400 sm:text-4xl">
         {player.rank}
       </h1>
-      <img
-        src={
-          player?.avatar ??
-          "https://www.chess.com/bundles/web/images/user-image.007dad08.svg"
-        }
+      <Image
+        src={player?.avatar ?? "/icons/default-avatar.svg"}
+        unoptimized
+        width={0}
+        height={0}
         alt={`${player.username} avatar`}
         className="h-16 w-16 rounded-sm border-2 border-amber-400 sm:h-24 sm:w-24"
       />
       <div className="space-y-2">
-        <div className="flex items-center gap-x-2">
-          <Show when={player.title !== undefined}>
-            <h1 className="text-lg sm:text-4xl">
-              <span className="rounded-sm bg-[#7C2929] px-1 py-0.5 font-mono">
-                {player.title}
-              </span>
-            </h1>
-          </Show>
+        <div className="flex items-center gap-x-2 text-lg sm:text-4xl">
+          <ChessTitle title={player.title} />
           <Link
             className="text-lg hover:underline sm:text-4xl"
-            href={`${ROUTES.player}${player.username}`}
+            href={`${ROUTES.player}/${player.username}`}
             role="heading"
             aria-level={1}
           >
             {player.username}
           </Link>
         </div>
-        <div className="flex w-fit items-center gap-x-2 rounded-sm bg-zinc-800 px-2 py-1">
+        <div className="flex w-fit items-center gap-x-2 rounded-sm bg-neutral-800 px-2 py-1">
           <Trend
             trend={player?.trend_score}
             size="w-5"
