@@ -15,10 +15,10 @@ type Props = {
 
 export function RankTwotoFiveCard({ players }: Props) {
   return (
-    <div className="mt-4 space-y-4 lg:grid lg:grid-cols-4 lg:gap-x-4 lg:space-y-0">
+    <div className="mt-4 space-y-4 xl:grid xl:grid-cols-4 xl:gap-x-4 xl:space-y-0">
       {players.map((n) => (
         <div
-          className="flex items-center justify-between space-y-0 rounded-sm bg-neutral-900 p-4 lg:block lg:space-y-2"
+          className="flex items-center justify-between space-y-0 rounded-sm bg-neutral-900 p-4 lg:space-y-2 xl:block"
           key={n.player_id}
         >
           <div className="flex items-center gap-x-2 text-xs sm:text-sm">
@@ -35,7 +35,7 @@ export function RankTwotoFiveCard({ players }: Props) {
               unoptimized
               width={0}
               height={0}
-              className={`size-6 rounded-sm border-2 sm:size-8 ${getBorderColorFromRank(
+              className={`size-5 rounded-sm border-2 sm:size-7 ${getBorderColorFromRank(
                 n.rank,
               )}`}
             />

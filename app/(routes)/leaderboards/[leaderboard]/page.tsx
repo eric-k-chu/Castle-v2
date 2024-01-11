@@ -30,7 +30,7 @@ export default async function Leaderboard({ params }: Props) {
   const requestedLeaderboardTitle = LEADERBOARDS[key];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-20">
+    <div className="mx-auto px-4 py-20 sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-5xl">
       <h1 className="text-2xl font-semibold uppercase sm:text-4xl">
         {requestedLeaderboardTitle}
       </h1>
