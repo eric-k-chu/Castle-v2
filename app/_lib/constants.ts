@@ -25,6 +25,12 @@ export const TITLES = [
   "WCM",
 ] as const;
 
+export const TOURNAMENT_STATES = {
+  finished: "Finished Tournaments",
+  in_progress: "In Progress Tournaments",
+  registered: "Registered Tournaments",
+};
+
 export const LEADERBOARDS = {
   daily: "daily",
   daily960: "daily 960",
