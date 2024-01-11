@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { ChessApi } from "@/_chessapi/";
+import { ErrorMessage } from "@/_components";
 import { LEADERBOARDS, ROUTES } from "@/_lib";
 import Link from "next/link";
-import { RankOneCard, RankTwotoFiveCard, Trend } from "../_components";
-import { ErrorMessage } from "@/_components";
+import { RankOneCard, RankTwotoFiveCard, Trend } from "../";
 
 type Props = {
   params: { leaderboard: string };

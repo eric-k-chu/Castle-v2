@@ -1,15 +1,13 @@
 import { ChessTitle } from "@/_components";
-import { LeaderboardPlayer } from "@/_lib";
-import Link from "next/link";
-import { Trend } from ".";
-import { ROUTES } from "@/_lib";
+import { LeaderboardPlayer, ROUTES } from "@/_lib";
 import {
   getBgColorFromRank,
   getBorderColorFromRank,
   getTextColorFromRank,
 } from "@/_utils";
 import Image from "next/image";
-import { title } from "process";
+import Link from "next/link";
+import { Trend } from ".";
 
 type Props = {
   players: LeaderboardPlayer[];

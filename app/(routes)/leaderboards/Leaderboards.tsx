@@ -10,7 +10,7 @@ type Props = {
   leaderboards: Leaderboards;
 };
 
-export function LeaderboardsDisplay({ leaderboards }: Props) {
+export function Leaderboards({ leaderboards }: Props) {
   const leaderboardModes = Object.keys(
     leaderboards,
   ) as (keyof typeof LEADERBOARDS)[];

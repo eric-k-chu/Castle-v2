@@ -2,9 +2,9 @@
 import { ChessTitle } from "@/_components";
 import { LeaderboardPlayer } from "@/_lib";
 import Link from "next/link";
-import { Trend } from ".";
 import { ROUTES } from "@/_lib";
 import Image from "next/image";
+import { Trend } from ".";
 
 type Props = {
   player: LeaderboardPlayer;
