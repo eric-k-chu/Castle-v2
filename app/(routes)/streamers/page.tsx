@@ -1,8 +1,8 @@
 import { ChessApi } from "@/_chessapi";
-import { StreamersDisplay } from "./_components";
+import { Streamers } from "./Streamers";
 import { ErrorMessage } from "@/_components";
 
-export default async function Streamers() {
+export default async function StreamersPage() {
   const [streamers, err] = await ChessApi.getData(() =>
     ChessApi.getStreamers(),
   );
@@ -15,7 +15,7 @@ export default async function Streamers() {
 
   return (
     <div className="mx-auto w-full px-4 py-24">
-      <StreamersDisplay streamers={streamers} />
+      <Streamers streamers={streamers} />
     </div>
   );
 }
