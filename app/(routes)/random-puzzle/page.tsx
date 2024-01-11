@@ -1,8 +1,8 @@
 import { ChessApi } from "@/_chessapi";
 import { ErrorMessage } from "@/_components";
-import { Display } from "./Display";
+import { RandomDailyPuzzle } from "./RandomDailyPuzzle";
 
-export default async function RandomDailyPuzzle() {
+export default async function RandomDailyPuzzlePage() {
   const [dailyPuzzle, err] = await ChessApi.getData(() =>
     ChessApi.getRandomDailyPuzzle(),
   );
@@ -15,7 +15,7 @@ export default async function RandomDailyPuzzle() {
 
   return (
     <div className="mx-auto w-full px-4 py-40">
-      <Display puzzle={dailyPuzzle} />
+      <RandomDailyPuzzle puzzle={dailyPuzzle} />
     </div>
   );
 }

@@ -10,7 +10,7 @@ type Props = {
   puzzle: DailyPuzzle;
 };
 
-export function Display({ puzzle }: Props) {
+export function RandomDailyPuzzle({ puzzle }: Props) {
   const [dailyPuzzle, setDailyPuzzle] = useState(puzzle);
   const [onCooldown, setOnCooldown] = useState(true);
   const [seconds, setSeconds] = useState(15);
