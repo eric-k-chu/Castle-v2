@@ -11,7 +11,7 @@ function getTheme(): Theme {
 }
 
 export function ThemeSelector() {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useLayoutEffect(() => {
     const localTheme = getTheme();
@@ -32,7 +32,7 @@ export function ThemeSelector() {
     <>
       <div className="mt-auto hidden w-full px-4 py-3 sm:block">
         <button
-          className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-neutral-800 "
+          className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-800"
           onClick={() => changeTheme(theme === "light" ? "dark" : "light")}
         >
           <div>{theme === "light" ? <Sun /> : <Moon />}</div>
