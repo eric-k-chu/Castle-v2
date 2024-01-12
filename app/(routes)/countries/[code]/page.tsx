@@ -30,7 +30,7 @@ export default async function CountryPage({ params }: Props) {
   return (
     <>
       <h1 className="flex items-center space-x-4 text-xl font-semibold uppercase sm:text-2xl md:text-4xl">
-        <span className="mr-1 font-light text-primary-1">
+        <span className="mr-1 font-semibold text-primary-2 dark:text-primary-1">
           &#40;{country?.code}&#41;
         </span>
         {country?.name}

@@ -14,7 +14,7 @@ export default async function LeaderboardsPage() {
   if (!leaderboards) return null;
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 py-24">
+    <div className="mx-auto w-full max-w-5xl px-4 py-24 text-neutral-900 dark:text-neutral-200">
       <Leaderboards leaderboards={leaderboards} />
     </div>
   );

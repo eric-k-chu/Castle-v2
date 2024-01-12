@@ -14,14 +14,16 @@ export function Stats({ stats }: Props) {
   const { puzzle_rush, tactics } = stats;
 
   return (
-    <section className="my-8 rounded-sm bg-neutral-900 p-6">
+    <section className="my-8 rounded-sm border border-neutral-400 bg-neutral-200 p-6 dark:border-neutral-800 dark:bg-neutral-900">
       <div className="flex flex-1 flex-wrap items-center justify-around gap-8">
         {gameStats.map((n) => (
           <div className="group relative space-y-2" key={n.type}>
             <strong className="text-sm uppercase sm:text-base">{n.type}</strong>
             <h2
               className={`text-base sm:text-lg ${
-                parseFloat(n.pct) >= 50 ? "text-green-400" : "text-red-400"
+                parseFloat(n.pct) >= 50
+                  ? "text-green-500 dark:text-green-400"
+                  : "text-red-500 dark:text-red-400"
               }`}
             >
               {n.pct}
@@ -32,17 +34,17 @@ export function Stats({ stats }: Props) {
             </h3>
             <div
               role="tooltip"
-              className="absolute bottom-0 left-10 z-10 hidden space-y-2 rounded-md bg-neutral-700 p-4 text-xs group-hover:block"
+              className="absolute bottom-0 left-10 z-10 hidden space-y-2 rounded-md bg-neutral-300 p-4 text-xs group-hover:block dark:bg-neutral-700"
             >
-              <div className="flex text-green-400">
+              <div className="flex text-green-500 dark:text-green-400">
                 <span className="pr-1">wins:</span>
                 <span>{n.wins}</span>
               </div>
-              <div className="flex text-red-400">
+              <div className="flex text-red-500 dark:text-red-400">
                 <span className="pr-1">losses:</span>
                 <span>{n.losses}</span>
               </div>
-              <div className="flex text-neutral-400">
+              <div className="flex text-neutral-500 dark:text-neutral-400">
                 <span className="pr-1">draws:</span>
                 <span>{n.draws}</span>
               </div>

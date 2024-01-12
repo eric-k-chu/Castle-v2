@@ -31,10 +31,10 @@ export function MobileSearch({ suggestions }: Props) {
   return (
     <>
       <button onClick={() => setIsOpen(true)}>
-        <SearchIcon className="h-auto w-6 fill-neutral-200" />
+        <SearchIcon className="h-auto w-5 fill-neutral-900 dark:fill-neutral-200" />
       </button>
       <div
-        className={`fixed left-0 top-0 z-50 h-screen w-full bg-neutral-900/20 backdrop-blur-sm transition-opacity duration-150 ease-in-out ${
+        className={`/20 fixed left-0 top-0 z-50 h-screen w-full bg-neutral-900/50 backdrop-blur-sm transition-opacity duration-150 ease-in-out ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -48,7 +48,7 @@ export function MobileSearch({ suggestions }: Props) {
             onSubmit={handleSubmit}
           >
             <div className="z-[61] flex w-fit items-center justify-center border-r border-neutral-400 pr-2">
-              <SearchIcon className="h-auto w-4 fill-neutral-400" />
+              <SearchIcon className="h-auto w-4 fill-neutral-500" />
             </div>
             <input
               value={query}

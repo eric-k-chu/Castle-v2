@@ -5,7 +5,7 @@ type Props = {
 export function MenuIcon({ className }: Props) {
   return (
     <svg
-      className={className || "h-4 w-4 fill-white"}
+      className={className || "size-5 fill-neutral-900 dark:fill-neutral-200"}
       viewBox="0 -5 32 32"
       xmlns="http://www.w3.org/2000/svg"
     >

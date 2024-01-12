@@ -4,6 +4,7 @@ import { Route, routes } from "@/_lib";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { ExitIcon, Logo, MenuIcon } from "./icons";
+import { ThemeSelector } from ".";
 
 export function MobileSidebar() {
   const path = usePathname();
@@ -22,14 +23,14 @@ export function MobileSidebar() {
       </button>
 
       <div
-        className={`fixed bottom-0 left-0 h-screen w-72 rounded-r-lg bg-neutral-900 px-4 transition-transform duration-150 ease-in-out ${
+        className={`fixed bottom-0 left-0 flex h-screen w-72 flex-col rounded-r-lg bg-neutral-200 px-4 transition-transform duration-150 ease-in-out dark:bg-neutral-900  ${
           isOpen ? "translate-x-0" : "-translate-x-[288px]"
         }`}
       >
         <div className="z-[999] flex items-center justify-between border-b border-b-neutral-700 py-6">
           <Logo />
           <button onClick={() => setIsOpen(false)}>
-            <ExitIcon className="h-auto w-5 rotate-180" />
+            <ExitIcon className="size-6 rotate-180 stroke-neutral-900 dark:stroke-neutral-200" />
           </button>
         </div>
         <div className="mt-2">
@@ -43,7 +44,7 @@ export function MobileSidebar() {
               <h1
                 className={`capitalize ${
                   path.includes(n.path)
-                    ? "text-neutral-200"
+                    ? "text-neutral-900 dark:text-neutral-200"
                     : "text-neutral-500"
                 }`}
               >
@@ -52,6 +53,7 @@ export function MobileSidebar() {
             </button>
           ))}
         </div>
+        <ThemeSelector />
       </div>
     </div>
   );

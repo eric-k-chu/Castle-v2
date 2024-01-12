@@ -1,7 +1,7 @@
 "use client";
 
 import { Show } from "@/_components";
-import { TwitchIcon } from "@/_components/icons";
+import { GreaterThanIcon, LessThanIcon, TwitchIcon } from "@/_components/icons";
 import { usePagination } from "@/_hooks";
 import { ROUTES, Streamers } from "@/_lib";
 import Image from "next/image";
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function Streamers({ streamers }: Props) {
-  const [list, page, _, switchPage] = usePagination(streamers.streamers);
+  const [list, page, _, switchPage] = usePagination(streamers.streamers, 18);
 
   function handlePrev(): void {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -26,20 +26,26 @@ export function Streamers({ streamers }: Props) {
   return (
     <section className="mx-auto max-w-sm space-y-4 sm:max-w-md md:max-w-lg lg:max-w-2xl">
       <div className="flex items-center gap-x-2 sm:gap-x-4">
-        <TwitchIcon className="inline h-auto w-5 fill-neutral-200 sm:w-6 md:w-8" />
+        <TwitchIcon className="inline h-auto w-5 fill-neutral-900 pt-1 sm:w-6 md:w-8 dark:fill-neutral-200" />
         <strong className="text-lg uppercase sm:text-2xl md:text-4xl">
           streamers
         </strong>
-        <div className="ml-auto">
+        <div className="ml-auto flex items-center text-neutral-500">
+          <button onClick={handlePrev}>
+            <GreaterThanIcon className="mx-1 h-3 w-3" />
+          </button>
           <h5 className="text-xs text-neutral-500 sm:text-sm">
             {page + 1} of {list.length}
           </h5>
+          <button onClick={handleNext}>
+            <LessThanIcon className="mx-1 h-3 w-3" />
+          </button>
         </div>
       </div>
       <div className="flex flex-wrap">
         {list[page].map((n) => (
           <div key={n.username} className="w-full p-1 sm:w-1/2 md:w-1/3">
-            <div className="relative gap-y-4 rounded-sm bg-neutral-900 p-4 pb-1">
+            <div className="relative gap-y-4 rounded-sm border border-neutral-400 bg-neutral-200 p-4 pb-1 dark:border-neutral-800 dark:bg-neutral-900 ">
               <Show when={n.is_live === true}>
                 <div className="absolute right-2 top-2 h-2 w-2 animate-pulse rounded-full bg-red-600" />
               </Show>
@@ -61,7 +67,7 @@ export function Streamers({ streamers }: Props) {
               </div>
               <button className="w-full py-2">
                 <a
-                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-neutral-800 py-2 transition-colors duration-150 ease-in-out hover:bg-primary-2"
+                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-neutral-300 py-2 transition-colors duration-150 ease-in-out hover:bg-primary-1 dark:bg-neutral-800 dark:hover:bg-primary-2"
                   target="_blank"
                   href={n.twitch_url}
                 >
@@ -73,50 +79,6 @@ export function Streamers({ streamers }: Props) {
           </div>
         ))}
       </div>
-      <nav className="flex gap-x-12 pt-10">
-        <button
-          className="flex w-full items-center rounded-lg border border-neutral-700 px-4 py-8 text-left text-xs uppercase transition-colors duration-150 ease-in-out hover:border-neutral-400 sm:text-sm"
-          onClick={handlePrev}
-        >
-          <svg
-            className="me-2 h-3.5 w-3.5 rtl:rotate-180"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 5H1m0 0 4 4M1 5l4-4"
-            />
-          </svg>
-          Previous
-        </button>
-        <button
-          className="flex w-full items-center justify-end rounded-lg border border-neutral-700 px-4 py-8 text-right text-xs uppercase transition-colors duration-150 ease-in-out hover:border-neutral-400 sm:text-sm"
-          onClick={handleNext}
-        >
-          Next
-          <svg
-            className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </button>
-      </nav>
     </section>
   );
 }

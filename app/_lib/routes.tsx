@@ -20,30 +20,40 @@ export const routes: RouteObject[] = [
     path: "/leaderboards",
     name: "leaderboards",
     icon: <TrophyIcon />,
-    selected: <TrophyIcon className="h-auto w-6 fill-neutral-200" />,
+    selected: (
+      <TrophyIcon className="h-auto w-6 fill-neutral-900 dark:fill-neutral-200" />
+    ),
   },
   {
     path: "/streamers",
     name: "streamers",
     icon: <TwitchIcon />,
-    selected: <TwitchIcon className="h-auto w-6 fill-neutral-200" />,
+    selected: (
+      <TwitchIcon className="h-auto w-6 fill-neutral-900 dark:fill-neutral-200" />
+    ),
   },
   {
     path: "/daily-puzzle",
     name: "daily puzzle",
     icon: <DailyPuzzleIcon />,
-    selected: <DailyPuzzleIcon className="h-auto w-6 fill-neutral-200" />,
+    selected: (
+      <DailyPuzzleIcon className="h-auto w-6 fill-neutral-900 dark:fill-neutral-200" />
+    ),
   },
   {
     path: "/random-puzzle",
     name: "random puzzle",
     icon: <RandomDailyPuzzleIcon />,
-    selected: <RandomDailyPuzzleIcon className="h-auto w-6 fill-neutral-200" />,
+    selected: (
+      <RandomDailyPuzzleIcon className="h-auto w-6 fill-neutral-900 dark:fill-neutral-200" />
+    ),
   },
   {
     path: "/countries",
     name: "countries",
     icon: <WorldIcon />,
-    selected: <WorldIcon className="h-auto w-6 fill-neutral-200" />,
+    selected: (
+      <WorldIcon className="size-6 fill-neutral-900 stroke-neutral-900 dark:fill-neutral-200 dark:stroke-neutral-200" />
+    ),
   },
 ];

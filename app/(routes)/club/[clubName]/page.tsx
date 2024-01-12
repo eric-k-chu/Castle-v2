@@ -57,12 +57,12 @@ export default async function ClubPage({ params }: Props) {
       <h2 className="flex items-center gap-x-2 text-base font-semibold uppercase sm:text-lg">
         Admins
       </h2>
-      <section className="space-y-4 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6">
+      <section className="space-y-4 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6 ">
         <div className="flex flex-wrap items-center justify-around gap-y-2 empty:hidden">
           {club?.admin.map((n) => (
             <Link
               key={n}
-              className="rounded-sm bg-neutral-800 p-2 text-xs capitalize transition-colors duration-150 ease-in-out hover:bg-primary-1 sm:text-sm"
+              className="rounded-sm bg-neutral-900 p-2 text-xs capitalize transition-colors duration-150 ease-in-out hover:bg-primary-1 sm:text-sm "
               href={`${ROUTES.player}/${getIdentifier(n)}`}
             >
               {getIdentifier(n)}

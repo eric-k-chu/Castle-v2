@@ -21,7 +21,7 @@ export function Navbar() {
   }
 
   return (
-    <div className="fixed z-20 flex w-full items-center justify-center bg-neutral-900/50 px-6 py-4 sm:bg-transparent">
+    <div className="fixed z-20 flex w-full items-center justify-center bg-neutral-200 px-6 py-4 sm:bg-transparent dark:bg-neutral-900">
       <div className="mr-auto flex items-center gap-x-4 sm:hidden">
         <MobileSidebar />
         <button onClick={() => router.push("/")}>
