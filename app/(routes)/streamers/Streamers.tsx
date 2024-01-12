@@ -61,7 +61,7 @@ export function Streamers({ streamers }: Props) {
               </div>
               <button className="w-full py-2">
                 <a
-                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-neutral-900 py-2 transition-colors duration-150 ease-in-out hover:bg-primary-2 "
+                  className="group flex w-full items-center justify-center gap-x-2 rounded-sm bg-neutral-800 py-2 transition-colors duration-150 ease-in-out hover:bg-primary-2 "
                   target="_blank"
                   href={n.twitch_url}
                 >

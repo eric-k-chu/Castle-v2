@@ -45,7 +45,7 @@ export default async function Leaderboard({ params }: Props) {
         {requestedLeaderboard.slice(5).map((n) => (
           <div
             key={n.player_id}
-            className="flex flex-none items-center gap-x-4 p-4 text-xs odd:bg-transparent even:rounded-sm even:bg-neutral-900 sm:gap-x-8 sm:text-sm "
+            className="flex flex-none items-center gap-x-4 p-4 text-xs odd:bg-transparent even:rounded-sm even:bg-neutral-800 sm:gap-x-8 sm:text-sm "
           >
             <span className="w-8 text-center sm:w-10">{n.rank}</span>
             <div className="flex items-center gap-x-2">

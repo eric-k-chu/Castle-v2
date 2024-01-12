@@ -30,7 +30,7 @@ export function Sidebar() {
             key={n.name}
           >
             <Link
-              className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-neutral-900 "
+              className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-neutral-800 "
               href={n.path}
             >
               <div>{path.includes(n.path) ? n.selected : n.icon}</div>

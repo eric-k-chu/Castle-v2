@@ -60,10 +60,10 @@ export function Profile({ player }: Props) {
             </Show>
           </div>
           <div className="flex gap-x-2 empty:hidden">
-            <h3 className="w-fit truncate rounded-sm bg-neutral-900 p-2 text-xs empty:hidden sm:text-sm ">
+            <h3 className="w-fit truncate rounded-sm bg-neutral-800 p-2 text-xs empty:hidden sm:text-sm ">
               {player?.name}
             </h3>
-            <h3 className="w-fit truncate rounded-sm bg-neutral-900 p-2 text-xs empty:hidden sm:text-sm ">
+            <h3 className="w-fit truncate rounded-sm bg-neutral-800 p-2 text-xs empty:hidden sm:text-sm ">
               {player?.location}
             </h3>
           </div>

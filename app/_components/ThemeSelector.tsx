@@ -1,12 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
+
+type Theme = "dark" | "light";
+
+const THEME_KEY = "themeKeyCastle";
+
+function getTheme(): Theme {
+  return localStorage.getItem(THEME_KEY) as Theme;
+}
 
 export function ThemeSelector() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<Theme>("light");
 
-  function changeTheme(theme: "light" | "dark") {
-    document.documentElement.classList.toggle("dark");
+  useLayoutEffect(() => {
+    const localTheme = getTheme();
+    document.documentElement.className = localTheme;
+    setTheme(localTheme);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+  });
+
+  function changeTheme(theme: Theme) {
+    localStorage.setItem("themeKeyCastle", theme);
     setTheme(theme);
   }
 
@@ -14,7 +32,7 @@ export function ThemeSelector() {
     <>
       <div className="mt-auto hidden w-full px-4 py-3 sm:block">
         <button
-          className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-neutral-900 "
+          className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-neutral-800 "
           onClick={() => changeTheme(theme === "light" ? "dark" : "light")}
         >
           <div>{theme === "light" ? <Sun /> : <Moon />}</div>

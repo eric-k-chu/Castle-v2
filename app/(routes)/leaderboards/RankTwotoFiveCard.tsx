@@ -47,7 +47,7 @@ export function RankTwotoFiveCard({ players }: Props) {
               <span>{n.username}</span>
             </Link>
           </div>
-          <div className="flex items-center justify-center gap-x-2 rounded-sm bg-neutral-900 px-2 py-1 ">
+          <div className="flex items-center justify-center gap-x-2 rounded-sm bg-neutral-800 px-2 py-1 ">
             <Trend trend={n?.trend_score} />
             <h1 className="text-center text-xs sm:text-sm">{n.score}</h1>
           </div>

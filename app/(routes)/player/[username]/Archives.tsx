@@ -43,7 +43,7 @@ export function Archives({ archiveList, username }: Props) {
         {list[page].map((n) => (
           <div
             key={n.uuid}
-            className={`grid grid-cols-[0.5fr_3fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-900  ${getGameResultColor(
+            className={`grid grid-cols-[0.5fr_3fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-800  ${getGameResultColor(
               username,
               n.pgn,
             )}`}

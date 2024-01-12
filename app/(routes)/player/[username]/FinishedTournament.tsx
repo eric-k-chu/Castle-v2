@@ -42,7 +42,7 @@ export function FinishedTournament({
         {list[page].map((n) => (
           <div
             key={n["@id"]}
-            className="grid grid-cols-[4fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-900 "
+            className="grid grid-cols-[4fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-800 "
           >
             <span className="capitalize">{extractNameFromUrl(n["@id"])}</span>
             <span className="text-center">{n.placement}</span>

@@ -45,7 +45,7 @@ export function RankOneCard({ player }: Props) {
             {player.username}
           </Link>
         </div>
-        <div className="flex w-fit items-center gap-x-2 rounded-sm bg-neutral-900 px-2 py-1 ">
+        <div className="flex w-fit items-center gap-x-2 rounded-sm bg-neutral-800 px-2 py-1 ">
           <Trend
             trend={player?.trend_score}
             size="w-5"

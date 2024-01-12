@@ -37,7 +37,7 @@ export function List({ list, link, converter }: Props) {
             onClick={() =>
               router.push(`${link}/${converter ? converter(n) : n}`)
             }
-            className="truncate p-2 capitalize odd:bg-neutral-900 even:bg-transparent hover:cursor-pointer hover:bg-neutral-700 "
+            className="truncate p-2 capitalize odd:bg-neutral-800 even:bg-transparent hover:cursor-pointer hover:bg-neutral-700"
           >
             {extractNameFromUrl(n)}
           </li>

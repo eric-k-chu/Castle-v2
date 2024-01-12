@@ -35,7 +35,7 @@ export function Clubs({ clubList }: Props) {
         </div>
         {list[page].map((n) => (
           <div
-            className="grid grid-cols-[4fr_1fr_1fr] p-4 odd:bg-transparent even:bg-neutral-900 "
+            className="grid grid-cols-[4fr_1fr_1fr] p-4 odd:bg-transparent even:bg-neutral-800 "
             key={n["@id"]}
           >
             <div className="flex items-center gap-x-2">
