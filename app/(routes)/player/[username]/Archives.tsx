@@ -1,6 +1,6 @@
 "use client";
 
-import { DotsIcon, SquareIcon } from "@/_components";
+import { DotsIcon, PawnIcon, SquareIcon } from "@/_components";
 import { usePagination } from "@/_hooks";
 import { Game } from "@/_lib";
 import { getDaysElapsed, getGameResultColor } from "@/_utils";
@@ -26,6 +26,7 @@ export function Archives({ archiveList, username }: Props) {
   return (
     <section className="my-8">
       <ListHeader
+        icon={<PawnIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
         header="Latest Games"
         page={`${page + 1} of ${list.length}`}
         prev={() => switchPage("prev")}

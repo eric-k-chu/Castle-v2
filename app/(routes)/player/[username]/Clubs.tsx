@@ -5,6 +5,7 @@ import { ClubInfo } from "@/_lib";
 import { getDateFromUtc } from "@/_utils";
 import { EmptyListHeader, ListHeader } from ".";
 import Image from "next/image";
+import { PeopleIcon } from "@/_components";
 
 type Props = {
   clubList: ClubInfo[];
@@ -20,6 +21,7 @@ export function Clubs({ clubList }: Props) {
   return (
     <section className="my-8">
       <ListHeader
+        icon={<PeopleIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
         header="Clubs"
         page={`${page + 1} of ${list.length}`}
         prev={() => switchPage("prev")}
