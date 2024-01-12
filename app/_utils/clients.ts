@@ -1,4 +1,3 @@
-import { ChessApi } from "@/_chessapi";
 import { Country, Stats, TitledPlayer, USER_ASSIGNED_COUNTRIES } from "@/_lib";
 import { CountryProperty, customList } from "country-codes-list";
 import { hasFlag } from "country-flag-icons";
@@ -225,10 +224,9 @@ export function getPages<T>(arr: T[], chunkSize = 10): T[][] {
   return result;
 }
 
-export function getTournamentName(url: string): string {
-  const urlPattern = `${ChessApi.baseUrl}tournament/`;
-  return url
-    .split(urlPattern)[1]
+export function extractNameFromUrl(url: string): string {
+  const parts = url.split("/");
+  return parts[parts.length - 1]
     .split("-")
     .filter((n) => n.length > 0)
     .join(" ");
@@ -256,21 +254,7 @@ export function getDaysElapsed(endTime: EpochTimeStamp): string {
   return `${now.getSeconds() - time.getSeconds()}s ago`;
 }
 
-export function getClubName(url: string): string {
-  const urlPattern = `${ChessApi.baseUrl}club/`;
-  return url
-    .split(urlPattern)[1]
-    .split("-")
-    .filter((n) => n.length > 0)
-    .join(" ");
-}
-
-export function extractClubUrlId(url: string): string {
-  const urlPattern = `${ChessApi.baseUrl}club/`;
-  return url.split(urlPattern)[1];
-}
-
-export function getUsername(url: string): string {
-  const urlPattern = `${ChessApi.baseUrl}player/`;
-  return url.split(urlPattern)[1];
+export function getIdentifier(url: string): string {
+  const parts = url.split("/");
+  return parts[parts.length - 1];
 }

@@ -3,7 +3,7 @@
 import { DotsIcon, TrophyIcon } from "@/_components";
 import { usePagination } from "@/_hooks";
 import { FinishedTournament } from "@/_lib";
-import { getTournamentName } from "@/_utils";
+import { extractNameFromUrl } from "@/_utils";
 import { EmptyListHeader, ListHeader } from ".";
 
 type Props = {
@@ -44,7 +44,7 @@ export function FinishedTournament({
             key={n["@id"]}
             className="grid grid-cols-[4fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-800"
           >
-            <span className="capitalize">{getTournamentName(n["@id"])}</span>
+            <span className="capitalize">{extractNameFromUrl(n["@id"])}</span>
             <span className="text-center">{n.placement}</span>
             <span className="text-center">{n.wins}</span>
             <a className="flex justify-end" target="_blank" href={n.url}>

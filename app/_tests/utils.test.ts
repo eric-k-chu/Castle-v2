@@ -2,7 +2,7 @@ import {
   getDateFromUtc,
   getGameResultColor,
   getPages,
-  getTournamentName,
+  extractNameFromUrl,
 } from "@/_utils";
 
 describe("getGameResultColor", () => {
@@ -98,7 +98,7 @@ describe("getPages", () => {
 describe("getTournamentName", () => {
   it("Tournament Name", () => {
     expect(
-      getTournamentName(
+      extractNameFromUrl(
         "https://www.chess.com/tournament/100-years-of-chemotherapy---remembrance-tournament",
       ),
     ).toEqual("100 years of chemotherapy remembrance tournament");

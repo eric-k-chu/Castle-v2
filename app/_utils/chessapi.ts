@@ -44,3 +44,9 @@ export async function getPlayerSuggestions() {
   }
   return res.flat();
 }
+
+export async function getCountryPlayersAndClubs(countryCode: string) {
+  const players = await ChessApi.getPlayersByCountry(countryCode);
+  const clubs = await ChessApi.getClubsByCountry(countryCode);
+  return { players, clubs };
+}

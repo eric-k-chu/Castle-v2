@@ -1,7 +1,7 @@
 import { ChessApi } from "@/_chessapi";
 import { ErrorMessage, LinkToIcon, PersonIcon } from "@/_components";
 import { ROUTES } from "@/_lib";
-import { getDateFromUtc, getUsername } from "@/_utils";
+import { getDateFromUtc, getIdentifier } from "@/_utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -63,9 +63,9 @@ export default async function ClubPage({ params }: Props) {
             <Link
               key={n}
               className="rounded-sm bg-neutral-800 p-2 text-xs capitalize transition-colors duration-150 ease-in-out hover:bg-primary-1 sm:text-sm"
-              href={`${ROUTES.player}/${getUsername(n)}`}
+              href={`${ROUTES.player}/${getIdentifier(n)}`}
             >
-              {getUsername(n)}
+              {getIdentifier(n)}
             </Link>
           ))}
         </div>
