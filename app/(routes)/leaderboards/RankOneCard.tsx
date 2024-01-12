@@ -16,7 +16,7 @@ export function RankOneCard({ player }: Props) {
       <img
         src={player?.avatar ?? "/icons/default-avatar.svg"}
         alt={`${player.username} avatar`}
-        className="absolute right-0 object-cover"
+        className="absolute right-0 max-h-full object-cover"
         style={{
           maskImage:
             "linear-gradient(to right, rgba(25,25,55,0), rgba(25,25,55,.5))",
@@ -33,7 +33,7 @@ export function RankOneCard({ player }: Props) {
         alt={`${player.username} avatar`}
         className="size-16 rounded-sm border-2 border-amber-400 sm:size-24"
       />
-      <div className="space-y-2">
+      <div className="z-[1] space-y-2">
         <div className="flex items-center gap-x-2 text-lg sm:text-4xl">
           <ChessTitle title={player.title} />
           <Link

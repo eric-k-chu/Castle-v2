@@ -47,7 +47,7 @@ export default async function SearchPage({ params }: Props) {
         <UnfinishedTournament
           tournamentList={data.tournaments.registered.toSorted()}
           header="Registered Tournaments"
-          emptyMsg="No tournaments registered"
+          emptyMsg="No tournaments registered."
         />
       </div>
     </div>
