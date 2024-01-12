@@ -15,7 +15,15 @@ export function Clubs({ clubList }: Props) {
   const [list, page, _, switchPage] = usePagination(clubList);
 
   if (list.length < 1) {
-    return <EmptyListHeader header="Clubs" message="No clubs joined." />;
+    return (
+      <EmptyListHeader
+        icon={
+          <PeopleIcon className="h-auto w-4 fill-neutral-900 stroke-neutral-900 sm:w-6 dark:fill-neutral-200 dark:stroke-neutral-200" />
+        }
+        header="Clubs"
+        message="No clubs joined."
+      />
+    );
   }
 
   return (

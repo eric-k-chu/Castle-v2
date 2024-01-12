@@ -22,7 +22,7 @@ export function UnfinishedTournament({
   const [list, page, _, switchPage] = usePagination(tournamentList);
 
   if (list.length < 1) {
-    return <EmptyListHeader header={header} message={emptyMsg} />;
+    return <EmptyListHeader icon={icon} header={header} message={emptyMsg} />;
   }
 
   return (

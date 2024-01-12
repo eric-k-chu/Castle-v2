@@ -20,7 +20,15 @@ export function FinishedTournament({
   const [list, page, _, switchPage] = usePagination(tournamentList.toSorted());
 
   if (list.length < 1) {
-    return <EmptyListHeader header={header} message={emptyMsg} />;
+    return (
+      <EmptyListHeader
+        icon={
+          <TrophyIcon className="h-auto w-4 fill-neutral-900 sm:w-6 dark:fill-neutral-200" />
+        }
+        header={header}
+        message={emptyMsg}
+      />
+    );
   }
 
   return (

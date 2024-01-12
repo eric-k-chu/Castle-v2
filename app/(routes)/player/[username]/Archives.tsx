@@ -17,6 +17,9 @@ export function Archives({ archiveList, username }: Props) {
   if (list.length < 1) {
     return (
       <EmptyListHeader
+        icon={
+          <PawnIcon className="h-auto w-4 fill-neutral-900 sm:w-6 dark:fill-neutral-200" />
+        }
         header="Latest Games"
         message="No games have been played."
       />
