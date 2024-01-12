@@ -21,7 +21,7 @@ export function List({ list, link, converter }: Props) {
         <h5 className="text-xs text-neutral-500 sm:text-sm">
           {page + 1} of {items.length}
         </h5>
-        <div className="ml-auto space-x-2">
+        <div className="ml-auto space-x-2 text-neutral-500">
           <button onClick={() => switchPage("prev")}>
             <GreaterThanIcon className="h-3 w-3" />
           </button>
@@ -30,14 +30,14 @@ export function List({ list, link, converter }: Props) {
           </button>
         </div>
       </div>
-      <ul className="mt-4 rounded-md bg-neutral-900 p-4 ">
+      <ul className="mt-4 rounded-md bg-neutral-200 p-4 dark:bg-neutral-900 ">
         {items[page].map((n) => (
           <li
             key={n}
             onClick={() =>
               router.push(`${link}/${converter ? converter(n) : n}`)
             }
-            className="truncate p-2 capitalize odd:bg-neutral-800 even:bg-transparent hover:cursor-pointer hover:bg-neutral-700"
+            className="truncate p-2 capitalize odd:bg-neutral-300 even:bg-transparent hover:cursor-pointer hover:underline dark:odd:bg-neutral-800"
           >
             {extractNameFromUrl(n)}
           </li>
