@@ -15,7 +15,7 @@ export function Sidebar() {
         <Link className="mb-2 px-3" href="/">
           <div className="flex w-full items-center gap-x-6 border-b border-b-neutral-700 py-5 hover:cursor-pointer">
             <Logo />
-            <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-2xl font-semibold text-neutral-200 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
+            <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-2xl font-semibold text-neutral-900 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100 dark:text-neutral-200">
               Castle
             </h1>
           </div>
