@@ -18,3 +18,4 @@ export * from "./GreaterThanIcon";
 export * from "./LessThanIcon";
 export * from "./PeopleIcon";
 export * from "./LinkToIcon";
+export * from "./GitHubIcon";

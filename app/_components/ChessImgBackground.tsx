@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ReactNode } from "react";
+import { GitHubIcon } from ".";
 
 type Props = {
   children: ReactNode;
@@ -18,14 +19,10 @@ export function ChessImgBackground({ children }: Props) {
           href="https://github.com/eric-k-chu"
           className="flex items-center"
         >
-          <Image
-            src="/icons/github.svg"
-            alt="github link"
-            width={0}
-            height={0}
-            className="h-auto w-8"
-          />
-          <span className="px-2 text-lg">GitHub</span>
+          <GitHubIcon />
+          <span className="px-2 text-lg text-neutral-900 dark:text-neutral-200">
+            GitHub
+          </span>
         </a>
       </div>
     </main>
