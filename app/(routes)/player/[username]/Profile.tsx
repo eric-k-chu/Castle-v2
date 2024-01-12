@@ -72,7 +72,7 @@ export function Profile({ player }: Props) {
 
       <section className="flex flex-wrap items-center justify-around gap-y-2 rounded-sm bg-neutral-900 px-4 py-6">
         <h3 className="flex items-center gap-x-2 p-1 text-xs sm:text-sm">
-          <PersonIcon className="h-auto w-3 fill-zinc-200 sm:w-4" />
+          <PersonIcon className="h-auto w-3 fill-neutral-200 sm:w-4" />
           {player.followers.toLocaleString()}
         </h3>
         <h3 className="p-1 text-xs sm:text-sm">

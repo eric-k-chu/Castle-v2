@@ -1,6 +1,6 @@
 "use client";
 
-import { DotsIcon } from "@/_components";
+import { DotsIcon, TrophyIcon } from "@/_components";
 import { usePagination } from "@/_hooks";
 import { FinishedTournament } from "@/_lib";
 import { getTournamentName } from "@/_utils";
@@ -26,6 +26,7 @@ export function FinishedTournament({
   return (
     <section className="my-8">
       <ListHeader
+        icon={<TrophyIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
         header={header}
         page={`${page + 1} of ${list.length}`}
         prev={() => switchPage("prev")}

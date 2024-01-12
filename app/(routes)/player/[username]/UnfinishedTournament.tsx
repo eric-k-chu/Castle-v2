@@ -8,12 +8,14 @@ import { EmptyListHeader, ListHeader } from ".";
 
 type Props = {
   tournamentList: UnfinishedTournament[];
+  icon?: JSX.Element;
   header: string;
   emptyMsg: string;
 };
 
 export function UnfinishedTournament({
   tournamentList,
+  icon,
   header,
   emptyMsg,
 }: Props) {
@@ -26,7 +28,8 @@ export function UnfinishedTournament({
   return (
     <section className="my-8">
       <ListHeader
-        header="Finished Tournaments"
+        icon={icon}
+        header={header}
         page={`${page + 1} of ${list.length}`}
         prev={() => switchPage("prev")}
         next={() => switchPage("next")}

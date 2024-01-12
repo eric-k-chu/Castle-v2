@@ -1,5 +1,5 @@
 import { ChessApi } from "@/_chessapi";
-import { ErrorMessage } from "@/_components";
+import { ErrorMessage, TrophyIcon } from "@/_components";
 import { getAllPlayerData } from "@/_utils";
 import { Archives } from "./Archives";
 import { Clubs } from "./Clubs";
@@ -41,11 +41,13 @@ export default async function SearchPage({ params }: Props) {
         />
         <UnfinishedTournament
           tournamentList={data.tournaments.in_progress.toSorted()}
+          icon={<TrophyIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
           header="In Progress Tournaments"
           emptyMsg="No tournaments in progress."
         />
         <UnfinishedTournament
           tournamentList={data.tournaments.registered.toSorted()}
+          icon={<TrophyIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
           header="Registered Tournaments"
           emptyMsg="No tournaments registered."
         />

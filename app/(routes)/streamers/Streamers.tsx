@@ -75,7 +75,7 @@ export function Streamers({ streamers }: Props) {
       </div>
       <nav className="flex gap-x-12 pt-10">
         <button
-          className="flex w-full items-center rounded-lg border border-zinc-700 px-4 py-8 text-left text-xs uppercase transition-colors duration-150 ease-in-out hover:border-zinc-400 sm:text-sm"
+          className="flex w-full items-center rounded-lg border border-neutral-700 px-4 py-8 text-left text-xs uppercase transition-colors duration-150 ease-in-out hover:border-neutral-400 sm:text-sm"
           onClick={handlePrev}
         >
           <svg
@@ -96,7 +96,7 @@ export function Streamers({ streamers }: Props) {
           Previous
         </button>
         <button
-          className="flex w-full items-center justify-end rounded-lg border border-zinc-700 px-4 py-8 text-right text-xs uppercase transition-colors duration-150 ease-in-out hover:border-zinc-400 sm:text-sm"
+          className="flex w-full items-center justify-end rounded-lg border border-neutral-700 px-4 py-8 text-right text-xs uppercase transition-colors duration-150 ease-in-out hover:border-neutral-400 sm:text-sm"
           onClick={handleNext}
         >
           Next
