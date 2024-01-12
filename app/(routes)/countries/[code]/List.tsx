@@ -2,14 +2,16 @@
 
 import { GreaterThanIcon, LessThanIcon } from "@/_components";
 import { usePagination } from "@/_hooks";
+import { extractNameFromUrl } from "@/_utils";
 import { useRouter } from "next/navigation";
 
 type Props = {
   list: string[];
   link: string;
+  converter?: (n: string) => string;
 };
 
-export function List({ list, link }: Props) {
+export function List({ list, link, converter }: Props) {
   const [items, page, _, switchPage] = usePagination(list, 20);
   const router = useRouter();
 
@@ -32,10 +34,12 @@ export function List({ list, link }: Props) {
         {items[page].map((n) => (
           <li
             key={n}
-            onClick={() => router.push(`${link}/${n}`)}
+            onClick={() =>
+              router.push(`${link}/${converter ? converter(n) : n}`)
+            }
             className="truncate p-2 capitalize odd:bg-neutral-800 even:bg-transparent hover:cursor-pointer hover:bg-neutral-700"
           >
-            {n}
+            {extractNameFromUrl(n)}
           </li>
         ))}
       </ul>

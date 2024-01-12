@@ -17,3 +17,4 @@ export * from "./Logo";
 export * from "./GreaterThanIcon";
 export * from "./LessThanIcon";
 export * from "./PeopleIcon";
+export * from "./LinkToIcon";
