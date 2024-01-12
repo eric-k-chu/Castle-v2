@@ -5,24 +5,24 @@ import { hasFlag } from "country-flag-icons";
 // color styles need to be in their own functions
 
 export function getBorderColorFromRank(rank: number): string {
-  if (rank === 1) return "border-amber-400";
-  if (rank === 2) return "border-white";
-  if (rank === 3) return "border-amber-600";
-  return "border-neutral-500";
+  if (rank === 1) return "border-amber-500 dark:border-amber-400";
+  if (rank === 2) return "border-neutral-400 dark:border-neutral-200";
+  if (rank === 3) return "border-amber-700 dark:border-amber-600";
+  return "border-neutral-600 dark:border-neutral-500";
 }
 
 export function getBgColorFromRank(rank: number): string {
-  if (rank === 1) return "bg-amber-400";
-  if (rank === 2) return "bg-white";
-  if (rank === 3) return "bg-amber-600";
-  return "bg-neutral-500";
+  if (rank === 1) return "bg-amber-500 dark:bg-amber-400";
+  if (rank === 2) return "bg-neutral-400 dark:bg-neutral-200";
+  if (rank === 3) return "bg-amber-700 dark:bg-amber-600";
+  return "bg-neutral-600 dark:bg-neutral-500";
 }
 
 export function getTextColorFromRank(rank: number): string {
-  if (rank === 1) return "text-amber-400";
-  if (rank === 2) return "text-white";
-  if (rank === 3) return "text-amber-600";
-  return "text-neutral-500";
+  if (rank === 1) return "text-amber-500 dark:text-amber-400";
+  if (rank === 2) return "text-neutral-400 dark:text-neutral-200";
+  if (rank === 3) return "text-amber-700 dark:text-amber-600";
+  return "text-neutral-600 dark:text-neutral-500";
 }
 
 export function getGameResultColor(

@@ -12,7 +12,7 @@ type Props = {
 
 export function RankOneCard({ player }: Props) {
   return (
-    <div className="relative mt-4 flex items-center gap-x-4 overflow-hidden rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6 ">
+    <div className="relative mt-4 flex items-center gap-x-4 overflow-hidden rounded-sm border border-neutral-400 bg-neutral-200 px-4 py-6 dark:border-neutral-800 dark:bg-neutral-900 ">
       <img
         src={player?.avatar ?? "/icons/default-avatar.svg"}
         alt={`${player.username} avatar`}
@@ -45,7 +45,7 @@ export function RankOneCard({ player }: Props) {
             {player.username}
           </Link>
         </div>
-        <div className="flex w-fit items-center gap-x-2 rounded-sm bg-neutral-800 px-2 py-1 ">
+        <div className="flex w-fit items-center gap-x-2 rounded-sm bg-neutral-300 px-2 py-1 dark:bg-neutral-800 ">
           <Trend
             trend={player?.trend_score}
             size="w-5"

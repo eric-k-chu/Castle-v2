@@ -18,7 +18,7 @@ export function RankTwotoFiveCard({ players }: Props) {
     <div className="mt-4 space-y-4 xl:grid xl:grid-cols-4 xl:gap-x-4 xl:space-y-0">
       {players.map((n) => (
         <div
-          className="flex items-center justify-between space-y-0 rounded-sm border border-neutral-800 bg-neutral-900 p-4 lg:space-y-2 xl:block "
+          className="flex items-center justify-between space-y-0 rounded-sm border border-neutral-400 bg-neutral-200 p-4 lg:space-y-2 xl:block dark:border-neutral-800 dark:bg-neutral-900 "
           key={n.player_id}
         >
           <div className="flex items-center gap-x-2 text-xs sm:text-sm">
@@ -47,7 +47,7 @@ export function RankTwotoFiveCard({ players }: Props) {
               <span>{n.username}</span>
             </Link>
           </div>
-          <div className="flex items-center justify-center gap-x-2 rounded-sm bg-neutral-800 px-2 py-1 ">
+          <div className="flex items-center justify-center gap-x-2 rounded-sm bg-neutral-300 px-2 py-1 dark:bg-neutral-800 ">
             <Trend trend={n?.trend_score} />
             <h1 className="text-center text-xs sm:text-sm">{n.score}</h1>
           </div>

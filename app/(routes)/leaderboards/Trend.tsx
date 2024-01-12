@@ -17,7 +17,9 @@ export function Trend({
     <div className="flex items-center gap-x-1">
       <svg
         className={`h-auto ${size} ${
-          trend.direction === 1 ? "fill-green-400" : "rotate-180 fill-red-400"
+          trend.direction === 1
+            ? "fill-green-500 dark:fill-green-400"
+            : "rotate-180 fill-red-500 dark:fill-red-400"
         }`}
         viewBox="0 0 15 15"
         xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +28,9 @@ export function Trend({
       </svg>
       <span
         className={`${textSize} ${
-          trend.direction === 1 ? "text-green-400" : "text-red-400"
+          trend.direction === 1
+            ? "text-green-500 dark:text-green-400"
+            : "text-red-500 dark:text-red-400"
         }`}
       >
         {trend.delta}
