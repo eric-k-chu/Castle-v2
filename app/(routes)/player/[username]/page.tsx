@@ -23,35 +23,33 @@ export default async function SearchPage({ params }: Props) {
   if (!data) return null;
 
   return (
-    <div className="py-20">
-      <div className="mx-auto w-full max-w-lg px-4 md:max-w-2xl lg:max-w-4xl">
-        <Profile player={data.player} />
-        <Stats stats={data.stats} />
-        <Clubs
-          clubList={data.clubs.clubs.toSorted((a, b) => b.joined - a.joined)}
-        />
-        <Archives
-          archiveList={data.archives.games.toReversed()}
-          username={username}
-        />
-        <FinishedTournament
-          tournamentList={data.tournaments.finished.toSorted()}
-          header="Finished Tournaments"
-          emptyMsg="No tournaments finished."
-        />
-        <UnfinishedTournament
-          tournamentList={data.tournaments.in_progress.toSorted()}
-          icon={<TrophyIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
-          header="In Progress Tournaments"
-          emptyMsg="No tournaments in progress."
-        />
-        <UnfinishedTournament
-          tournamentList={data.tournaments.registered.toSorted()}
-          icon={<TrophyIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
-          header="Registered Tournaments"
-          emptyMsg="No tournaments registered."
-        />
-      </div>
+    <div className="mx-auto w-full max-w-lg px-4 py-20 md:max-w-2xl lg:max-w-4xl">
+      <Profile player={data.player} />
+      <Stats stats={data.stats} />
+      <Clubs
+        clubList={data.clubs.clubs.toSorted((a, b) => b.joined - a.joined)}
+      />
+      <Archives
+        archiveList={data.archives.games.toReversed()}
+        username={username}
+      />
+      <FinishedTournament
+        tournamentList={data.tournaments.finished.toSorted()}
+        header="Finished Tournaments"
+        emptyMsg="No tournaments finished."
+      />
+      <UnfinishedTournament
+        tournamentList={data.tournaments.in_progress.toSorted()}
+        icon={<TrophyIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
+        header="In Progress Tournaments"
+        emptyMsg="No tournaments in progress."
+      />
+      <UnfinishedTournament
+        tournamentList={data.tournaments.registered.toSorted()}
+        icon={<TrophyIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
+        header="Registered Tournaments"
+        emptyMsg="No tournaments registered."
+      />
     </div>
   );
 }

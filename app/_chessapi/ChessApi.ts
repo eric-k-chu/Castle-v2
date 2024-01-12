@@ -1,5 +1,6 @@
 import {
   Archives,
+  Club,
   Clubs,
   CountryClubs,
   CountryPlayers,
@@ -126,6 +127,13 @@ export class ChessApi {
     const url = ChessApi.baseUrl + `country/${code}/clubs`;
     const res = await fetch(url, { cache: "no-cache" });
     if (!res.ok) throw new ChessApiError(res.status, `"${code}"`);
+    return await res.json();
+  }
+
+  public static async getClub(clubName: string): Promise<Club> {
+    const url = ChessApi.baseUrl + `club/${clubName}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new ChessApiError(res.status, clubName);
     return await res.json();
   }
 }

@@ -264,3 +264,13 @@ export function getClubName(url: string): string {
     .filter((n) => n.length > 0)
     .join(" ");
 }
+
+export function extractClubUrlId(url: string): string {
+  const urlPattern = `${ChessApi.baseUrl}club/`;
+  return url.split(urlPattern)[1];
+}
+
+export function getUsername(url: string): string {
+  const urlPattern = `${ChessApi.baseUrl}player/`;
+  return url.split(urlPattern)[1];
+}

@@ -1,7 +1,6 @@
 import { ChessApi } from "@/_chessapi";
 import { ErrorMessage } from "@/_components";
-import { ROUTES } from "@/_lib";
-import { getClubName } from "@/_utils";
+import { extractClubUrlId, getClubName } from "@/_utils";
 import { List } from "../List";
 
 type Props = {
@@ -19,11 +18,10 @@ export default async function CountryClubs({ params }: Props) {
 
   if (!clubs) return null;
 
-  // TODO: Add club route
   return (
     <List
       list={clubs.clubs.map((n) => getClubName(n)).toSorted()}
-      link={ROUTES.player}
+      link={`/club/`}
     />
   );
 }
