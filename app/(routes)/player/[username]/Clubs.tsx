@@ -27,7 +27,7 @@ export function Clubs({ clubList }: Props) {
         prev={() => switchPage("prev")}
         next={() => switchPage("next")}
       />
-      <div className="rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-8 text-xs sm:text-sm">
+      <div className="rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-8 text-xs sm:text-sm ">
         <div className="mb-8 grid grid-cols-[4fr_1fr_1fr] px-4">
           <strong className="uppercase">name</strong>
           <strong className="text-center uppercase">joined</strong>
@@ -35,7 +35,7 @@ export function Clubs({ clubList }: Props) {
         </div>
         {list[page].map((n) => (
           <div
-            className="grid grid-cols-[4fr_1fr_1fr] p-4 odd:bg-transparent even:bg-neutral-800"
+            className="grid grid-cols-[4fr_1fr_1fr] p-4 odd:bg-transparent even:bg-neutral-900 "
             key={n["@id"]}
           >
             <div className="flex items-center gap-x-2">

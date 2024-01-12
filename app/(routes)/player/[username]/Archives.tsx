@@ -32,7 +32,7 @@ export function Archives({ archiveList, username }: Props) {
         prev={() => switchPage("prev")}
         next={() => switchPage("next")}
       />
-      <div className="rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-8 text-xs sm:text-sm">
+      <div className="rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-8 text-xs sm:text-sm ">
         <div className="mb-8 grid grid-cols-[0.5fr_3fr_1fr_1fr_0.5fr] px-4">
           <strong className="uppercase">time</strong>
           <strong className="uppercase">players</strong>
@@ -43,7 +43,7 @@ export function Archives({ archiveList, username }: Props) {
         {list[page].map((n) => (
           <div
             key={n.uuid}
-            className={`grid grid-cols-[0.5fr_3fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-800 ${getGameResultColor(
+            className={`grid grid-cols-[0.5fr_3fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-900  ${getGameResultColor(
               username,
               n.pgn,
             )}`}

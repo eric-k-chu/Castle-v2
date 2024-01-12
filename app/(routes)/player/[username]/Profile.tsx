@@ -12,7 +12,7 @@ type Props = {
 export function Profile({ player }: Props) {
   return (
     <>
-      <section className="relative my-8 flex items-center gap-x-2 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6">
+      <section className="relative my-8 flex items-center gap-x-2 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6 ">
         <img
           src={player?.avatar ?? "/icons/default-avatar.svg"}
           alt={`${player.username} avatar`}
@@ -37,7 +37,7 @@ export function Profile({ player }: Props) {
               alt={`${player?.league} icon`}
               width={0}
               height={0}
-              className="absolute bottom-[-10px] h-auto w-10 rounded-sm border border-primary-1 bg-neutral-900 px-2 py-1 sm:w-12"
+              className="absolute bottom-[-10px] h-auto w-10 rounded-sm border border-primary-1 bg-neutral-900 px-2 py-1 sm:w-12 "
             />
           </Show>
         </div>
@@ -60,17 +60,17 @@ export function Profile({ player }: Props) {
             </Show>
           </div>
           <div className="flex gap-x-2 empty:hidden">
-            <h3 className="w-fit truncate rounded-sm bg-neutral-800 p-2 text-xs empty:hidden sm:text-sm">
+            <h3 className="w-fit truncate rounded-sm bg-neutral-900 p-2 text-xs empty:hidden sm:text-sm ">
               {player?.name}
             </h3>
-            <h3 className="w-fit truncate rounded-sm bg-neutral-800 p-2 text-xs empty:hidden sm:text-sm">
+            <h3 className="w-fit truncate rounded-sm bg-neutral-900 p-2 text-xs empty:hidden sm:text-sm ">
               {player?.location}
             </h3>
           </div>
         </div>
       </section>
 
-      <section className="flex flex-wrap items-center justify-around gap-y-2 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6">
+      <section className="flex flex-wrap items-center justify-around gap-y-2 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6 ">
         <h3 className="flex items-center gap-x-2 p-1 text-xs sm:text-sm">
           <PersonIcon className="h-auto w-3 fill-neutral-200 sm:w-4" />
           {player.followers.toLocaleString()}

@@ -32,7 +32,7 @@ export function FinishedTournament({
         prev={() => switchPage("prev")}
         next={() => switchPage("next")}
       />
-      <div className="rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-8 text-xs sm:text-sm">
+      <div className="rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-8 text-xs sm:text-sm ">
         <div className="mb-8 grid grid-cols-[4fr_1fr_1fr_0.5fr] px-4">
           <strong className="uppercase">name</strong>
           <strong className="text-center uppercase">placement</strong>
@@ -42,7 +42,7 @@ export function FinishedTournament({
         {list[page].map((n) => (
           <div
             key={n["@id"]}
-            className="grid grid-cols-[4fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-800"
+            className="grid grid-cols-[4fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-900 "
           >
             <span className="capitalize">{extractNameFromUrl(n["@id"])}</span>
             <span className="text-center">{n.placement}</span>

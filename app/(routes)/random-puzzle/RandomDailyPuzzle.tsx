@@ -39,7 +39,7 @@ export function RandomDailyPuzzle({ puzzle }: Props) {
   }, [seconds]);
 
   return (
-    <section className="mx-auto flex max-w-md flex-col items-center space-y-4 border border-neutral-800 sm:max-w-lg sm:flex-row sm:bg-neutral-900 md:max-w-2xl lg:max-w-4xl">
+    <section className="mx-auto flex max-w-md flex-col items-center space-y-4 border border-neutral-800 sm:max-w-lg sm:flex-row sm:bg-neutral-900 md:max-w-2xl lg:max-w-4xl ">
       <div className="w-full space-y-2 sm:w-1/2">
         <Image
           src={dailyPuzzle.image}

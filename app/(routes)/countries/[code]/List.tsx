@@ -30,14 +30,14 @@ export function List({ list, link, converter }: Props) {
           </button>
         </div>
       </div>
-      <ul className="mt-4 rounded-md bg-neutral-900 p-4">
+      <ul className="mt-4 rounded-md bg-neutral-900 p-4 ">
         {items[page].map((n) => (
           <li
             key={n}
             onClick={() =>
               router.push(`${link}/${converter ? converter(n) : n}`)
             }
-            className="truncate p-2 capitalize odd:bg-neutral-800 even:bg-transparent hover:cursor-pointer hover:bg-neutral-700"
+            className="truncate p-2 capitalize odd:bg-neutral-900 even:bg-transparent hover:cursor-pointer hover:bg-neutral-700 "
           >
             {extractNameFromUrl(n)}
           </li>

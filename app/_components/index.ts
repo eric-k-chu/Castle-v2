@@ -10,3 +10,4 @@ export * from "./Sidebar";
 export * from "./icons";
 export * from "./search";
 export * from "./ErrorMessage";
+export * from "./ThemeSelector";

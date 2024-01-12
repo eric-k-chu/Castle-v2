@@ -34,7 +34,7 @@ export function MobileSearch({ suggestions }: Props) {
         <SearchIcon className="h-auto w-6 fill-neutral-200" />
       </button>
       <div
-        className={`fixed left-0 top-0 z-50 h-screen w-full bg-neutral-900/20 backdrop-blur-sm transition-opacity duration-150 ease-in-out ${
+        className={`/20 fixed left-0 top-0 z-50 h-screen w-full bg-neutral-900 backdrop-blur-sm transition-opacity duration-150 ease-in-out ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >

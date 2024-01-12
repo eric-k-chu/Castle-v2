@@ -4,6 +4,7 @@ import { Route, routes } from "@/_lib";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { ExitIcon, Logo, MenuIcon } from "./icons";
+import { ThemeSelector } from ".";
 
 export function MobileSidebar() {
   const path = usePathname();
@@ -22,7 +23,7 @@ export function MobileSidebar() {
       </button>
 
       <div
-        className={`fixed bottom-0 left-0 h-screen w-72 rounded-r-lg bg-neutral-900 px-4 transition-transform duration-150 ease-in-out ${
+        className={`fixed bottom-0 left-0 flex h-screen w-72 flex-col rounded-r-lg bg-neutral-900 px-4 transition-transform duration-150 ease-in-out  ${
           isOpen ? "translate-x-0" : "-translate-x-[288px]"
         }`}
       >
@@ -52,6 +53,7 @@ export function MobileSidebar() {
             </button>
           ))}
         </div>
+        <ThemeSelector />
       </div>
     </div>
   );

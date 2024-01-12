@@ -26,7 +26,7 @@ export function Leaderboards({ leaderboards }: Props) {
       {leaderboardModes.map((n) => (
         <div
           key={n}
-          className="flex flex-wrap items-center justify-center gap-8 rounded-sm border border-neutral-800 bg-neutral-900 py-6 md:justify-start md:gap-0 md:py-8"
+          className="flex flex-wrap items-center justify-center gap-8 rounded-sm border border-neutral-800 bg-neutral-900 py-6 md:justify-start md:gap-0 md:py-8 "
         >
           <Link
             href={`${ROUTES.leaderboards}/${n}`}
