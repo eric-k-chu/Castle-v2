@@ -1,8 +1,8 @@
 import { ChessApi } from "@/_chessapi";
-import { LeaderboardsDisplay } from "./LeaderboardsDisplay";
 import { ErrorMessage } from "@/_components";
+import { Leaderboards } from "./Leaderboards";
 
-export default async function Leaderboards() {
+export default async function LeaderboardsPage() {
   const [leaderboards, err] = await ChessApi.getData(() =>
     ChessApi.getLeaderboards(),
   );
@@ -15,7 +15,7 @@ export default async function Leaderboards() {
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-24">
-      <LeaderboardsDisplay leaderboards={leaderboards} />
+      <Leaderboards leaderboards={leaderboards} />
     </div>
   );
 }

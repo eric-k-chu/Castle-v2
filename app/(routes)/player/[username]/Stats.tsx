@@ -8,7 +8,7 @@ type Props = {
   stats: Stats;
 };
 
-export function StatsDisplay({ stats }: Props) {
+export function Stats({ stats }: Props) {
   const gameStats = extractStats(stats);
 
   const { puzzle_rush, tactics } = stats;

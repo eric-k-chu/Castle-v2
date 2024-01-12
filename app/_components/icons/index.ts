@@ -16,3 +16,4 @@ export * from "./RandomDailyPuzzleIcon";
 export * from "./Logo";
 export * from "./GreaterThanIcon";
 export * from "./LessThanIcon";
+export * from "./PeopleIcon";

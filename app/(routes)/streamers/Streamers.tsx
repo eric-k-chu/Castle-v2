@@ -2,28 +2,25 @@
 
 import { Show } from "@/_components";
 import { TwitchIcon } from "@/_components/icons";
-import { ROUTES } from "@/_lib";
-import { Streamers } from "@/_lib";
-import { getPages } from "@/_utils";
-import Link from "next/link";
-import { useMemo, useState } from "react";
+import { usePagination } from "@/_hooks";
+import { ROUTES, Streamers } from "@/_lib";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   streamers: Streamers;
 };
 
-export function StreamersDisplay({ streamers: list }: Props) {
-  const [page, setPage] = useState(0);
-  const streamers = useMemo(() => getPages(list.streamers, 50), [list]);
+export function Streamers({ streamers }: Props) {
+  const [list, page, _, switchPage] = usePagination(streamers.streamers);
 
   function handlePrev(): void {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
-    setPage((page - 1 + streamers.length) % streamers.length);
+    switchPage("prev");
   }
   function handleNext(): void {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
-    setPage((page + 1) % streamers.length);
+    switchPage("next");
   }
 
   return (
@@ -35,12 +32,12 @@ export function StreamersDisplay({ streamers: list }: Props) {
         </strong>
         <div className="ml-auto">
           <h5 className="text-xs text-neutral-500 sm:text-sm">
-            {page + 1} of {streamers.length}
+            {page + 1} of {list.length}
           </h5>
         </div>
       </div>
       <div className="flex flex-wrap">
-        {streamers[page].map((n) => (
+        {list[page].map((n) => (
           <div key={n.username} className="w-full p-1 sm:w-1/2 md:w-1/3">
             <div className="relative gap-y-4 rounded-sm bg-neutral-900 p-4 pb-1">
               <Show when={n.is_live === true}>
@@ -53,7 +50,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
                   width={0}
                   height={0}
                   unoptimized
-                  className="h-auto w-6 rounded-sm"
+                  className="size-6 rounded-sm"
                 />
                 <Link
                   href={`${ROUTES.player}/${n.username}`}
@@ -78,7 +75,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
       </div>
       <nav className="flex gap-x-12 pt-10">
         <button
-          className="flex w-full items-center rounded-lg border border-zinc-700 px-4 py-8 text-left text-xs uppercase transition-colors duration-150 ease-in-out hover:border-zinc-400 sm:text-sm"
+          className="flex w-full items-center rounded-lg border border-neutral-700 px-4 py-8 text-left text-xs uppercase transition-colors duration-150 ease-in-out hover:border-neutral-400 sm:text-sm"
           onClick={handlePrev}
         >
           <svg
@@ -99,7 +96,7 @@ export function StreamersDisplay({ streamers: list }: Props) {
           Previous
         </button>
         <button
-          className="flex w-full items-center justify-end rounded-lg border border-zinc-700 px-4 py-8 text-right text-xs uppercase transition-colors duration-150 ease-in-out hover:border-zinc-400 sm:text-sm"
+          className="flex w-full items-center justify-end rounded-lg border border-neutral-700 px-4 py-8 text-right text-xs uppercase transition-colors duration-150 ease-in-out hover:border-neutral-400 sm:text-sm"
           onClick={handleNext}
         >
           Next

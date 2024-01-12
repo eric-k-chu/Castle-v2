@@ -5,7 +5,6 @@ export * from "./Footer";
 export * from "./Loading";
 export * from "./MobileSidebar";
 export * from "./Navbar";
-export * from "./Pagination";
 export * from "./Show";
 export * from "./Sidebar";
 export * from "./icons";

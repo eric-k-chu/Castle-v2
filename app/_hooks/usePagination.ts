@@ -8,7 +8,7 @@ export function usePagination<T>(
   pageSize = 10,
 ): [T[][], number, (n: number) => void, (t: "next" | "prev") => void] {
   const [page, setPage] = useState(0);
-  const paginatedArr = useMemo(() => getPages(arr, pageSize), [arr]);
+  const paginatedArr = useMemo(() => getPages(arr, pageSize), [arr, pageSize]);
 
   function nextOrPrevPage(type: "next" | "prev") {
     if (type === "next") setPage((page + 1) % paginatedArr.length);

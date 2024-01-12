@@ -1,7 +1,5 @@
 import { Country } from "./types";
 
-export const CHESS_API_BASE = "https://api.chess.com/pub/";
-
 export const ROUTES = {
   home: "/",
   player: "/player",
@@ -24,6 +22,12 @@ export const TITLES = [
   "CM",
   "WCM",
 ] as const;
+
+export const TOURNAMENT_STATES = {
+  finished: "Finished Tournaments",
+  in_progress: "In Progress Tournaments",
+  registered: "Registered Tournaments",
+};
 
 export const LEADERBOARDS = {
   daily: "daily",

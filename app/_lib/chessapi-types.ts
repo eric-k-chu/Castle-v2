@@ -66,6 +66,13 @@ interface GameStat {
   tournament?: Tournament;
 }
 
+interface Tournament {
+  count: number;
+  withdraw: number;
+  points: number;
+  highest_finish: number;
+}
+
 interface TacticsStat {
   highest: StatData;
   lowest: StatData;
@@ -98,45 +105,31 @@ interface Record {
   timeout_percent: number;
 }
 
-interface Tournament {
-  count: number;
-  withdraw: number;
-  points: number;
-  highest_finish: number;
-}
-
-interface MatchData {
-  url: string;
-  "@id": string;
-}
-
-export interface FinishedMatchData extends MatchData {
+export interface FinishedTournament extends UnfinishedTournament {
   wins: number;
   losses: number;
   draws: number;
   points_awarded: number;
   placement: number;
-  status: Exclude<Status, "invited" | "registered">;
+  status: string;
   total_players: number;
 }
 
-export interface InProgMatchData extends MatchData {
-  status: Exclude<Status, "invited" | "registered">;
-}
-
-export interface RegisteredMatchData extends MatchData {
-  status: Extract<Status, "invited" | "registered">;
+export interface UnfinishedTournament {
+  url: string;
+  "@id": string;
+  status: string;
 }
 
 export interface Tournaments {
-  finished: FinishedMatchData[];
-  in_progress: InProgMatchData[];
-  registered: RegisteredMatchData[];
+  finished: FinishedTournament[];
+  in_progress: UnfinishedTournament[];
+  registered: UnfinishedTournament[];
 }
 
 // /player/{username}/clubs
 
-interface ClubInfo {
+export interface ClubInfo {
   "@id": string;
   name: string;
   last_activity: EpochTimeStamp;
@@ -181,7 +174,7 @@ export interface PieceData {
   "@id": string;
 }
 
-interface Game {
+export interface Game {
   white: PieceData;
   black: PieceData;
   accuracies?: {

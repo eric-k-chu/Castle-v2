@@ -1,7 +1,7 @@
 import { ChessApi } from "@/_chessapi";
 import { ErrorMessage } from "@/_components";
+import { ROUTES } from "@/_lib";
 import { List } from "../List";
-import { CHESS_API_BASE, ROUTES } from "@/_lib";
 
 type Props = {
   params: { code: string };
