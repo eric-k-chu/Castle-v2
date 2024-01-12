@@ -21,7 +21,7 @@ export function ThemeSelector() {
 
   useEffect(() => {
     document.documentElement.className = theme;
-  });
+  }, [theme]);
 
   function changeTheme(theme: Theme) {
     localStorage.setItem("themeKeyCastle", theme);
