@@ -12,7 +12,7 @@ type Props = {
 
 export function RankOneCard({ player }: Props) {
   return (
-    <div className="relative mt-4 flex items-center gap-x-4 overflow-hidden rounded-sm bg-neutral-900 px-4 py-6">
+    <div className="relative mt-4 flex items-center gap-x-4 overflow-hidden rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6">
       <img
         src={player?.avatar ?? "/icons/default-avatar.svg"}
         alt={`${player.username} avatar`}

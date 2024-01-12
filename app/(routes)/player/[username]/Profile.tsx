@@ -12,7 +12,7 @@ type Props = {
 export function Profile({ player }: Props) {
   return (
     <>
-      <section className="relative my-8 flex items-center gap-x-2 rounded-sm bg-neutral-900 px-4 py-6">
+      <section className="relative my-8 flex items-center gap-x-2 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6">
         <img
           src={player?.avatar ?? "/icons/default-avatar.svg"}
           alt={`${player.username} avatar`}
@@ -70,7 +70,7 @@ export function Profile({ player }: Props) {
         </div>
       </section>
 
-      <section className="flex flex-wrap items-center justify-around gap-y-2 rounded-sm bg-neutral-900 px-4 py-6">
+      <section className="flex flex-wrap items-center justify-around gap-y-2 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6">
         <h3 className="flex items-center gap-x-2 p-1 text-xs sm:text-sm">
           <PersonIcon className="h-auto w-3 fill-neutral-200 sm:w-4" />
           {player.followers.toLocaleString()}

@@ -36,7 +36,7 @@ export default async function Leaderboard({ params }: Props) {
       </h1>
       <RankOneCard player={requestedLeaderboard[0]} />
       <RankTwotoFiveCard players={requestedLeaderboard.slice(1, 5)} />
-      <div className="mt-4 rounded-sm bg-neutral-900 p-4">
+      <div className="mt-4 rounded-sm border border-neutral-800 bg-neutral-900 p-4">
         <header className="flex flex-none items-center gap-x-4 p-4 text-sm sm:gap-x-8 sm:text-base">
           <strong className="w-8 text-center capitalize sm:w-10">rank</strong>
           <strong className="capitalize">player</strong>

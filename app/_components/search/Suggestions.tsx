@@ -32,7 +32,7 @@ export function Suggestions({ query, suggestions, onClick }: Props) {
             className="w-full py-2 text-left indent-4 text-xs hover:cursor-pointer hover:bg-neutral-300 sm:text-sm"
           >
             <ChessTitle title={n.title} />
-            {n.name}
+            <span className="px-1">{n.name}</span>
           </button>
         ))}
       </Show>
