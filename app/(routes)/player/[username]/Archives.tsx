@@ -26,13 +26,15 @@ export function Archives({ archiveList, username }: Props) {
   return (
     <section className="my-8">
       <ListHeader
-        icon={<PawnIcon className="h-auto w-4 fill-neutral-200 sm:w-6" />}
+        icon={
+          <PawnIcon className="h-auto w-4 fill-neutral-900 sm:w-6 dark:fill-neutral-200" />
+        }
         header="Latest Games"
         page={`${page + 1} of ${list.length}`}
         prev={() => switchPage("prev")}
         next={() => switchPage("next")}
       />
-      <div className="rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-8 text-xs sm:text-sm ">
+      <div className="rounded-sm border border-neutral-400 bg-neutral-200 px-4 py-8 text-xs sm:text-sm dark:border-neutral-800 dark:bg-neutral-900">
         <div className="mb-8 grid grid-cols-[0.5fr_3fr_1fr_1fr_0.5fr] px-4">
           <strong className="uppercase">time</strong>
           <strong className="uppercase">players</strong>
@@ -43,14 +45,12 @@ export function Archives({ archiveList, username }: Props) {
         {list[page].map((n) => (
           <div
             key={n.uuid}
-            className={`grid grid-cols-[0.5fr_3fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-800  ${getGameResultColor(
+            className={`grid grid-cols-[0.5fr_3fr_1fr_1fr_0.5fr] p-4 odd:bg-transparent even:bg-neutral-300 dark:even:bg-neutral-800 ${getGameResultColor(
               username,
               n.pgn,
             )}`}
           >
-            <span className="text-neutral-400">
-              {getDaysElapsed(n.end_time)}
-            </span>
+            <span>{getDaysElapsed(n.end_time)}</span>
             <div className="inline">
               <div className="truncate">
                 <SquareIcon className="mr-1 inline h-auto w-3 fill-white" />
@@ -67,7 +67,7 @@ export function Archives({ archiveList, username }: Props) {
             </div>
             <div className="text-center uppercase">{n.time_class}</div>
             <a href={n.url} target="_blank" className="flex justify-end">
-              <DotsIcon className="h-auto w-5 fill-neutral-200" />
+              <DotsIcon className="h-auto w-5 fill-neutral-900 dark:fill-neutral-200" />
             </a>
           </div>
         ))}

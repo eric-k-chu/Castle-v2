@@ -12,7 +12,7 @@ type Props = {
 export function Profile({ player }: Props) {
   return (
     <>
-      <section className="relative my-8 flex items-center gap-x-2 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6 ">
+      <section className="relative my-8 flex items-center gap-x-2 rounded-sm border border-neutral-400 bg-neutral-200 px-4 py-6 dark:border-neutral-800 dark:bg-neutral-900 ">
         <img
           src={player?.avatar ?? "/icons/default-avatar.svg"}
           alt={`${player.username} avatar`}
@@ -60,19 +60,19 @@ export function Profile({ player }: Props) {
             </Show>
           </div>
           <div className="flex gap-x-2 empty:hidden">
-            <h3 className="w-fit truncate rounded-sm bg-neutral-800 p-2 text-xs empty:hidden sm:text-sm ">
+            <h3 className="w-fit truncate rounded-sm bg-neutral-300 p-2 text-xs empty:hidden sm:text-sm dark:bg-neutral-800">
               {player?.name}
             </h3>
-            <h3 className="w-fit truncate rounded-sm bg-neutral-800 p-2 text-xs empty:hidden sm:text-sm ">
+            <h3 className="w-fit truncate rounded-sm bg-neutral-300 p-2 text-xs empty:hidden sm:text-sm dark:bg-neutral-800">
               {player?.location}
             </h3>
           </div>
         </div>
       </section>
 
-      <section className="flex flex-wrap items-center justify-around gap-y-2 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6 ">
+      <section className="flex flex-wrap items-center justify-around gap-y-2 rounded-sm border border-neutral-400 bg-neutral-200 px-4 py-6 dark:border-neutral-800 dark:bg-neutral-900">
         <h3 className="flex items-center gap-x-2 p-1 text-xs sm:text-sm">
-          <PersonIcon className="h-auto w-3 fill-neutral-200 sm:w-4" />
+          <PersonIcon className="h-auto w-3 fill-neutral-900 sm:w-4 dark:fill-neutral-200" />
           {player.followers.toLocaleString()}
         </h3>
         <h3 className="p-1 text-xs sm:text-sm">
