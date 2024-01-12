@@ -14,7 +14,7 @@ export default async function RandomDailyPuzzlePage() {
   if (!dailyPuzzle) return null;
 
   return (
-    <div className="mx-auto w-full px-4 py-40">
+    <div className="mx-auto w-full px-4 py-40 text-neutral-900 dark:text-neutral-200">
       <RandomDailyPuzzle puzzle={dailyPuzzle} />
     </div>
   );

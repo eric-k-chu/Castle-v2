@@ -39,7 +39,7 @@ export function RandomDailyPuzzle({ puzzle }: Props) {
   }, [seconds]);
 
   return (
-    <section className="mx-auto flex max-w-md flex-col items-center space-y-4 border border-neutral-800 sm:max-w-lg sm:flex-row sm:bg-neutral-900 md:max-w-2xl lg:max-w-4xl ">
+    <section className="mx-auto flex max-w-md flex-col items-center space-y-4 border border-neutral-400 sm:max-w-lg sm:flex-row sm:bg-neutral-200 md:max-w-2xl lg:max-w-4xl dark:border-neutral-800 dark:sm:bg-neutral-900 ">
       <div className="w-full space-y-2 sm:w-1/2">
         <Image
           src={dailyPuzzle.image}
@@ -58,14 +58,14 @@ export function RandomDailyPuzzle({ puzzle }: Props) {
         >
           {dailyPuzzle.title}&#8599;
         </a>
-        <h2 className="py-1 text-sm text-neutral-400 sm:text-base md:text-lg">
+        <h2 className="py-1 text-sm text-neutral-500 sm:text-base md:text-lg dark:text-neutral-400">
           {getDateFromUtc(dailyPuzzle.publish_time).full}
         </h2>
         <button
           className={`h-fit w-[111px] rounded-lg px-5 py-2.5 text-xs font-medium sm:w-[123px] sm:text-sm ${
             onCooldown
               ? "pointer-events-none cursor-auto bg-red-900 text-neutral-500"
-              : "cursor-pointer bg-primary-2 hover:bg-primary-1"
+              : "cursor-pointer bg-primary-1 hover:bg-primary-2 dark:bg-primary-2 dark:hover:bg-primary-1"
           }`}
           onClick={getRandomPuzzle}
         >
