@@ -36,7 +36,7 @@ export function Sidebar() {
           <button className="mb-2 px-3" type="button" onClick={getSuggestions}>
             <div className="flex w-full items-center gap-x-6 border-b border-b-neutral-700 pb-4 pl-2 pt-3 hover:cursor-pointer">
               <div>
-                <SearchIcon className="h-auto w-6 fill-primary-1" />
+                <SearchIcon className="size-6 stroke-primary-1" />
               </div>
               <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-left text-base capitalize text-neutral-500 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
                 Search
