@@ -1,39 +1,32 @@
 "use client";
 
-import { TitledPlayer } from "@/_lib";
-import { getPlayerSuggestions } from "@/_utils";
-import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
-import { Show } from ".";
+import { useRouter } from "next/navigation";
 import { MobileSidebar } from "./MobileSidebar";
-import { Logo } from "./icons";
-import { MobileSearch } from "./search";
+import { Logo, SearchIcon } from "./icons";
+import { useState } from "react";
+import { MobileSearch } from ".";
 
 export function Navbar() {
-  const path = usePathname();
   const router = useRouter();
-  const [suggestions, setSuggestions] = useState<TitledPlayer[]>();
-
-  async function getSuggestions() {
-    if (suggestions) return;
-    const players = await getPlayerSuggestions();
-    setSuggestions(players);
-  }
+  const [isSearching, setIsSearching] = useState(false);
 
   return (
-    <div className="fixed z-20 flex w-full items-center justify-center bg-neutral-200 px-6 py-4 sm:bg-transparent dark:bg-neutral-900">
-      <div className="mr-auto flex items-center gap-x-4 sm:hidden">
-        <MobileSidebar />
-        <button onClick={() => router.push("/")}>
-          <Logo />
+    <>
+      <div className="fixed z-20 flex w-full items-center justify-between bg-neutral-200/90 px-6 py-4 dark:bg-neutral-900/90 sm:hidden sm:bg-transparent">
+        <div className="mr-auto flex items-center gap-x-4 sm:hidden">
+          <MobileSidebar />
+          <button onClick={() => router.push("/")}>
+            <Logo />
+          </button>
+        </div>
+        <button type="button" onClick={() => setIsSearching(true)}>
+          <SearchIcon className="size-6 fill-neutral-900 dark:fill-neutral-200" />
         </button>
       </div>
-
-      <Show when={path !== "/"}>
-        <div className="ml-auto" onFocus={getSuggestions}>
-          <MobileSearch suggestions={suggestions} />
-        </div>
-      </Show>
-    </div>
+      <MobileSearch
+        isOpen={isSearching}
+        cleanUp={() => setIsSearching(false)}
+      />
+    </>
   );
 }

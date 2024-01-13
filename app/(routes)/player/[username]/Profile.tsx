@@ -60,10 +60,10 @@ export function Profile({ player }: Props) {
             </Show>
           </div>
           <div className="flex gap-x-2 empty:hidden">
-            <h3 className="w-fit truncate rounded-sm bg-neutral-300 p-2 text-xs empty:hidden sm:text-sm dark:bg-neutral-800">
+            <h3 className="w-fit truncate rounded-sm bg-neutral-300 p-2 text-xs empty:hidden dark:bg-neutral-800 sm:text-sm">
               {player?.name}
             </h3>
-            <h3 className="w-fit truncate rounded-sm bg-neutral-300 p-2 text-xs empty:hidden sm:text-sm dark:bg-neutral-800">
+            <h3 className="w-fit truncate rounded-sm bg-neutral-300 p-2 text-xs empty:hidden dark:bg-neutral-800 sm:text-sm">
               {player?.location}
             </h3>
           </div>
@@ -72,7 +72,7 @@ export function Profile({ player }: Props) {
 
       <section className="flex flex-wrap items-center justify-around gap-y-2 rounded-sm border border-neutral-400 bg-neutral-200 px-4 py-6 dark:border-neutral-800 dark:bg-neutral-900">
         <h3 className="flex items-center gap-x-2 p-1 text-xs sm:text-sm">
-          <PersonIcon className="h-auto w-3 fill-neutral-900 sm:w-4 dark:fill-neutral-200" />
+          <PersonIcon className="size-3 fill-neutral-900 dark:fill-neutral-200 sm:size-4" />
           {player.followers.toLocaleString()}
         </h3>
         <h3 className="p-1 text-xs sm:text-sm">

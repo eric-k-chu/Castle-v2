@@ -11,7 +11,7 @@ export function EmptyListHeader({ header, message, icon }: Props) {
         {icon}
         {header}
       </h1>
-      <div className="rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-8 ">
+      <div className="rounded-sm border border-neutral-400 bg-neutral-200 px-4 py-8 dark:border-neutral-800 dark:bg-neutral-900 ">
         <h1 className="text-center text-neutral-400">{message}</h1>
       </div>
     </section>
