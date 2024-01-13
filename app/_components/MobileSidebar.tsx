@@ -1,7 +1,6 @@
 "use client";
 
-import { Route, TitledPlayer, routes } from "@/_lib";
-import { getPlayerSuggestions } from "@/_utils";
+import { Route, routes } from "@/_lib";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { MobileSearch, ThemeSelector } from ".";
@@ -12,15 +11,6 @@ export function MobileSidebar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const [suggestions, setSuggestions] = useState<TitledPlayer[]>();
-
-  async function getSuggestions() {
-    setIsSearching(true);
-
-    if (suggestions) return;
-    const players = await getPlayerSuggestions();
-    setSuggestions(players);
-  }
 
   function goToRoute(n: Route): void {
     router.push(n);
@@ -59,7 +49,7 @@ export function MobileSidebar() {
           <button
             className="flex items-center gap-x-6 border-b border-b-neutral-700 py-6"
             type="button"
-            onClick={getSuggestions}
+            onClick={() => setIsSearching(true)}
           >
             <SearchIcon className="size-6 fill-primary-1" />
             <h1 className="text-neutral-500">Search</h1>
@@ -88,11 +78,7 @@ export function MobileSidebar() {
         </div>
         <div className="h-full w-full" onClick={() => setIsOpen(false)} />
       </div>
-      <MobileSearch
-        isOpen={isSearching}
-        cleanUp={closeAll}
-        suggestions={suggestions}
-      />
+      <MobileSearch isOpen={isSearching} cleanUp={closeAll} />
     </div>
   );
 }

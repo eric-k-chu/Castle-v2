@@ -26,7 +26,6 @@ export function Navbar() {
       <MobileSearch
         isOpen={isSearching}
         cleanUp={() => setIsSearching(false)}
-        suggestions={[]}
       />
     </>
   );

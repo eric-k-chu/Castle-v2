@@ -1,7 +1,6 @@
 "use client";
 
-import { TitledPlayer, routes } from "@/_lib";
-import { getPlayerSuggestions } from "@/_utils";
+import { routes } from "@/_lib";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -11,15 +10,6 @@ import { Logo, SearchIcon } from "./icons";
 export function Sidebar() {
   const path = usePathname();
   const [isSearching, setIsSearching] = useState(false);
-  const [suggestions, setSuggestions] = useState<TitledPlayer[]>();
-
-  async function getSuggestions() {
-    setIsSearching(true);
-
-    if (suggestions) return;
-    const players = await getPlayerSuggestions();
-    setSuggestions(players);
-  }
 
   return (
     <>
@@ -33,7 +23,11 @@ export function Sidebar() {
               </h1>
             </div>
           </Link>
-          <button className="mb-2 px-3" type="button" onClick={getSuggestions}>
+          <button
+            className="mb-2 px-3"
+            type="button"
+            onClick={() => setIsSearching(true)}
+          >
             <div className="flex w-full items-center gap-x-6 border-b border-b-neutral-700 pb-4 pl-2 pt-3 hover:cursor-pointer">
               <div>
                 <SearchIcon className="size-6 fill-primary-1" />
@@ -75,7 +69,6 @@ export function Sidebar() {
       <MobileSearch
         isOpen={isSearching}
         cleanUp={() => setIsSearching(false)}
-        suggestions={suggestions}
       />
     </>
   );

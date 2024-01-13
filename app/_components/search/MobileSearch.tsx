@@ -2,19 +2,32 @@
 
 import { ROUTES, TitledPlayer } from "@/_lib";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Suggestions } from ".";
 import { SearchIcon } from "../icons";
+import { ChessApi } from "@/_chessapi";
+import { getPlayerSuggestions } from "@/_utils";
 
 type Props = {
   isOpen: boolean;
   cleanUp: () => void;
-  suggestions: TitledPlayer[] | undefined;
 };
 
-export function MobileSearch({ isOpen, cleanUp, suggestions }: Props) {
+export function MobileSearch({ isOpen, cleanUp }: Props) {
   const [query, setQuery] = useState("");
   const router = useRouter();
+  const [suggestions, setSuggestions] = useState<TitledPlayer[]>();
+
+  useEffect(() => {
+    async function getSuggestions() {
+      if (suggestions) return;
+
+      const [data, err] = await ChessApi.getData(() => getPlayerSuggestions());
+      if (err !== null || !data) return;
+      setSuggestions(data);
+    }
+    if (isOpen === true) getSuggestions();
+  }, [isOpen]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
