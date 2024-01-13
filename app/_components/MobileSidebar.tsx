@@ -30,7 +30,7 @@ export function MobileSidebar() {
         <div className="z-[999] flex items-center justify-between border-b border-b-neutral-700 py-6">
           <Logo />
           <button onClick={() => setIsOpen(false)}>
-            <ExitIcon className="size-6 rotate-180 stroke-neutral-900 dark:stroke-neutral-200" />
+            <ExitIcon className="size-6 fill-neutral-900 dark:fill-neutral-200" />
           </button>
         </div>
         <div className="mt-2">

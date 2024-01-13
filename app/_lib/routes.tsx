@@ -3,7 +3,7 @@ import {
   RandomDailyPuzzleIcon,
   TrophyIcon,
   TwitchIcon,
-  WorldIcon,
+  FlagIcon,
 } from "@/_components/icons";
 import { Route } from "./types";
 import { ROUTES } from "./constants";
@@ -21,7 +21,7 @@ export const routes: RouteObject[] = [
     name: "leaderboards",
     icon: <TrophyIcon />,
     selected: (
-      <TrophyIcon className="h-auto w-6 fill-neutral-900 dark:fill-neutral-200" />
+      <TrophyIcon className="size-6 fill-neutral-900 dark:fill-neutral-200" />
     ),
   },
   {
@@ -37,7 +37,7 @@ export const routes: RouteObject[] = [
     name: "daily puzzle",
     icon: <DailyPuzzleIcon />,
     selected: (
-      <DailyPuzzleIcon className="h-auto w-6 fill-neutral-900 dark:fill-neutral-200" />
+      <DailyPuzzleIcon className="size-6 fill-neutral-900 dark:fill-neutral-200" />
     ),
   },
   {
@@ -45,15 +45,15 @@ export const routes: RouteObject[] = [
     name: "random puzzle",
     icon: <RandomDailyPuzzleIcon />,
     selected: (
-      <RandomDailyPuzzleIcon className="h-auto w-6 fill-neutral-900 dark:fill-neutral-200" />
+      <RandomDailyPuzzleIcon className="size-6 fill-neutral-900 dark:fill-neutral-200" />
     ),
   },
   {
     path: "/countries",
     name: "countries",
-    icon: <WorldIcon />,
+    icon: <FlagIcon />,
     selected: (
-      <WorldIcon className="size-6 fill-neutral-900 stroke-neutral-900 dark:fill-neutral-200 dark:stroke-neutral-200" />
+      <FlagIcon className="size-6 fill-neutral-900 dark:fill-neutral-200" />
     ),
   },
 ];

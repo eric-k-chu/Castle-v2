@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import { SearchIcon, WorldIcon } from "@/_components";
+import { SearchIcon, FlagIcon } from "@/_components";
 import { Country, ROUTES } from "@/_lib";
 import { getCountries } from "@/_utils";
 import { useRouter } from "next/navigation";
@@ -18,10 +18,10 @@ export default function Countries() {
   );
 
   return (
-    <div className="mx-auto min-h-screen w-full px-4 py-24 text-neutral-900 sm:max-w-lg min-[878px]:max-w-3xl lg:max-w-4xl dark:text-neutral-200">
+    <div className="mx-auto min-h-screen w-full px-4 py-24 text-neutral-900 dark:text-neutral-200 sm:max-w-lg min-[878px]:max-w-3xl lg:max-w-4xl">
       <div className="mb-2 flex items-center">
         <div className="flex items-center gap-x-2 sm:gap-x-4">
-          <WorldIcon className="inline h-auto w-5 fill-neutral-900 stroke-neutral-900 sm:w-6 md:w-8 dark:fill-neutral-200 dark:stroke-neutral-200" />
+          <FlagIcon className="inline h-auto w-5 fill-neutral-900 stroke-neutral-900 dark:fill-neutral-200 dark:stroke-neutral-200 sm:w-6 md:w-8" />
           <strong className="text-lg uppercase sm:text-2xl md:text-4xl">
             Countries
           </strong>

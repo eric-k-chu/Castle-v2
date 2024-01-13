@@ -1,5 +1,10 @@
 import { ChessApi } from "@/_chessapi";
-import { ErrorMessage, LinkToIcon, PersonIcon } from "@/_components";
+import {
+  ErrorMessage,
+  LinkToIcon,
+  PersonIcon,
+  ShieldIcon,
+} from "@/_components";
 import { ROUTES } from "@/_lib";
 import { getDateFromUtc, getIdentifier } from "@/_utils";
 import Image from "next/image";
@@ -22,7 +27,7 @@ export default async function ClubPage({ params }: Props) {
 
   return (
     <>
-      <section className="my-8 space-y-4 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6">
+      <section className="my-8 space-y-4 rounded-sm border border-neutral-400 bg-neutral-200 px-4 py-6 dark:border-neutral-800 dark:bg-neutral-900">
         <div className="flex items-center gap-x-2">
           <div className="relative flex items-center justify-center">
             <Image
@@ -43,7 +48,7 @@ export default async function ClubPage({ params }: Props) {
         </div>
         <div className="flex flex-wrap items-center justify-around gap-y-2">
           <h3 className="flex items-center gap-x-2 p-1 text-xs sm:text-sm">
-            <PersonIcon className="h-auto w-3 fill-neutral-200 sm:w-4" />
+            <PersonIcon className="size-3 fill-neutral-900 dark:fill-neutral-200 sm:size-4" />
             {club.members_count.toLocaleString()}
           </h3>
           <h3 className="p-1 text-xs sm:text-sm">
@@ -55,23 +60,28 @@ export default async function ClubPage({ params }: Props) {
         </div>
       </section>
       <h2 className="flex items-center gap-x-2 text-base font-semibold uppercase sm:text-lg">
+        <ShieldIcon className="size-4 fill-neutral-900 dark:fill-neutral-200 sm:size-6" />
         Admins
       </h2>
-      <section className="space-y-4 rounded-sm border border-neutral-800 bg-neutral-900 px-4 py-6 ">
-        <div className="flex flex-wrap items-center justify-around gap-y-2 empty:hidden">
+      <section className="space-y-4 rounded-sm border border-neutral-400 bg-neutral-200 px-4 py-6 dark:border-neutral-800 dark:bg-neutral-900 ">
+        <ul className="flex flex-wrap items-center justify-around gap-y-2 empty:hidden">
           {club?.admin.map((n) => (
-            <Link
+            <li
               key={n}
-              className="rounded-sm bg-neutral-900 p-2 text-xs capitalize transition-colors duration-150 ease-in-out hover:bg-primary-1 sm:text-sm "
-              href={`${ROUTES.player}/${getIdentifier(n)}`}
+              className="group w-full rounded-sm odd:bg-neutral-300 dark:odd:bg-neutral-800"
             >
-              {getIdentifier(n)}
-            </Link>
+              <Link
+                className="inline-block w-full p-2 text-xs capitalize group-hover:underline sm:text-sm"
+                href={`${ROUTES.player}/${getIdentifier(n)}`}
+              >
+                {getIdentifier(n)}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
       <a
-        className="my-8 block w-full cursor-pointer rounded-sm bg-primary-2 py-2 text-center text-base font-semibold transition-colors duration-150 ease-in-out hover:bg-primary-1 sm:text-lg"
+        className="my-8 block w-full cursor-pointer rounded-sm bg-primary-1 py-2 text-center text-base font-semibold transition-colors duration-150 ease-in-out hover:bg-primary-1/90 sm:text-lg"
         target="_blank"
         href={club.join_request}
       >
