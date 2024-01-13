@@ -17,7 +17,7 @@ export function useSuggestions(isOpen: boolean) {
       setSuggestions(data);
     }
     if (isOpen === true) getSuggestions();
-  }, [isOpen]);
+  }, [isOpen, suggestions]);
 
   return suggestions;
 }
