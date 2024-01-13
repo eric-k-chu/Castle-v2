@@ -47,7 +47,7 @@ export function Sidebar() {
             <div
               className={`w-full border-l-4 py-3 pl-3 pr-4 ${
                 path.includes(n.path)
-                  ? "border-l-neutral-200"
+                  ? "border-l-neutral-900 dark:border-l-neutral-200"
                   : "border-l-transparent"
               }`}
               key={n.name}
