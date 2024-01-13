@@ -8,34 +8,34 @@ import { SearchIcon } from "../icons";
 
 type Props = {
   isOpen: boolean;
-  setIsOpen: (n: boolean) => void;
+  cleanUp: () => void;
   suggestions: TitledPlayer[] | undefined;
 };
 
-export function MobileSearch({ isOpen, setIsOpen, suggestions }: Props) {
+export function MobileSearch({ isOpen, cleanUp, suggestions }: Props) {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     router.push(`${ROUTES.player}/${query}`);
-    setIsOpen(false);
+    cleanUp();
     setQuery("");
   }
 
   function handleSuggestionClick(username: string) {
     router.push(`${ROUTES.player}/${username}`);
-    setIsOpen(false);
+    cleanUp();
     setQuery("");
   }
 
   return (
     <div
-      className={`fixed left-0 top-0 z-50 h-screen w-full bg-neutral-900/50 backdrop-blur-sm transition-opacity duration-150 ease-in-out ${
+      className={`fixed left-0 top-0 z-[999] h-screen w-full bg-neutral-900/50 backdrop-blur-sm transition-opacity duration-150 ease-in-out ${
         isOpen ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
-      <div className="z-[55] h-full w-full" onClick={() => setIsOpen(false)} />
+      <div className="z-[55] h-full w-full" onClick={cleanUp} />
       <div className="absolute top-0 z-[60] flex w-full flex-col items-center gap-y-2 p-4">
         <form
           className="relative flex w-full max-w-2xl items-center rounded-full bg-white px-4 py-2 text-black"

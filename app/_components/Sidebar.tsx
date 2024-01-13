@@ -74,7 +74,7 @@ export function Sidebar() {
       </div>
       <MobileSearch
         isOpen={isSearching}
-        setIsOpen={setIsSearching}
+        cleanUp={() => setIsSearching(false)}
         suggestions={suggestions}
       />
     </>
