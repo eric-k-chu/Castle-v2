@@ -1,39 +1,23 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
-
-type Theme = "dark" | "light";
-
-const THEME_KEY = "themeKeyCastle";
-
-function getTheme(): Theme {
-  return localStorage.getItem(THEME_KEY) as Theme;
-}
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export function ThemeSelector() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const { theme, setTheme } = useTheme();
 
-  useLayoutEffect(() => {
-    const localTheme = getTheme();
-    document.documentElement.className = localTheme;
-    setTheme(localTheme);
-  }, []);
+  // resolves hydration warnings
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  useEffect(() => {
-    document.documentElement.className = theme;
-  }, [theme]);
-
-  function changeTheme(theme: Theme) {
-    localStorage.setItem("themeKeyCastle", theme);
-    setTheme(theme);
-  }
+  if (!mounted) return null;
 
   return (
     <>
       <div className="mt-auto hidden w-full px-4 py-3 sm:block">
         <button
           className="flex w-full items-center gap-x-6 rounded-sm py-2 pl-1 hover:cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-800"
-          onClick={() => changeTheme(theme === "light" ? "dark" : "light")}
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         >
           <div>{theme === "light" ? <Sun /> : <Moon />}</div>
           <h1 className="flex-1 select-none overflow-hidden whitespace-nowrap text-left text-base capitalize text-neutral-500 opacity-0 transition-opacity duration-150 ease-in-out group-hover:opacity-100">
@@ -43,7 +27,7 @@ export function ThemeSelector() {
       </div>
       <button
         className="mt-auto flex items-center gap-x-6 py-4 hover:cursor-pointer sm:hidden"
-        onClick={() => changeTheme(theme === "light" ? "dark" : "light")}
+        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       >
         <div>{theme === "light" ? <Sun /> : <Moon />}</div>
         <h1 className="capitalize text-neutral-500">{theme}</h1>
