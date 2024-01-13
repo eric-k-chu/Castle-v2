@@ -1,12 +1,11 @@
 "use client";
 
-import { ROUTES, TitledPlayer } from "@/_lib";
+import { useSuggestions } from "@/_hooks";
+import { ROUTES } from "@/_lib";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Suggestions } from ".";
 import { SearchIcon } from "../icons";
-import { ChessApi } from "@/_chessapi";
-import { getPlayerSuggestions } from "@/_utils";
 
 type Props = {
   isOpen: boolean;
@@ -16,18 +15,7 @@ type Props = {
 export function MobileSearch({ isOpen, cleanUp }: Props) {
   const [query, setQuery] = useState("");
   const router = useRouter();
-  const [suggestions, setSuggestions] = useState<TitledPlayer[]>();
-
-  useEffect(() => {
-    async function getSuggestions() {
-      if (suggestions) return;
-
-      const [data, err] = await ChessApi.getData(() => getPlayerSuggestions());
-      if (err !== null || !data) return;
-      setSuggestions(data);
-    }
-    if (isOpen === true) getSuggestions();
-  }, [isOpen]);
+  const suggestions = useSuggestions(isOpen);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -48,19 +36,19 @@ export function MobileSearch({ isOpen, cleanUp }: Props) {
         isOpen ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
-      <div className="z-[55] h-full w-full" onClick={cleanUp} />
+      <div className="h-full w-full" onClick={cleanUp} />
       <div className="absolute top-0 z-[60] flex w-full flex-col items-center gap-y-2 p-4">
         <form
           className="relative flex w-full max-w-2xl items-center rounded-full bg-white px-4 py-2 text-black"
           onSubmit={handleSubmit}
         >
-          <div className="z-[61] flex w-fit items-center justify-center border-r border-neutral-400 pr-2">
+          <div className="flex w-fit items-center justify-center border-r border-neutral-400 pr-2">
             <SearchIcon className="h-auto w-4 fill-neutral-500" />
           </div>
           <input
             value={query}
             onChange={(e) => setQuery(e.currentTarget.value)}
-            className="z-[61] w-full bg-transparent pl-2 text-sm focus:outline-none"
+            className="w-full bg-transparent pl-2 text-sm focus:outline-none"
             placeholder="search for a player"
           />
         </form>
