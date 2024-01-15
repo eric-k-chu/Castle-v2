@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Castle",
-  description: "A player search engine powered by Chess.com's API",
+  description: "Powered by Chess.com's API",
 };
 
 export default function RootLayout({
