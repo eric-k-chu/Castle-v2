@@ -31,7 +31,7 @@ export default async function HomePage() {
               Castle
             </h1>
             <p className="hidden text-xl font-medium text-gray-200 sm:block">
-              Powered by Chess.com's API
+              Powered by Chess.com&#39;s API
             </p>
           </div>
         </div>
