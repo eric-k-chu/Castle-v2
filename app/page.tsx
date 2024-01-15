@@ -30,8 +30,8 @@ export default async function HomePage() {
             <h1 className="text-2xl font-semibold uppercase text-neutral-200 sm:text-4xl">
               Castle
             </h1>
-            <p className="hidden text-xl font-medium capitalize text-gray-200 sm:block">
-              a chess.com search engine.
+            <p className="hidden text-xl font-medium text-gray-200 sm:block">
+              Powered by Chess.com's API
             </p>
           </div>
         </div>
