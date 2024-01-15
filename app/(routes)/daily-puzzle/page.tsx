@@ -15,8 +15,8 @@ export default async function DailyPuzzle() {
   if (!dailyPuzzle) return null;
 
   return (
-    <div className="mx-auto w-full px-4 py-40 text-neutral-900 dark:text-neutral-200">
-      <section className="mx-auto flex max-w-md flex-col items-center space-y-4 border border-neutral-400 sm:max-w-lg sm:flex-row sm:bg-neutral-200 md:max-w-2xl lg:max-w-4xl dark:border-neutral-800 dark:sm:bg-neutral-900 ">
+    <div className="mx-auto min-h-screen w-full px-4 py-40 text-neutral-900 dark:text-neutral-200">
+      <section className="mx-auto flex max-w-md flex-col items-center space-y-4 border border-neutral-400 dark:border-neutral-800 sm:max-w-lg sm:flex-row sm:bg-neutral-200 dark:sm:bg-neutral-900 md:max-w-2xl lg:max-w-4xl ">
         <div className="w-full space-y-2 sm:w-1/2">
           <Image
             src={dailyPuzzle.image}
@@ -35,7 +35,7 @@ export default async function DailyPuzzle() {
           >
             {dailyPuzzle.title}&#8599;
           </a>
-          <h2 className="py-1 text-sm text-neutral-500 sm:text-base md:text-lg dark:text-neutral-400">
+          <h2 className="py-1 text-sm text-neutral-500 dark:text-neutral-400 sm:text-base md:text-lg">
             {getDateFromUtc(dailyPuzzle.publish_time).full}
           </h2>
         </div>

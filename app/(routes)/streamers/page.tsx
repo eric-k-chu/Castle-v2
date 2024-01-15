@@ -14,7 +14,7 @@ export default async function StreamersPage() {
   if (!streamers) return null;
 
   return (
-    <div className="mx-auto w-full px-4 py-24 text-neutral-900 dark:text-neutral-200">
+    <div className="mx-auto min-h-screen w-full px-4 py-24 text-neutral-900 dark:text-neutral-200">
       <Streamers streamers={streamers} />
     </div>
   );
