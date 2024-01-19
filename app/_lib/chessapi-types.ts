@@ -294,3 +294,11 @@ export interface ClubMembers {
   monthly: ClubMember[];
   all_time: ClubMember[];
 }
+
+export interface PlayerData {
+  player: PlayerProfile;
+  stats: Stats;
+  clubs: Clubs;
+  archives: MonthlyArchive;
+  tournaments: Tournaments;
+}

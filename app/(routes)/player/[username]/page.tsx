@@ -1,3 +1,5 @@
+"use client";
+
 import { ChessApi } from "@/_chessapi";
 import { ErrorMessage, TrophyIcon } from "@/_components";
 import { getAllPlayerData } from "@/_utils";
@@ -7,18 +9,27 @@ import { FinishedTournament } from "./FinishedTournament";
 import { Profile } from "./Profile";
 import { Stats } from "./Stats";
 import { UnfinishedTournament } from "./UnfinishedTournament";
+import { useEffect, useState } from "react";
+import { PlayerData } from "@/_lib";
 
 type Props = {
   params: { username: string };
 };
 
-export default async function SearchPage({ params }: Props) {
+export default function SearchPage({ params }: Props) {
   const username = params.username ?? "";
-  const [data, err] = await ChessApi.getData(() => getAllPlayerData(username));
+  const [data, setData] = useState<PlayerData>();
 
-  if (err !== null) {
-    return <ErrorMessage message={err} />;
-  }
+  useEffect(() => {
+    async function getPlayer() {
+      const [data, err] = await ChessApi.getData(() =>
+        getAllPlayerData(username),
+      );
+      data && setData(data);
+      err && console.error(err);
+    }
+    getPlayer();
+  }, [username]);
 
   if (!data) return null;
 
