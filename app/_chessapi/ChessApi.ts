@@ -57,7 +57,7 @@ export class ChessApi {
 
   public static async getPlayerArchives(username: string): Promise<Archives> {
     const url = ChessApi.baseUrl + `player/${username}/games/archives`;
-    const res = await fetch(url, { cache: "no-cache" });
+    const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, username);
     return await res.json();
   }
@@ -65,7 +65,7 @@ export class ChessApi {
   public static async getPlayerMonthlyArchive(
     url: string,
   ): Promise<MonthlyArchive> {
-    const res = await fetch(url, { cache: "no-cache" });
+    const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, url);
     return await res.json();
   }
@@ -118,14 +118,14 @@ export class ChessApi {
     code: string,
   ): Promise<CountryPlayers> {
     const url = ChessApi.baseUrl + `country/${code}/players`;
-    const res = await fetch(url, { cache: "no-cache" });
+    const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, `"${code}"`);
     return await res.json();
   }
 
   public static async getClubsByCountry(code: string): Promise<CountryClubs> {
     const url = ChessApi.baseUrl + `country/${code}/clubs`;
-    const res = await fetch(url, { cache: "no-cache" });
+    const res = await fetch(url);
     if (!res.ok) throw new ChessApiError(res.status, `"${code}"`);
     return await res.json();
   }

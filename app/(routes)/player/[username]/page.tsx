@@ -16,8 +16,6 @@ export default async function SearchPage({ params }: Props) {
   const username = params.username ?? "";
   const [data, err] = await ChessApi.getData(() => getAllPlayerData(username));
 
-  console.log(data, err);
-
   if (err !== null) {
     return <ErrorMessage message={err} />;
   }
