@@ -7,7 +7,6 @@ type Props = {
 };
 
 export default function Error({ error }: Props) {
-  console.log(error);
   return (
     <ErrorMessage
       message={error instanceof Error ? error.message : "Unexpected Error."}

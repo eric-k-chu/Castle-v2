@@ -16,6 +16,8 @@ export default async function SearchPage({ params }: Props) {
   const username = params.username ?? "";
   const [data, err] = await ChessApi.getData(() => getAllPlayerData(username));
 
+  console.log(data, err);
+
   if (err !== null) {
     return <ErrorMessage message={err} />;
   }
@@ -23,7 +25,7 @@ export default async function SearchPage({ params }: Props) {
   if (!data) return null;
 
   return (
-    <div className="mx-auto w-full max-w-lg px-4 py-20 text-neutral-900 md:max-w-2xl lg:max-w-4xl dark:text-neutral-200">
+    <div className="mx-auto w-full max-w-lg px-4 py-20 text-neutral-900 dark:text-neutral-200 md:max-w-2xl lg:max-w-4xl">
       <Profile player={data.player} />
       <Stats stats={data.stats} />
       <Clubs
@@ -41,7 +43,7 @@ export default async function SearchPage({ params }: Props) {
       <UnfinishedTournament
         tournamentList={data.tournaments.in_progress.toSorted()}
         icon={
-          <TrophyIcon className="h-auto w-4 fill-neutral-900 sm:w-6 dark:fill-neutral-200" />
+          <TrophyIcon className="h-auto w-4 fill-neutral-900 dark:fill-neutral-200 sm:w-6" />
         }
         header="In Progress Tournaments"
         emptyMsg="No tournaments in progress."
@@ -49,7 +51,7 @@ export default async function SearchPage({ params }: Props) {
       <UnfinishedTournament
         tournamentList={data.tournaments.registered.toSorted()}
         icon={
-          <TrophyIcon className="h-auto w-4 fill-neutral-900 sm:w-6 dark:fill-neutral-200" />
+          <TrophyIcon className="h-auto w-4 fill-neutral-900 dark:fill-neutral-200 sm:w-6" />
         }
         header="Registered Tournaments"
         emptyMsg="No tournaments registered."
