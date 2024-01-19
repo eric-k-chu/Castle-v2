@@ -1,7 +1,7 @@
 "use client";
 
-import { ChessApi } from "@/_chessapi";
-import { ErrorMessage, TrophyIcon } from "@/_components";
+import { ErrorMessage, Loading, TrophyIcon } from "@/_components";
+import { useFetcher } from "@/_hooks";
 import { getAllPlayerData } from "@/_utils";
 import { Archives } from "./Archives";
 import { Clubs } from "./Clubs";
@@ -9,8 +9,6 @@ import { FinishedTournament } from "./FinishedTournament";
 import { Profile } from "./Profile";
 import { Stats } from "./Stats";
 import { UnfinishedTournament } from "./UnfinishedTournament";
-import { useEffect, useState } from "react";
-import { PlayerData } from "@/_lib";
 
 type Props = {
   params: { username: string };
@@ -18,18 +16,19 @@ type Props = {
 
 export default function SearchPage({ params }: Props) {
   const username = params.username ?? "";
-  const [data, setData] = useState<PlayerData>();
+  const [data, loading, error] = useFetcher(() => getAllPlayerData(username));
 
-  useEffect(() => {
-    async function getPlayer() {
-      const [data, err] = await ChessApi.getData(() =>
-        getAllPlayerData(username),
-      );
-      data && setData(data);
-      err && console.error(err);
-    }
-    getPlayer();
-  }, [username]);
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return (
+      <ErrorMessage
+        message={typeof error === "string" ? error : "Unexpected Error."}
+      />
+    );
+  }
 
   if (!data) return null;
 

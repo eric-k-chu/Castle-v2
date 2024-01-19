@@ -3,10 +3,7 @@
 import { Fetcher } from "@/_lib";
 import { useEffect, useState } from "react";
 
-export function useFetcher<T>(
-  func: (arg?: any) => Promise<T>,
-  arg?: any,
-): Fetcher<T> {
+export function useFetcher<T>(func: () => Promise<T>): Fetcher<T> {
   const [data, setData] = useState<T>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<unknown>();
@@ -15,7 +12,7 @@ export function useFetcher<T>(
     async function getDataFromApi() {
       setIsLoading(true);
       try {
-        const res = await func(arg);
+        const res = await func();
         setData(res);
       } catch (err) {
         setError(err);
@@ -24,7 +21,7 @@ export function useFetcher<T>(
       }
     }
     if (isLoading === undefined) getDataFromApi();
-  }, [isLoading, func, arg]);
+  }, [isLoading, func]);
 
-  return { data, isLoading, error };
+  return [data, isLoading, error];
 }

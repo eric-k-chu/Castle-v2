@@ -16,11 +16,11 @@ export interface Country {
   src: string;
 }
 
-export interface Fetcher<T> {
-  data: T | undefined;
-  isLoading: boolean | undefined;
-  error: unknown;
-}
+export type Fetcher<T> = [
+  data: T | undefined,
+  isLoading: boolean | undefined,
+  error: unknown,
+];
 
 export type Route = (typeof ROUTES)[keyof typeof ROUTES];
 
